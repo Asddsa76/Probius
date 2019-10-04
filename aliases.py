@@ -92,6 +92,8 @@ def aliases(hero):
 		hero='Kerrigan'
 	elif hero in ['goat','space goat']:
 		hero='Yrel'
+	elif hero in ['bow genji']:
+		hero='Hanzo'
 	else:
 		hero=hero.capitalize()#Emoji pages are case sensitive
 	return hero
