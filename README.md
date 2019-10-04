@@ -2,6 +2,12 @@
 
 A HotS Discord bot. Call in Discord with [hero/modifier]. Modifier is hotkey or talent tier. Data is pulled from HotS wiki. Project started on 14/9-2019
 
+Written in Python 3.6 and running on a Raspberry Pi 3 B+
+
+# File description:
+
+probius: The main file that calls all the other files
+
 aliases: Spellcheck and alternate names for heroes
 
 trimBrackets: Trims < from text
@@ -15,5 +21,3 @@ emojis: Emojis
 miscFunctions: Edge cases and help message
 
 getDiscordToken: The token is in an untracked file because this is a public Github repo
-
-probius: The main file that calls all the other files
