@@ -67,7 +67,10 @@ class MyClient(discord.Client):
 					tier=int(tier)
 					output=printTier(talents,int(tier/3)+int(hero=='Chromie' and tier!=1))#Talents for Chromie come 2 lvls sooner, except lvl 1
 				elif tier=='r':#Ultimate
-					output=printTier(talents,3-2*int(hero=='Varian'))#Varian's heroics are at lvl 4
+					if hero=='Tracer':#She starts with her heroic already unlocked, and only has 1 heroic
+						output=abilities[4]
+					else:
+						output=printTier(talents,3-2*int(hero=='Varian'))#Varian's heroics are at lvl 4
 				elif len(tier)==1 and tier in 'dqwe':#Ability (dqwe)
 					output=printAbility(abilities,tier,hero)
 				elif tier.lower()=='trait':
