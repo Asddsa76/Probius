@@ -44,6 +44,11 @@ class MyClient(discord.Client):
 				print('Dual hero')
 				return
 			if abilities==404:
+				try:#If no results, it's probably an emoji with : forgotten. Prefer to call with : to avoid loading abilities and talents page
+					await emoji([hero,text[1]],message.channel)
+					return
+				except:
+					pass
 				output='No hero "'+hero+'"'
 				if message.channel.name=='rage':
 					output=output.upper()

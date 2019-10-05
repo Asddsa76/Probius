@@ -1,6 +1,20 @@
 from urllib.request import urlopen
 from trimBrackets import *#Trims < from text
 
+def addHotkeys(hero,abilities):
+	hotkeys=['D','Q','W','E','R','R']
+	if hero=='Abathur':
+		hotkeys=['D','Q','QQ','QW','QE','W','R','R']
+	elif hero=='Greymane':
+		hotkeys=['D','Q','Q','W','E','E','R','R']
+	elif hero in ['Ragnaros','Alexstrasza','Valeera']:
+		hotkeys=['D','Q','DQ','W','DW','E','DE','R','R']
+	i=0
+	for hotkey in hotkeys:
+		abilities[i]='***'+hotkey+':*** '+abilities[i]
+		i+=1
+	return abilities
+
 def heroAbilitiesAndTalents(hero):
 	page=''
 	try:
@@ -41,6 +55,6 @@ def heroAbilitiesAndTalents(hero):
 			newTalentTier.append(newTalent)
 		newTalentTiers.append(newTalentTier)
 
-	abilities=newAbilities
+	abilities=addHotkeys(hero,newAbilities)
 	talents=newTalentTiers
 	return [abilities,talents]
