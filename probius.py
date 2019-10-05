@@ -25,7 +25,7 @@ class MyClient(discord.Client):
 		if '[' in message.content and ']' in message.content:
 			print(message.channel.name+' '+str(message.author)+': '+message.content)
 			text=message.content.lower()
-			if text=='[help]':
+			if text in ['help','info']:
 				await message.channel.send(helpMessage())
 				return
 			elif ':' in text:

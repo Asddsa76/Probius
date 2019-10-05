@@ -33,7 +33,7 @@ def trim(page):
 	#Program searches the text for < to know when to stop
 	#and these are < in middle of plain text, stopping early
 	page=removeHyperlinks(page)
-	page=page.replace('<span style="color:#FD0">❢  Quest:</span>','Quest:')
+	page=page.replace('<span style="color:#FD0">❢  Quest:</span>','❢ Quest:')
 	page=page.replace('<br /><span style="color:#FD0">❢ Reward:</span>',' Reward:')
 	page=page.replace('<span style="color:#D58"><strong>Active: </strong></span>','Active:')
 	page=page.replace('seconds</span><br />','seconds ')

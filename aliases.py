@@ -44,7 +44,7 @@ def aliases(hero):
 		hero='Gazlowe'
 	elif hero in ['zera']:
 		hero='Zeratul'
-	elif hero in ['kt','kael','kaelthas']:
+	elif hero in ['kt','kael','kaelthas']:#He came to HotS first. Use KTZ for your beloved lich.
 		hero="Kael'thas"
 	elif hero in ['ktz','kel','kelthuzad']:
 		hero="Kel'Thuzad"
