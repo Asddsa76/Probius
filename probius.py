@@ -5,6 +5,9 @@
 #Project started on 14/9-2019
 
 import discord
+import io
+import aiohttp
+
 from aliases import *#Spellcheck and alternate names for heroes
 from trimBrackets import *#Trims < from text
 from printFunctions import *#The functions that output the things to print
@@ -25,11 +28,11 @@ class MyClient(discord.Client):
 		if '[' in message.content and ']' in message.content:
 			print(message.channel.name+' '+str(message.author)+': '+message.content)
 			text=message.content.lower()
-			if text in ['help','info']:
+			if text in ['[help]','[info]']:
 				await message.channel.send(helpMessage())
 				return
 			elif ':' in text:
-				await message.channel.send(embed=emoji(text[text.index('[')+1:text.index(']')].replace(':','').split('/')))
+				await emoji(text[text.index('[')+1:text.index(']')].replace(':','').split('/'),message.channel)
 				return
 			text=text[text.index('[')+1:text.index(']')].split('/')
 			hero=text[0]
@@ -53,7 +56,7 @@ class MyClient(discord.Client):
 				tier=text[1]#If there is no identifier, then it throws exception
 			except:
 				output=printAbilities(abilities)
-				await message.channel.send(embed=emoji([text[0],'happy']))
+				await emoji([text[0],'happy'],message.channel)
 			if output=='':
 				if tier.isdigit():#Talent tier
 					tier=int(tier)
@@ -82,7 +85,7 @@ class MyClient(discord.Client):
 				except:
 					if output=='':
 						try:#If no results, it's probably an emoji with : forgotten. Prefer to call with : to avoid loading abilities and talents page
-							await message.channel.send(embed=emoji([hero,tier]))
+							await emoji([hero,tier],message.channel)
 							return
 						except:
 							pass
