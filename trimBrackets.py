@@ -34,10 +34,10 @@ def trim(page):
 	#and these are < in middle of plain text, stopping early
 	page=removeHyperlinks(page)
 	page=page.replace('<span style="color:#FD0">❢  Quest:</span>','***❢ Quest:***')
-	page=page.replace('<br /><span style="color:#FD0">❢ Reward:</span>','***❢ Reward:***')
-	page=page.replace('<span style="color:#D58"><strong>Active: </strong></span>','Active:')
+	page=page.replace('<br /><span style="color:#FD0">❢ Reward:</span>','***? Reward:***')
+	page=page.replace('<span style="color:#D58"><strong>Active: </strong></span>',' ***Active:***')
 	page=page.replace('seconds</span><br />','seconds ')
-	page=page.replace('<br /><span style="color:#FD0">❢ Repeatable Quest:</span>',' Repeatable Quest:')
+	page=page.replace('<br /><span style="color:#FD0">❢ Repeatable Quest:</span>','***❢ Repeatable Quest:***')
 	page=page.replace('<i>Vector Targeting</i><br />','*Vector Targeting*: ')
 	page=page.replace('<br />','')
 	page=page.replace('<b>','')
