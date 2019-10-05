@@ -47,7 +47,7 @@ def printAbility(abilities,hotkey,hero):#Print a single ability
 def printSearch(abilities, talents, name, hero):#Prints abilities and talents with the name of the identifier. Also prints abilities
 	output=''
 	for ability in abilities:
-		if name in ability.lower():
+		if name.lower() in ability.lower():
 			output+=ability+'\n'
 	levelTiers=[0,1,2,3,4,5,6]
 	if hero=='varian':

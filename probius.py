@@ -38,7 +38,7 @@ class MyClient(discord.Client):
 			hero=text[0]
 			hero=aliases(hero)
 			[abilities,talents]=heroAbilitiesAndTalents(hero)
-			abilities=edgeCases(abilities,hero)
+			abilities=extraD(abilities,hero)
 			if hero in ['Chogall',"Cho'gall",'Cg','Cho gall','Cho-gall']:
 				await message.channel.send("Cho and Gall are 2 different heroes. Choose one of them")
 				print('Dual hero')
@@ -73,6 +73,7 @@ class MyClient(discord.Client):
 				elif tier.lower()=='trait':
 					output=printAbility(abilities,'d',hero)
 				else:
+					tier=abilityAliases(tier)
 					output=printSearch(abilities, talents, tier, hero)
 			
 			if len(output)==2:#If len is 2, then it's an array with output split in half

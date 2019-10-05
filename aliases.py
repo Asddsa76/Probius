@@ -97,3 +97,8 @@ def aliases(hero):
 	else:
 		hero=hero.capitalize()#Emoji pages are case sensitive
 	return hero
+
+def abilityAliases(tier):
+	if tier in ['broccoli']:
+		tier='vengeful'
+	return tier

@@ -1,4 +1,4 @@
-def edgeCases(abilities,hero):#Some heroes have weird text in D after < brackets. 
+def extraD(abilities,hero):#Some heroes have weird text in D after < brackets. 
 	if hero =='Samuro':
 		abilities[0]+='\n'+"**Advancing Strikes:** Basic Attacks against enemy Heroes increase Samuro's Movement Speed by 25% for 2 seconds."
 	elif hero=='Tassadar':
