@@ -36,4 +36,4 @@ async def emoji(text,channel):
 			if resp.status != 200:
 				pass
 			data = io.BytesIO(await resp.read())
-			await channel.send(file=discord.File(data, 'cool_image.png'))
+			await channel.send(file=discord.File(data, 'cool_image'+imageFormat))
