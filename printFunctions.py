@@ -44,7 +44,7 @@ def printAbility(abilities,hotkey,hero):#Print a single ability
 			output+=abilities[abilityIndex+1]+'\n'
 	return output
 
-def printSearch(abilities, talents, name, hero):#Prints abilities and talents with the name of the identifier. Also prints abilities
+def printSearch(abilities, talents, name, hero):#Prints abilities and talents with the name of the identifier
 	output=''
 	for ability in abilities:
 		if name.lower() in ability.lower():
