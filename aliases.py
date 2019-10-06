@@ -22,7 +22,7 @@ def aliases(hero):
 		hero='Gazlowe'
 	elif hero in ['graymane','gm']:
 		hero='Greymane'
-	elif hero in ['best hero']:
+	elif hero in ['genji','best hero','mada mada','virgin weaboo','i need healing']:#i'm not removing virgin, best genji description ever
 		hero='Genji'
 	elif hero in ['guldan','gd']:
 		hero="Gul'dan"
@@ -34,7 +34,7 @@ def aliases(hero):
 		hero='Johanna'
 	elif hero in ['jr','junk']:
 		hero='Junkrat'
-	elif hero in ['kt','kael','kaelthas']:#He came to HotS first. Use KTZ for your beloved lich.
+	elif hero in ['kt','kael','kaelthas']:# "He came to HotS first. Use KTZ for your beloved lich." <-- words of a virgin weaboo
 		hero="Kael'thas"
 	elif hero in ['ktz','kel','kelthuzad']:
 		hero="Kel'Thuzad"
@@ -72,7 +72,7 @@ def aliases(hero):
 		hero='Rehgar'
 	elif hero in ['misha']:
 		hero='Rexxar'
-	elif hero in ['sam','useless hero']:
+	elif hero in ['sam','useless hero','overpowered piece of shit','grandpa']:
 		hero='Samuro'
 	elif hero in ['hammer','sgt']:
 		hero='Sgt._Hammer'
@@ -107,4 +107,38 @@ def abilityAliases(name):
 		name='press'
 	elif name in ['mcs']:
 		name='merciless'
+	elif name in ['wotw']:
+		name='way of the wind'
+	elif name in ['woi']:
+		name='way of illusion'
+	elif name in ['wotb']:
+		name='way of the blade'
+	elif name in ['owtw']:
+		name='one with the wind'
+	elif name in ['pp']:
+		name='phantom pain'
+	elif name in ['bb']:
+		name='burning blade'
+	elif name in ['cb']:
+		name='crushing blows'
+ 	elif name in ['im']:
+		name='illusion master'
+	elif name in ['bs']:
+		name='bladestorm'
+	elif name in ['ms']:
+		name='mirrored steel'
+	elif name in ['sh']:
+		name='shukuchi'
+	elif name in ['kw']:
+		name='kawarimi'
+	elif name in ['hw']:
+		name='harsh winds'
+	elif name in ['dod']:
+		name='dance of death'
+	elif name in ['tbs']:
+		name='three blade style'
+	elif name in ['ws']:
+		name='wind strider'
+	elif name in ['bmp']:
+		name='blademasters pursuit'
 	return name
