@@ -1,147 +1,147 @@
 def aliases(hero):
 	#The Wiki redirects correctly most upper/lowercase results, but not all acronyms
 	if hero in ['aba']:
-		hero='Abathur'
+		return 'Abathur'
 	elif hero in ['alex','alexstrazsa']:
-		hero='Alexstrasza'
+		return 'Alexstrasza'
 	elif hero in ['anub','beetle','anubarak']:
-		hero="Anub'arak"
+		return "Anub'arak"
 	elif hero in ['art']:
-		hero='Artanis'
+		return 'Artanis'
+	elif hero in ['lichking','lk']:
+		return 'Arthas'
 	elif hero in ['azmo']:
-		hero='Azmodan'
+		return 'Azmodan'
 	elif hero in ['bw']:
-		hero='Brightwing'
+		return 'Brightwing'
 	elif hero in ['cain']:
-		hero='Deckard'
+		return 'Deckard'
 	elif hero in ['dva']:
-		hero='D.Va'
+		return 'D.Va'
 	elif hero in ['etc']:
-		hero='E.T.C.'
+		return 'E.T.C.'
 	elif hero in ['gaz']:
-		hero='Gazlowe'
+		return 'Gazlowe'
 	elif hero in ['graymane','gm']:
-		hero='Greymane'
+		return 'Greymane'
 	elif hero in ['genji','best hero','mada mada','weaboo','i need healing','weeb']:
-		hero='Genji'
+		return 'Genji'
 	elif hero in ['guldan','gd']:
-		hero="Gul'dan"
+		return "Gul'dan"
 	elif hero in ['bow genji']:
-		hero='Hanzo'
+		return 'Hanzo'
 	elif hero in ['ilidan']:
-		hero='Illidan'
+		return 'Illidan'
 	elif hero in ['jo','jojo']:
-		hero='Johanna'
+		return 'Johanna'
 	elif hero in ['jr','junk']:
-		hero='Junkrat'
-	elif hero in ['kt','kael','kaelthas']:# "He came to HotS first. Use KTZ for your beloved lich."
-		hero="Kael'thas"
+		return 'Junkrat'
+	elif hero in ['kt','kael','kaelthas']:#He came to HotS first. Use KTZ for your beloved lich.
+		return "Kael'thas"
 	elif hero in ['ktz','kel','kelthuzad']:
-		hero="Kel'Thuzad"
+		return "Kel'Thuzad"
 	elif hero in ['ker']:
-		hero='Kerrigan'
+		return 'Kerrigan'
 	elif hero in ['karazhim','khara']:
-		hero='Kharazim'
+		return 'Kharazim'
 	elif hero in ['leo']:
-		hero='Leoric'
+		return 'Leoric'
 	elif hero in ['lili','li-li']:
-		hero='Li_Li'
+		return 'Li_Li'
 	elif hero in ['lm','liming','li-ming','li ming','ming']:
-		hero='Li-Ming'
+		return 'Li-Ming'
 	elif hero in ['morales','medic','lt']:
-		hero='Lt._Morales'
+		return 'Lt._Morales'
 	elif hero in ['malf']:
-		hero='Malfurion'
+		return 'Malfurion'
 	elif hero in ['malganis',"mal'ganis",'mg']:
-		hero="Mal'Ganis"
+		return "Mal'Ganis"
 	elif hero in ['medihv']:
-		hero='Medivh'
+		return 'Medivh'
 	elif hero in ['meph']:
-		hero='Mephisto'
+		return 'Mephisto'
 	elif hero in ['mura']:
-		hero='Muradin'
+		return 'Muradin'
 	elif hero in ['naz']:
-		hero='Nazeebo'
+		return 'Nazeebo'
 	elif hero in ['probe']:
-		hero='Probius'
+		return 'Probius'
 	elif hero in ['rag']:
-		hero='Ragnaros'
+		return 'Ragnaros'
 	elif hero in ['jimmy']:
-		hero='Raynor'
+		return 'Raynor'
 	elif hero in ['reghar','rhegar']:
-		hero='Rehgar'
+		return 'Rehgar'
 	elif hero in ['misha']:
-		hero='Rexxar'
+		return 'Rexxar'
 	elif hero in ['sam','useless hero','overpowered piece of shit','grandpa','virgin']:
-		hero='Samuro'
+		return 'Samuro'
 	elif hero in ['hammer','sgt']:
-		hero='Sgt._Hammer'
+		return 'Sgt._Hammer'
 	elif hero in ['sylv','sylvannas']:
-		hero='Sylvanas'
+		return 'Sylvanas'
 	elif hero in ['tass']:
-		hero='Tassadar'
+		return 'Tassadar'
 	elif hero in ['tlv','vikings','the lost vikings','lost vikings']:
-		hero='The_Lost_Vikings'
+		return 'The_Lost_Vikings'
 	elif hero in ['val']:
-		hero='Valeera'
+		return 'Valeera'
 	elif hero in ['wm']:
-		hero='Whitemane'
+		return 'Whitemane'
 	elif hero in ['goat','space goat']:
-		hero='Yrel'
+		return 'Yrel'
 	elif hero in ['zag']:
-		hero='Zagara'
+		return 'Zagara'
 	elif hero in ['zera']:
-		hero='Zeratul'
+		return 'Zeratul'
 	elif hero in ["zj",'zul','zuljin']:
-		hero="Zul'jin"	
-	else:
-		hero=hero.capitalize()#Emoji pages are case sensitive
-	return hero
+		return "Zul'jin"	
+	return hero.capitalize()#Emoji pages are case sensitive
 
-def abilityAliases(hero,name):
+def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest lowercase
 	if hero=='Malfurion':
 		if name in ['broccoli']:
-			name='vengeful'
+			return 'vengeful'
 	elif hero=='Genji':
 		if name in ['dblade']:
-			name='dragonblade'
+			return 'dragonblade'
 	elif hero=='Samuro':
 		if name in ['pta','press the advantage']:
-			name='press'
+			return 'press'
 		elif name in ['mcs']:
-			name='merciless'
+			return 'merciless'
 		elif name in ['wotw']:
-			name='way of the wind'
+			return 'way of the wind'
 		elif name in ['woi']:
-			name='way of illusion'
+			return 'way of illusion'
 		elif name in ['wotb']:
-			name='way of the blade'
+			return 'way of the blade'
 		elif name in ['owtw']:
-			name='one with the wind'
+			return 'one with the wind'
 		elif name in ['pp']:
-			name='phantom pain'
+			return 'phantom pain'
 		elif name in ['bb']:
-			name='burning blade'
+			return 'burning blade'
 		elif name in ['cb']:
-			name='crushing blows'
+			return 'crushing blows'
 		elif name in ['im']:
-			name='illusion master'
+			return 'illusion master'
 		elif name in ['bs']:
-			name='bladestorm'
+			return 'bladestorm'
 		elif name in ['ms']:
-			name='mirrored steel'
+			return 'mirrored steel'
 		elif name in ['sh']:
-			name='shukuchi'
+			return 'shukuchi'
 		elif name in ['kw']:
-			name='kawarimi'
+			return 'kawarimi'
 		elif name in ['hw']:
-			name='harsh winds'
+			return 'harsh winds'
 		elif name in ['dod']:
-			name='dance of death'
+			return 'dance of death'
 		elif name in ['tbs']:
-			name='three blade style'
+			return 'three blade style'
 		elif name in ['ws']:
-			name='wind strider'
+			return 'wind strider'
 		elif name in ['bmp']:
-			name='blademasters pursuit'
+			return 'blademasters pursuit'
 	return name
