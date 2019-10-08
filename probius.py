@@ -37,7 +37,7 @@ class MyClient(discord.Client):
 				return
 			text=text[text.index('[')+1:text.index(']')].split('/')
 			hero=text[0]
-			if hero in ['guide','guides','elitesparkle']:
+			if hero in ['guide','guides','elitesparkle','build']:
 				await guide(aliases(text[1]),message.channel)
 				return
 			hero=aliases(hero)

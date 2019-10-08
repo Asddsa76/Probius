@@ -20,7 +20,7 @@ def aliases(hero):
 		return 'D.Va'
 	elif hero in ['etc']:
 		return 'E.T.C.'
-	elif hero in ['gaz']:
+	elif hero in ['gaz','gazlord']:
 		return 'Gazlowe'
 	elif hero in ['graymane','gm','grey']:
 		return 'Greymane'
@@ -99,15 +99,15 @@ def aliases(hero):
 	return hero.capitalize()#Emoji pages are case sensitive
 
 def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest lowercase
-	if hero=='Malfurion':
-		if name in ['broccoli']:
-			return 'vengeful'
+	if hero=='Fenix':
+		if name in ['aiur noon']:
+			return 'salvo'
 	elif hero=='Genji':
 		if name in ['dblade']:
 			return 'dragonblade'
-	elif hero=='Fenix':
-		if name in ['aiur noon']:
-			return 'salvo'
+	elif hero=='Malfurion':
+		if name in ['broccoli']:
+			return 'vengeful'
 	elif hero=='Samuro':
 		if name in ['pta','press the advantage']:
 			return 'press'
@@ -147,4 +147,7 @@ def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest
 			return 'wind strider'
 		elif name in ['bmp']:
 			return 'blademasters pursuit'
+	elif hero=='Zeratul':
+		if name in ['za warudo','vp']:
+			return 'void prison'
 	return name
