@@ -66,6 +66,15 @@ class MyClient(discord.Client):
 				if tier.isdigit():#Talent tier
 					tier=int(tier)
 					output=printTier(talents,int(tier/3)+int(hero=='Chromie' and tier!=1))#Talents for Chromie come 2 lvls sooner, except lvl 1
+				elif tier=='mount':
+					output=abilities[-1]#Last ability. It's heroic if the hero has normal mount, but that's an user error
+				elif tier=='extra':
+					if hero=='Zeratul':
+						output=abilities[-1]
+					elif hero=='Gall':
+						output=abilities[-2]
+					else:
+						output=abilities[1]
 				elif tier=='r':#Ultimate
 					if hero=='Tracer':#She starts with her heroic already unlocked, and only has 1 heroic
 						output=abilities[4]

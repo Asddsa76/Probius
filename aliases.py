@@ -22,7 +22,7 @@ def aliases(hero):
 		return 'E.T.C.'
 	elif hero in ['gaz']:
 		return 'Gazlowe'
-	elif hero in ['graymane','gm']:
+	elif hero in ['graymane','gm','grey']:
 		return 'Greymane'
 	elif hero in ['genji','best hero','mada mada','weaboo','i need healing','weeb']:
 		return 'Genji'
@@ -32,7 +32,7 @@ def aliases(hero):
 		return 'Hanzo'
 	elif hero in ['ilidan']:
 		return 'Illidan'
-	elif hero in ['jo','jojo']:
+	elif hero in ['jo','jojo','joh']:
 		return 'Johanna'
 	elif hero in ['jr','junk']:
 		return 'Junkrat'
@@ -40,7 +40,7 @@ def aliases(hero):
 		return "Kael'thas"
 	elif hero in ['ktz','kel','kelthuzad']:
 		return "Kel'Thuzad"
-	elif hero in ['ker']:
+	elif hero in ['ker','kerri']:
 		return 'Kerrigan'
 	elif hero in ['karazhim','khara']:
 		return 'Kharazim'
@@ -105,6 +105,9 @@ def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest
 	elif hero=='Genji':
 		if name in ['dblade']:
 			return 'dragonblade'
+	elif hero=='Fenix':
+		if name in ['aiur noon']:
+			return 'salvo'
 	elif hero=='Samuro':
 		if name in ['pta','press the advantage']:
 			return 'press'
