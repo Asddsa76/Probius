@@ -15,6 +15,7 @@ from heroPage import *#The function that imports the hero pages
 from emojis import *#Emojis
 from miscFunctions import*#Edge cases and help message
 from getDiscordToken import *#The token is in an untracked file because this is a public Github repo
+from elitesparkleGuide import *#Hero guides
 
 class MyClient(discord.Client):
 	async def on_ready(self):
@@ -36,6 +37,9 @@ class MyClient(discord.Client):
 				return
 			text=text[text.index('[')+1:text.index(']')].split('/')
 			hero=text[0]
+			if hero in ['guide','guides','elitesparkle']:
+				await guide(aliases(text[1]),message.channel)
+				return
 			hero=aliases(hero)
 			[abilities,talents]=heroAbilitiesAndTalents(hero)
 			abilities=extraD(abilities,hero)
