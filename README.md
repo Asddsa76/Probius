@@ -25,3 +25,5 @@ miscFunctions: Edge cases and help message
 getDiscordToken: The token is in an untracked file because this is a public Github repo
 
 elitesparkleGuide: Hero guides
+
+downloadHero: Downloads a hero page. Not called by main loop, must be run after each patch.

@@ -33,16 +33,16 @@ def trim(page):
 	#Program searches the text for < to know when to stop
 	#and these are < in middle of plain text, stopping early
 	page=removeHyperlinks(page)
-	page=page.replace('<span style="color:#FD0">❢  Quest:</span>','***❢ Quest:***')
-	page=page.replace('<br /><span style="color:#FD0">❢ Reward:</span>','***? Reward:***')
+	page=page.replace('<span style="color:#FD0">❢  Quest:</span>','\n ***❢ Quest:***')
+	page=page.replace('<br /><span style="color:#FD0">❢ Reward:</span>','\n ***? Reward:***')
 	page=page.replace('<span style="color:#D58"><strong>Active: </strong></span>',' ***Active:***')
 	page=page.replace('seconds</span><br />','seconds ')
-	page=page.replace('<br /><span style="color:#FD0">❢ Repeatable Quest:</span>','***❢ Repeatable Quest:***')
+	page=page.replace('<br /><span style="color:#FD0">❢ Repeatable Quest:</span>','\n ***❢ Repeatable Quest:***')
 	page=page.replace('<i>Vector Targeting</i><br />','*Vector Targeting*: ')
 	page=page.replace('<br />','')
 	page=page.replace('<b>','')
 	page=page.replace('</b>','')
-	page=page.replace('Passive:',' ***Passive:***')#Adds a space to start
+	page=page.replace('Passive:','***Passive:***')#Adds a space to start
 	page=removeColour(page)
 	page=page.replace('</span>','')
 	page=italicCooldowns(page)
