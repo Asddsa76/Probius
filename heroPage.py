@@ -1,4 +1,4 @@
-from urllib.request import urlopen
+from codecs import open
 from trimBrackets import *#Trims < from text
 
 def addHotkeys(hero,abilities):
@@ -33,7 +33,7 @@ def addHotkeys(hero,abilities):
 def heroAbilitiesAndTalents(hero):
 	page=''
 	try:
-		for i in [i.strip().decode('utf-8') for i in urlopen('https://heroesofthestorm.gamepedia.com/index.php?title=Data:'+hero)]:
+		for i in open('HeroPages/'+hero+'.html', 'r', 'utf-8'):
 			page+=i
 	except:
 		return [404,404]

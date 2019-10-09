@@ -65,7 +65,7 @@ class MyClient(discord.Client):
 				tier=text[1]#If there is no identifier, then it throws exception
 			except:
 				output=printAbilities(abilities)
-				await emoji([text[0],'happy'],message.channel)
+				#await emoji([text[0],'happy'],message.channel)
 			if output=='':
 				if tier.isdigit():#Talent tier
 					tier=int(tier)
