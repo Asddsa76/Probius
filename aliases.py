@@ -1,5 +1,6 @@
 def aliases(hero):
 	#The Wiki redirects correctly most upper/lowercase results, but not all acronyms
+	hero=hero.lower()
 	if hero in ['aba']:
 		return 'Abathur'
 	elif hero in ['alex','alexstrazsa']:
@@ -96,7 +97,7 @@ def aliases(hero):
 		return 'Zeratul'
 	elif hero in ["zj",'zul','zuljin']:
 		return "Zul'jin"	
-	return hero.capitalize()#Emoji pages are case sensitive
+	return hero.capitalize().replace(' ','_')#Emoji pages are case sensitive
 
 def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest lowercase
 	if hero=='Fenix':

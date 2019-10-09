@@ -5,8 +5,7 @@ async def guide(hero,channel):
 	
 	page=[i for i in urlopen('https://elitesparkle.wixsite.com/hots-builds')][6077].strip().decode('utf-8')
 	try:
-		page=page[page.index(hero):]
-		page=page[page.index('builds'):page.index('}}')]
+		page=page[page.index('builds\/'+hero):]
 		code=page[page.index('-'):page.index('\/"')]
 		await channel.send('<https://psionic-storm.com/en/builds/'+hero+code+'>')#<> prevents thumbnails
 	except:
