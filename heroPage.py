@@ -2,7 +2,6 @@ from codecs import open
 from trimBrackets import *#Trims < from text
 
 def addHotkeys(hero,abilities):
-	
 	if hero=='Abathur':
 		hotkeys=['D','Q','QQ','QW','QE','W','R','R','Mount']
 	elif hero=='Greymane':

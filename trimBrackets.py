@@ -42,7 +42,7 @@ def trim(page):
 	page=page.replace('<br />','')
 	page=page.replace('<b>','')
 	page=page.replace('</b>','')
-	page=page.replace('Passive:','***Passive:***')#Adds a space to start
+	page=page.replace('Passive:',' ***Passive:***')#Adds a space to start
 	page=removeColour(page)
 	page=page.replace('</span>','')
 	page=italicCooldowns(page)
