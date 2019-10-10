@@ -46,4 +46,5 @@ def trim(page):
 	page=removeColour(page)
 	page=page.replace('</span>','')
 	page=italicCooldowns(page)
+	page=page.replace('❢','!')
 	return page

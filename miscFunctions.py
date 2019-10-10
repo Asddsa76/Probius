@@ -21,3 +21,31 @@ def helpMessage():
 
 def getHeroes():#Returns an alphabetically sorted list of all heroes.
 	return ['Abathur', 'Arthas', "Anub'arak", 'Artanis', 'Alarak', 'Anduin', 'Azmodan', 'Alexstrasza', 'Ana', 'Auriel', 'Brightwing', 'Blaze', 'Cassia', 'Chromie', 'Cho', 'Chen', 'Diablo', 'Dehaka', 'Deckard', 'D.Va', 'E.T.C.', 'Falstad', 'Fenix', 'Genji', "Gul'dan", 'Greymane', 'Garrosh', 'Gazlowe', 'Gall', 'Hanzo', 'Imperius', 'Illidan', 'Johanna', 'Junkrat', 'Jaina', 'Kerrigan', 'Kharazim', "Kel'thuzad", "Kael'thas", 'Lucio', 'Lt._Morales', 'Li_Li', 'Leoric', 'Lunara', 'Li-Ming', 'Murky', 'Mephisto', 'Muradin', "Mal'Ganis", 'Malfurion', 'Malthael', 'Maiev', 'Medivh', 'Nova', 'Nazeebo', 'Orphea', 'Probius', 'Qhira', 'Raynor', 'Rehgar', 'Rexxar', 'Ragnaros', 'Stukov', 'Samuro', 'Sgt._Hammer', 'Stitches', 'Sylvanas', 'Sonya', 'Tychus', 'Thrall', 'Tyrael', 'Tracer', 'Tyrande', 'The_Butcher', 'Tassadar', 'The_Lost_Vikings', 'Uther', 'Valla', 'Varian', 'Valeera', 'Whitemane', 'Xul', 'Yrel', "Zul'jin", 'Zagara', 'Zeratul', 'Zarya']
+
+def addHotkeys(hero,abilities):
+	if hero=='Abathur':
+		hotkeys=['D','Q','QQ','QW','QE','W','R','R','Mount']
+	elif hero=='Greymane':
+		hotkeys=['D','Q','Q','W','E','E','R','R']
+	elif hero=='Tracer':#She only has one heroic ability
+		hotkeys=['D','Q','W','E','R']
+	elif hero in ['Ragnaros','Alexstrasza','Valeera']:
+		hotkeys=['D','Q','DQ','W','DW','E','DE','R','R']
+	elif hero=='The_Lost_Vikings':
+		hotkeys=['D','1','2','3','4','R','R','Mount']
+	elif hero=='Gall':
+		hotkeys=['D','Q','W','E','R','R','R','1','Mount']
+	elif len(abilities)==7:
+		if hero in ['Medivh','Rehgar','Sgt._Hammer','Probius','Lunara','Brightwing','Dehaka','Falstad','Lucio','D.Va']:#Mount
+			hotkeys=['D','Q','W','E','R','R','Mount']
+		elif hero in ['Zeratul']:#Wiki lists Vorpal last
+			hotkeys=['D','Q','W','E','R','R','1']
+		else:
+			hotkeys=['D','1','Q','W','E','R','R']#Extra button
+	else:
+		hotkeys=['D','Q','W','E','R','R']#Normal hero
+	i=0
+	for hotkey in hotkeys:
+		abilities[i]='***'+hotkey+':*** '+abilities[i]
+		i+=1
+	return abilities
