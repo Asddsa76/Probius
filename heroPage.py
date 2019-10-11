@@ -1,9 +1,11 @@
 from trimBrackets import *#Trims < from text
 from miscFunctions import *
-from aliases import *
 
 def heroAbilitiesAndTalents(hero):
-	page=open('HeroPages/'+simplifyName(hero)+'.html','r').read()
+	try:
+		page=open('HeroPages/'+hero+'.html','r').read()
+	except:
+		return [404,404]
 
 	page.replace('!','❢')
 	abilityIndex=page.index('Skills')+8

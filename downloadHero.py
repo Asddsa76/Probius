@@ -20,8 +20,8 @@ for hero in heroes:
 		endIndex=page.index('Scaling at key levels')
 	except:
 		pass
-	page=page[abilityIndex:endIndex]
+	page=page[abilityIndex:endIndex].replace("’","'")
 
-	f=open('HeroPages/'+simplifyName(hero)+'.html','w+')
+	f=open('HeroPages/'+hero+'.html','w+')
 	f.write(page)
 	f.close()

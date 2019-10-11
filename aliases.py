@@ -152,6 +152,3 @@ def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest
 		if name in ['za warudo','vp']:
 			return 'void prison'
 	return name
-
-def simplifyName(hero):#Debian doesn't like filenames with fancy characters, even though Windows 10 can handle it
-	return hero.capitalize().replace('.','').replace('_','').replace("'","")
