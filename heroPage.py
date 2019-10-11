@@ -1,5 +1,6 @@
 from trimBrackets import *#Trims < from text
 from miscFunctions import *
+from aliases import *
 
 def heroAbilitiesAndTalents(hero):
 	page=''
