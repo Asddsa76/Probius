@@ -15,12 +15,12 @@ def helpMessage():
 	output+="[Hero/hotkey] for the ability on that hotkey.\n"
 	output+="[Hero/searchterm] to search for something in that hero's abilities or talents.\n"
 	output+="Emojis: [:Hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.\n"
-	output+="Builds: [guide/Hero] for hero guide from Elitesparkle.\n"
+	output+="Builds: [build/Hero] for hero builds from Elitesparkle.\n"
 	output+="My public repository: https://github.com/Asddsa76/Probius"
 	return output
 
 def getHeroes():#Returns an alphabetically sorted list of all heroes.
-	return ['Abathur', 'Arthas', "Anub'arak", 'Artanis', 'Alarak', 'Anduin', 'Azmodan', 'Alexstrasza', 'Ana', 'Auriel', 'Brightwing', 'Blaze', 'Cassia', 'Chromie', 'Cho', 'Chen', 'Diablo', 'Dehaka', 'Deckard', 'D.Va', 'E.T.C.', 'Falstad', 'Fenix', 'Genji', "Gul'dan", 'Greymane', 'Garrosh', 'Gazlowe', 'Gall', 'Hanzo', 'Imperius', 'Illidan', 'Johanna', 'Junkrat', 'Jaina', 'Kerrigan', 'Kharazim', "Kel'thuzad", "Kael'thas", 'Lucio', 'Lt._Morales', 'Li_Li', 'Leoric', 'Lunara', 'Li-Ming', 'Murky', 'Mephisto', 'Muradin', "Mal'Ganis", 'Malfurion', 'Malthael', 'Maiev', 'Medivh', 'Nova', 'Nazeebo', 'Orphea', 'Probius', 'Qhira', 'Raynor', 'Rehgar', 'Rexxar', 'Ragnaros', 'Stukov', 'Samuro', 'Sgt._Hammer', 'Stitches', 'Sylvanas', 'Sonya', 'Tychus', 'Thrall', 'Tyrael', 'Tracer', 'Tyrande', 'The_Butcher', 'Tassadar', 'The_Lost_Vikings', 'Uther', 'Valla', 'Varian', 'Valeera', 'Whitemane', 'Xul', 'Yrel', "Zul'jin", 'Zagara', 'Zeratul', 'Zarya']
+	return ['Abathur', 'Alarak', 'Alexstrasza', 'Ana', 'Anduin', "Anub'arak", 'Artanis', 'Arthas', 'Auriel', 'Azmodan', 'Blaze', 'Brightwing', 'Cassia', 'Chen', 'Cho', 'Chromie', 'D.Va', 'Deckard', 'Dehaka', 'Diablo', 'E.T.C.', 'Falstad', 'Fenix', 'Gall', 'Garrosh', 'Gazlowe', 'Genji', 'Greymane', "Gul'dan", 'Hanzo', 'Illidan', 'Imperius', 'Jaina', 'Johanna', 'Junkrat', "Kael'thas", "Kel'thuzad", 'Kerrigan', 'Kharazim', 'Leoric', 'Li-Ming', 'Li_Li', 'Lt._Morales', 'Lucio', 'Lunara', 'Maiev', "Mal'Ganis", 'Malfurion', 'Malthael', 'Medivh', 'Mephisto', 'Muradin', 'Murky', 'Nazeebo', 'Nova', 'Orphea', 'Probius', 'Qhira', 'Ragnaros', 'Raynor', 'Rehgar', 'Rexxar', 'Samuro', 'Sgt._Hammer', 'Sonya', 'Stitches', 'Stukov', 'Sylvanas', 'Tassadar', 'The_Butcher', 'The_Lost_Vikings', 'Thrall', 'Tracer', 'Tychus', 'Tyrael', 'Tyrande', 'Uther', 'Valeera', 'Valla', 'Varian', 'Whitemane', 'Xul', 'Yrel', 'Zagara', 'Zarya', 'Zeratul', "Zul'jin"]
 
 def addHotkeys(hero,abilities):
 	if hero=='Abathur':
@@ -29,7 +29,7 @@ def addHotkeys(hero,abilities):
 		hotkeys=['D','Q','Q','W','E','E','R','R']
 	elif hero=='Leoric':
 		hotkeys=['D','Q','Q','W','W','E','R','R']
-	elif hero=='Tracer':#She only has one heroic ability
+	elif hero=='Tracer':
 		hotkeys=['D','Q','W','E','R']
 	elif hero in ['Ragnaros','Alexstrasza','Valeera']:
 		hotkeys=['D','Q','DQ','W','DW','E','DE','R','R']
@@ -41,6 +41,13 @@ def addHotkeys(hero,abilities):
 		hotkeys=['D','D','Q','W','E','E','R','R','Mount']
 	elif hero=='Blaze':
 		hotkeys=['D','Q','W','E','R','RQ','R']
+	elif hero=='Fenix':
+		hotkeys=['D','Q','W','W','E','R','R']
+	elif hero=='Junkrat':
+		hotkeys=['D','Q','W','E','R','R','RQ']
+	elif hero=='Varian':
+		hotkeys=['D','Q','W','E','R','R','R']
+
 	elif len(abilities)==7:
 		if hero in ['Medivh','Rehgar','Sgt._Hammer','Probius','Lunara','Brightwing','Dehaka','Falstad','Lucio']:#Mount
 			hotkeys=['D','Q','W','E','R','R','Mount']

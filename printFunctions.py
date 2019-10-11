@@ -45,6 +45,11 @@ def printAbility(abilities,hotkey,hero):#Print a single ability
 		output+=abilities[abilityIndex]+'\n'
 		if hotkey in 'de':
 			output+=abilities[abilityIndex+1]+'\n'
+	elif hero.lower()=='Fenix':#2 Ws
+		abilityIndex=[0,1,2,4][abilityIndex]
+		output+=abilities[abilityIndex]+'\n'
+		if hotkey=='w':
+			output+=abilities[abilityIndex+1]+'\n'
 	else:
 		special=hero.lower() in ['ragnaros','alexstrasza','valeera']#2 abilites per hotkey
 		if special:
