@@ -1,5 +1,5 @@
 from urllib.request import urlopen
-from aliases import aliases
+from aliases import *
 from miscFunctions import getHeroes
 from sys import argv
 from trimBrackets import *#Trims < from text
@@ -22,6 +22,6 @@ for hero in heroes:
 		pass
 	page=page[abilityIndex:endIndex]
 
-	f=open('HeroPages/'+hero+'.html','w+')
+	f=open('HeroPages/'+simplifyName(hero)+'.html','w+')
 	f.write(page)
 	f.close()

@@ -4,7 +4,7 @@ from miscFunctions import *
 def heroAbilitiesAndTalents(hero):
 	page=''
 	try:
-		page=open('HeroPages/'+hero+'.html','r').read()
+		page=open('HeroPages/'+simplifyName(hero)+'.html','r').read()
 	except:
 		return [404,404]
 

@@ -5,7 +5,7 @@ def aliases(hero):
 		return 'Abathur'
 	elif hero in ['alex','alexstrazsa']:
 		return 'Alexstrasza'
-	elif hero in ['anub','beetle','anubarak']:
+	elif hero in ['anub','beetle','anubarak','bug']:
 		return "Anub'arak"
 	elif hero in ['art']:
 		return 'Artanis'
@@ -152,3 +152,6 @@ def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest
 		if name in ['za warudo','vp']:
 			return 'void prison'
 	return name
+
+def simplifyName(hero):#Debian doesn't like filenames with fancy characters, even though Windows 10 can handle it
+	return hero.capitalize().replace('.','').replace('_','').replace("'","")
