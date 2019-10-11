@@ -3,7 +3,7 @@ from miscFunctions import *
 
 def heroAbilitiesAndTalents(hero):
 	try:
-		page=open('HeroPages/'+hero+'.html','r').read()
+		page=open('HeroPages/'+hero+'.html','rb').read().decode('utf-8')
 	except:
 		return [404,404]
 

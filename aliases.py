@@ -17,11 +17,13 @@ def aliases(hero):
 		return 'Brightwing'
 	elif hero in ['cain']:
 		return 'Deckard'
+	elif hero in ['dibbles']:
+		return 'Diablo'
 	elif hero in ['dva','d.va']:
 		return 'D.Va'
-	elif hero in ['etc']:
+	elif hero in ['etc','e.t.c.','e.t.c']:
 		return 'E.T.C.'
-	elif hero in ['gaz','gazlord']:
+	elif hero in ['gaz','gazlord','gazlow']:
 		return 'Gazlowe'
 	elif hero in ['graymane','gm','grey']:
 		return 'Greymane'
