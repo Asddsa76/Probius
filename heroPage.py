@@ -3,11 +3,7 @@ from miscFunctions import *
 from aliases import *
 
 def heroAbilitiesAndTalents(hero):
-	page=''
-	try:
-		page=open('HeroPages/'+simplifyName(hero)+'.html','r').read()
-	except:
-		return [404,404]
+	page=open('HeroPages/'+simplifyName(hero)+'.html','r').read()
 
 	page.replace('!','❢')
 	abilityIndex=page.index('Skills')+8
