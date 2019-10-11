@@ -35,6 +35,11 @@ def printAbility(abilities,hotkey,hero):#Print a single ability
 		output+=abilities[abilityIndex]+'\n'
 		if hotkey!='d' and hotkey!='w':
 			output+=abilities[abilityIndex+1]+'\n'
+	elif hero.lower()=='leoric':#Alternative Q and W when dead
+		abilityIndex=[0,1,3,5][abilityIndex]
+		output+=abilities[abilityIndex]+'\n'
+		if hotkey in 'qw':
+			output+=abilities[abilityIndex+1]+'\n'
 	else:
 		special=hero.lower() in ['ragnaros','alexstrasza','valeera']#2 abilites per hotkey
 		if special:
