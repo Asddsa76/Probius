@@ -37,8 +37,12 @@ def addHotkeys(hero,abilities):
 		hotkeys=['D','1','2','3','4','R','R','Mount']
 	elif hero=='Gall':
 		hotkeys=['D','Q','W','E','R','R','R','1','Mount']
+	elif hero=='D.Va':
+		hotkeys=['D','D','Q','W','E','E','R','R','Mount']
+	elif hero=='Blaze':
+		hotkeys=['D','Q','W','E','R','RQ','R']
 	elif len(abilities)==7:
-		if hero in ['Medivh','Rehgar','Sgt._Hammer','Probius','Lunara','Brightwing','Dehaka','Falstad','Lucio','D.Va']:#Mount
+		if hero in ['Medivh','Rehgar','Sgt._Hammer','Probius','Lunara','Brightwing','Dehaka','Falstad','Lucio']:#Mount
 			hotkeys=['D','Q','W','E','R','R','Mount']
 		elif hero in ['Zeratul']:#Wiki lists Vorpal last
 			hotkeys=['D','Q','W','E','R','R','1']

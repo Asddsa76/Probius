@@ -33,6 +33,9 @@ class MyClient(discord.Client):
 			if text in ['[help]','[info]']:
 				await message.channel.send(helpMessage())
 				return
+			if '[good bot]' in text:
+				await message.channel.send(':heart:')
+				return
 			if ':' in text:
 				await emoji(text[text.index('[')+1:text.index(']')].replace(':','').split('/'),message.channel)
 				return
