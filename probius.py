@@ -81,10 +81,12 @@ class MyClient(discord.Client):
 					elif tier=='mount':
 						output=abilities[-1]#Last ability. It's heroic if the hero has normal mount, but that's an user error
 					elif tier=='extra':
-						if hero=='Zeratul':
+						if hero in ['Zeratul','Gazlowe','Nova','Whitemane']:#Some heroes have the entry for 1 button between D and Q, these have them last
 							output=abilities[-1]
 						elif hero=='Gall':
 							output=abilities[-2]
+						elif hero=='Stitches':
+							output=abilities[2]
 						else:
 							output=abilities[1]
 					elif tier=='r':#Ultimate

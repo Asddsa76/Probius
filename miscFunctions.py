@@ -43,15 +43,26 @@ def addHotkeys(hero,abilities):
 		hotkeys=['D','Q','W','E','R','RQ','R']
 	elif hero=='Fenix':
 		hotkeys=['D','Q','W','W','E','R','R']
-	elif hero=='Junkrat':
+	elif hero in ['Junkrat','Ana']:#2nd heroic has extra button
 		hotkeys=['D','Q','W','E','R','R','RQ']
-	elif hero=='Varian':
+	elif hero in ['Varian','Nazeebo']:#Varian has 3 heroics, Naz's Garry's stomp is listed under R
 		hotkeys=['D','Q','W','E','R','R','R']
-
-	elif len(abilities)==7:
-		if hero in ['Medivh','Rehgar','Sgt._Hammer','Probius','Lunara','Brightwing','Dehaka','Falstad','Lucio']:#Mount
+	elif hero=='Uther':
+		hotkeys=['D','Q','DQ','W','E','R','R']
+	elif hero=='Stitches':
+		hotkeys=['D','Q','1','W','E','R','R']
+	elif hero=='Lt._Morales':
+		hotkeys=['D','Q','Q','W','E','R','R']
+	elif hero=='Lunara':#Wisp relocate
+		hotkeys=['D','Q','W','E','E','R','R','Mount']
+	elif hero=='Chen':
+		hotkeys=['D','Q','W','W','E','R','R','RQ','RW','RE']
+	elif hero=='Tychus':
+		hotkeys=['D','Q','RQ','W','RW','E','RE','R','R']
+	elif len(abilities)>6:
+		if hero in ['Medivh','Rehgar','Sgt._Hammer','Probius','Brightwing','Dehaka','Falstad','Lucio']:#Mount
 			hotkeys=['D','Q','W','E','R','R','Mount']
-		elif hero in ['Zeratul']:#Wiki lists Vorpal last
+		elif hero in ['Zeratul','Gazlowe','Nova','Whitemane']:#Wiki lists their extra last
 			hotkeys=['D','Q','W','E','R','R','1']
 		else:
 			hotkeys=['D','1','Q','W','E','R','R']#Extra button
