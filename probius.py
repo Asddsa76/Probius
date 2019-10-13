@@ -78,14 +78,14 @@ class MyClient(discord.Client):
 					if tier.isdigit():#Talent tier
 						tier=int(tier)
 						output=printTier(talents,int(tier/3)+int(hero=='Chromie' and tier!=1))#Talents for Chromie come 2 lvls sooner, except lvl 1
-					elif tier=='mount':
+					elif tier in ['mount','Z']:
 						output=abilities[-1]#Last ability. It's heroic if the hero has normal mount, but that's an user error
 					elif tier=='extra':
 						if hero in ['Zeratul','Gazlowe','Nova','Whitemane']:#Some heroes have the entry for 1 button between D and Q, these have them last
 							output=abilities[-1]
-						elif hero=='Gall':
+						elif hero=='Gall':#Gall has extra and a special mount
 							output=abilities[-2]
-						elif hero=='Stitches':
+						elif hero=='Stitches':#Hook is after Q
 							output=abilities[2]
 						else:
 							output=abilities[1]
@@ -122,9 +122,9 @@ class MyClient(discord.Client):
 							except:
 								pass
 							if message.channel.name=='rage':
-								await message.channel.send('ERROR: NO RESULTS')
+								await message.channel.send('ERROR: '+hero.upper()+' DOES NOT HAVE "'+tier.upper()+'".')
 							else:
-								await message.channel.send('Error: no results')
+								await message.channel.send('Error: '+hero+' does not have "'+tier+'".')
 							print('No results')
 						else:
 							if message.channel.name=='rage':

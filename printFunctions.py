@@ -26,48 +26,48 @@ def printAbility(abilities,hotkey,hero):#Print a single ability
 	hero=aliases(hero)
 	output=''
 	abilityIndex='dqwe'.index(hotkey)
-	if hero.lower()=='Abathur':
+	if hero=='Abathur':
 		abilityIndex=[0,1,5,4][abilityIndex]
 		output+=abilities[abilityIndex]+'\n'
 		if abilityIndex==1:
 			output+=abilities[2]+'\n'
 		elif abilityIndex==5:
 			output+=abilities[3]+'\n'
-	elif hero.lower()=='Greymane':#Extra Q and E, but not extra W
+	elif hero=='Greymane':#Extra Q and E, but not extra W
 		abilityIndex=[0,1,3,4][abilityIndex]
 		output+=abilities[abilityIndex]+'\n'
 		if hotkey!='d' and hotkey!='w':
 			output+=abilities[abilityIndex+1]+'\n'
-	elif hero.lower()=='Leoric':#Extra Q and W
+	elif hero=='Leoric':#Extra Q and W
 		abilityIndex=[0,1,3,5][abilityIndex]
 		output+=abilities[abilityIndex]+'\n'
 		if hotkey in 'qw':
 			output+=abilities[abilityIndex+1]+'\n'
-	elif hero.lower()=='D.Va':#Mech and pilot mode, extra D
+	elif hero=='D.Va':#Mech and pilot mode, extra D
 		abilityIndex=[0,2,3,4][abilityIndex]
 		output+=abilities[abilityIndex]+'\n'
 		if hotkey in 'de':
 			output+=abilities[abilityIndex+1]+'\n'
-	elif hero.lower() in ['Fenix','Chen']:#Extra W
+	elif hero in ['Fenix','Chen']:#Extra W
 		abilityIndex=[0,1,2,4][abilityIndex]
 		output+=abilities[abilityIndex]+'\n'
 		if hotkey=='w':
 			output+=abilities[abilityIndex+1]+'\n'
-	elif hero.lower() in ['Stitches','Lt._Morales','Uther']:#Extra Q
+	elif hero in ['Stitches','Lt._Morales','Uther']:#Extra Q
 		abilityIndex=[0,1,3,4][abilityIndex]
 		output+=abilities[abilityIndex]+'\n'
 		if hotkey=='q':
 			output+=abilities[abilityIndex+1]+'\n'
-	elif hero.lower()=='Lunara':#Extra E
+	elif hero=='Lunara':#Extra E
 		abilityIndex=[0,1,2,3][abilityIndex]
 		output+=abilities[abilityIndex]+'\n'
 		if hotkey=='e':
-			output+=abilities[abilityIndex+1]+'\n'
-	elif hero.lower()=='Tychus':
+			out+=abilities[abilityIndex+1]+'\n'
+	elif hero=='Tychus':
 		abilityIndex=[0,1,3,5][abilityIndex]
 		output+=abilities[abilityIndex]+'\n'
 	else:
-		special=hero.lower() in ['Ragnaros','Alexstrasza','Valeera']#2 abilites per hotkey
+		special=hero in ['Ragnaros','Alexstrasza','Valeera']#2 abilites per hotkey
 		if special:
 			abilityIndex=[0,1,3,5][abilityIndex]
 		output+=abilities[abilityIndex]+'\n'

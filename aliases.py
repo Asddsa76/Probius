@@ -104,12 +104,18 @@ def aliases(hero):
 	return hero.capitalize().replace(' ','_')#Emoji pages are case sensitive
 
 def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest lowercase
-	if hero=='Fenix':
+	if hero=='Cassia':
+		if name in ['volleyball','tetherball']:
+			return 'ball lightning'
+	elif hero=='Fenix':
 		if name in ['aiur noon']:
 			return 'salvo'
 	elif hero=='Genji':
 		if name in ['dblade']:
 			return 'dragonblade'
+	elif hero=='Lt._Morales':
+		if name=='stimdrone':
+			return 'stim drone'
 	elif hero=='Malfurion':
 		if name in ['broccoli']:
 			return 'vengeful'

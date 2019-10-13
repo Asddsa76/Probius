@@ -24,7 +24,7 @@ def getHeroes():#Returns an alphabetically sorted list of all heroes.
 
 def addHotkeys(hero,abilities):
 	if hero=='Abathur':
-		hotkeys=['D','Q','QQ','QW','QE','W','R','R','Mount']
+		hotkeys=['D','Q','QQ','QW','QE','W','R','R','Z']
 	elif hero=='Greymane':
 		hotkeys=['D','Q','Q','W','E','E','R','R']
 	elif hero=='Leoric':
@@ -34,11 +34,11 @@ def addHotkeys(hero,abilities):
 	elif hero in ['Ragnaros','Alexstrasza','Valeera']:
 		hotkeys=['D','Q','DQ','W','DW','E','DE','R','R']
 	elif hero=='The_Lost_Vikings':
-		hotkeys=['D','1','2','3','4','R','R','Mount']
+		hotkeys=['D','1','2','3','4','R','R','Z']
 	elif hero=='Gall':
-		hotkeys=['D','Q','W','E','R','R','R','1','Mount']
+		hotkeys=['D','Q','W','E','R','R','R','1','Z']
 	elif hero=='D.Va':
-		hotkeys=['D','D','Q','W','E','E','R','R','Mount']
+		hotkeys=['D','D','Q','W','E','E','R','R','Z']
 	elif hero=='Blaze':
 		hotkeys=['D','Q','W','E','R','RQ','R']
 	elif hero=='Fenix':
@@ -54,14 +54,14 @@ def addHotkeys(hero,abilities):
 	elif hero=='Lt._Morales':
 		hotkeys=['D','Q','Q','W','E','R','R']
 	elif hero=='Lunara':#Wisp relocate
-		hotkeys=['D','Q','W','E','E','R','R','Mount']
+		hotkeys=['D','Q','W','E','E','R','R','Z']
 	elif hero=='Chen':
 		hotkeys=['D','Q','W','W','E','R','R','RQ','RW','RE']
 	elif hero=='Tychus':
 		hotkeys=['D','Q','RQ','W','RW','E','RE','R','R']
 	elif len(abilities)>6:
-		if hero in ['Medivh','Rehgar','Sgt._Hammer','Probius','Brightwing','Dehaka','Falstad','Lucio']:#Mount
-			hotkeys=['D','Q','W','E','R','R','Mount']
+		if hero in ['Medivh','Rehgar','Sgt._Hammer','Probius','Brightwing','Dehaka','Falstad','Lucio']:#Z/Mount
+			hotkeys=['D','Q','W','E','R','R','Z']
 		elif hero in ['Zeratul','Gazlowe','Nova','Whitemane']:#Wiki lists their extra last
 			hotkeys=['D','Q','W','E','R','R','1']
 		else:
