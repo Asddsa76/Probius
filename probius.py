@@ -36,6 +36,9 @@ class MyClient(discord.Client):
 			if '[good bot]' in text:
 				await message.channel.send(':heart:')
 				return
+			if '[bad bot]' in text:
+				await emoji(['Probius','sad'],message.channel)
+				return
 			if ':' in text:
 				await emoji(text[text.index('[')+1:text.index(']')].replace(':','').split('/'),message.channel)
 				return
