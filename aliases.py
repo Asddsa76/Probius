@@ -1,13 +1,13 @@
 def aliases(hero):
 	#The Wiki redirects correctly most upper/lowercase results, but not all acronyms
 	hero=hero.lower()
-	if hero in ['aba']:
+	if hero in ['aba','slug','snail']:
 		return 'Abathur'
 	elif hero in ['alex','alexstrazsa']:
 		return 'Alexstrasza'
 	elif hero in ['anub','beetle','anubarak','bug']:
 		return "Anub'arak"
-	elif hero in ['art']:
+	elif hero in ['art','zealot']:
 		return 'Artanis'
 	elif hero in ['lichking','lk']:
 		return 'Arthas'
@@ -23,6 +23,8 @@ def aliases(hero):
 		return 'D.Va'
 	elif hero in ['etc','e.t.c.','e.t.c']:
 		return 'E.T.C.'
+	elif hero in ['garry','hellscream']:
+		return 'Garrosh'
 	elif hero in ['gaz','gazlord','gazlow']:
 		return 'Gazlowe'
 	elif hero in ['graymane','gm','grey']:
@@ -47,7 +49,7 @@ def aliases(hero):
 		return 'Kerrigan'
 	elif hero in ['karazhim','khara']:
 		return 'Kharazim'
-	elif hero in ['leo']:
+	elif hero in ['leo','janitor']:
 		return 'Leoric'
 	elif hero in ['lili','li-li']:
 		return 'Li_Li'
@@ -55,7 +57,7 @@ def aliases(hero):
 		return 'Li-Ming'
 	elif hero in ['morales','medic','lt']:
 		return 'Lt._Morales'
-	elif hero in ['deer','lun']:
+	elif hero in ['deer','lun','bambi']:
 		return 'Lunara'
 	elif hero in ['malf']:
 		return 'Malfurion'
@@ -69,6 +71,8 @@ def aliases(hero):
 		return 'Muradin'
 	elif hero in ['naz']:
 		return 'Nazeebo'
+	elif hero in ['vore loli']:
+		return 'Orphea'
 	elif hero in ['probe']:
 		return 'Probius'
 	elif hero in ['rag']:
@@ -115,6 +119,8 @@ def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest
 	elif hero=='Genji':
 		if name in ['dblade']:
 			return 'dragonblade'
+		elif name in ['dc','claw']:
+			return 'dragon claw'
 	elif hero=='Lt._Morales':
 		if name=='stimdrone':
 			return 'stim drone'
