@@ -10,4 +10,3 @@ async def guide(hero,channel):
 		await channel.send('<https://psionic-storm.com/en/builds/'+hero+code+'>')#<> prevents thumbnails
 	except:
 		await channel.send('No hero "'+hero+'"')
-		#var warmupData = {

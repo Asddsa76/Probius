@@ -87,6 +87,8 @@ def aliases(hero):
 		return 'Sylvanas'
 	elif hero in ['tass']:
 		return 'Tassadar'
+	elif hero in ['butcher']:
+		return 'The_Butcher'
 	elif hero in ['tlv','vikings','the lost vikings','lost vikings']:
 		return 'The_Lost_Vikings'
 	elif hero in ['val']:
@@ -152,7 +154,7 @@ def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest
 			return 'harsh winds'
 		elif name in ['dod']:
 			return 'dance of death'
-		elif name in ['tbs']:
+		elif name in ['tbs','3bs']:
 			return 'three blade style'
 		elif name in ['ws']:
 			return 'wind strider'
