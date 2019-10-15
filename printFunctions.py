@@ -62,7 +62,7 @@ def printAbility(abilities,hotkey,hero):#Print a single ability
 		abilityIndex=[0,1,2,3][abilityIndex]
 		output+=abilities[abilityIndex]+'\n'
 		if hotkey=='e':
-			out+=abilities[abilityIndex+1]+'\n'
+			output+=abilities[abilityIndex+1]+'\n'
 	elif hero=='Tychus':
 		abilityIndex=[0,1,3,5][abilityIndex]
 		output+=abilities[abilityIndex]+'\n'
