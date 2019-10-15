@@ -1,6 +1,6 @@
 def aliases(hero):
 	#The Wiki redirects correctly most upper/lowercase results, but not all acronyms
-	hero=hero.lower().replace('_','').replace('.','')
+	hero=hero.lower().replace('_','').replace('.','').replace(' ','').replace("'","").replace('-','')#Trying to make this function idempotent
 	if hero in ['aba','slug','snail']:
 		return 'Abathur'
 	elif hero in ['alex','alexstrazsa']:
@@ -19,7 +19,7 @@ def aliases(hero):
 		return 'Deckard'
 	elif hero in ['dibbles']:
 		return 'Diablo'
-	elif hero in ['dva']:
+	elif hero in ['dva','gremlin']:
 		return 'D.Va'
 	elif hero in ['etc']:
 		return 'E.T.C.'
@@ -29,11 +29,11 @@ def aliases(hero):
 		return 'Gazlowe'
 	elif hero in ['graymane','gm','grey']:
 		return 'Greymane'
-	elif hero in ['best hero','mada mada','weaboo','i need healing','weeb']:
+	elif hero in ['best hero','madamada','weaboo','ineedhealing','weeb']:
 		return 'Genji'
 	elif hero in ['guldan','gd']:
 		return "Gul'dan"
-	elif hero in ['bow genji']:
+	elif hero in ['bowgenji']:
 		return 'Hanzo'
 	elif hero in ['ilidan']:
 		return 'Illidan'
@@ -71,7 +71,7 @@ def aliases(hero):
 		return 'Muradin'
 	elif hero in ['naz']:
 		return 'Nazeebo'
-	elif hero in ['vore loli']:
+	elif hero in ['voreloli']:
 		return 'Orphea'
 	elif hero in ['probe']:
 		return 'Probius'
@@ -83,7 +83,7 @@ def aliases(hero):
 		return 'Rehgar'
 	elif hero in ['misha']:
 		return 'Rexxar'
-	elif hero in ['sam','useless hero','overpowered piece of shit','grandpa','virgin']:
+	elif hero in ['sam','uselesshero','grandpa','virgin']:
 		return 'Samuro'
 	elif hero in ['hammer','sgt']:
 		return 'Sgt._Hammer'
@@ -93,13 +93,13 @@ def aliases(hero):
 		return 'Tassadar'
 	elif hero in ['butcher']:
 		return 'The_Butcher'
-	elif hero in ['tlv','vikings','the lost vikings','lost vikings']:
+	elif hero in ['tlv','vikings','thelostvikings','lostvikings']:
 		return 'The_Lost_Vikings'
 	elif hero in ['val']:
 		return 'Valeera'
 	elif hero in ['wm']:
 		return 'Whitemane'
-	elif hero in ['goat','space goat']:
+	elif hero in ['goat','spacegoat']:
 		return 'Yrel'
 	elif hero in ['zag']:
 		return 'Zagara'
