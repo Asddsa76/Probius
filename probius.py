@@ -9,14 +9,14 @@ import io
 import aiohttp
 import re
 
-from aliases import *#Spellcheck and alternate names for heroes
-from trimBrackets import *#Trims < from text
-from printFunctions import *#The functions that output the things to print
-from heroPage import *#The function that imports the hero pages
-from emojis import *#Emojis
-from miscFunctions import*#Edge cases and help message
-from getDiscordToken import *#The token is in an untracked file because this is a public Github repo
-from elitesparkleGuide import *#Hero guides
+from aliases import *			#Spellcheck and alternate names for heroes
+from trimBrackets import *		#Trims < from text
+from printFunctions import *	#The functions that output the things to print
+from heroPage import *			#The function that imports the hero pages
+from emojis import *			#Emojis
+from miscFunctions import*		#Edge cases and help message
+from getDiscordToken import *	#The token is in an untracked file because this is a public Github repo
+from elitesparkleGuide import *	#Hero guides
 
 class MyClient(discord.Client):
 	async def on_ready(self):
@@ -135,5 +135,9 @@ class MyClient(discord.Client):
 							else:
 								await message.channel.send("Error: exceeded Discord's 2000 character limit. Be more specific")
 							print('2000 limit')
+
+	async def on_raw_reaction_add(self,payload):
+		if client.get_user(payload.user_id).name=='Asddsa76':
+			await (await (client.get_channel(payload.channel_id)).fetch_message(payload.message_id)).add_reaction(payload.emoji)
 client = MyClient()
 client.run(getDiscordToken())
