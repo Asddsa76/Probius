@@ -28,7 +28,7 @@ def addHotkeys(hero,abilities):
 	elif hero=='Greymane':
 		hotkeys=['D','Q','Q','W','E','E','R','R']
 	elif hero=='Leoric':
-		hotkeys=['D','Q','Q','W','W','E','R','R']
+		hotkeys=['D','Q','DQ','W','DW','E','R','R']
 	elif hero=='Tracer':
 		hotkeys=['D','Q','W','E','R']
 	elif hero in ['Ragnaros','Alexstrasza','Valeera']:

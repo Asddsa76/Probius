@@ -98,9 +98,9 @@ class MyClient(discord.Client):
 						else:
 							output=printTier(talents,3-2*int(hero=='Varian'))#Varian's heroics are at lvl 4
 					elif len(tier)==1 and tier in 'dqwe':#Ability (dqwe)
-						output=printAbility(abilities,tier,hero)
+						output=printAbility(abilities,tier)
 					elif tier.lower()=='trait':
-						output=printAbility(abilities,'d',hero)
+						output=printAbility(abilities,'d')
 					else:
 						tier=abilityAliases(hero,tier)
 						output=printSearch(abilities, talents, tier, hero)
