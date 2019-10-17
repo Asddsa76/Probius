@@ -2,10 +2,10 @@ from trimBrackets import *#Trims < from text
 from miscFunctions import *
 
 def heroAbilitiesAndTalents(hero):
-	try:
-		page=open('HeroPages/'+hero+'.html','rb').read().decode('utf-8')
-	except:
-		return [404,404]
+	#try:
+	page=open('HeroPages/'+hero+'.html','rb').read().decode('utf-8')
+	#except:
+	#	return [404,404]
 
 	page.replace('!','❢')
 	abilityIndex=page.index('Skills')+8
