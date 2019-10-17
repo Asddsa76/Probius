@@ -16,7 +16,7 @@ from heroPage import *			#The function that imports the hero pages
 from emojis import *			#Emojis
 from miscFunctions import*		#Edge cases and help message
 from getDiscordToken import *	#The token is in an untracked file because this is a public Github repo
-from elitesparkleGuide import *	#Hero guides
+from elitesparkleBuilds import *	#Hero builds
 
 class MyClient(discord.Client):
 	async def on_ready(self):

@@ -1,6 +1,6 @@
 def aliases(hero):
 	#The Wiki redirects correctly most upper/lowercase results, but not all acronyms
-	hero=hero.lower().replace('_','').replace('.','').replace(' ','').replace("'","").replace('-','')#Trying to make this function idempotent
+	hero=hero.lower().replace('_','').replace('.','').replace(' ','').replace("'","").replace('-','').replace('[','')#Trying to make this function idempotent
 	if hero in ['aba','slug','snail']:
 		return 'Abathur'
 	elif hero in ['alex','alexstrazsa']:
@@ -11,7 +11,7 @@ def aliases(hero):
 		return 'Artanis'
 	elif hero in ['lichking','lk']:
 		return 'Arthas'
-	elif hero in ['azmo']:
+	elif hero in ['azmo','dunklord']:
 		return 'Azmodan'
 	elif hero in ['bw']:
 		return 'Brightwing'
@@ -85,13 +85,13 @@ def aliases(hero):
 		return 'Rexxar'
 	elif hero in ['sam','uselesshero','grandpa','virgin']:
 		return 'Samuro'
-	elif hero in ['hammer','sgt']:
+	elif hero in ['hammer','sgt','sgthammer']:
 		return 'Sgt._Hammer'
 	elif hero in ['sylv','sylvannas']:
 		return 'Sylvanas'
 	elif hero in ['tass']:
 		return 'Tassadar'
-	elif hero in ['butcher']:
+	elif hero in ['butcher','thebutcher']:
 		return 'The_Butcher'
 	elif hero in ['tlv','vikings','thelostvikings','lostvikings']:
 		return 'The_Lost_Vikings'
