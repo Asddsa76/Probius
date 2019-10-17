@@ -22,6 +22,6 @@ for hero in heroes:
 		pass
 	page=page[abilityIndex:endIndex]
 
-	f=open('HeroPages/'+hero+'.html','w+b')
+	f=open('HeroPages/'+hero.capitalize()+'.html','w+b')
 	f.write(page.encode())
 	f.close()
