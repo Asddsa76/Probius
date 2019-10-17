@@ -144,8 +144,9 @@ class MyClient(discord.Client):
 		await mainProbius(message)
 		
 	async def on_message_edit(self,before, after):
-		await after.channel.send('**---After edit---**')
-		await mainProbius(after)
+		if '[' in after.content and ']' in after.content:
+			await after.channel.send('**------After edit------**')
+			await mainProbius(after)
 
 	async def on_raw_reaction_add(self,payload):
 		if client.get_user(payload.user_id).name=='Asddsa76':
