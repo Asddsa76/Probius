@@ -16,7 +16,8 @@ from heroPage import *			#The function that imports the hero pages
 from emojis import *			#Emojis
 from miscFunctions import*		#Edge cases and help message
 from getDiscordToken import *	#The token is in an untracked file because this is a public Github repo
-from elitesparkleBuilds import *	#Hero builds
+from elitesparkleBuilds import *#Hero builds
+from rotation import *			#Weekly rotation
 
 class MyClient(discord.Client):
 	async def on_ready(self):
@@ -30,27 +31,31 @@ class MyClient(discord.Client):
 		if '[' in message.content and ']' in message.content:
 			print(message.channel.name+' '+str(message.author)+': '+message.content)
 			text=message.content.lower()
-			if text in ['[help]','[info]']:
-				await message.channel.send(helpMessage())
-				return
-			if '[good bot]' in text:
-				await message.channel.send(':heart:')
-				return
-			if '[bad bot]' in text:
-				await emoji(['Probius','sad'],message.channel)
-				return
-			if ':' in text:
-				await emoji(text[text.index('[')+1:text.index(']')].replace(':','').split('/'),message.channel)
-				return
-
 			leftBrackets=[1+m.start() for m in re.finditer('\[',text)]#Must escape brackets when using regex
 			rightBrackets=[m.start() for m in re.finditer('\]',text)]
 			texts=[text[leftBrackets[i]:rightBrackets[i]].split('/') for i in range(len(leftBrackets))]
 			for text in texts:
 				hero=text[0]
+
+				if hero in ['help','info']:
+					await message.channel.send(helpMessage())
+					continue
 				if hero in ['guide','guides','elitesparkle','build']:
 					await guide(aliases(text[1]),message.channel)
-					return
+					continue
+				if hero=='rotation':
+					await message.channel.send(rotation())
+					continue
+				if hero=='good bot':
+					await message.channel.send(':heart:')
+					continue
+				if hero=='bad bot':
+					await emoji(['Probius','sad'],message.channel)
+					continue
+				if ':' in hero:
+					await emoji([hero.replace(':',''),text[1]],message.channel)
+					continue
+
 				hero=aliases(hero)
 				[abilities,talents]=heroAbilitiesAndTalents(hero)
 				abilities=extraD(abilities,hero)

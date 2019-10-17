@@ -16,7 +16,8 @@ def helpMessage():
 	output+="[Hero/searchterm] to search for something in that hero's abilities or talents.\n"
 	output+="Emojis: [:Hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.\n"
 	output+="Builds: [build/Hero] for hero builds from Elitesparkle.\n"
-	output+="My public repository: https://github.com/Asddsa76/Probius"
+	output+="Rotation: [rotation] for free weekly rotation from Gnub.\n"
+	output+="My public repository: <https://github.com/Asddsa76/Probius>"
 	return output
 
 def getHeroes():#Returns an alphabetically sorted list of all heroes.
