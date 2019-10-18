@@ -1,5 +1,8 @@
 from trimBrackets import *#Trims < from text
 from miscFunctions import *
+from urllib.request import urlopen
+from aliases import *
+from sys import argv
 
 def heroAbilitiesAndTalents(hero):
 	try:
@@ -42,3 +45,29 @@ def heroAbilitiesAndTalents(hero):
 	abilities=addHotkeys(hero,newAbilities)
 	talents=newTalentTiers
 	return [abilities,talents]
+
+def downloadHero():
+	hero=argv[1]
+	if hero=='all':
+		heroes=getHeroes()
+	else:
+		heroes=[aliases(hero)]
+
+	for hero in heroes:
+		print(hero)
+		page=''.join([i.strip().decode('utf-8') for i in urlopen('https://heroesofthestorm.gamepedia.com/index.php?title=Data:'+hero)])
+		page=trim(page)
+		abilityIndex=page.index('Skills')+8
+		endIndex=page.index('NewPP')
+		try:
+			endIndex=page.index('Scaling at key levels')
+		except:
+			pass
+		page=page[abilityIndex:endIndex]
+
+		f=open('HeroPages/'+hero.capitalize()+'.html','w+b')
+		f.write(page.encode())
+		f.close()
+
+if __name__=='__main__':
+	downloadHero()
