@@ -55,7 +55,6 @@ async def mainProbius(message,texts):
 			continue
 		hero=aliases(hero)
 		if hero=='Quote':
-			print(getQuote(text[1]))
 			hero=aliases(text[1])
 			await message.channel.send('**'+hero+':** '+getQuote(hero))
 			continue
@@ -79,8 +78,12 @@ async def mainProbius(message,texts):
 		try:
 			tier=text[1]#If there is no identifier, then it throws exception
 		except:
-			output='**'+hero+':** '+getQuote(hero)+printAbilities(abilities)
-			#await emoji([text[0],'happy'],message.channel)
+			quote='**'+hero+':** '+getQuote(hero)
+			output=printAbilities(abilities)
+			if len(output)==1:
+				output=quote+output
+			else:
+				output[0]=quote+output[0]
 		if output=='':
 			if tier.isdigit():#Talent tier
 				tier=int(tier)
