@@ -28,7 +28,7 @@ def findTexts(message):
 	return texts
 
 async def mainProbius(message,texts):
-	print(message.channel.name+' '+str(message.author)+': '+message.content)
+	print(message.channel.guild.name+', '+message.channel.name+', '+str(message.author)+': '+message.content)
 	for text in texts:
 		hero=text[0]
 		if hero in ['help','info']:
@@ -145,6 +145,15 @@ async def mainProbius(message,texts):
 						await message.channel.send("Error: exceeded Discord's 2000 character limit. Be more specific")
 					print('2000 limit')
 
+async def welcome(member):
+	guild=member.guild
+	if guild.name=='Wind Striders':
+		print(member.name+' joined')
+		channel=guild.get_channel(557366982471581718)#general
+		rulesChannel=guild.get_channel(634012658625937408)#server-rules
+		await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(Region, Rank, and Preferred Colour)** to get sorted :heart:')
+		await member.add_roles(guild.get_role(560435022427848705))#UNSORTED role
+
 class MyClient(discord.Client):
 	async def on_ready(self):
 		print('Logged on as', self.user)
@@ -168,5 +177,9 @@ class MyClient(discord.Client):
 	async def on_raw_reaction_add(self,payload):
 		if client.get_user(payload.user_id).name=='Asddsa76':
 			await (await (client.get_channel(payload.channel_id)).fetch_message(payload.message_id)).add_reaction(payload.emoji)
+
+	async def on_member_join(self,member):
+		await welcome(member)
+
 client = MyClient()
 client.run(getDiscordToken())
