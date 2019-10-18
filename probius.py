@@ -49,6 +49,8 @@ async def mainProbius(message,texts):
 		if ':' in hero:
 			await emoji([hero.replace(':',''),text[1]],message.channel)
 			continue
+		if ']' in hero:
+			continue
 		if hero in ['chogall',"cho'gall",'cg','cho gall','cho-gall']:
 			await message.channel.send("Cho and Gall are 2 different heroes. Choose one of them")
 			print('Dual hero')
@@ -80,7 +82,7 @@ async def mainProbius(message,texts):
 		except:
 			quote='**'+hero+':** '+getQuote(hero)
 			output=printAbilities(abilities)
-			if len(output)==1:
+			if len(output)!=2:
 				output=quote+output
 			else:
 				output[0]=quote+output[0]
