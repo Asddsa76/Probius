@@ -56,7 +56,8 @@ async def mainProbius(message,texts):
 		hero=aliases(hero)
 		if hero=='Quote':
 			print(getQuote(text[1]))
-			await message.channel.send('**'+hero+':** '+getQuote(aliases(text[1])))
+			hero=aliases(text[1])
+			await message.channel.send('**'+hero+':** '+getQuote(hero))
 			continue
 
 		[abilities,talents]=heroAbilitiesAndTalents(hero)
