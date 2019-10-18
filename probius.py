@@ -18,6 +18,7 @@ from miscFunctions import*		#Edge cases and help message
 from getDiscordToken import *	#The token is in an untracked file because this is a public Github repo
 from elitesparkleBuilds import *#Hero builds
 from rotation import *			#Weekly rotation
+from quotes import *			#Lock-in quotes
 
 def findTexts(message):
 	text=message.content.lower()
@@ -48,14 +49,18 @@ async def mainProbius(message,texts):
 		if ':' in hero:
 			await emoji([hero.replace(':',''),text[1]],message.channel)
 			continue
-
-		hero=aliases(hero)
-		[abilities,talents]=heroAbilitiesAndTalents(hero)
-		abilities=extraD(abilities,hero)
-		if hero in ['Chogall',"Cho'gall",'Cg','Cho gall','Cho-gall']:
+		if hero in ['chogall',"cho'gall",'cg','cho gall','cho-gall']:
 			await message.channel.send("Cho and Gall are 2 different heroes. Choose one of them")
 			print('Dual hero')
-			return
+			continue
+		hero=aliases(hero)
+		if hero=='Quote':
+			print(getQuote(text[1]))
+			await message.channel.send(getQuote(aliases(text[1])))
+			continue
+
+		[abilities,talents]=heroAbilitiesAndTalents(hero)
+		abilities=extraD(abilities,hero)
 		if abilities==404:
 			try:#If no results, it's probably an emoji with : forgotten. Prefer to call with : to avoid loading abilities and talents page
 				await emoji([hero,text[1]],message.channel)
@@ -73,7 +78,7 @@ async def mainProbius(message,texts):
 		try:
 			tier=text[1]#If there is no identifier, then it throws exception
 		except:
-			output=printAbilities(abilities)
+			output='**'+hero+':** '+getQuote(hero)+printAbilities(abilities)
 			#await emoji([text[0],'happy'],message.channel)
 		if output=='':
 			if tier.isdigit():#Talent tier

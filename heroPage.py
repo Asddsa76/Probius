@@ -65,9 +65,8 @@ def downloadHero():
 			pass
 		page=page[abilityIndex:endIndex]
 
-		f=open('HeroPages/'+hero.capitalize()+'.html','w+b')
-		f.write(page.encode())
-		f.close()
+		with open('HeroPages/'+hero.capitalize()+'.html','w+b') as f:
+			f.write(page.encode())
 
 if __name__=='__main__':
 	downloadHero()
