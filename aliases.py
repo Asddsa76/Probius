@@ -37,6 +37,8 @@ def aliases(hero):
 		return 'Hanzo'
 	elif hero in ['ilidan']:
 		return 'Illidan'
+	elif hero in ['dreadlord']:
+		return "Jaina"
 	elif hero in ['jo','jojo','joh','johnna','johannajoestar']:
 		return 'Johanna'
 	elif hero in ['jr','junk']:
@@ -87,6 +89,8 @@ def aliases(hero):
 		return 'Samuro'
 	elif hero in ['hammer','sgt','sgthammer']:
 		return 'Sgt._Hammer'
+	elif hero in ['stiches']:
+		return 'Stitches'
 	elif hero in ['sylv','sylvannas']:
 		return 'Sylvanas'
 	elif hero in ['tass']:

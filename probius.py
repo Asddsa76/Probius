@@ -60,6 +60,13 @@ async def mainProbius(message,texts):
 			hero=aliases(text[1])
 			await message.channel.send('**'+hero+':** '+getQuote(hero))
 			continue
+		if len(text)==2:#If user switches to hero first, then build/quote
+			if text[1] in ['guide','guides','elitesparkle','build']:
+				await guide(hero,message.channel)
+				continue
+			if text[1]=='quote':
+				await message.channel.send('**'+hero+':** '+getQuote(hero))
+				continue
 
 		[abilities,talents]=heroAbilitiesAndTalents(hero)
 		abilities=extraD(abilities,hero)
