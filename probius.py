@@ -31,13 +31,20 @@ async def mainProbius(message,texts):
 	print(message.channel.guild.name+', '+message.channel.name+', '+str(message.author)+': '+message.content)
 	for text in texts:
 		hero=text[0]
+		buildsAliases=['guide','build','elitesparkle','b','g','es','builds']
+		quotesAliases=['quote','q','quotes']
+		rotationAlises=['rotation','rot','r']
+		aliasesAliases=['aliases','names','acronyms','a','n']
 		if hero in ['help','info']:
 			await message.channel.send(helpMessage())
 			continue
-		if hero in ['guide','build','elitesparkle','b','g','es']:
-			await guide(aliases(text[1]),message.channel)
+		if hero in buildsAliases:
+			if len(text)==2:
+				await guide(aliases(text[1]),message.channel)
+			else:
+				await message.channel.send("Elitesparkle's builds: <https://elitesparkle.wixsite.com/hots-builds>")
 			continue
-		if hero=='rotation':
+		if hero in rotationAlises:
 			await message.channel.send(rotation())
 			continue
 		if hero=='good bot':
@@ -55,16 +62,22 @@ async def mainProbius(message,texts):
 			await message.channel.send("Cho and Gall are 2 different heroes. Choose one of them")
 			print('Dual hero')
 			continue
-		hero=aliases(hero)
-		if hero in ['Quote','Q']:
-			hero=aliases(text[1])
-			await message.channel.send(getQuote(hero))
+		if hero in quotesAliases:
+			if len(text)==2:
+				await message.channel.send(getQuote(aliases(text[1])))
+			else:
+				await message.channel.send('All hero select quotes: <https://github.com/Asddsa76/Probius/blob/master/quotes.txt>')
 			continue
+		if hero in aliasesAliases:
+			await message.channel.send('All hero alternate names: <https://github.com/Asddsa76/Probius/blob/master/aliases.py>')
+			continue
+
+		hero=aliases(hero)
 		if len(text)==2:#If user switches to hero first, then build/quote
-			if text[1] in ['guide','guides','elitesparkle','build']:
+			if text[1] in buildsAliases:
 				await guide(hero,message.channel)
 				continue
-			if text[1]=='quote':
+			if text[1] in quotesAliases:
 				await message.channel.send(getQuote(hero))
 				continue
 
@@ -73,7 +86,7 @@ async def mainProbius(message,texts):
 		if abilities==404:
 			try:#If no results, it's probably an emoji with : forgotten. Prefer to call with : to avoid loading abilities and talents page
 				await emoji([hero,text[1]],message.channel)
-				return
+				continue
 			except:
 				pass
 			output='No hero "'+hero+'"'
@@ -81,7 +94,7 @@ async def mainProbius(message,texts):
 				output=output.upper()
 			await message.channel.send(output)
 			print('No hero')
-			return
+			continue
 		
 		output=''
 		try:
@@ -137,7 +150,7 @@ async def mainProbius(message,texts):
 				if output=='':
 					try:#If no results, it's probably an emoji with : forgotten. Prefer to call with : to avoid loading abilities and talents page
 						await emoji([hero,tier],message.channel)
-						return
+						continue
 					except:
 						pass
 					if message.channel.name=='rage':

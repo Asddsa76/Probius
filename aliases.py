@@ -17,6 +17,8 @@ def aliases(hero):
 		return 'Brightwing'
 	elif hero in ['cain']:
 		return 'Deckard'
+	elif hero in ['amazon']:
+		return 'Cassia'
 	elif hero in ['dibbles']:
 		return 'Diablo'
 	elif hero in ['dva','gremlin','deathwing','dw']:#Showdown at Hanamura cinematic, never forget
@@ -39,7 +41,7 @@ def aliases(hero):
 		return 'Illidan'
 	elif hero in ['dreadlord']:
 		return "Jaina"
-	elif hero in ['jo','jojo','joh','johnna','johannajoestar']:
+	elif hero in ['jo','jojo','joh','johnna','johannajoestar','crusader']:
 		return 'Johanna'
 	elif hero in ['jr','junk']:
 		return 'Junkrat'
@@ -71,7 +73,7 @@ def aliases(hero):
 		return 'Mephisto'
 	elif hero in ['mura']:
 		return 'Muradin'
-	elif hero in ['naz']:
+	elif hero in ['naz','witchdoctor']:
 		return 'Nazeebo'
 	elif hero in ['voreloli']:
 		return 'Orphea'
@@ -89,6 +91,8 @@ def aliases(hero):
 		return 'Samuro'
 	elif hero in ['hammer','sgt','sgthammer']:
 		return 'Sgt._Hammer'
+	elif hero in ['barbarian']:
+		return 'Sonya'
 	elif hero in ['stiches']:
 		return 'Stitches'
 	elif hero in ['sylv','sylvannas']:

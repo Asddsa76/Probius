@@ -6,7 +6,7 @@ def rotation():
 	for line in page:
 		if 'Week of ' in line:
 			lineIndex=line.index('Week of ')
-			output='**Free rotation w'+line[lineIndex+1:lineIndex+18]+':**\n'
+			output='**Free rotation w'+line[lineIndex+1:lineIndex+18]+':** from <https://nexuscompendium.com/>\n'
 		if '<td valign' in line:
 			rotationHeroes.append(line[line.index('title="')+7:line.index('" alt')])
 			if len(rotationHeroes)==14:
