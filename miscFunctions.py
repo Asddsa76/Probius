@@ -14,9 +14,9 @@ def helpMessage():
 	output+="[Hero/level] for that hero's talents at that level.\n"
 	output+="[Hero/hotkey] for the ability on that hotkey.\n"
 	output+="[Hero/searchterm] to search for something in that hero's abilities or talents.\n"
+	output+="[build/Hero] for hero builds from Elitesparkle.\n"
+	output+="[rotation] for free weekly rotation from Gnub.\n"
 	output+="Emojis: [:Hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.\n"
-	output+="Builds: [build/Hero] for hero builds from Elitesparkle.\n"
-	output+="Rotation: [rotation] for free weekly rotation from Gnub.\n"
 	output+="My public repository: <https://github.com/Asddsa76/Probius>"
 	return output
 

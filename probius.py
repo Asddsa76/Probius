@@ -48,7 +48,7 @@ async def mainProbius(message,texts):
 			await message.channel.send(rotation())
 			continue
 		if hero=='good bot':
-			await message.channel.send(':heart:')
+			await emoji(['Probius','love'],message.channel)
 			continue
 		if hero=='bad bot':
 			await emoji(['Probius','sad'],message.channel)
@@ -74,6 +74,8 @@ async def mainProbius(message,texts):
 		if hero == 'all':
 			await printAll(message,text[1])
 			continue
+		if hero=='emoji':
+			await message.channel.send('Emojis: [:hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.')
 		hero=aliases(hero)
 		if len(text)==2:#If user switches to hero first, then build/quote
 			if text[1] in buildsAliases:
