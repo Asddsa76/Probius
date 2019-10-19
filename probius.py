@@ -34,7 +34,7 @@ async def mainProbius(message,texts):
 		if hero in ['help','info']:
 			await message.channel.send(helpMessage())
 			continue
-		if hero in ['guide','guides','elitesparkle','build']:
+		if hero in ['guide','build','elitesparkle','b','g','es']:
 			await guide(aliases(text[1]),message.channel)
 			continue
 		if hero=='rotation':
@@ -56,16 +56,16 @@ async def mainProbius(message,texts):
 			print('Dual hero')
 			continue
 		hero=aliases(hero)
-		if hero=='Quote':
+		if hero in ['Quote','Q']:
 			hero=aliases(text[1])
-			await message.channel.send('**'+hero+':** '+getQuote(hero))
+			await message.channel.send(getQuote(hero))
 			continue
 		if len(text)==2:#If user switches to hero first, then build/quote
 			if text[1] in ['guide','guides','elitesparkle','build']:
 				await guide(hero,message.channel)
 				continue
 			if text[1]=='quote':
-				await message.channel.send('**'+hero+':** '+getQuote(hero))
+				await message.channel.send(getQuote(hero))
 				continue
 
 		[abilities,talents]=heroAbilitiesAndTalents(hero)
@@ -87,7 +87,7 @@ async def mainProbius(message,texts):
 		try:
 			tier=text[1]#If there is no identifier, then it throws exception
 		except:
-			quote='**'+hero+':** '+getQuote(hero)
+			quote=getQuote(hero)
 			output=printAbilities(abilities)
 			if len(output)!=2:
 				output=quote+output

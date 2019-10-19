@@ -35,7 +35,7 @@ def aliases(hero):
 		return "Gul'dan"
 	elif hero in ['bowgenji']:
 		return 'Hanzo'
-	elif hero in ['ilidan']:
+	elif hero in ['ilidan','illi']:
 		return 'Illidan'
 	elif hero in ['dreadlord']:
 		return "Jaina"
