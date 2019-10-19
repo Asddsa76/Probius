@@ -1,4 +1,5 @@
 from aliases import *
+from miscFunctions import *
 
 def printAbilities(abilities):#No identifier, print all abilities
 	if len(abilities)<8:
@@ -45,3 +46,21 @@ def printSearch(abilities, talents, name, hero):#Prints abilities and talents wi
 			if name in talent.lower():
 				output+='***'+str(i*3+1+int(i==6)-2*int(hero=='chromie' and i!=0))+':*** '+talent+'\n'
 	return output
+
+async def printAll(message,keyword):#When someone calls [all/keyword]
+	if message.channel.guild.name == 'Wind Striders':
+		channel=message.channel.guild.get_channel(571531013558239238)#Probius
+		await channel.send(message.author.mention+", Here's all heroes' "+keyword+':')
+	else:
+		channel=message.channel
+	if len(keyword)<4:
+		await channel.send('Please use a keyword with at least 4 letters minimum')
+		return
+	from heroPage import heroAbilitiesAndTalents
+	for hero in getHeroes():
+		[abilities,talents]=heroAbilitiesAndTalents(hero)
+		abilities=extraD(abilities,hero)
+		output=printSearch(abilities,talents,keyword,hero)
+		if output=='':
+			continue
+		await channel.send('**'+hero.replace('_',' ')+':** '+output)

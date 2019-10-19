@@ -71,7 +71,9 @@ async def mainProbius(message,texts):
 		if hero in aliasesAliases:
 			await message.channel.send('All hero alternate names: <https://github.com/Asddsa76/Probius/blob/master/aliases.py>')
 			continue
-
+		if hero == 'all':
+			await printAll(message,text[1])
+			continue
 		hero=aliases(hero)
 		if len(text)==2:#If user switches to hero first, then build/quote
 			if text[1] in buildsAliases:
@@ -128,8 +130,11 @@ async def mainProbius(message,texts):
 					output=printTier(talents,3-2*int(hero=='Varian'))#Varian's heroics are at lvl 4
 			elif len(tier)==1 and tier in 'dqwe':#Ability (dqwe)
 				output=printAbility(abilities,tier)
-			elif tier.lower()=='trait':
+			elif tier=='trait':
 				output=printAbility(abilities,'d')
+			elif tier in ['all','page']:#Linking user to wiki instead of printing everything
+				await message.channel.send('<https://heroesofthestorm.gamepedia.com/Data:'+hero+'#Skills>')
+				continue
 			else:
 				tier=abilityAliases(hero,tier)
 				output=printSearch(abilities, talents, tier, hero)
