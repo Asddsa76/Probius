@@ -53,7 +53,7 @@ def printSearch(abilities, talents, name, hero):#Prints abilities and talents wi
 async def printAll(message,keyword):#When someone calls [all/keyword]
 	if message.channel.guild.name == 'Wind Striders':
 		channel=message.channel.guild.get_channel(571531013558239238)#Probius
-		await channel.send(message.author.mention+", Here's all heroes' "+keyword+':')
+		await channel.send(message.author.mention+", Here's all heroes' "+'"'+keyword+'":')
 	else:
 		channel=message.channel
 	if len(keyword)<4:

@@ -35,6 +35,7 @@ async def mainProbius(message,texts):
 		quotesAliases=['quote','q','quotes']
 		rotationAlises=['rotation','rot','r']
 		aliasesAliases=['aliases','names','acronyms','a','n']
+		wikipageAliases=['all','page','wiki']
 		if hero in ['help','info']:
 			await message.channel.send(helpMessage())
 			continue
@@ -94,12 +95,12 @@ async def mainProbius(message,texts):
 				continue
 			except:
 				pass
-			output='No hero "'+hero+'"'
+			'''output='No hero "'+hero+'"'
 			if message.channel.name=='rage':
 				output=output.upper()
 			await message.channel.send(output)
-			print('No hero')
-			continue
+			print('No hero')'''
+			continue #Uncomment above to enable the "No hero" error message
 		
 		output=''
 		try:
@@ -135,7 +136,7 @@ async def mainProbius(message,texts):
 				output=printAbility(abilities,tier)
 			elif tier=='trait':
 				output=printAbility(abilities,'d')
-			elif tier in ['all','page']:#Linking user to wiki instead of printing everything
+			elif tier in wikipageAliases:#Linking user to wiki instead of printing everything
 				await message.channel.send('<https://heroesofthestorm.gamepedia.com/Data:'+hero+'#Skills>')
 				continue
 			else:
