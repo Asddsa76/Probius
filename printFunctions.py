@@ -15,7 +15,6 @@ def printAbilities(abilities):#No identifier, print all abilities
 		for i in abilities[4:]:
 			output2+=i+'\n'
 		return[output1,output2]
-		
 
 def printTier(talents,tier):#Print a talent tier
 	output=''

@@ -16,7 +16,7 @@ from heroPage import *			#The function that imports the hero pages
 from emojis import *			#Emojis
 from miscFunctions import*		#Edge cases and help message
 from getDiscordToken import *	#The token is in an untracked file because this is a public Github repo
-from builds import *#Hero builds
+from builds import *			#Hero builds
 from rotation import *			#Weekly rotation
 from quotes import *			#Lock-in quotes
 
@@ -82,7 +82,7 @@ async def mainProbius(message,texts):
 			if text[1] in buildsAliases:
 				await guide(hero,message.channel)
 				continue
-			if text[1] in quotesAliases:
+			if text[1] in quotesAliases and text[1]!='q':
 				await message.channel.send(getQuote(hero))
 				continue
 
