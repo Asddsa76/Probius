@@ -3,11 +3,15 @@ from miscFunctions import getHeroes
 from aliases import aliases
 
 async def guide(hero,channel):
-	hero=hero.lower().replace('_','-').replace('.','').replace("'","")
-	with open('elitesparkleBuilds.txt','r') as f:
+	output=''
+	with open('otherBuilds.txt','r') as f:
 		for i in f:
 			if hero in i:
-				await channel.send('<'+i[:-1]+'>')#<> prevents thumbnails. [:-1] removes the \n at end of i
+				output+=i.split('; ')[1]
+	with open('elitesparkleBuilds.txt','r') as f:
+		for i in f:
+			if hero.lower().replace('_','-').replace('.','').replace("'","") in i:
+				await channel.send(output+'Elitesparkle: <'+i[:-1]+'>')#<> prevents thumbnails. [:-1] removes the \n at end of i
 				return
 	await channel.send('No hero "'+hero+'"')
 

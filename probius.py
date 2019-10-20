@@ -16,7 +16,7 @@ from heroPage import *			#The function that imports the hero pages
 from emojis import *			#Emojis
 from miscFunctions import*		#Edge cases and help message
 from getDiscordToken import *	#The token is in an untracked file because this is a public Github repo
-from elitesparkleBuilds import *#Hero builds
+from builds import *#Hero builds
 from rotation import *			#Weekly rotation
 from quotes import *			#Lock-in quotes
 
@@ -76,6 +76,7 @@ async def mainProbius(message,texts):
 			continue
 		if hero=='emoji':
 			await message.channel.send('Emojis: [:hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.')
+			continue
 		hero=aliases(hero)
 		if len(text)==2:#If user switches to hero first, then build/quote
 			if text[1] in buildsAliases:
