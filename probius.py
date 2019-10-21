@@ -8,6 +8,7 @@ import discord
 import io
 import aiohttp
 import re
+import random
 
 from aliases import *			#Spellcheck and alternate names for heroes
 from trimBrackets import *		#Trims < from text
@@ -28,7 +29,7 @@ def findTexts(message):
 	return texts
 
 async def mainProbius(message,texts):
-	print(message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(15-len(message.channel.name))+str(message.author)+' '*(15-len(str(message.author)))+' '+message.content)
+	print(message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author)+' '*(15-len(str(message.author)))+' '+message.content)
 	for text in texts:
 		hero=text[0]
 		buildsAliases=['guide','build','b','g','builds','guides']
@@ -36,6 +37,9 @@ async def mainProbius(message,texts):
 		rotationAlises=['rotation','rot','r']
 		aliasesAliases=['aliases','names','acronyms','a','n']
 		wikipageAliases=['all','page','wiki']
+		randomAliases=['random','ra','rand']
+		if hero in randomAliases:
+			hero=random.choice(getHeroes())
 		if hero in ['help','info']:
 			await message.channel.send(helpMessage())
 			continue
@@ -105,6 +109,9 @@ async def mainProbius(message,texts):
 		output=''
 		try:
 			tier=text[1]#If there is no identifier, then it throws exception
+			if tier in randomAliases:
+				await message.channel.send(printTier(talents,random.randint(0,6)))
+				return
 		except:
 			quote=getQuote(hero)
 			output=printAbilities(abilities)
