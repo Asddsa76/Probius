@@ -29,7 +29,7 @@ def findTexts(message):
 	return texts
 
 async def mainProbius(message,texts):
-	print(message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author)+' '*(15-len(str(message.author)))+' '+message.content)
+	print(message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author)+' '*(18-len(str(message.author)))+' '+message.content)
 	for text in texts:
 		hero=text[0]
 		buildsAliases=['guide','build','b','g','builds','guides']
@@ -197,6 +197,9 @@ class MyClient(discord.Client):
 	async def on_message(self, message):
 		#Don't respond to ourselves
 		if message.author == self.user:
+			return
+		ignoredUsers=['Rick Astley','PogChamp',"Swann's Helper"]
+		if message.author.name in ignoredUsers:
 			return
 		if '[' in message.content and ']' in message.content:
 			texts=findTexts(message)
