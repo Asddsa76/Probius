@@ -1,3 +1,5 @@
+from miscFunctions import getHeroes
+
 def aliases(hero):
 	#The Wiki redirects correctly most upper/lowercase results, but not all acronyms
 	hero=hero.lower().replace('_','').replace('.','').replace(' ','').replace("'","").replace('-','').replace('[','')#Trying to make this function idempotent
@@ -67,6 +69,8 @@ def aliases(hero):
 		return 'Malfurion'
 	elif hero in ['malganis',"mal'ganis",'mg']:
 		return "Mal'Ganis"
+	elif hero in ['malth']:
+		return 'Malthael'
 	elif hero in ['medihv']:
 		return 'Medivh'
 	elif hero in ['meph']:
@@ -114,7 +118,11 @@ def aliases(hero):
 	elif hero in ['zera']:
 		return 'Zeratul'
 	elif hero in ["zj",'zul','zuljin']:
-		return "Zul'jin"	
+		return "Zul'jin"
+
+	for i in getHeroes():#Substring
+		if hero in i.lower():
+			return i
 	return hero.capitalize().replace(' ','_')#Emoji pages are case sensitive
 
 def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest lowercase

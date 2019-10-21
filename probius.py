@@ -28,10 +28,10 @@ def findTexts(message):
 	return texts
 
 async def mainProbius(message,texts):
-	print(message.channel.guild.name+', '+message.channel.name+', '+str(message.author)+': '+message.content)
+	print(message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(15-len(message.channel.name))+str(message.author)+' '*(15-len(str(message.author)))+' '+message.content)
 	for text in texts:
 		hero=text[0]
-		buildsAliases=['guide','build','elitesparkle','b','g','es','builds']
+		buildsAliases=['guide','build','b','g','builds','guides']
 		quotesAliases=['quote','q','quotes']
 		rotationAlises=['rotation','rot','r']
 		aliasesAliases=['aliases','names','acronyms','a','n']
