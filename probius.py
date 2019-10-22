@@ -20,6 +20,7 @@ from getDiscordToken import *	#The token is in an untracked file because this is
 from builds import *			#Hero builds
 from rotation import *			#Weekly rotation
 from quotes import *			#Lock-in quotes
+from stats import stats
 
 def findTexts(message):
 	text=message.content.lower()
@@ -38,6 +39,10 @@ async def mainProbius(message,texts):
 		aliasesAliases=['aliases','names','acronyms','a','n']
 		wikipageAliases=['all','page','wiki']
 		randomAliases=['random','ra','rand']
+		statsAliases=['stats','scores','leaderboard']
+		if hero in statsAliases:
+			await stats(message.channel)
+			continue
 		if hero in randomAliases:
 			hero=random.choice(getHeroes())
 		if hero in ['help','info']:
