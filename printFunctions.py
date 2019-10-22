@@ -50,6 +50,17 @@ def printSearch(abilities, talents, name, hero):#Prints abilities and talents wi
 				output+='***'+str(i*3+1+int(i==6)-2*int(hero=='chromie' and i!=0))+':*** '+talent+'\n'
 	return output
 
+async def printLarge(channel,inputstring):#Get long string. Print lines out in 2000 character chunks
+	strings=[i+'\n' for i in inputstring.split('\n')]
+	output=strings.pop(0)
+	while strings:
+		if len(output)+len(strings[0])<2000:
+			output+=strings.pop(0)
+		else:
+			await channel.send(output)
+			output=strings.pop(0)
+	await channel.send(output)
+
 async def printAll(message,keyword):#When someone calls [all/keyword]
 	if message.channel.guild.name == 'Wind Striders':
 		channel=message.channel.guild.get_channel(571531013558239238)#Probius
@@ -60,10 +71,12 @@ async def printAll(message,keyword):#When someone calls [all/keyword]
 		await channel.send('Please use a keyword with at least 4 letters minimum')
 		return
 	from heroPage import heroAbilitiesAndTalents
+	toPrint=''
 	for hero in getHeroes():
 		[abilities,talents]=heroAbilitiesAndTalents(hero)
 		abilities=extraD(abilities,hero)
 		output=printSearch(abilities,talents,keyword,hero)
 		if output=='':
 			continue
-		await channel.send('**'+hero.replace('_',' ')+':** '+output)
+		toPrint+='`'+hero.replace('_',' ')+':` '+output
+	await printLarge(channel,toPrint)

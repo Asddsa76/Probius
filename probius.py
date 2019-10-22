@@ -187,7 +187,7 @@ async def welcome(member):
 		print(member.name+' joined')
 		channel=guild.get_channel(557366982471581718)#general
 		rulesChannel=guild.get_channel(634012658625937408)#server-rules
-		await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(Region, Rank, and Preferred Colour)** to get sorted :heart:')
+		await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted :heart:')
 		await member.add_roles(guild.get_role(560435022427848705))#UNSORTED role
 
 class MyClient(discord.Client):
