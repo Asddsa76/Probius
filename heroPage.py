@@ -23,7 +23,11 @@ def heroAbilitiesAndTalents(hero):
 		newAbility+=ability[0:ability.index('<')]+':** '#Name
 		try:
 			ability=ability.split('"skill-cooldown">')[1]
-			newAbility+=ability[0:ability.index(' <')]#Cooldown. Some trais have no cooldown
+			cooldown=ability[0:ability.index(' <')]
+			if cooldown[-1]==' ':
+				cooldown=cooldown[:-1]
+			cooldown+='; '
+			newAbility+=cooldown#Cooldown. Some trais have no cooldown
 		except:
 			pass
 		ability=ability.split('"skill-description">')[1]
