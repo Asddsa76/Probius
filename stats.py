@@ -66,21 +66,20 @@ async def printHeroes(heroes,gamemode,totalGames,channel):
 	output=['Score results QM patch 2.48, '+str(totalGames)+' games total']
 	if gamemode=='qm':
 		output.append('Hero      Win%   95%CI  Pop% |Hero      Win%   95%CI  Pop% |Hero      Win%   95%CI  Pop% ')
-		output.append('-----------------------------|-----------------------------|-----------------------------')
+		output.append('-----------------------------+-----------------------------+-----------------------------')
 	else:
 		output.append('Hero          Winrate    95%CI   Ban%     Pop%   Games | Hero          Winrate    95%CI   Ban%     Pop%   Games')
 		output.append('                                                       |                                                       ')
-	
-	for i in range(ceil(len(heroes)/3)):
+	m=ceil(len(heroes)/3)
+	for i in range(m):
 		try:
-			output.append(heroes[i].heroString()+' |'+heroes[i+ceil(len(heroes)/3)].heroString()+' |'+heroes[i+2*ceil(len(heroes)/3)].heroString())
+			output.append(heroes[i].heroString()+' |'+heroes[i+m].heroString()+' |'+heroes[i+2*m].heroString())
 		except:
 			pass
-	#Right now the number of heroes (87) is divisible by 3. I'll fix this later after DW is released
-	'''if len(heroes)%3==1:
-		output.append(heroes[int(len(heroes)/2)].heroString()+' ')
+	if len(heroes)%3==1:
+		output.append(heroes[2*m-1].heroString()+' |')
 	elif len(heroes)%3==2:
-		output.append(heroes[int(len(heroes)/2)].heroString()+' ')'''
+		output.append(heroes[m-1].heroString()+' |'+heroes[2*m-1].heroString())
 	await printCode(output,channel)
 
 def getData(patch,gamemode):

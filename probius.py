@@ -41,8 +41,9 @@ async def mainProbius(message,texts):
 		randomAliases=['random','ra','rand']
 		statsAliases=['stats','scores','leaderboard']
 		if hero in statsAliases:
-			await stats(message.channel)
-			continue
+			async with message.channel.typing():
+				await stats(message.channel)
+				continue
 		if hero in randomAliases:
 			hero=random.choice(getHeroes())
 		if hero in ['help','info']:
@@ -55,8 +56,9 @@ async def mainProbius(message,texts):
 				await message.channel.send("Elitesparkle's builds: <https://elitesparkle.wixsite.com/hots-builds>")
 			continue
 		if hero in rotationAlises:
-			await message.channel.send(rotation())
-			continue
+			async with message.channel.typing():
+				await message.channel.send(rotation())
+				continue
 		if hero=='good bot':
 			await emoji(['Probius','love'],message.channel)
 			continue
