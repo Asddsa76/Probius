@@ -56,9 +56,8 @@ async def mainProbius(message,texts):
 				await message.channel.send("Elitesparkle's builds: <https://elitesparkle.wixsite.com/hots-builds>")
 			continue
 		if hero in rotationAlises:
-			async with message.channel.typing():
-				await message.channel.send(rotation())
-				continue
+			await rotation(message.channel)
+			continue
 		if hero=='good bot':
 			await emoji(['Probius','love'],message.channel)
 			continue
