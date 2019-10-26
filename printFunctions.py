@@ -62,22 +62,26 @@ async def printLarge(channel,inputstring):#Get long string. Print lines out in 2
 	await channel.send(output)
 
 async def printAll(message,keyword):#When someone calls [all/keyword]
-	introText="Here's all heroes' "+'"'+keyword+'":\n'
-	if message.channel.guild.name == 'Wind Striders':
-		channel=message.channel.guild.get_channel(571531013558239238)#Probius
-		toPrint=message.author.mention+', '+introText
-	else:
-		channel=message.channel
-		toPrint=introText
-	if len(keyword)<4:
-		await channel.send('Please use a keyword with at least 4 letters minimum')
-		return
-	from heroPage import heroAbilitiesAndTalents
-	for hero in getHeroes():
-		[abilities,talents]=heroAbilitiesAndTalents(hero)
-		abilities=extraD(abilities,hero)
-		output=printSearch(abilities,talents,keyword,hero)
-		if output=='':
-			continue
-		toPrint+='`'+hero.replace('_',' ')+':` '+output
-	await printLarge(channel,toPrint)
+	async with message.channel.typing():
+		if len(keyword)<4:
+			await channel.send('Please use a keyword with at least 4 letters minimum')
+			return
+		from heroPage import heroAbilitiesAndTalents
+		toPrint=''
+		for hero in getHeroes():
+			[abilities,talents]=heroAbilitiesAndTalents(hero)
+			abilities=extraD(abilities,hero)
+			output=printSearch(abilities,talents,keyword,hero)
+			if output=='':
+				continue
+			toPrint+='`'+hero.replace('_',' ')+':` '+output
+		if toPrint=='':
+			return
+		introText="Here's all heroes' "+'"'+keyword+'":\n'
+		if message.channel.guild.name == 'Wind Striders' and toPrint.count('\n')>5:#Wind Striders guild and over 5 results
+			channel=message.channel.guild.get_channel(571531013558239238)#Probius
+			toPrint=message.author.mention+', '+introText+toPrint
+		else:
+			channel=message.channel
+			toPrint=introText+toPrint
+		await printLarge(channel,toPrint)

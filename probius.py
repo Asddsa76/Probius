@@ -101,17 +101,11 @@ async def mainProbius(message,texts):
 		[abilities,talents]=heroAbilitiesAndTalents(hero)
 		abilities=extraD(abilities,hero)
 		if abilities==404:
-			try:#If no results, it's probably an emoji with : forgotten. Prefer to call with : to avoid loading abilities and talents page
-				await emoji([hero,text[1]],message.channel)
-				continue
+			try:#If no results, then "hero" isn't a hero
+				await printAll(message,text[0])
 			except:
 				pass
-			'''output='No hero "'+hero+'"'
-			if message.channel.name=='rage':
-				output=output.upper()
-			await message.channel.send(output)
-			print('No hero')'''
-			continue #Uncomment above to enable the "No hero" error message
+			continue
 		
 		output=''
 		try:
