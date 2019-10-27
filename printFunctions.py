@@ -77,11 +77,10 @@ async def printAll(message,keyword):#When someone calls [all/keyword]
 			toPrint+='`'+hero.replace('_',' ')+':` '+output
 		if toPrint=='':
 			return
-		introText="Here's all heroes' "+'"'+keyword+'":\n'
 		if message.channel.guild.name == 'Wind Striders' and toPrint.count('\n')>5:#Wind Striders guild and over 5 results
 			channel=message.channel.guild.get_channel(571531013558239238)#Probius
-			toPrint=message.author.mention+', '+introText+toPrint
+			introText=message.author.mention+", Here's all heroes' "+'"'+keyword+'":\n'
+			toPrint=introText+toPrint
 		else:
 			channel=message.channel
-			toPrint=introText+toPrint
-		await printLarge(channel,toPrint)
+	await printLarge(channel,toPrint)
