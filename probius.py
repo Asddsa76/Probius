@@ -29,7 +29,7 @@ def findTexts(message):
 	texts=[text[leftBrackets[i]:rightBrackets[i]].split('/') for i in range(len(leftBrackets))]
 	return texts
 
-async def mainProbius(message,texts):
+async def mainProbius(client,message,texts):
 	print(message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author)+' '*(18-len(str(message.author)))+' '+message.content)
 	for text in texts:
 		hero=text[0]
@@ -40,6 +40,9 @@ async def mainProbius(message,texts):
 		wikipageAliases=['all','page','wiki']
 		randomAliases=['random','ra','rand']
 		statsAliases=['stats','scores','leaderboard']
+		if hero == 'avatar':
+			await client.getAvatar(message.channel,text[1])
+			continue
 		if hero in statsAliases:
 			async with message.channel.typing():
 				await stats(message.channel)
@@ -203,7 +206,7 @@ class MyClient(discord.Client):
 			return
 		if '[' in message.content and ']' in message.content:
 			texts=findTexts(message)
-			await mainProbius(message,texts)
+			await mainProbius(self,message,texts)
 		
 	async def on_message_edit(self,before, after):
 		if '[' in after.content and ']' in after.content:
@@ -219,6 +222,10 @@ class MyClient(discord.Client):
 
 	async def on_member_join(self,member):
 		await welcome(member)
+
+	async def getAvatar(self,channel,userMention):
+		user=self.get_user(int(userMention[2:-1]))
+		await channel.send(user.avatar_url)
 
 client = MyClient()
 client.run(getDiscordToken())
