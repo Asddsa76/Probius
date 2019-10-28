@@ -224,7 +224,8 @@ class MyClient(discord.Client):
 		await welcome(member)
 
 	async def getAvatar(self,channel,userMention):
-		user=self.get_user(int(userMention[2:-1]))
+		userString=userMention[2:-1].replace('!','')
+		user=self.get_user(int(userString))
 		await channel.send(user.avatar_url)
 
 client = MyClient()
