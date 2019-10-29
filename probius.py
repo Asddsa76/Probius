@@ -9,6 +9,7 @@ import io
 import aiohttp
 import re
 import random
+from time import asctime
 
 from aliases import *			#Spellcheck and alternate names for heroes
 from trimBrackets import *		#Trims < from text
@@ -30,7 +31,7 @@ def findTexts(message):
 	return texts
 
 async def mainProbius(client,message,texts):
-	print(message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author)+' '*(18-len(str(message.author)))+' '+message.content)
+	print(asctime()[11:16]+'  '+message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author)+' '*(18-len(str(message.author)))+' '+message.content)
 	for text in texts:
 		hero=text[0]
 		buildsAliases=['guide','build','b','g','builds','guides']

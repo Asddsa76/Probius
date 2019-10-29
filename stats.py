@@ -82,7 +82,7 @@ async def printHeroes(heroes,gamemode,totalGames,channel):
 		output.append(heroes[m-1].heroString()+' |'+heroes[2*m-1].heroString())
 	await printCode(output,channel)
 
-def getData(patch,gamemode):
+async def getData(patch,gamemode):
 	heroes=[]
 	record=0#When to start or stop recording text into page
 	for i in [i.strip().decode('utf-8') for i in urlopen('https://www.heroesprofile.com/Global/Hero/?timeframe_type='+timeFrameType+'&timeframe='+patch+'&type=win_rate&role=&hero=&game_type='+gamemode)]:
@@ -101,5 +101,6 @@ def getData(patch,gamemode):
 	return [heroes,totalGames]
 
 async def stats(channel):
-	[heroes,totalGames]=getData(patch,gamemode)
-	await printHeroes(heroes,gamemode,totalGames,channel)
+	heroes=[]
+	[heroes,totalGames]=await getData(patch,gamemode)
+	await printHeroes(gamemode,totalGames,channel)

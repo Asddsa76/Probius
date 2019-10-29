@@ -1,4 +1,5 @@
 from urllib.request import urlopen
+from urllib.request import urlretrieve
 from bs4 import BeautifulSoup
 import re
 from aliases import *#Spellcheck and alternate names for heroes
@@ -38,7 +39,6 @@ async def carbotSpray(hero,channel):
 			data = io.BytesIO(await resp.read())
 			await channel.send(file=discord.File(data, 'cool_image'+imageFormat))
 
-
 async def emoji(text,channel):
 	hero=aliases(text[0])#Emoji pages are case sensitive. Sadly, capitalizing also ruins non-hero emojis (Nexus pack etc).
 	if hero=='Carbot':
@@ -73,3 +73,9 @@ async def emoji(text,channel):
 				pass
 			data = io.BytesIO(await resp.read())
 			await channel.send(file=discord.File(data, 'cool_image'+imageFormat))
+
+def downloadEmojis():
+	urlretrieve('https://gamepedia.cursecdn.com/allstars_gamepedia/2/23/Emoji_E.T.C._Pack_1_E.T.C._Sad.png?version=e4cbec81ce39e6767306519916ee6b48','etcsad.png')
+
+if __name__ == '__main__':
+	downloadEmojis()
