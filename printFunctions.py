@@ -78,13 +78,10 @@ async def printAll(message,keyword):#When someone calls [all/keyword]
 		if toPrint=='':
 			return
 		botChannels={'Wind Striders':571531013558239238,'The Hydeout':638160998305497089}
-		if toPrint.count('\n')>5:#If the results is more lines than this, it gets dumped in specified bot channel
-			if message.channel.guild.name in botChannels:
-				channel=message.channel.guild.get_channel(botChannels[message.channel.guild.name])
-				introText=message.author.mention+", Here's all heroes' "+'"'+keyword+'":\n'
-				toPrint=introText+toPrint
-			else:
-				channel=message.channel
+		if toPrint.count('\n')>5 and message.channel.guild.name in botChannels:#If the results is more lines than this, it gets dumped in specified bot channel
+			channel=message.channel.guild.get_channel(botChannels[message.channel.guild.name])
+			introText=message.author.mention+", Here's all heroes' "+'"'+keyword+'":\n'
+			toPrint=introText+toPrint
 		else:
 			channel=message.channel
 	await printLarge(channel,toPrint)

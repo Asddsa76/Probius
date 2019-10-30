@@ -21,7 +21,10 @@ async def rotation(channel):
 					gemPrices.append(line[line.index('Gems: ')+6:line.index('Gems: ')+9])
 			elif '#skins">' in line:
 				line=line.split('#skins">')[1]
-				line=line[:line.index(' - Added')].replace('</a>','')
+
+				#line=line[:line.index(' - Added')].replace('</a>','')
+				line=line[:line.index('<ul><li>Added')].replace('</a>','')
+				
 				if '(' in line:
 					[hero,variant]=line.split('(')
 				else:
