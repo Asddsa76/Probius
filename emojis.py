@@ -39,7 +39,7 @@ async def carbotSpray(hero,channel):
 			data = io.BytesIO(await resp.read())
 			await channel.send(file=discord.File(data, 'cool_image'+imageFormat))
 
-async def emoji(text,channel):
+async def oldEmoji(text,channel):
 	hero=aliases(text[0])#Emoji pages are case sensitive. Sadly, capitalizing also ruins non-hero emojis (Nexus pack etc).
 	if hero=='Carbot':
 		await carbotSpray(text[1],channel)
@@ -74,8 +74,39 @@ async def emoji(text,channel):
 			data = io.BytesIO(await resp.read())
 			await channel.send(file=discord.File(data, 'cool_image'+imageFormat))
 
+async def emoji(text,channel):
+	hero=aliases(text[0])#Emoji pages are case sensitive. Sadly, capitalizing also ruins non-hero emojis (Nexus pack etc).
+	if hero=='Carbot':
+		await carbotSpray(text[1],channel)
+		return
+
+	hero=hero.replace('_',' ').replace('The Butcher','Butcher')
+
+	emojiCode=text[1].replace('lol','rofl').replace('wow','surprised')
+	emojiCode=emojiCode.capitalize()
+	if emojiCode=='Rofl':
+		emojiCode='ROFL'
+
+	file='Emojis/'+hero+' '+emojiCode
+	try:
+		await channel.send(file=discord.File(file+'.png'))
+	except:
+		await channel.send(file=discord.File(file+'.gif'))
+
 def downloadEmojis():
-	urlretrieve('https://gamepedia.cursecdn.com/allstars_gamepedia/2/23/Emoji_E.T.C._Pack_1_E.T.C._Sad.png?version=e4cbec81ce39e6767306519916ee6b48','etcsad.png')
+	EmojiListPage='https://heroesofthestorm.gamepedia.com/Emoji'
+	page=[i.strip().decode('utf-8').split('" class="image"><img alt="Emoji ')[1].split('" width=')[0] for i in urlopen(EmojiListPage) if '<td align="center"><a href="/File:Emoji' in i.strip().decode('utf-8')]
+	for i in page:
+		[name,url]=i.split('" src="')
+		if 'Pack' in name:
+			name=name.split('Pack ')[1]
+			if name[1]==' ':
+				name=name[2:]
+		if '&#39;' not in name:
+			continue
+		name=name.replace('&#39;',"'")
+		print(name)
+		urlretrieve(url,'Emojis/'+name)
 
 if __name__ == '__main__':
 	downloadEmojis()
