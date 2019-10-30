@@ -7,6 +7,16 @@ import discord
 import io
 import aiohttp
 
+async def sendEmoji(file,channel):
+	try:
+		await channel.send(file=discord.File(file+'.png'))
+	except:
+		try:
+			await channel.send(file=discord.File(file+'.gif'))
+		except:
+			return 'Failed'
+	return 'Success'
+
 async def carbotSpray(hero,channel):
 	hero=aliases(hero)
 	if hero in ['Deflect','Parry','Evade','Haha','Sleep']:
@@ -75,12 +85,11 @@ async def oldEmoji(text,channel):
 			await channel.send(file=discord.File(data, 'cool_image'+imageFormat))
 
 async def emoji(text,channel):
-	hero=aliases(text[0])#Emoji pages are case sensitive. Sadly, capitalizing also ruins non-hero emojis (Nexus pack etc).
-	if hero=='Carbot':
+	if hero=='carbot':
 		await carbotSpray(text[1],channel)
 		return
 
-	hero=hero.replace('_',' ').replace('The Butcher','Butcher')
+	hero=aliases(text[0]).replace('_',' ').replace('The Butcher','Butcher')
 
 	emojiCode=text[1].replace('lol','rofl').replace('wow','surprised')
 	emojiCode=emojiCode.capitalize()
@@ -88,10 +97,8 @@ async def emoji(text,channel):
 		emojiCode='ROFL'
 
 	file='Emojis/'+hero+' '+emojiCode
-	try:
-		await channel.send(file=discord.File(file+'.png'))
-	except:
-		await channel.send(file=discord.File(file+'.gif'))
+	await sendEmoji(file.capitalize(),channel)
+
 
 def downloadEmojis():
 	EmojiListPage='https://heroesofthestorm.gamepedia.com/Emoji'
@@ -104,7 +111,7 @@ def downloadEmojis():
 				name=name[2:]
 		if '&#39;' not in name:
 			continue
-		name=name.replace('&#39;',"'")
+		name=name.replace('&#39;',"'").capitalize()
 		print(name)
 		urlretrieve(url,'Emojis/'+name)
 
