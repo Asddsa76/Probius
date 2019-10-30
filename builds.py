@@ -7,7 +7,9 @@ async def guide(hero,channel):
 	with open('otherBuilds.txt','r') as f:
 		for i in f:
 			if hero in i:
-				output+='<'+i.split('; ')[1]+'>'
+				authorAndLink=i.split('; ')[1]
+				[author,link]=authorAndLink.split(': ')
+				output+=author+': <'+link.replace('\n','')+'>\n'
 	with open('elitesparkleBuilds.txt','r') as f:
 		for i in f:
 			if hero.lower().replace('_','-').replace('.','').replace("'","") in i:
