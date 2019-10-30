@@ -23,13 +23,6 @@ from rotation import *			#Weekly rotation
 from quotes import *			#Lock-in quotes
 from stats import stats
 
-def findTexts(message):
-	text=message.content.lower()
-	leftBrackets=[1+m.start() for m in re.finditer('\[',text)]#Must escape brackets when using regex
-	rightBrackets=[m.start() for m in re.finditer('\]',text)]
-	texts=[text[leftBrackets[i]:rightBrackets[i]].split('/') for i in range(len(leftBrackets))]
-	return texts
-
 async def mainProbius(client,message,texts):
 	print(asctime()[11:16]+'  '+message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author)+' '*(18-len(str(message.author)))+' '+message.content)
 	for text in texts:
@@ -194,6 +187,13 @@ async def welcome(member):
 		await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted :heart:')
 		await member.add_roles(guild.get_role(560435022427848705))#UNSORTED role
 
+def findTexts(message):
+	text=message.content.lower()
+	leftBrackets=[1+m.start() for m in re.finditer('\[',text)]#Must escape brackets when using regex
+	rightBrackets=[m.start() for m in re.finditer('\]',text)]
+	texts=[text[leftBrackets[i]:rightBrackets[i]].split('/') for i in range(len(leftBrackets))]
+	return texts
+
 class MyClient(discord.Client):
 	async def on_ready(self):
 		print('Logged on as', self.user)
@@ -211,7 +211,10 @@ class MyClient(discord.Client):
 		
 	async def on_message_edit(self,before, after):
 		if '[' in after.content and ']' in after.content:
-			beforeTexts=findTexts(before)
+			try:
+				beforeTexts=findTexts(before)
+			except:
+				beforeTexts=[]
 			newTexts=[i for i in findTexts(after) if i not in beforeTexts]
 			if newTexts:#Nonempty lists have boolean value true
 				await after.channel.send('**------After edit------**')
