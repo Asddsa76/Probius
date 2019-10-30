@@ -14,8 +14,7 @@ async def sendEmoji(file,channel):
 		try:
 			await channel.send(file=discord.File(file+'.gif'))
 		except:
-			return 'Failed'
-	return 'Success'
+			pass
 
 async def carbotSpray(hero,channel):
 	hero=aliases(hero)
@@ -85,19 +84,19 @@ async def oldEmoji(text,channel):
 			await channel.send(file=discord.File(data, 'cool_image'+imageFormat))
 
 async def emoji(text,channel):
-	if hero=='carbot':
+	text[0]=text[0].replace(':','')
+	if text[0]=='carbot':
 		await carbotSpray(text[1],channel)
 		return
 
-	hero=aliases(text[0]).replace('_',' ').replace('The Butcher','Butcher')
-
-	emojiCode=text[1].replace('lol','rofl').replace('wow','surprised')
-	emojiCode=emojiCode.capitalize()
-	if emojiCode=='Rofl':
-		emojiCode='ROFL'
-
-	file='Emojis/'+hero+' '+emojiCode
-	await sendEmoji(file.capitalize(),channel)
+	if len(text)==2:
+		hero=aliases(text[0]).replace('_',' ').replace('The Butcher','Butcher')
+		emojiCode=text[1].replace('lol','rofl').replace('wow','surprised')
+		file=hero+' '+emojiCode
+	else:
+		file=text[0]
+	
+	await sendEmoji('Emojis/'+file.capitalize(),channel)
 
 
 def downloadEmojis():
@@ -109,8 +108,6 @@ def downloadEmojis():
 			name=name.split('Pack ')[1]
 			if name[1]==' ':
 				name=name[2:]
-		if '&#39;' not in name:
-			continue
 		name=name.replace('&#39;',"'").capitalize()
 		print(name)
 		urlretrieve(url,'Emojis/'+name)
