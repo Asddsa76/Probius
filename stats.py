@@ -103,4 +103,4 @@ async def getData(patch,gamemode):
 async def stats(channel):
 	heroes=[]
 	[heroes,totalGames]=await getData(patch,gamemode)
-	await printHeroes(gamemode,totalGames,channel)
+	await printHeroes(heroes,gamemode,totalGames,channel)
