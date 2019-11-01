@@ -63,7 +63,7 @@ async def printCode(strings,channel):
 	await channel.send(output[:-1]+'```')
 
 async def printHeroes(heroes,gamemode,totalGames,channel):
-	output=['Score results QM patch 2.48, '+str(totalGames)+' games total']
+	output=['Score results QM patch 2.48, '+str(totalGames)+' games total from <https://heroesprofile.com/>']
 	if gamemode=='qm':
 		output.append('Hero      Win%   95%CI  Pop% |Hero      Win%   95%CI  Pop% |Hero      Win%   95%CI  Pop% ')
 		output.append('-----------------------------+-----------------------------+-----------------------------')
