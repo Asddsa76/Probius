@@ -3,17 +3,17 @@ from miscFunctions import getHeroes
 def aliases(hero):
 	#The Wiki redirects correctly most upper/lowercase results, but not all acronyms
 	hero=hero.lower().replace('_','').replace('.','').replace(' ','').replace("'","").replace('-','').replace('[','')#Trying to make this function idempotent
-	if hero in ['aba','slug','snail']:
+	if hero in ['slug','snail']:
 		return 'Abathur'
-	elif hero in ['alex','alexstrazsa']:
+	elif hero in ['alexstrazsa']:
 		return 'Alexstrasza'
-	elif hero in ['anub','beetle','anubarak','bug']:
+	elif hero in ['beetle','anubarak','bug']:
 		return "Anub'arak"
-	elif hero in ['art','zealot']:
+	elif hero in ['zealot']:
 		return 'Artanis'
 	elif hero in ['lichking','lk']:
 		return 'Arthas'
-	elif hero in ['azmo','dunklord']:
+	elif hero in ['dunklord']:
 		return 'Azmodan'
 	elif hero in ['bw']:
 		return 'Brightwing'
@@ -29,9 +29,9 @@ def aliases(hero):
 		return 'E.T.C.'
 	elif hero in ['garry','hellscream']:
 		return 'Garrosh'
-	elif hero in ['gaz','gazlord','gazlow']:
+	elif hero in ['gazlord']:
 		return 'Gazlowe'
-	elif hero in ['graymane','gm','grey']:
+	elif hero in ['graymane','gm']:
 		return 'Greymane'
 	elif hero in ['best hero','madamada','weaboo','ineedhealing','weeb']:
 		return 'Genji'
@@ -39,85 +39,65 @@ def aliases(hero):
 		return "Gul'dan"
 	elif hero in ['bowgenji']:
 		return 'Hanzo'
-	elif hero in ['ilidan','illi']:
+	elif hero in ['ilidan']:
 		return 'Illidan'
 	elif hero in ['dreadlord']:
 		return "Jaina"
-	elif hero in ['jo','jojo','joh','johnna','johannajoestar','crusader']:
+	elif hero in ['jojo','johnna','johannajoestar','crusader']:
 		return 'Johanna'
-	elif hero in ['jr','junk']:
+	elif hero in ['jr']:
 		return 'Junkrat'
-	elif hero in ['kt','kael','kaelthas']:#He came to HotS first. Use KTZ for your beloved lich.
+	elif hero in ['kt','kaelthas']:#He came to HotS first. Use KTZ for your beloved lich.
 		return "Kael'thas"
-	elif hero in ['ktz','kel','kelthuzad']:
+	elif hero in ['ktz','kelthuzad']:
 		return "Kel'Thuzad"
-	elif hero in ['ker','kerri']:
-		return 'Kerrigan'
-	elif hero in ['karazhim','khara']:
+	elif hero in ['karazhim']:
 		return 'Kharazim'
-	elif hero in ['leo','janitor']:
+	elif hero in ['janitor']:
 		return 'Leoric'
 	elif hero in ['lili','li-li']:
 		return 'Li_Li'
-	elif hero in ['lm','liming','li-ming','li ming','ming']:
+	elif hero in ['lm','liming']:
 		return 'Li-Ming'
-	elif hero in ['morales','medic','lt','ltmorales']:
+	elif hero in ['medic','ltmorales']:
 		return 'Lt._Morales'
-	elif hero in ['deer','lun','bambi']:
+	elif hero in ['deer','bambi','33elk']:
 		return 'Lunara'
-	elif hero in ['malf']:
-		return 'Malfurion'
-	elif hero in ['malganis',"mal'ganis",'mg']:
+	elif hero in ['malganis','mg']:
 		return "Mal'Ganis"
-	elif hero in ['malth']:
-		return 'Malthael'
 	elif hero in ['medihv']:
 		return 'Medivh'
-	elif hero in ['meph']:
-		return 'Mephisto'
-	elif hero in ['mura']:
-		return 'Muradin'
-	elif hero in ['naz','witchdoctor']:
+	elif hero in ['witchdoctor']:
 		return 'Nazeebo'
 	elif hero in ['voreloli']:
 		return 'Orphea'
 	elif hero in ['probe']:
 		return 'Probius'
-	elif hero in ['rag']:
-		return 'Ragnaros'
 	elif hero in ['jimmy']:
 		return 'Raynor'
 	elif hero in ['reghar','rhegar']:
 		return 'Rehgar'
 	elif hero in ['misha']:
 		return 'Rexxar'
-	elif hero in ['sam','uselesshero','grandpa','virgin']:
+	elif hero in ['uselesshero','grandpa']:
 		return 'Samuro'
-	elif hero in ['hammer','sgt','sgthammer']:
+	elif hero in ['sgthammer']:
 		return 'Sgt._Hammer'
 	elif hero in ['barbarian']:
 		return 'Sonya'
 	elif hero in ['stiches']:
 		return 'Stitches'
-	elif hero in ['sylv','sylvannas']:
+	elif hero in ['sylvannas']:
 		return 'Sylvanas'
-	elif hero in ['tass']:
-		return 'Tassadar'
-	elif hero in ['butcher','thebutcher']:
+	elif hero in ['thebutcher']:
 		return 'The_Butcher'
-	elif hero in ['tlv','vikings','thelostvikings','lostvikings']:
+	elif hero in ['tlv','thelostvikings','lostvikings']:
 		return 'The_Lost_Vikings'
-	elif hero in ['val']:
-		return 'Valeera'
 	elif hero in ['wm']:
 		return 'Whitemane'
 	elif hero in ['goat','spacegoat']:
 		return 'Yrel'
-	elif hero in ['zag']:
-		return 'Zagara'
-	elif hero in ['zera']:
-		return 'Zeratul'
-	elif hero in ["zj",'zul','zuljin']:
+	elif hero in ["zj",'zuljin']:
 		return "Zul'jin"
 
 	for i in getHeroes():#Substring

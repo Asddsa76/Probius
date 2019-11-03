@@ -16,7 +16,6 @@ async def rotation(channel):
 			if '<td valign="top" ' in line:
 				if len(rotationHeroes)<14 and 'All Heroes' not in rotationHeroes:
 					rotationHeroes.append(line[line.index('title="')+7:line.index('" alt')])
-					print(rotationHeroes[0])
 				else:
 					salesHeroes.append(line[line.index('title="')+7:line.index('" alt')])
 					gemPrices.append(line[line.index('Gems: ')+6:line.index('Gems: ')+9])
