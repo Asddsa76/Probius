@@ -34,9 +34,10 @@ def printSearch(abilities, talents, name, hero):#Prints abilities and talents wi
 		[name,exclude]=name.split('--')
 	else:
 		exclude='this string is not in any abilities or talents'
+	namelist=name.split('&')
 	output=''
 	for ability in abilities:
-		if name in ability.lower() and exclude not in ability.lower():
+		if sum([1 for i in namelist if i in ability.lower()])==len(namelist) and exclude not in ability.lower():
 			output+=ability+'\n'
 	levelTiers=[0,1,2,3,4,5,6]
 	if hero=='Varian':
@@ -46,7 +47,7 @@ def printSearch(abilities, talents, name, hero):#Prints abilities and talents wi
 	for i in levelTiers:
 		talentTier=talents[i]
 		for talent in talentTier:
-			if name in talent.lower() and exclude not in talent.lower():
+			if sum([1 for i in namelist if i in talent.lower()])==len(namelist) and exclude not in talent.lower():
 				output+='***'+str(i*3+1+int(i==6)-2*int(hero=='Chromie' and i!=0))+':*** '+talent+'\n'
 	return output
 

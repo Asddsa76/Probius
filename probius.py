@@ -217,7 +217,6 @@ class MyClient(discord.Client):
 				beforeTexts=[]
 			newTexts=[i for i in findTexts(after) if i not in beforeTexts]
 			if newTexts:#Nonempty lists have boolean value true
-				await after.channel.send('**------After edit------**')
 				await mainProbius(self,after,newTexts)
 
 	async def on_raw_reaction_add(self,payload):

@@ -33,7 +33,7 @@ def aliases(hero):
 		return 'Gazlowe'
 	elif hero in ['graymane','gm']:
 		return 'Greymane'
-	elif hero in ['best hero','madamada','weaboo','ineedhealing','weeb']:
+	elif hero in ['besthero','madamada','weaboo','ineedhealing','weeb']:
 		return 'Genji'
 	elif hero in ['guldan','gd']:
 		return "Gul'dan"
@@ -79,7 +79,7 @@ def aliases(hero):
 		return 'Rehgar'
 	elif hero in ['misha']:
 		return 'Rexxar'
-	elif hero in ['uselesshero','grandpa']:
+	elif hero in ['worsthero','uselesshero','grandpa']:
 		return 'Samuro'
 	elif hero in ['sgthammer']:
 		return 'Sgt._Hammer'
