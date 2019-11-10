@@ -185,7 +185,7 @@ async def welcome(member):
 		print(member.name+' joined')
 		channel=guild.get_channel(557366982471581718)#general
 		rulesChannel=guild.get_channel(634012658625937408)#server-rules
-		await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted :heart:')
+		await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted <:peepoLove:606862963478888449>')
 		await member.add_roles(guild.get_role(560435022427848705))#UNSORTED role
 
 def findTexts(message):
@@ -211,13 +211,22 @@ async def getPostInfo(post):
 class MyClient(discord.Client):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
-
+		self.previousPostTitle=''
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
 
+	async def getPreviousPostTitle(self):
+		await self.wait_until_ready()
+		async with aiohttp.ClientSession() as session:
+			page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')
+			posts=page.split('"clicked": false, "title": "')[1:]
+			[title,author,url] = await getPostInfo(posts[0])#Newest post that has been checked
+			return title
+
 	async def on_ready(self):
-		print('Logged on as', self.user)
+		self.previousPostTitle=await self.getPreviousPostTitle()#Gets most recent post. This means Probius won't forwards submissions from the past.
+		print('Logged on as', self.user)						#(Including when he was offline for maintenance)
 
 	async def on_message(self, message):
 		#Don't respond to ourselves
@@ -255,11 +264,10 @@ class MyClient(discord.Client):
 	async def bgTaskSubredditForwarding(self):
 		await self.wait_until_ready()
 		channel = self.get_channel(557366982471581718)#general
-		previousPostTitle='thisStringIsNotAPostTitle'
 		while not self.is_closed():
 			async with aiohttp.ClientSession() as session:
 				page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')#Screw JSON parsing, I'll do it myself
-				page=page.split('"'+previousPostTitle+'"')[0]
+				page=page.split('"'+self.previousPostTitle+'"')[0]
 				try:
 					posts=page.split('"clicked": false, "title": "')[1:]
 					[title,author,url] = await getPostInfo(posts[0])#Newest post that has been checked
@@ -274,11 +282,12 @@ class MyClient(discord.Client):
 
 	async def bgTaskUNSORTED(self):
 		await self.wait_until_ready()
-		channel = self.get_channel(557366982471581718)#general
+		channel = self.get_channel(557366982471581718)#WSgeneral
 		role=channel.guild.get_role(560435022427848705)#UNSORTED
+		rulesChannel=channel.guild.get_channel(634012658625937408)#server-rules
 		while not self.is_closed():
-			await asyncio.sleep(60*60*2) #Send message every 2 days. Sleep before action to not trigger it every time bot starts
-			await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted before Blackstorm purges you :heart:')
+			await asyncio.sleep(60*60*24)#sleep
+			await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted before Blackstorm purges you <:peepoLove:606862963478888449>')
 
 client = MyClient()
 client.run(getDiscordToken())
