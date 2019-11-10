@@ -24,6 +24,7 @@ from quotes import *			#Lock-in quotes
 from stats import stats
 
 async def mainProbius(client,message,texts):
+	print(message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author)+' '*(18-len(str(message.author)))+' '+message.content)
 	await client.get_channel(643231901452337192).send('`'+message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author)+' '*(18-len(str(message.author)))+' '+message.content+'`')
 	for text in texts:
 		hero=text[0]
