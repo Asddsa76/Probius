@@ -26,6 +26,7 @@ from stats import stats
 
 async def mainProbius(client,message,texts):
 	print(asctime()[11:16]+'  '+message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author)+' '*(18-len(str(message.author)))+' '+message.content)
+	await client.get_channel(643231901452337192).send('`'+asctime()[11:16]+'  '+message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author)+' '*(18-len(str(message.author)))+' '+message.content+'`')
 	for text in texts:
 		hero=text[0]
 		buildsAliases=['guide','build','b','g','builds','guides']
@@ -274,8 +275,9 @@ class MyClient(discord.Client):
 					previousPostTitle=title
 					for post in posts:
 						[title,author,url] = await getPostInfo(post)
-						if author in ['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Soren Ily', 'Elitesparkle', 'slapperoni', 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes']:
+						if author in ['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes']:
 							await channel.send('**'+title+'** by '+author+': '+url)
+							await self.get_channel(643231901452337192).send('`'+title+' by '+author+'`')
 				except:
 					pass
 			await asyncio.sleep(60)#Check for new posts every minute
