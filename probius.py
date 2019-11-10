@@ -200,13 +200,11 @@ async def fetch(session, url):
 		return await response.text()
 
 async def getPostInfo(post):
-	title=post.split('"')[0]
+	title=post.split('", "')[0]
 	post=post.split('"author": "')[1]
 	author=post.split('"')[0]
 	post=post.split('"permalink": "')[1]
 	shortUrl=post.split('"')[0]
-	#urlCode=shortUrl.split('comments/')[1].split('/')[0]
-	#url='https://old.reddit.com/r/heroesofthestorm/comments/'+urlCode+'/'
 	url='https://old.reddit.com'+shortUrl
 	return [title,author,url]
 
@@ -263,7 +261,7 @@ class MyClient(discord.Client):
 				page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')#Screw JSON parsing, I'll do it myself
 				page=page.split('"'+previousPostTitle+'"')[0]
 				try:
-					posts=page.split('"title": "')[1:]
+					posts=page.split('"clicked": false, "title": "')[1:]
 					[title,author,url] = await getPostInfo(posts[0])#Newest post that has been checked
 					previousPostTitle=title
 					for post in posts:
