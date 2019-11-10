@@ -5,6 +5,7 @@
 #Project started on 14/9-2019
 
 import discord
+import asyncio
 import io
 import aiohttp
 import re
@@ -82,7 +83,7 @@ async def mainProbius(client,message,texts):
 		if hero == 'all':
 			await printAll(message,text[1])
 			continue
-		if hero=='emoji':
+		if hero in ['emoji','emojis','emote','emotes']:
 			await message.channel.send('Emojis: [:hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.')
 			continue
 		hero=aliases(hero)
@@ -194,7 +195,29 @@ def findTexts(message):
 	texts=[text[leftBrackets[i]:rightBrackets[i]].split('/') for i in range(len(leftBrackets))]
 	return texts
 
+async def fetch(session, url):
+	async with session.get(url) as response:
+		return await response.text()
+
+async def getPostInfo(post):
+	title=post.split('"')[0]
+	post=post.split('"author": "')[1]
+	author=post.split('"')[0]
+	post=post.split('"permalink": "')[1]
+	shortUrl=post.split('"')[0]
+	#urlCode=shortUrl.split('comments/')[1].split('/')[0]
+	#url='https://old.reddit.com/r/heroesofthestorm/comments/'+urlCode+'/'
+	url='https://old.reddit.com'+shortUrl
+	return [title,author,url]
+
 class MyClient(discord.Client):
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+
+		# create the background task and run it in the background
+		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
+		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
+
 	async def on_ready(self):
 		print('Logged on as', self.user)
 
@@ -230,6 +253,34 @@ class MyClient(discord.Client):
 		userString=userMention[2:-1].replace('!','')
 		user=self.get_user(int(userString))
 		await channel.send(user.avatar_url)
+
+	async def bgTaskSubredditForwarding(self):
+		await self.wait_until_ready()
+		channel = self.get_channel(557366982471581718)#general
+		previousPostTitle='thisStringIsNotAPostTitle'
+		while not self.is_closed():
+			async with aiohttp.ClientSession() as session:
+				page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')#Screw JSON parsing, I'll do it myself
+				page=page.split('"'+previousPostTitle+'"')[0]
+				try:
+					posts=page.split('"title": "')[1:]
+					[title,author,url] = await getPostInfo(posts[0])#Newest post that has been checked
+					previousPostTitle=title
+					for post in posts:
+						[title,author,url] = await getPostInfo(post)
+						if author in ['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Soren Ily', 'Elitesparkle', 'slapperoni', 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes']:
+							await channel.send('**'+title+'** by '+author+': '+url)
+				except:
+					pass
+			await asyncio.sleep(60)#Check for new posts every minute
+
+	async def bgTaskUNSORTED(self):
+		await self.wait_until_ready()
+		channel = self.get_channel(557366982471581718)#general
+		role=channel.guild.get_role(560435022427848705)#UNSORTED
+		while not self.is_closed():
+			await asyncio.sleep(60*60*2) #Send message every 2 days. Sleep before action to not trigger it every time bot starts
+			await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted before Blackstorm purges you :heart:')
 
 client = MyClient()
 client.run(getDiscordToken())

@@ -91,7 +91,7 @@ async def emoji(text,channel):
 
 	if len(text)==2:
 		hero=aliases(text[0]).replace('_',' ').replace('The Butcher','Butcher')
-		emojiCode=text[1].replace('lol','rofl').replace('wow','surprised')
+		emojiCode=text[1].replace('lol','rofl').replace('wow','surprised').replace('smile','happy')
 		file=hero+' '+emojiCode
 	else:
 		file=text[0]

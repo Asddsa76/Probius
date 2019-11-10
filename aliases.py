@@ -27,6 +27,8 @@ def aliases(hero):
 		return 'D.Va'
 	elif hero in ['etc']:
 		return 'E.T.C.'
+	elif hero in ['bird']:
+		return 'Falstad'
 	elif hero in ['garry','hellscream']:
 		return 'Garrosh'
 	elif hero in ['gazlord']:
@@ -67,6 +69,8 @@ def aliases(hero):
 		return "Mal'Ganis"
 	elif hero in ['medihv']:
 		return 'Medivh'
+	elif hero in ['fish']:
+		return 'Murky'
 	elif hero in ['witchdoctor']:
 		return 'Nazeebo'
 	elif hero in ['voreloli']:
