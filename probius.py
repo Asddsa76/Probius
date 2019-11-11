@@ -272,9 +272,10 @@ class MyClient(discord.Client):
 				try:
 					posts=page.split('"clicked": false, "title": "')[1:]
 					[title,author,url] = await getPostInfo(posts[0])#Newest post that has been checked
-					previousPostTitle=title
+					self.previousPostTitle=title
 					for post in posts:
 						[title,author,url] = await getPostInfo(post)
+						title=title.replace('&amp;','&')
 						if author in ['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes']:
 							await channel.send('**'+title+'** by '+author+': '+url)
 							await self.get_channel(643231901452337192).send('`'+title+' by '+author+'`')
@@ -288,7 +289,7 @@ class MyClient(discord.Client):
 		role=channel.guild.get_role(560435022427848705)#UNSORTED
 		rulesChannel=channel.guild.get_channel(634012658625937408)#server-rules
 		while not self.is_closed():
-			await asyncio.sleep(60*60*24)#sleep
+			await asyncio.sleep(60*60*24)#Sleep 24 hours
 			await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted before Blackstorm purges you <:peepoLove:606862963478888449>')
 
 client = MyClient()
