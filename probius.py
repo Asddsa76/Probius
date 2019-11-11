@@ -213,6 +213,7 @@ class MyClient(discord.Client):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		self.previousPostTitle=''
+		self.postedTitles=[]#List of titles already posted. For when someone deletes the newest post on /r/hots
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
@@ -275,10 +276,14 @@ class MyClient(discord.Client):
 					self.previousPostTitle=title
 					for post in posts:
 						[title,author,url] = await getPostInfo(post)
-						title=title.replace('&amp;','&')
-						if author in ['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes']:
-							await channel.send('**'+title+'** by '+author+': '+url)
-							await self.get_channel(643231901452337192).send('`'+title+' by '+author+'`')
+						if author in ['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes', 'ridleyfire','bran76765']:
+							if title not in self.postedTitles:
+								self.postedTitles.append(title)
+								
+								title=title.replace('&amp;','&')
+								await channel.send('**'+title+'** by '+author+': '+url)
+								await self.get_channel(643231901452337192).send('`'+title+' by '+author+'`')
+								print(title+' by '+author)
 				except:
 					pass
 			await asyncio.sleep(60)#Check for new posts every minute
