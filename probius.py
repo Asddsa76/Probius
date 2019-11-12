@@ -224,7 +224,7 @@ class MyClient(discord.Client):
 			posts=page.split('"clicked": false, "title": "')[1:]
 			output=[]
 			for post in posts:
-				[title,author,url] = await getPostInfo(posts[0])#Newest post that has been checked
+				[title,author,url] = await getPostInfo(post)#Newest post that has been checked
 				output.append(title)
 			return output
 
@@ -267,9 +267,9 @@ class MyClient(discord.Client):
 
 	async def bgTaskSubredditForwarding(self):
 		await self.wait_until_ready()
-		channel = self.get_channel(557366982471581718)#general
+		channel = self.get_channel(557366982471581718)#WS general
+		#channel = self.get_channel(604394753722941451)#PT general-2
 		while not self.is_closed():
-			await asyncio.sleep(60)#Check for new posts every minute
 			async with aiohttp.ClientSession() as session:
 				page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')#Screw JSON parsing, I'll do it myself
 				posts=page.split('"clicked": false, "title": "')[1:]
@@ -283,6 +283,7 @@ class MyClient(discord.Client):
 							await channel.send('**'+title+'** by '+author+': '+url)
 							await self.get_channel(643231901452337192).send('`'+title+' by '+author+'`')
 							print(title+' by '+author)
+			await asyncio.sleep(60)#Check for new posts every minute
 
 	async def bgTaskUNSORTED(self):
 		await self.wait_until_ready()
