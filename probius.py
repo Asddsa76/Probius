@@ -212,23 +212,25 @@ async def getPostInfo(post):
 class MyClient(discord.Client):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
-		self.previousPostTitle=''
-		self.postedTitles=[]#List of titles already posted. For when someone deletes the newest post on /r/hots
+		self.seenTitles=[]
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
 
-	async def getPreviousPostTitle(self):
+	async def fillPreviousPostTitles(self):
 		await self.wait_until_ready()
 		async with aiohttp.ClientSession() as session:
 			page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')
 			posts=page.split('"clicked": false, "title": "')[1:]
-			[title,author,url] = await getPostInfo(posts[0])#Newest post that has been checked
-			return title
+			output=[]
+			for post in posts:
+				[title,author,url] = await getPostInfo(posts[0])#Newest post that has been checked
+				output.append(title)
+			return output
 
 	async def on_ready(self):
-		self.previousPostTitle=await self.getPreviousPostTitle()#Gets most recent post. This means Probius won't forwards submissions from the past.
-		print('Logged on as', self.user)						#(Including when he was offline for maintenance)
+		self.seenTitles=await self.fillPreviousPostTitles()		#Fills seenTitles with all current titles
+		print('Logged on as', self.user)
 
 	async def on_message(self, message):
 		#Don't respond to ourselves
@@ -267,26 +269,20 @@ class MyClient(discord.Client):
 		await self.wait_until_ready()
 		channel = self.get_channel(557366982471581718)#general
 		while not self.is_closed():
+			await asyncio.sleep(60)#Check for new posts every minute
 			async with aiohttp.ClientSession() as session:
 				page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')#Screw JSON parsing, I'll do it myself
-				page=page.split('"'+self.previousPostTitle+'"')[0]
-				try:
-					posts=page.split('"clicked": false, "title": "')[1:]
-					[title,author,url] = await getPostInfo(posts[0])#Newest post that has been checked
-					self.previousPostTitle=title
-					for post in posts:
-						[title,author,url] = await getPostInfo(post)
-						if author in ['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes', 'ridleyfire','bran76765']:
-							if title not in self.postedTitles:
-								self.postedTitles.append(title)
-								
-								title=title.replace('&amp;','&')
-								await channel.send('**'+title+'** by '+author+': '+url)
-								await self.get_channel(643231901452337192).send('`'+title+' by '+author+'`')
-								print(title+' by '+author)
-				except:
-					pass
-			await asyncio.sleep(60)#Check for new posts every minute
+				posts=page.split('"clicked": false, "title": "')[1:]
+				for post in posts:
+					[title,author,url] = await getPostInfo(post)
+					if author in ['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes', 'ridleyfire','bran76765']:
+						if title not in self.seenTitles:#This post hasn't been processed before
+							self.seenTitles.append(title)
+
+							title=title.replace('&amp;','&')
+							await channel.send('**'+title+'** by '+author+': '+url)
+							await self.get_channel(643231901452337192).send('`'+title+' by '+author+'`')
+							print(title+' by '+author)
 
 	async def bgTaskUNSORTED(self):
 		await self.wait_until_ready()
