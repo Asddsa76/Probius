@@ -267,16 +267,15 @@ class MyClient(discord.Client):
 
 	async def bgTaskSubredditForwarding(self):
 		await self.wait_until_ready()
-		#channel = self.get_channel(557366982471581718)#WS general
-		channel = self.get_channel(604394753722941451)#PT general-2
+		channel = self.get_channel(557366982471581718)#WS general
+		#channel = self.get_channel(604394753722941451)#PT general-2
 		while not self.is_closed():
+			await asyncio.sleep(60)#Check for new posts every minute
 			async with aiohttp.ClientSession() as session:
 				page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')#Screw JSON parsing, I'll do it myself
 				posts=page.split('"clicked": false, "title": "')[1:]
-				print(self.seenTitles)
 				for post in posts:
 					[title,author,url] = await getPostInfo(post)
-					print(title)
 					if author in ['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes', 'ridleyfire','bran76765']:
 						if title not in self.seenTitles:#This post hasn't been processed before
 							self.seenTitles.append(title)
@@ -285,7 +284,6 @@ class MyClient(discord.Client):
 							await channel.send('**'+title+'** by '+author+': '+url)
 							await self.get_channel(643231901452337192).send('`'+title+' by '+author+'`')
 							print(title+' by '+author)
-			await asyncio.sleep(60)#Check for new posts every minute
 
 	async def bgTaskUNSORTED(self):
 		await self.wait_until_ready()
