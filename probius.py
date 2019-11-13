@@ -25,18 +25,19 @@ from stats import stats
 from draft import *
 
 async def mainProbius(client,message,texts):
+	buildsAliases=['guide','build','b','g','builds','guides']
+	quotesAliases=['quote','q','quotes']
+	rotationAlises=['rotation','rot','r']
+	aliasesAliases=['aliases','names','acronyms','a','n']
+	wikipageAliases=['all','page','wiki']
+	randomAliases=['random','ra','rand']
+	draftAliases=['draft','d','phantomdraft','pd','mockdraft','md']
+	
 	loggingMessage=message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author)+' '*(18-len(str(message.author)))+' '+message.content
 	print(loggingMessage)
 	await client.get_channel(643231901452337192).send('`'+loggingMessage+'`')
 	for text in texts:
 		hero=text[0]
-		buildsAliases=['guide','build','b','g','builds','guides']
-		quotesAliases=['quote','q','quotes']
-		rotationAlises=['rotation','rot','r']
-		aliasesAliases=['aliases','names','acronyms','a','n']
-		wikipageAliases=['all','page','wiki']
-		randomAliases=['random','ra','rand']
-		draftAliases=['draft','d','phantomdraft','pd','mockdraft','md']
 		if hero in ['coin','flip','coinflip','cf']:
 			await message.channel.send(random.choice(['Heads','Tails']))
 			return
