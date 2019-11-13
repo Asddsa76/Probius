@@ -101,6 +101,8 @@ def aliases(hero):
 		return 'Whitemane'
 	elif hero in ['goat','spacegoat']:
 		return 'Yrel'
+	elif hero in ['zerathul']:
+		return 'Zeratul'
 	elif hero in ["zj",'zuljin']:
 		return "Zul'jin"
 
