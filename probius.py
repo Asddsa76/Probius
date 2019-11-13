@@ -22,6 +22,7 @@ from builds import *			#Hero builds
 from rotation import *			#Weekly rotation
 from quotes import *			#Lock-in quotes
 from stats import stats
+from draft import *
 
 async def mainProbius(client,message,texts):
 	loggingMessage=message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author)+' '*(18-len(str(message.author)))+' '+message.content
@@ -35,14 +36,18 @@ async def mainProbius(client,message,texts):
 		aliasesAliases=['aliases','names','acronyms','a','n']
 		wikipageAliases=['all','page','wiki']
 		randomAliases=['random','ra','rand']
-		statsAliases=['stats','scores','leaderboard']
+		draftAliases=['draft','d','phantomdraft','pd','mockdraft','md']
+		if hero in ['coin','flip','coinflip','cf']:
+			await message.channel.send(random.choice(['Heads','Tails']))
+			return
 		if hero == 'avatar':
 			await client.getAvatar(message.channel,text[1])
 			continue
-		if hero in statsAliases:
-			async with message.channel.typing():
-				await stats(message.channel)
-				continue
+		if hero=='':#Empty string. Aliases returns Abathur when given this.
+			continue
+		if hero in draftAliases:
+			await draft(client,message.channel,text)
+			continue
 		if hero in randomAliases:
 			hero=random.choice(getHeroes())
 		if hero in ['help','info']:
@@ -213,6 +218,7 @@ class MyClient(discord.Client):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		self.seenTitles=[]
+		self.drafts={}
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
@@ -254,8 +260,17 @@ class MyClient(discord.Client):
 				await mainProbius(self,after,newTexts)
 
 	async def on_raw_reaction_add(self,payload):
-		if client.get_user(payload.user_id).name=='Asddsa76':
+		member=client.get_user(payload.user_id)
+		if member.name=='Asddsa76':#Reaction copying
 			await (await (client.get_channel(payload.channel_id)).fetch_message(payload.message_id)).add_reaction(payload.emoji)
+
+		if payload.channel_id==643972679132774410:#ZH Mockdrafting-role
+			await client.get_guild(623202246062243861).get_member(payload.user_id).add_roles(client.get_guild(623202246062243861).get_role(643975988023394324))
+
+	async def on_raw_reaction_remove(self,payload):
+		member=client.get_user(payload.user_id)
+		if payload.channel_id==643972679132774410:#ZH Mockdrafting-role
+			await client.get_guild(623202246062243861).get_member(payload.user_id).remove_roles(client.get_guild(623202246062243861).get_role(643975988023394324))
 
 	async def on_member_join(self,member):
 		await welcome(member)
@@ -280,7 +295,7 @@ class MyClient(discord.Client):
 						if title not in self.seenTitles:#This post hasn't been processed before
 							self.seenTitles.append(title)
 
-							title=title.replace('&amp;','&')
+							title=title.replace('&amp;','&').replace('\u2013','-')
 							await channel.send('**'+title+'** by '+author+': '+url)
 							await self.get_channel(643231901452337192).send('`'+title+' by '+author+'`')
 							print(title+' by '+author)

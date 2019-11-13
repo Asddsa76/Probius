@@ -86,3 +86,17 @@ async def printAll(message,keyword):#When someone calls [all/keyword]
 		else:
 			channel=message.channel
 	await printLarge(channel,toPrint)
+
+if __name__ == '__main__':
+	from miscFunctions import *
+	from heroPage import heroAbilitiesAndTalents
+
+	output=[]
+	for hero in getHeroes():
+		[abilities,talents]=heroAbilitiesAndTalents(hero)
+		abilities=extraD(abilities,hero)
+		for ability in abilities:
+			if 'Quest' in ability:
+				output.append(ability.split(':** ')[0])
+	for i in output:
+		print(i)

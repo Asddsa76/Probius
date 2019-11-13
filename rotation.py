@@ -10,7 +10,7 @@ async def rotation(channel):
 		limitedHeroSkinsVariations=[]
 		limitedMounts=[]
 		for line in page:
-			if 'Week of ' in line:
+			if 'Week of ' in line and 'Heroic Deals and Limited-Time Items ' not in line:
 				lineIndex=line.index('Week of ')
 				output='**Free rotation w'+line[lineIndex+1:lineIndex+18]+':** from <https://nexuscompendium.com/>\n'
 			if '<td valign="top" ' in line:
