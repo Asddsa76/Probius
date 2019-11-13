@@ -30,6 +30,8 @@ async def printDraft(client,channel,draftList):#Print state, and the next action
 
 	if len(draftList)==17:
 		output+='Draft complete'
+		if channel.guild.id==623202246062243861:#Hydeout
+			await channel.guild.get_channel(643976359303184404).send(output+'```')#discussion
 	else:
 		nextAction=order[len(draftList)]
 		nextTurnIsTeamB=1
