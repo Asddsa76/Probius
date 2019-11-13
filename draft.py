@@ -76,4 +76,7 @@ async def draft(client,channel,text):
 			await channel.send(aliases(text)+' has already been picked/banned. Choose another!')
 		else:
 			draftList.append(aliases(text))
+			if aliases(text)=='Samuro' and channel.guild.name=='Wind Striders':
+				await channel.send('<:banned:557364849940758528>')#It's sent when Sam is picked as well, not just banned. Too lazy to fix
+
 	await printDraft(client,channel,draftList)
