@@ -1,4 +1,5 @@
 from aliases import *
+from miscFunctions import *
 
 async def printDraft(client,channel,draftList):#Print state, and the next action to be done
 	if channel.id not in client.drafts:
@@ -75,8 +76,15 @@ async def draft(client,channel,text):
 		if aliases(text) in draftList:
 			await channel.send(aliases(text)+' has already been picked/banned. Choose another!')
 		else:
-			draftList.append(aliases(text))
-			if aliases(text)=='Samuro':#Bots can use emojis from all servers the bot is in! :D
-				await channel.send('<:banned:557364849940758528>')#It's sent when Sam is picked as well, not just banned. Too lazy to fix
+			if len(draftList)==0:#Map name doesn't need check
+				draftList.append(text.capitalize())
+			else:
+				hero=aliases(text)
+				if hero in getHeroes():
+					draftList.append(hero)
+					if hero=='Samuro':#Bots can use emojis from all servers the bot is in! :D
+						await channel.send('<:banned:557364849940758528>')#It's sent when Sam is picked as well, not just banned. Too lazy to fix
+				else:
+					await channel.send(text+' is not a valid hero.')
 
 	await printDraft(client,channel,draftList)
