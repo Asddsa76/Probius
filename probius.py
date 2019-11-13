@@ -32,10 +32,15 @@ async def mainProbius(client,message,texts):
 	wikipageAliases=['all','page','wiki']
 	randomAliases=['random','ra','rand']
 	draftAliases=['draft','d','phantomdraft','pd','mockdraft','md']
-	
-	loggingMessage=message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author)+' '*(18-len(str(message.author)))+' '+message.content
-	print(loggingMessage)
-	await client.get_channel(643231901452337192).send('`'+loggingMessage+'`')
+
+	for i in draftAliases: #Don't want to log draft commands because they really spam.
+		if '['+i+'/' in message.content.lower():
+			break
+	else:#The elusive for else control flow
+		loggingMessage=message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author)+' '*(18-len(str(message.author)))+' '+message.content
+		print(loggingMessage)
+		await client.get_channel(643231901452337192).send('`'+loggingMessage+'`')
+
 	for text in texts:
 		hero=text[0]
 		if hero in ['coin','flip','coinflip','cf']:
