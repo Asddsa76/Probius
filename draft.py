@@ -32,14 +32,16 @@ async def printDraft(client,channel,draftList):#Print state, and the next action
 		output+='Draft complete'
 	else:
 		nextAction=order[len(draftList)]
+		nextTurnIsTeamB=1
 		if nextAction.lower()=='a':
 			output+='<---------- '
+			nextTurnIsTeamB=0
 		if nextAction==nextAction.upper():
 			nextAction='BAN for team '+nextAction
 		else:
 			nextAction='Pick for team '+nextAction.upper()
 		output+='Next action: '+nextAction
-		if nextAction.lower()=='b':
+		if nextTurnIsTeamB:
 			output+=' ---------->'
 	await channel.send(output+'```')
 
