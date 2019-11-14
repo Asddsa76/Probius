@@ -46,6 +46,11 @@ async def mainProbius(client,message,texts):
 		if hero in ['coin','flip','coinflip','cf']:
 			await message.channel.send(random.choice(['Heads','Tails']))
 			return
+		if hero=='reddit':
+			output='Recent Reddit posts by Wind Striders members:\n'
+			for i in client.forwardedPosts:
+				output+='**'+i[0]+'** by '+i[1]+': <'+i[2]+'>\n'
+			await message.channel.send(output)
 		if hero == 'avatar':
 			await client.getAvatar(message.channel,text[1])
 			continue
@@ -224,7 +229,11 @@ class MyClient(discord.Client):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		self.seenTitles=[]
+		self.forwardedPosts=[]
 		self.drafts={}
+		self.RedditWS=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle']
+		self.RedditWS+=['slapperoni', 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun']
+		self.RedditWS+=['zanehyde', 'Pelaberus', 'KillMeWithMemes', 'ridleyfire','bran76765','Marvellousbee']
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
@@ -238,6 +247,9 @@ class MyClient(discord.Client):
 			for post in posts:
 				[title,author,url] = await getPostInfo(post)#Newest post that has been checked
 				output.append(title)
+				if author in self.RedditWS:
+					title=title.replace('&amp;','&').replace('\u2013','-')
+					self.forwardedPosts.append([title,author,url])
 			return output
 
 	async def on_ready(self):
@@ -297,11 +309,12 @@ class MyClient(discord.Client):
 				posts=page.split('"clicked": false, "title": "')[1:]
 				for post in posts:
 					[title,author,url] = await getPostInfo(post)
-					if author in ['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes', 'ridleyfire','bran76765','Marvellousbee']:
+					if author in self.RedditWS:
 						if title not in self.seenTitles:#This post hasn't been processed before
 							self.seenTitles.append(title)
 
 							title=title.replace('&amp;','&').replace('\u2013','-')
+							self.forwardedPosts.append([title,author,url])
 							await channel.send('**'+title+'** by '+author+': '+url)
 							await self.get_channel(643231901452337192).send('`'+title+' by '+author+'`')
 							print(title+' by '+author)
