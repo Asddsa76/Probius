@@ -48,9 +48,10 @@ async def mainProbius(client,message,texts):
 			return
 		if hero=='reddit':
 			output='Recent Reddit posts by Wind Striders members:\n'
-			for i in client.forwardedPosts:
+			for i in client.forwardedPosts[::-1]:
 				output+='**'+i[0]+'** by '+i[1]+': <'+i[2]+'>\n'
 			await message.channel.send(output)
+			continue
 		if hero == 'avatar':
 			await client.getAvatar(message.channel,text[1])
 			continue
