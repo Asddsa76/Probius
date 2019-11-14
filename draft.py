@@ -74,17 +74,17 @@ async def draft(client,channel,text):
 		if text[1] in ['help','info']:
 			output='''MOCK DRAFTING GUIDE
 
-			[Draft] will show the current state of the draft.
-			[Flip] will toss a coin that can be used to randomly select who will go for first pick or Map choice after writing your head or tail preference in chat.
+[Draft] will show the current state of the draft.
+[Flip] will toss a coin that can be used to randomly select who will go for first pick or Map choice after writing your head or tail preference in chat.
 
-			[Draft/<Map>] will set the Map at the beginning of the draft.
-			[Draft/<Hero>] will pick or ban a Hero based on the in-game drafting order.
-			[Draft/<Command>] will let you use a Command listed below.
+[Draft/<Map>] will set the Map at the beginning of the draft.
+[Draft/<Hero>] will pick or ban a Hero based on the in-game drafting order.
+[Draft/<Command>] will let you use a Command listed below.
 
-			Commands:
-			- "Help" will show this guide.
-			- "Reset" will reset the draft.
-			- "Undo" will revert the previous input.'''
+Commands:
+- "Help" will show this guide.
+- "Reset" will reset the draft.
+- "Undo" will revert the previous input.'''
 			await channel.send(output)
 			return
 	try:
