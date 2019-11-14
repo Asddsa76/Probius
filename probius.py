@@ -42,9 +42,13 @@ async def mainProbius(client,message,texts):
 
 	for text in texts:
 		hero=text[0]
+		if hero == 'vote':
+			await message.add_reaction('\U0001f44d')
+			await message.add_reaction('\U0001f44e')
+			continue
 		if hero in ['coin','flip','coinflip','cf']:
 			await message.channel.send(random.choice(['Heads','Tails']))
-			return
+			continue
 		if hero=='reddit':
 			output='Recent Reddit posts by Wind Striders members:\n'
 			for i in client.forwardedPosts[::-1]:
