@@ -1,6 +1,25 @@
 from aliases import *
 from miscFunctions import *
 
+def simplifyName(hero):#Shorten all names with 10+ letters, and turn underscores into spaces
+	hero=hero.replace('_',' ')
+	if hero=='The Lost Vikings':
+		return 'TLV'
+	elif hero=='The Butcher':
+		return 'Butcher'
+	elif hero=='Sgt. Hammer':
+		return 'Hammer'
+	elif hero=='Lt. Morales':
+		return 'Morales'
+	elif hero=='Alexstrasza':
+		return 'Alex'
+	elif hero=='Brightwing':
+		return 'BW'
+	elif hero=="Kel'Thuzad":
+		return 'KTZ'
+	else:
+		return hero
+
 async def printDraft(client,channel,draftList):#Print state, and the next action to be done
 	if channel.id not in client.drafts:
 		await channel.send(channel.id+' does not currently have an active draft.')
@@ -14,6 +33,7 @@ async def printDraft(client,channel,draftList):#Print state, and the next action
 	bansA=[]
 	bansB=[]
 	picks=''
+	whitespaceAmount=32
 	for i in range(1,len(draftList)):
 		if order[i]=='A':
 			bansA.append(draftList[i])
@@ -22,12 +42,12 @@ async def printDraft(client,channel,draftList):#Print state, and the next action
 		elif order[i]=='a':
 			picks+=draftList[i]+'\n'
 		elif order[i]=='b':
-			picks+=' '*40+draftList[i]+'\n'
+			picks+=' '*whitespaceAmount+draftList[i]+'\n'
 	output='```Map: '+draftList[0]+'\n\n'
-	output+='Team A'+' '*34+'Team B\n'
-	output+='Bans: '+' '*34+'Bans: \n'
-	output+=', '.join(bansA)+' '*(40-len(', '.join(bansA)))+', '.join(bansB)+'\n'+'-'*50+'\n'
-	output+='Picks:'+' '*34+'Picks:\n'+picks+'\n'
+	output+='Team A'+' '*(whitespaceAmount-6)+'Team B\n'
+	output+='Bans: '+' '*(whitespaceAmount-6)+'Bans: \n'
+	output+=', '.join(bansA)+' '*(whitespaceAmount-len(', '.join(bansA)))+', '.join(bansB)+'\n'+'-'*(whitespaceAmount+15)+'\n'
+	output+='Picks:'+' '*(whitespaceAmount-6)+'Picks:\n'+picks+'\n'
 
 	if len(draftList)==17:
 		output+='Draft complete'
@@ -73,17 +93,17 @@ async def draft(client,channel,text):
 		await printDraft(client,channel,draftList)
 		return
 	if len(draftList)<17:
-		if aliases(text) in draftList:
-			await channel.send(aliases(text)+' has already been picked/banned. Choose another!')
+		if simplifyName(aliases(text)) in draftList:
+			await channel.send(simplifyName(aliases(text))+' has already been picked/banned. Choose another!')
 		else:
 			if len(draftList)==0:#Map name doesn't need check
 				draftList.append(text.capitalize())
 			else:
 				hero=aliases(text)
 				if hero in getHeroes():
-					draftList.append(hero)
-					if hero=='Samuro':#Bots can use emojis from all servers the bot is in! :D
-						await channel.send('<:banned:557364849940758528>')#It's sent when Sam is picked as well, not just banned. Too lazy to fix
+					draftList.append(simplifyName(hero))
+					if hero=='Samuro' and len(draftList) in [2,3,4,5,11,12]:#Numbers are the bans
+						await channel.send('<:banned:557364849940758528>')#Bots can use emojis from all servers the bot is in! :D
 				else:
 					await channel.send(text+' is not a valid hero.')
 

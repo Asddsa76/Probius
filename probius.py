@@ -21,7 +21,6 @@ from getDiscordToken import *	#The token is in an untracked file because this is
 from builds import *			#Hero builds
 from rotation import *			#Weekly rotation
 from quotes import *			#Lock-in quotes
-from stats import stats
 from draft import *
 
 async def mainProbius(client,message,texts):
