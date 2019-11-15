@@ -48,7 +48,7 @@ def printSearch(abilities, talents, name, hero):#Prints abilities and talents wi
 		talentTier=talents[i]
 		for talent in talentTier:
 			if sum([1 for i in namelist if i in talent.lower()])==len(namelist) and exclude not in talent.lower():
-				output+='***'+str(i*3+1+int(i==6)-2*int(hero=='Chromie' and i!=0))+':*** '+talent+'\n'
+				output+=talent+'\n'
 	return output
 
 async def printLarge(channel,inputstring):#Get long string. Print lines out in 2000 character chunks

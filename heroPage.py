@@ -36,11 +36,12 @@ def heroAbilitiesAndTalents(hero):
 
 	talentTiers=talentPage.split('"talent-tier-label">')[1:]
 	newTalentTiers=[]
-	for talentTier in talentTiers:
+	for i in range(7):
 		newTalentTier=[]
-		talents=talentTier.split('"talent-name">')[1:]
+		talents=talentTiers[i].split('"talent-name">')[1:]
 		for talent in talents:
-			newTalent='**'+talent[0:talent.index('<')]+':** '#Name
+			newTalent='***'+str(i*3+1+int(i==6)-2*int(hero=='Chromie' and i!=0))+':*** '#Level
+			newTalent+='**'+talent[0:talent.index('<')]+':** '#Name
 			talent=talent.split('"talent-description">')[1]
 			newTalent+=talent[0:talent.index('<')]+' '#Description
 			newTalentTier.append(newTalent)

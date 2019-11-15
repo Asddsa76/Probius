@@ -141,7 +141,8 @@ async def mainProbius(client,message,texts):
 		if output=='':
 			if tier.isdigit():#Talent tier
 				tier=int(tier)
-				output=printTier(talents,int(tier/3)+int(hero=='Chromie' and tier!=1))#Talents for Chromie come 2 lvls sooner, except lvl 1
+				print(int(tier/3)+int(hero=='Chromie' and tier!=1))
+				output=printTier(talents,int(tier/3)+int(hero=='Chromie' and tier not in [1,18]))#Talents for Chromie come 2 lvls sooner, except lvl 1
 			elif tier in ['mount','z']:
 				output=abilities[-1]#Last ability. It's heroic if the hero has normal mount, but that's an user error
 			elif tier=='extra':
