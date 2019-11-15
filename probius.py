@@ -42,6 +42,13 @@ async def mainProbius(client,message,texts):
 
 	for text in texts:
 		hero=text[0]
+		if hero== 'unsorted' and message.channel.guild.name=='Wind Striders':
+			if 557521663894224912 in [role.id for role in message.author.roles]:#Olympian
+				channel = client.get_channel(557366982471581718)#WSgeneral
+				role=channel.guild.get_role(560435022427848705)#UNSORTED
+				rulesChannel=channel.guild.get_channel(634012658625937408)#server-rules
+				await message.channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted before Blackstorm purges you <:peepoLove:606862963478888449>')
+				continue
 		if hero == 'vote':
 			await message.add_reaction('\U0001f44d')
 			await message.add_reaction('\U0001f44e')
