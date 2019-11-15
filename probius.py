@@ -270,6 +270,8 @@ class MyClient(discord.Client):
 		if '[' in message.content and ']' in message.content:
 			texts=findTexts(message)
 			await mainProbius(self,message,texts)
+		elif '[' in message.content:
+			await mainProbius(self,message,[message.content.split('[')[1].split('/')])
 		
 	async def on_message_edit(self,before, after):
 		if '[' in after.content and ']' in after.content:
