@@ -244,7 +244,7 @@ class MyClient(discord.Client):
 		self.drafts={}
 		self.RedditWS=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle']
 		self.RedditWS+=['slapperoni', 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun']
-		self.RedditWS+=['zanehyde', 'Pelaberus', 'KillMeWithMemes', 'ridleyfire','bran76765','Marvellousbee','Naturage']
+		self.RedditWS+=['zanehyde', 'Pelaberus', 'KillMeWithMemes', 'ridleyfire','bran76765','Marvellousbee','Naturage','derenash']
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
