@@ -148,7 +148,6 @@ async def mainProbius(client,message,texts):
 		if output=='':
 			if tier.isdigit():#Talent tier
 				tier=int(tier)
-				print(int(tier/3)+int(hero=='Chromie' and tier!=1))
 				output=printTier(talents,int(tier/3)+int(hero=='Chromie' and tier not in [1,18]))#Talents for Chromie come 2 lvls sooner, except lvl 1
 			elif tier in ['mount','z']:
 				output=abilities[-1]#Last ability. It's heroic if the hero has normal mount, but that's an user error
@@ -245,7 +244,7 @@ class MyClient(discord.Client):
 		self.drafts={}
 		self.RedditWS=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle']
 		self.RedditWS+=['slapperoni', 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun']
-		self.RedditWS+=['zanehyde', 'Pelaberus', 'KillMeWithMemes', 'ridleyfire','bran76765','Marvellousbee']
+		self.RedditWS+=['zanehyde', 'Pelaberus', 'KillMeWithMemes', 'ridleyfire','bran76765','Marvellousbee','Naturage']
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
