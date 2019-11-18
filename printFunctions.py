@@ -64,8 +64,8 @@ async def printLarge(channel,inputstring):#Get long string. Print lines out in 2
 
 async def printAll(message,keyword):#When someone calls [all/keyword]
 	async with message.channel.typing():
-		if len(keyword)<4:
-			await channel.send('Please use a keyword with at least 4 letters minimum')
+		if len(keyword)<4 and message.author.id!=183240974347141120:
+			await message.channel.send('Please use a keyword with at least 4 letters minimum')
 			return
 		from heroPage import heroAbilitiesAndTalents
 		toPrint=''
