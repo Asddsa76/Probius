@@ -61,7 +61,8 @@ async def emoji(text,channel):
 	if text[0]=='carbot':
 		await carbotSpray(text[1],channel)
 		return
-	animatedEmojis={'chomppet':646174721456472084,'uwucat':646183438722007060,'poggersrow':646183439120334878,'ping':646183439132917760,'hype':646183440441671690,'alexptsd':646186546470584411,'bwlick':646197514202120192,'abahat':646197515342839858}
+	animatedEmojis={'chomppet':646174721456472084,'uwucat':646183438722007060,'poggersrow':646183439120334878,'ping':646183439132917760,'hype':646183440441671690,
+	'alexptsd':646186546470584411,'bwlick':646197514202120192,'abahat':646197515342839858}
 	if text[0] in animatedEmojis:
 		await channel.send('<a:'+text[0]+':'+str(animatedEmojis[text[0]])+'>')
 		return

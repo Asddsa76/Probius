@@ -22,6 +22,7 @@ from builds import *			#Hero builds
 from rotation import *			#Weekly rotation
 from quotes import *			#Lock-in quotes
 from draft import *
+from colours import *
 
 async def mainProbius(client,message,texts):
 	buildsAliases=['guide','build','b','g','builds','guides']
@@ -31,7 +32,7 @@ async def mainProbius(client,message,texts):
 	wikipageAliases=['all','page','wiki']
 	randomAliases=['random','ra','rand']
 	draftAliases=['draft','d','phantomdraft','pd','mockdraft','md']
-
+	colourAliases=['colour','colours','c','colors','color']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -42,6 +43,9 @@ async def mainProbius(client,message,texts):
 
 	for text in texts:
 		hero=text[0]
+		if hero in colourAliases:
+			await colours(message.channel,text)
+			continue
 		if hero=='animated' and message.author.id==183240974347141120:
 			await getEmojis(client,message.channel)#Adding animated emojis myself
 			continue
@@ -245,9 +249,9 @@ class MyClient(discord.Client):
 		self.seenTitles=[]
 		self.forwardedPosts=[]
 		self.drafts={}
-		self.RedditWS=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle']
-		self.RedditWS+=['slapperoni', 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun']
-		self.RedditWS+=['zanehyde', 'Pelaberus', 'KillMeWithMemes', 'ridleyfire','bran76765','Marvellousbee','Naturage','derenash']
+		self.RedditWS=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 
+		'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes', 
+		'ridleyfire','bran76765','Marvellousbee','Naturage','derenash']
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
