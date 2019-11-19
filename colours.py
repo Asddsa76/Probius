@@ -5,6 +5,6 @@ async def colours(channel,text):
 		return
 	colour=text[1]
 	try:
-		await channel.send(file=discord.File('Colours/'+colour+'.png'))
+		await channel.send(file=discord.File('Colours/'+colour+'.PNG'))
 	except:
 		await channel.send(colour.capitalize()+' is not a valid colour.')
