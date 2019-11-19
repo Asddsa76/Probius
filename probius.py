@@ -42,6 +42,9 @@ async def mainProbius(client,message,texts):
 
 	for text in texts:
 		hero=text[0]
+		if hero=='animated' and message.author.id==183240974347141120:
+			await getEmojis(client,message.channel)#Adding animated emojis myself
+			continue
 		if hero== 'unsorted' and message.channel.guild.name=='Wind Striders':
 			if 557521663894224912 in [role.id for role in message.author.roles]:#Olympian
 				channel = client.get_channel(557366982471581718)#WSgeneral
