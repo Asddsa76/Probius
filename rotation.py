@@ -9,10 +9,14 @@ async def rotation(channel):
 		limitedHeroSkins=[]
 		limitedHeroSkinsVariations=[]
 		limitedMounts=[]
+		saleWeek=''
 		for line in page:
-			if 'Week of ' in line and 'Heroic Deals and Limited-Time Items ' not in line:
+			if 'Week of ' in line:
 				lineIndex=line.index('Week of ')
-				output='**Free rotation w'+line[lineIndex+1:lineIndex+18]+':** from <https://nexuscompendium.com/>\n'
+				if 'Heroic Deals and Limited-Time Items ' not in line:
+					output='**Free rotation w'+line[lineIndex+1:lineIndex+18]+':** from <https://nexuscompendium.com/>\n'
+				else:
+					saleWeek='**Heroic Deals and Limited-Time Items w'+line[lineIndex+1:lineIndex+18]+':**\n'
 			if '<td valign="top" ' in line:
 				if len(rotationHeroes)<14 and 'All Heroes' not in rotationHeroes:
 					rotationHeroes.append(line[line.index('title="')+7:line.index('" alt')])
@@ -36,14 +40,18 @@ async def rotation(channel):
 					limitedHeroSkinsVariations[limitedHeroSkins.index(hero)].append(variant)
 			elif '#mounts">' in line:
 				line=line.split('#mounts">')[1]
-				limitedMounts.append(line[:line.index(' - Added')].replace('</a>',''))
+				try:
+					limitedMounts.append(line[:line.index(' - Added')].replace('</a>',''))
+				except:
+					limitedMounts.append(line[:line.index('<ul><li>Added')].replace('</a>',''))
 		if rotationHeroes:
 			output+=', '.join(rotationHeroes[:7])+'\n'
 			output+=', '.join(rotationHeroes[8:])+'\n'
-			output+='**Sales:** '+', '.join([salesHeroes[i]+' '+gemPrices[i]+' Gems' for i in range(len(salesHeroes))])
+			output+=saleWeek
+			output+='**Sales:** '+', '.join([salesHeroes[i]+' '+gemPrices[i]+' Gems' for i in range(len(salesHeroes))])+'\n'
 		if limitedHeroSkins:
-			output+='\n**Limited Hero Skins:** \n '+'\n '.join([limitedHeroSkins[i]+'('+', '.join(limitedHeroSkinsVariations[i])+')' for i in range(len(limitedHeroSkins))])
+			output+='**Limited Hero Skins:** \n '+'\n '.join([limitedHeroSkins[i]+'('+', '.join(limitedHeroSkinsVariations[i])+')' for i in range(len(limitedHeroSkins))])+'\n'
 		if limitedMounts:
-			output+='\n**Limited Mounts:** '
+			output+='**Limited Mounts:** '
 			output+=', '.join(limitedMounts)
 	await channel.send(output)
