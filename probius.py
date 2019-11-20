@@ -338,6 +338,8 @@ class MyClient(discord.Client):
 							await channel.send('**'+title+'** by '+author+': '+url)
 							await self.get_channel(643231901452337192).send('`'+title+' by '+author+'`')
 							print(title+' by '+author)
+							if author=='Gnueless':
+								await rotation(self.get_channel(643231901452337192))
 
 	async def bgTaskUNSORTED(self):
 		await self.wait_until_ready()
