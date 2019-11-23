@@ -43,12 +43,19 @@ async def mainProbius(client,message,texts):
 
 	for text in texts:
 		hero=text[0]
+		if hero==':summon':
+			await message.channel.send('༼ つ ◕_◕ ༽つ')
+			continue
 		if hero in colourAliases:
 			await colours(message.channel,text)
 			continue
-		if hero=='animated' and message.author.id==183240974347141120:
-			await getEmojis(client,message.channel)#Adding animated emojis myself
-			continue
+		if message.author.id==183240974347141120:
+			if hero=='animated':
+				await getEmojis(client,message.channel)#Adding animated emojis myself
+				continue
+			if hero=='serverchannels':
+				await message.channel.send([channel.name for channel in message.channel.guild.channels])
+				continue
 		if hero== 'unsorted' and message.channel.guild.name=='Wind Striders':
 			if 557521663894224912 in [role.id for role in message.author.roles]:#Olympian
 				channel = client.get_channel(557366982471581718)#WSgeneral
@@ -64,7 +71,7 @@ async def mainProbius(client,message,texts):
 			await message.channel.send(random.choice(['Heads','Tails']))
 			continue
 		if hero=='reddit':
-			output='Recent Reddit posts by Wind Striders members:\n'
+			output='Recent Reddit posts by Wind Striders:\n'
 			for i in client.forwardedPosts[::-1]:
 				output+='**'+i[0]+'** by '+i[1]+': <'+i[2]+'>\n'
 			await message.channel.send(output)
@@ -271,8 +278,8 @@ class MyClient(discord.Client):
 			return output
 
 	async def on_ready(self):
-		self.seenTitles=await self.fillPreviousPostTitles()		#Fills seenTitles with all current titles
 		print('Logged on as', self.user)
+		self.seenTitles=await self.fillPreviousPostTitles()		#Fills seenTitles with all current titles
 
 	async def on_message(self, message):
 		#Don't respond to ourselves

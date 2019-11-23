@@ -45,10 +45,12 @@ def addHotkeys(hero,abilities):
 		hotkeys=['D','Q','W','E','R','RQ','R']
 	elif hero=='Fenix':
 		hotkeys=['D','Q','W','W','E','R','R']
-	elif hero in ['Junkrat','Ana']:#2nd heroic has extra button
+	elif hero in ['Ana']:#2nd heroic has extra button
+		hotkeys=['D','Q','W','E','R','R','RQ']
+	elif hero=='Junkrat':
 		hotkeys=['D','Q','W','E','R','R','RQ']
 	elif hero in ['Varian','Nazeebo']:#Varian has 3 heroics, Naz's Garry's stomp is listed under R
-		hotkeys=['D','Q','W','E','R','R','R']
+		hotkeys=['D','Q','W','E','R','RQ','RR','R']
 	elif hero=='Uther':
 		hotkeys=['D','Q','DQ','W','E','R','R']
 	elif hero=='Stitches':
