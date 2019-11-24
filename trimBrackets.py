@@ -18,7 +18,17 @@ def removeColour(page):
 		for i in splitPage[1:]:
 			newPage+=i[i.index('>')+1:]
 		return newPage
-	except:#No colour
+	except:
+		return page
+
+def removeColour2(page):#Some heroes now use this style, some use old
+	try:
+		splitPage=page.split('<font color="')
+		newPage=splitPage[0]
+		for i in splitPage[1:]:
+			newPage+=i[i.index('>')+1:]
+		return newPage
+	except:
 		return page
 
 def italicCooldowns(page):
@@ -44,7 +54,9 @@ def trim(page):
 	page=page.replace('</b>','')
 	page=page.replace('Passive:',' ***Passive:***')#Adds a space to start
 	page=removeColour(page)
+	page=removeColour2(page)
 	page=page.replace('</span>','')
+	page=page.replace('</font>','')
 	page=italicCooldowns(page)
 	page=page.replace('❢','!')
 	page=page.replace("’","'")

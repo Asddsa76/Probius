@@ -10,7 +10,7 @@ def heroAbilitiesAndTalents(hero):
 	except:
 		return [404,404]
 
-	page.replace('!','❢')
+	page=page.replace('!','❢')
 	abilityIndex=page.index('Skills')+8
 	talentIndex=page.index('"Talents"')#Quote marks because Talents are mentioned in Alarak's sadism text
 	abilityPage=page[abilityIndex:talentIndex]

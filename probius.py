@@ -321,7 +321,7 @@ class MyClient(discord.Client):
 		await welcome(member)
 
 	async def getAvatar(self,channel,userMention):
-		userString=userMention[2:-1].replace('!','')
+		userString=userMention.replace('\\','').replace(' ','')[2:-1].replace('!','')#\ to not ping them, space because discord makes one after mention, ! for nitro users with custom
 		user=self.get_user(int(userString))
 		await channel.send(user.avatar_url)
 
