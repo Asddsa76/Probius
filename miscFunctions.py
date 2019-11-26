@@ -38,7 +38,7 @@ def addHotkeys(hero,abilities):
 	elif hero=='The_Lost_Vikings':
 		hotkeys=['D','1','2','3','4','R','R','Z']
 	elif hero=='Gall':
-		hotkeys=['D','Q','W','E','R','R','R','1','Z']
+		hotkeys=['D','Q','W','E','R','RR','R','1','Z']
 	elif hero=='D.Va':
 		hotkeys=['D','D','Q','W','E','E','R','R','Z']
 	elif hero=='Blaze':
@@ -49,22 +49,24 @@ def addHotkeys(hero,abilities):
 		hotkeys=['D','Q','W','E','R','R','RQ']
 	elif hero=='Junkrat':
 		hotkeys=['D','Q','W','E','R','RQ','RR','R']
-	elif hero in ['Varian','Nazeebo']:#Varian has 3 heroics, Naz's Garry's stomp is listed under R
+	elif hero =='Nazeebo':#Varian has 3 heroics, Naz's Garry's stomp is listed under R
+		hotkeys=['D','Q','W','E','R','RR','R']
+	elif hero=='Varian':#Varian has 3 heroics, Naz's Garry's stomp is listed under R
 		hotkeys=['D','Q','W','E','R','R','R']
 	elif hero=='Uther':
 		hotkeys=['D','Q','DQ','W','E','R','R']
 	elif hero=='Stitches':
 		hotkeys=['D','Q','1','W','E','R','R']
 	elif hero=='Lt._Morales':
-		hotkeys=['D','Q','Q','W','E','R','R']
+		hotkeys=['D','Q','QQ','W','E','R','R']
 	elif hero=='Lunara':#Wisp relocate
-		hotkeys=['D','Q','W','E','E','R','R','Z']
+		hotkeys=['D','Q','W','E','EE','R','R','Z']
 	elif hero=='Chen':
 		hotkeys=['D','Q','W','W','E','R','R','RQ','RW','RE']
 	elif hero=='Tychus':
 		hotkeys=['D','Q','RQ','W','RW','E','RE','R','R']
 	elif hero=='Deathwing':
-		hotkeys=['D','1','Q','Q','W','W','W','E','E','R','Z']
+		hotkeys=['D','1','Q','DQ','W','W','DW','E','E','R','Z']
 	elif len(abilities)>6:
 		if hero in ['Medivh','Rehgar','Sgt._Hammer','Probius','Brightwing','Dehaka','Falstad','Lucio']:#Z/Mount
 			hotkeys=['D','Q','W','E','R','R','Z']
