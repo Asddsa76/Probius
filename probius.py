@@ -128,6 +128,9 @@ async def mainProbius(client,message,texts):
 		if hero in ['emoji','emojis','emote','emotes']:
 			await message.channel.send('Emojis: [:hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.')
 			continue
+		#From here it's actual heroes
+		if len(hero)==1:#Patch notes have abilities in []. Don't want spammed triggers again
+			continue
 		hero=aliases(hero)
 		if len(text)==2:#If user switches to hero first, then build/quote
 			if text[1] in buildsAliases:

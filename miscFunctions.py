@@ -63,6 +63,8 @@ def addHotkeys(hero,abilities):
 		hotkeys=['D','Q','W','W','E','R','R','RQ','RW','RE']
 	elif hero=='Tychus':
 		hotkeys=['D','Q','RQ','W','RW','E','RE','R','R']
+	elif hero=='Deathwing':
+		hotkeys=['D','1','Q','Q','W','W','W','E','E','R','Z']
 	elif len(abilities)>6:
 		if hero in ['Medivh','Rehgar','Sgt._Hammer','Probius','Brightwing','Dehaka','Falstad','Lucio']:#Z/Mount
 			hotkeys=['D','Q','W','E','R','R','Z']
@@ -74,6 +76,6 @@ def addHotkeys(hero,abilities):
 		hotkeys=['D','Q','W','E','R','R']#Normal hero
 	i=0
 	for hotkey in hotkeys:
-		abilities[i]='***'+hotkey+':*** '+abilities[i]
+		abilities[i]='**['+hotkey+']** '+abilities[i]
 		i+=1
 	return abilities

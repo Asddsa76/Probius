@@ -3,6 +3,8 @@ from miscFunctions import *
 from urllib.request import urlopen
 from aliases import *
 from sys import argv
+import asyncio
+import aiohttp
 
 def heroAbilitiesAndTalents(hero):
 	try:
@@ -40,7 +42,7 @@ def heroAbilitiesAndTalents(hero):
 		newTalentTier=[]
 		talents=talentTiers[i].split('"talent-name">')[1:]
 		for talent in talents:
-			newTalent='***'+str(i*3+1+int(i==6)-2*int(hero=='Chromie' and i!=0))+':*** '#Level
+			newTalent='**['+str(i*3+1+int(i==6)-2*int(hero=='Chromie' and i!=0))+']** '#Level
 			newTalent+='**'+talent[0:talent.index('<')]+':** '#Name
 			talent=talent.split('"talent-description">')[1]
 			newTalent+=talent[0:talent.index('<')]+' '#Description
@@ -51,7 +53,7 @@ def heroAbilitiesAndTalents(hero):
 	talents=newTalentTiers
 	return [abilities,talents]
 
-def downloadHero():
+def oldDownloadHero():
 	hero=argv[1]
 	if hero=='all':
 		heroes=getHeroes()
@@ -73,5 +75,38 @@ def downloadHero():
 		with open('HeroPages/'+hero.capitalize()+'.html','w+b') as f:
 			f.write(page.encode())
 
+async def fetch(session, url):
+	async with session.get(url) as response:
+		return await response.text()
+
+async def downloadHero(hero):
+	print(hero)
+	async with aiohttp.ClientSession() as session:
+		page = await fetch(session, 'https://heroesofthestorm.gamepedia.com/index.php?title=Data:'+hero)
+		page=''.join([i for i in page])
+		page=trim(page)
+		abilityIndex=page.index('Skills')+8
+		endIndex=page.index('NewPP')
+		try:
+			endIndex=page.index('Scaling at key levels')
+		except:
+			pass
+		page=page[abilityIndex:endIndex]
+
+		with open('HeroPages/'+hero.capitalize()+'.html','w+b') as f:
+			f.write(page.encode())
+
+async def loopFunction(heroes):
+	for future in asyncio.as_completed(map(downloadHero, heroes)):
+		await future
+
 if __name__=='__main__':
-	downloadHero()
+	hero=argv[1]
+	if hero=='all':
+		heroes=getHeroes()
+	else:
+		heroes=[aliases(hero)]
+
+	loop = asyncio.get_event_loop()
+	loop.run_until_complete(loopFunction(heroes))
+	loop.close()

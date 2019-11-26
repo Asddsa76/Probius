@@ -23,7 +23,9 @@ def aliases(hero):
 		return 'Cassia'
 	elif hero in ['dibbles']:
 		return 'Diablo'
-	elif hero in ['dva','gremlin','deathwing','dw']:#Showdown at Hanamura cinematic, never forget
+	elif hero in ['dw','destroyer','neltharion']:
+		return 'Deathwing'
+	elif hero in ['dva','gremlin']:#Showdown at Hanamura cinematic, never forget
 		return 'D.Va'
 	elif hero in ['etc']:
 		return 'E.T.C.'
