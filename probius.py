@@ -269,7 +269,7 @@ class MyClient(discord.Client):
 	async def fillPreviousPostTitles(self):
 		await self.wait_until_ready()
 		async with aiohttp.ClientSession() as session:
-			page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')
+			page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api?limit=100&sort=new')
 			posts=page.split('"clicked": false, "title": "')[1:]
 			output=[]
 			for post in posts:
