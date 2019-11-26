@@ -335,21 +335,24 @@ class MyClient(discord.Client):
 		while not self.is_closed():
 			await asyncio.sleep(60)#Check for new posts every minute
 			async with aiohttp.ClientSession() as session:
-				page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')#Screw JSON parsing, I'll do it myself
-				posts=page.split('"clicked": false, "title": "')[1:]
-				for post in posts:
-					[title,author,url] = await getPostInfo(post)
-					if author in self.RedditWS:
-						if title not in self.seenTitles:#This post hasn't been processed before
-							self.seenTitles.append(title)
-
-							title=title.replace('&amp;','&').replace('\u2013','-')
-							self.forwardedPosts.append([title,author,url])
-							await channel.send('**'+title+'** by '+author+': '+url)
-							await self.get_channel(643231901452337192).send('`'+title+' by '+author+'`')
-							print(title+' by '+author)
-							if author=='Gnueless':
-								await rotation(self.get_channel(643231901452337192))
+				try:
+					page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')#Screw JSON parsing, I'll do it myself
+					posts=page.split('"clicked": false, "title": "')[1:]
+					for post in posts:
+						[title,author,url] = await getPostInfo(post)
+						if author in self.RedditWS:
+							if title not in self.seenTitles:#This post hasn't been processed before
+								self.seenTitles.append(title)
+								title=title.replace('&amp;','&').replace('\u2013','-')
+								self.forwardedPosts.append([title,author,url])
+								await channel.send('**'+title+'** by '+author+': '+url)
+								await self.get_channel(643231901452337192).send('`'+title+' by '+author+'`')#log
+								print(title+' by '+author)
+								if author=='Gnueless':
+									await rotation(channel)
+				except:
+					await self.get_channel(643231901452337192).send('Something went wrong with subreddit forwarding')
+					print('Something went wrong with subreddit forwarding')
 
 	async def bgTaskUNSORTED(self):
 		await self.wait_until_ready()
