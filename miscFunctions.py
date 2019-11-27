@@ -70,7 +70,7 @@ def addHotkeys(hero,abilities):
 	elif len(abilities)>6:
 		if hero in ['Medivh','Rehgar','Sgt._Hammer','Probius','Brightwing','Dehaka','Falstad','Lucio']:#Z/Mount
 			hotkeys=['D','Q','W','E','R','R','Z']
-		elif hero in ['Zeratul','Gazlowe','Nova','Whitemane']:#Wiki lists their extra last
+		elif hero in ['Zeratul','Gazlowe','Nova','Whitemane',"Kel'Thuzad"]:#Wiki lists their extra last
 			hotkeys=['D','Q','W','E','R','R','1']
 		else:
 			hotkeys=['D','1','Q','W','E','R','R']#Extra button
