@@ -33,6 +33,7 @@ async def mainProbius(client,message,texts):
 	randomAliases=['random','ra','rand']
 	draftAliases=['draft','d','phantomdraft','pd','mockdraft','md']
 	colourAliases=['colour','colours','c','colors','color']
+	heroStatsAliases=['stats','info']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -138,6 +139,9 @@ async def mainProbius(client,message,texts):
 				continue
 			if text[1] in quotesAliases and text[1]!='q':
 				await message.channel.send(getQuote(hero))
+				continue
+			if text[1] in heroStatsAliases:
+				await heroStats(hero,message.channel)
 				continue
 
 		[abilities,talents]=heroAbilitiesAndTalents(hero)
@@ -309,8 +313,16 @@ class MyClient(discord.Client):
 
 	async def on_raw_reaction_add(self,payload):
 		member=client.get_user(payload.user_id)
+		message=await client.get_channel(payload.channel_id).fetch_message(payload.message_id)
+		if message.author.id==603924594956435491 and str(payload.emoji)=='👎':#Message is from Probius, and is downvoted with thumbs down
+			output=member.name+' deleted a message from Probius'
+			print(output)
+			await client.get_channel(643231901452337192).send('`'+output+'`')
+			await message.delete()
+			return
+
 		if member.name=='Asddsa76':#Reaction copying
-			await (await (client.get_channel(payload.channel_id)).fetch_message(payload.message_id)).add_reaction(payload.emoji)
+			await message.add_reaction(payload.emoji)
 
 		if payload.channel_id==643972679132774410:#ZH Mockdrafting-role
 			await client.get_guild(623202246062243861).get_member(payload.user_id).add_roles(client.get_guild(623202246062243861).get_role(643975988023394324))

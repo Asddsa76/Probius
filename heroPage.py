@@ -88,3 +88,21 @@ if __name__=='__main__':
 	loop = asyncio.get_event_loop()
 	loop.run_until_complete(loopFunction(heroes))
 	loop.close()
+
+def heroStatsPrettify(i):
+	i=i.replace('attack','aa').replace('unit ','').replace('health','hp')
+	return '**'+i.capitalize()+'**: '
+
+async def heroStats(hero,channel):
+	async with aiohttp.ClientSession() as session:
+		page = await fetch(session, 'https://heroesofthestorm.gamepedia.com/index.php?title=Data:'+hero)
+		page=''.join([i for i in page])
+		page=page.split('<td><code>skills</code>')[0]
+
+		output=[]
+		usefulStats=['date', 'health', 'resource', 'attack speed', 'attack range', 'attack damage', 'unit radius']
+		for i in usefulStats:
+			page=page.split('<td>'+i+'\n')[1]
+			page=page[page.index('<td>')+4:]
+			output.append(heroStatsPrettify(i)+str(page[:page.index('</td>')]).replace('\n',''))
+		await channel.send(', '.join(output))
