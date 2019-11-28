@@ -10,6 +10,11 @@ async def guide(hero,channel):
 				authorAndLink=i.split('; ')[1]
 				[author,link]=authorAndLink.split(': ')
 				output+=author+': <'+link.replace('\n','')+'>\n'
+	
+	if hero in ['Macro']:#Guides for not heroes, with no Elitesparkle builds
+		await channel.send(output)
+		return
+
 	with open('elitesparkleBuilds.txt','r') as f:
 		for i in f:
 			if hero.lower().replace('_','-').replace('.','').replace("'","") in i:

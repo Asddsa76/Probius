@@ -22,7 +22,6 @@ from builds import *			#Hero builds
 from rotation import *			#Weekly rotation
 from quotes import *			#Lock-in quotes
 from draft import *
-from colours import *
 
 async def mainProbius(client,message,texts):
 	buildsAliases=['guide','build','b','g','builds','guides']
@@ -48,7 +47,7 @@ async def mainProbius(client,message,texts):
 			await message.channel.send('༼ つ ◕_◕ ༽つ')
 			continue
 		if hero in colourAliases:
-			await colours(message.channel,text)
+			await message.channel.send(file=discord.File('WS colours.png'))
 			continue
 		if message.author.id==183240974347141120:
 			if hero=='animated':
@@ -265,7 +264,7 @@ class MyClient(discord.Client):
 		self.drafts={}
 		self.RedditWS=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 
 		'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes', 
-		'ridleyfire','bran76765','Marvellousbee','Naturage','derenash']
+		'ridleyfire','bran76765','Marvellousbee','Naturage','derenash','Riokaii']
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
