@@ -33,6 +33,7 @@ async def mainProbius(client,message,texts):
 	draftAliases=['draft','d','phantomdraft','pd','mockdraft','md']
 	colourAliases=['colour','colours','c','colors','color']
 	heroStatsAliases=['stats','info']
+	pokedexAliases=['pokedex','main','mains']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -43,6 +44,9 @@ async def mainProbius(client,message,texts):
 
 	for text in texts:
 		hero=text[0]
+		if hero in pokedexAliases:
+			await pokedex(client,message.channel,aliases(text[1]))
+			continue
 		if hero==':summon':
 			await message.channel.send('༼ つ ◕_◕ ༽つ')
 			continue
@@ -70,7 +74,7 @@ async def mainProbius(client,message,texts):
 		if hero in ['coin','flip','coinflip','cf']:
 			await message.channel.send(random.choice(['Heads','Tails']))
 			continue
-		if hero=='reddit':
+		if hero in ['reddit','re']:
 			output='Recent Reddit posts by Wind Striders:\n'
 			for i in client.forwardedPosts[::-1]:
 				output+='**'+i[0]+'** by '+i[1]+': <'+i[2]+'>\n'
@@ -227,6 +231,20 @@ async def mainProbius(client,message,texts):
 						await message.channel.send("Error: exceeded Discord's 2000 character limit. Be more specific")
 					print('2000 limit')
 
+async def pokedex(client,channel,hero):
+	pokedex=client.pokedex
+	if hero=='Test':
+		for hero in getHeroes():
+			if hero.replace('_',' ') not in pokedex:
+				print(hero.replace('_',' '))
+		return
+	if hero not in getHeroes():
+		await channel.send('No hero "'+hero+'"')
+		return
+	hero=hero.replace('_',' ')
+	mains=pokedex.split(hero)[1].split('\n')[0]
+	await channel.send(hero+' discussion!'+mains)
+
 async def welcome(member):
 	guild=member.guild
 	if guild.name=='Wind Striders':
@@ -262,12 +280,17 @@ class MyClient(discord.Client):
 		self.seenTitles=[]
 		self.forwardedPosts=[]
 		self.drafts={}
+		self.pokedex=''
 		self.RedditWS=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 
 		'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes', 
-		'ridleyfire','bran76765','Marvellousbee','Naturage','derenash','Riokaii']
+		'ridleyfire','bran76765','MarvellousBee','Naturage','derenash','Riokaii']
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
+
+	async def fillPokedex(self):
+		pokedexChannel=client.get_channel(597140352411107328)
+		self.pokedex=((await pokedexChannel.fetch_message(597433561112641536)).content+'\n'+(await pokedexChannel.fetch_message(620339772833136640)).content+'\n').replace(':','')
 
 	async def fillPreviousPostTitles(self):
 		await self.wait_until_ready()
@@ -286,6 +309,7 @@ class MyClient(discord.Client):
 	async def on_ready(self):
 		print('Logged on as', self.user)
 		self.seenTitles=await self.fillPreviousPostTitles()		#Fills seenTitles with all current titles
+		await self.fillPokedex()
 
 	async def on_message(self, message):
 		#Don't respond to ourselves

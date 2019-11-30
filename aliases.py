@@ -65,6 +65,8 @@ def aliases(hero):
 		return 'Li-Ming'
 	elif hero in ['medic','ltmorales']:
 		return 'Lt._Morales'
+	elif hero in ['dj','lucio']:
+		return 'Lúcio'
 	elif hero in ['deer','bambi','33elk']:
 		return 'Lunara'
 	elif hero in ['malganis','mg']:
