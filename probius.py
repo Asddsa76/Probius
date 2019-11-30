@@ -33,7 +33,7 @@ async def mainProbius(client,message,texts):
 	draftAliases=['draft','d','phantomdraft','pd','mockdraft','md']
 	colourAliases=['colour','colours','c','colors','color']
 	heroStatsAliases=['stats','info']
-	pokedexAliases=['pokedex','main','mains']
+	pokedexAliases=['pokedex','main','mains','p','m']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -318,6 +318,8 @@ class MyClient(discord.Client):
 		ignoredUsers=['Rick Astley','PogChamp',"Swann's Helper"]
 		if message.author.name in ignoredUsers:
 			return
+		if [1 for i in ['bw','bright','wing'] if i in message.content.lower()]:
+			await message.channel.send('<@310942502117048335>')
 		if '[' in message.content and ']' in message.content:
 			texts=findTexts(message)
 			await mainProbius(self,message,texts)
