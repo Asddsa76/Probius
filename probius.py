@@ -318,7 +318,7 @@ class MyClient(discord.Client):
 		ignoredUsers=['Rick Astley','PogChamp',"Swann's Helper"]
 		if message.author.name in ignoredUsers:
 			return
-		if [1 for i in ['bw','bright','wing'] if i in message.content.lower()]:
+		if [1 for i in ['bw','bright','wing'] if i in message.content.lower()] and message.channel.guild.id==535256944106012694:
 			await message.channel.send('<@310942502117048335>')
 		if '[' in message.content and ']' in message.content:
 			texts=findTexts(message)
