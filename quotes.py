@@ -5,7 +5,7 @@ from miscFunctions import getHeroes
 def getQuote(hero):
 	with open('quotes.txt','r') as f:
 		for line in f:
-			if hero in line:
+			if hero.replace('ú','u') in line:
 				return '**'+hero.replace('_',' ')+':** '+line[line.index('; ')+2:]
 
 def downloadQuotes():
