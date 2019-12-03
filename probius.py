@@ -78,7 +78,7 @@ async def mainProbius(client,message,texts):
 			output='Recent Reddit posts by Wind Striders:\n'
 			for i in client.forwardedPosts[::-1]:
 				output+='**'+i[0]+'** by '+i[1]+': <'+i[2]+'>\n'
-			await message.channel.send(output)
+			await printLarge(message.channel,output)
 			continue
 		if hero == 'avatar':
 			await client.getAvatar(message.channel,text[1])
@@ -283,7 +283,7 @@ class MyClient(discord.Client):
 		self.pokedex=''
 		self.RedditWS=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 
 		'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes', 
-		'ridleyfire','bran76765','MarvellousBee','Naturage','derenash','Riokaii','D0ctorLogan','Demon_Ryu']
+		'ridleyfire','bran76765','MarvellousBee','Naturage','derenash','Riokaii','D0ctorLogan','Demon_Ryu','hellobgs']
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
