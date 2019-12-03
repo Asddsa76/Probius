@@ -283,7 +283,7 @@ class MyClient(discord.Client):
 		self.pokedex=''
 		self.RedditWS=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 
 		'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes', 
-		'ridleyfire','bran76765','MarvellousBee','Naturage','derenash','Riokaii','D0ctorLogan','Demon_Ryu','hellobgs']
+		'ridleyfire','bran76765','MarvellousBee','Naturage','derenash','Riokaii','D0ctorLogan','Demon_Ryu','hellobgs','Beg_For_Mercy']
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
@@ -378,7 +378,7 @@ class MyClient(discord.Client):
 						if author in self.RedditWS:
 							if title not in self.seenTitles:#This post hasn't been processed before
 								self.seenTitles.append(title)
-								title=title.replace('&amp;','&').replace('\u2013','-')
+								title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','')
 								self.forwardedPosts.append([title,author,url])
 								await channel.send('**'+title+'** by '+author+': '+url)
 								await self.get_channel(643231901452337192).send('`'+title+' by '+author+'`')#log

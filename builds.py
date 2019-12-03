@@ -11,16 +11,15 @@ async def guide(hero,channel):
 				[author,link]=authorAndLink.split(': ')
 				output+=author+': <'+link.replace('\n','')+'>\n'
 	
-	if hero in ['Macro']:#Guides for not heroes, with no Elitesparkle builds
-		await channel.send(output)
-		return
-
 	with open('elitesparkleBuilds.txt','r') as f:
 		for i in f:
 			if hero.lower().replace('_','-').replace('.','').replace("'","") in i:
 				await channel.send(output+'Elitesparkle: <'+i[:-1]+'>')#<> prevents thumbnails. [:-1] removes the \n at end of i
 				return
-	await channel.send('No hero "'+hero+'"')
+		if output:
+			await channel.send(output)
+		else:
+			await channel.send('No hero "'+hero+'"')
 
 def updateBuilds():
 	page=[i.strip().decode('utf-8') for i in urlopen('https://elitesparkle.wixsite.com/hots-builds') if "var warmupData = {" in i.strip().decode('utf-8')][0]
