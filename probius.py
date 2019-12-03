@@ -283,7 +283,7 @@ class MyClient(discord.Client):
 		self.pokedex=''
 		self.RedditWS=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 
 		'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes', 
-		'ridleyfire','bran76765','MarvellousBee','Naturage','derenash','Riokaii','D0ctorLogan']
+		'ridleyfire','bran76765','MarvellousBee','Naturage','derenash','Riokaii','D0ctorLogan','Demon_Ryu']
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
@@ -318,8 +318,6 @@ class MyClient(discord.Client):
 		ignoredUsers=['Rick Astley','PogChamp',"Swann's Helper"]
 		if message.author.name in ignoredUsers:
 			return
-		if [1 for i in ['bw','bright','wing'] if i in message.content.lower()] and message.channel.guild.id==535256944106012694:
-			await message.channel.send('<@310942502117048335>')
 		if '[' in message.content and ']' in message.content:
 			texts=findTexts(message)
 			await mainProbius(self,message,texts)
