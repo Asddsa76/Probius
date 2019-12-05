@@ -72,8 +72,12 @@ async def mainProbius(client,message,texts):
 			await message.channel.send(random.choice(['Heads','Tails']))
 			continue
 		if hero in ['reddit','re']:
+			if len(text)==2:
+				cutoff=-int(text[1])
+			else:
+				cutoff=0
 			output='Recent Reddit posts by Wind Striders:\n'
-			for i in client.forwardedPosts[::-1]:
+			for i in client.forwardedPosts[cutoff:]:
 				output+='**'+i[0]+'** by '+i[1]+': <'+i[2]+'>\n'
 			await printLarge(message.channel,output)
 			continue
@@ -302,6 +306,7 @@ class MyClient(discord.Client):
 				if author in self.RedditWS:
 					title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','')
 					self.forwardedPosts.append([title,author,url])
+			self.forwardedPosts=self.forwardedPosts[::-1]
 			return output
 
 	async def on_ready(self):

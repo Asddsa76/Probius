@@ -55,12 +55,12 @@ async def carbotSpray(hero,channel):
 			await channel.send(file=discord.File(data, 'cool_image'+imageFormat))
 
 async def emoji(client,text,channel):
-	text[0]=text[0].replace(':','')
+	text[0]=text[0].replace(':','').replace('~1','')
 	if text[0]=='carbot':
 		await carbotSpray(text[1],channel)
 		return
 	if text[0]=='proxy':
-		await channel.send(''.join([i[1] for i in client.proxyEmojis.items()]))
+		await channel.send('Use these proxied emojis with [:emojiName]\n'+''.join([i[1] for i in client.proxyEmojis.items()]))
 		return
 	if text[0] in client.proxyEmojis:
 		await channel.send(client.proxyEmojis[text[0]])
