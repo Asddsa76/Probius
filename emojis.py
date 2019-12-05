@@ -7,13 +7,11 @@ import discord
 import io
 import aiohttp
 
-async def getEmojis(client,channel):
-	guild=client.get_guild(603924426769170433)
-	output=''
+def getProxyEmojis(guild):#From PythonTest guild
+	proxyEmojis={}
 	for emoji in guild.emojis:
-		print(','+"'"+emoji.name+"'"+':'+str(emoji.id))
-		output+='<a:'+emoji.name+':'+str(emoji.id)+'>'
-	await channel.send(output)
+		proxyEmojis[emoji.name]='<'+'a'*emoji.animated+':'+emoji.name+':'+str(emoji.id)+'>'
+	return proxyEmojis
 
 async def sendEmoji(file,channel):
 	try:
@@ -56,15 +54,16 @@ async def carbotSpray(hero,channel):
 			data = io.BytesIO(await resp.read())
 			await channel.send(file=discord.File(data, 'cool_image'+imageFormat))
 
-async def emoji(text,channel):
+async def emoji(client,text,channel):
 	text[0]=text[0].replace(':','')
 	if text[0]=='carbot':
 		await carbotSpray(text[1],channel)
 		return
-	animatedEmojis={'chomppet':646174721456472084,'uwucat':646183438722007060,'poggersrow':646183439120334878,'ping':646183439132917760,'hype':646183440441671690,
-	'alexptsd':646186546470584411,'bwlick':646197514202120192,'abahat':646197515342839858}
-	if text[0] in animatedEmojis:
-		await channel.send('<a:'+text[0]+':'+str(animatedEmojis[text[0]])+'>')
+	if text[0]=='proxy':
+		await channel.send(''.join([i[1] for i in client.proxyEmojis.items()]))
+		return
+	if text[0] in client.proxyEmojis:
+		await channel.send(client.proxyEmojis[text[0]])
 		return
 
 	if len(text)==2:

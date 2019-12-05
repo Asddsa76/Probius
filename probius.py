@@ -54,9 +54,6 @@ async def mainProbius(client,message,texts):
 			await message.channel.send(file=discord.File('WS colours.png'))
 			continue
 		if message.author.id==183240974347141120:
-			if hero=='animated':
-				await getEmojis(client,message.channel)#Adding animated emojis myself
-				continue
 			if hero=='serverchannels':
 				await message.channel.send([channel.name for channel in message.channel.guild.channels])
 				continue
@@ -103,13 +100,13 @@ async def mainProbius(client,message,texts):
 			await rotation(message.channel)
 			continue
 		if hero=='good bot':
-			await emoji(['Probius','love'],message.channel)
+			await emoji(client,['Probius','love'],message.channel)
 			continue
 		if hero=='bad bot':
-			await emoji(['Probius','sad'],message.channel)
+			await emoji(client,['Probius','sad'],message.channel)
 			continue
 		if ':' in hero:
-			await emoji(text,message.channel)
+			await emoji(client,text,message.channel)
 			continue
 		if ']' in hero:
 			continue
@@ -215,7 +212,7 @@ async def mainProbius(client,message,texts):
 			except:
 				if output=='':
 					try:#If no results, it's probably an emoji with : forgotten. Prefer to call with : to avoid loading abilities and talents page
-						await emoji([hero,tier],message.channel)
+						await emoji(client,[hero,tier],message.channel)
 						continue
 					except:
 						pass
@@ -280,6 +277,7 @@ class MyClient(discord.Client):
 		self.seenTitles=[]
 		self.forwardedPosts=[]
 		self.drafts={}
+		self.proxyEmojis={}
 		self.pokedex=''
 		self.RedditWS=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 
 		'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes', 
@@ -302,13 +300,14 @@ class MyClient(discord.Client):
 				[title,author,url] = await getPostInfo(post)#Newest post that has been checked
 				output.append(title)
 				if author in self.RedditWS:
-					title=title.replace('&amp;','&').replace('\u2013','-')
+					title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','')
 					self.forwardedPosts.append([title,author,url])
 			return output
 
 	async def on_ready(self):
 		print('Logged on as', self.user)
 		self.seenTitles=await self.fillPreviousPostTitles()		#Fills seenTitles with all current titles
+		self.proxyEmojis=getProxyEmojis(client.get_guild(603924426769170433))
 		await self.fillPokedex()
 
 	async def on_message(self, message):
