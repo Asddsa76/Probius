@@ -22,6 +22,7 @@ from builds import *			#Hero builds
 from rotation import *			#Weekly rotation
 from quotes import *			#Lock-in quotes
 from draft import *
+from pokedex import *
 
 async def mainProbius(client,message,texts):
 	buildsAliases=['guide','build','b','g','builds','guides']
@@ -232,20 +233,6 @@ async def mainProbius(client,message,texts):
 						await message.channel.send("Error: exceeded Discord's 2000 character limit. Be more specific")
 					print('2000 limit')
 
-async def pokedex(client,channel,hero):
-	pokedex=client.pokedex
-	if hero=='Test':
-		for hero in getHeroes():
-			if hero.replace('_',' ') not in pokedex:
-				print(hero.replace('_',' '))
-		return
-	if hero not in getHeroes():
-		await channel.send('No hero "'+hero+'"')
-		return
-	hero=hero.replace('_',' ')
-	mains=pokedex.split(hero)[1].split('\n')[0]
-	await channel.send(hero+' discussion!'+mains)
-
 async def welcome(member):
 	guild=member.guild
 	if guild.name=='Wind Striders':
@@ -312,7 +299,7 @@ class MyClient(discord.Client):
 	async def on_ready(self):
 		print('Logged on as', self.user)
 		self.seenTitles=await self.fillPreviousPostTitles()		#Fills seenTitles with all current titles
-		self.proxyEmojis=getProxyEmojis(client.get_guild(603924426769170433))
+		self.proxyEmojis=await getProxyEmojis(client.get_guild(603924426769170433))
 		await self.fillPokedex()
 
 	async def on_message(self, message):
@@ -340,12 +327,21 @@ class MyClient(discord.Client):
 
 	async def on_raw_reaction_add(self,payload):
 		member=client.get_user(payload.user_id)
+		if member.id==603924594956435491:#Probius did reaction
+			return
+
 		message=await client.get_channel(payload.channel_id).fetch_message(payload.message_id)
 		if message.author.id==603924594956435491 and str(payload.emoji)=='👎':#Message is from Probius, and is downvoted with thumbs down
 			output=member.name+' deleted a message from Probius'
 			print(output)
 			await client.get_channel(643231901452337192).send('`'+output+'`')
 			await message.delete()
+			return
+		elif message.author.id==603924594956435491 and 'React to ping' in message.content:#Message from Probius, pings Pokedex:
+			output=member.name+' started a balance discussion'
+			print(output)
+			await client.get_channel(643231901452337192).send('`'+output+'`')
+			await pingPokedex(self,message,member)
 			return
 
 		if member.name=='Asddsa76':#Reaction copying

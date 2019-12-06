@@ -7,7 +7,7 @@ import discord
 import io
 import aiohttp
 
-def getProxyEmojis(guild):#From PythonTest guild
+async def getProxyEmojis(guild):#From PythonTest guild
 	proxyEmojis={}
 	for emoji in guild.emojis:
 		proxyEmojis[emoji.name]='<'+'a'*emoji.animated+':'+emoji.name+':'+str(emoji.id)+'>'
