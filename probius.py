@@ -111,7 +111,7 @@ async def mainProbius(client,message,texts):
 			await emoji(client,['Probius','sad'],message.channel)
 			continue
 		if ':' in hero:
-			await emoji(client,text,message.channel)
+			await emoji(client,text,message.channel,message)
 			continue
 		if ']' in hero:
 			continue

@@ -7,6 +7,10 @@ import discord
 import io
 import aiohttp
 
+async def proxyReact(client,text,message):
+	await (await message.channel.fetch_message(int(text[1]))).add_reaction(client.proxyEmojis[text[0]])
+	await message.delete()
+
 async def getProxyEmojis(guild):#From PythonTest guild
 	proxyEmojis={}
 	for emoji in guild.emojis:
@@ -54,7 +58,7 @@ async def carbotSpray(hero,channel):
 			data = io.BytesIO(await resp.read())
 			await channel.send(file=discord.File(data, 'cool_image'+imageFormat))
 
-async def emoji(client,text,channel):
+async def emoji(client,text,channel,message='NONE'):
 	text[0]=text[0].replace(':','').replace('~1','')
 	if text[0]=='carbot':
 		await carbotSpray(text[1],channel)
@@ -63,7 +67,10 @@ async def emoji(client,text,channel):
 		await channel.send('Use these proxied emojis with [:emojiName]\n'+''.join([i[1] for i in client.proxyEmojis.items()]))
 		return
 	if text[0] in client.proxyEmojis:
-		await channel.send(client.proxyEmojis[text[0]])
+		if len(text)==2:
+			await proxyReact(client,text,message)
+		else:
+			await channel.send(client.proxyEmojis[text[0]])
 		return
 
 	if len(text)==2:
