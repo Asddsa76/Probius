@@ -21,11 +21,12 @@ async def pokedex(client,channel,hero):
 	await message.add_reaction('\U0001f44d')
 
 async def pingPokedex(client,message,member):
+	vowels='AEIOU'
 	if 'Balance team' in message.content:
-		await message.channel.send(member.mention+' wants to start a '+message.content.split('We ')[0]+'<@&577935915448795137>')
+		await message.channel.send(member.mention+' wants to start a'+'n'*(message.content[0] in vowels)+' '+message.content.split('We ')[0]+'<@&577935915448795137>')
 	else:
 		pokedex=client.pokedex
 		hero=message.content.split(' discussion!')[0]
 		mains=pokedex.split(hero)[1].split('\n')[0]
-		await message.channel.send(member.mention+' wants to start a '+message.content.split('Our ')[0]+mains)
+		await message.channel.send(member.mention+' wants to start a'+'n'*(message.content[0] in vowels)+' '+message.content.split('Our ')[0]+mains)
 	await message.delete()
