@@ -64,7 +64,8 @@ async def emoji(client,text,channel,message='NONE'):
 		await carbotSpray(text[1],channel)
 		return
 	if text[0]=='proxy':
-		await channel.send('Use these proxied emojis with [:emojiName]\n'+''.join([i[1] for i in client.proxyEmojis.items()]))
+		await channel.send('Use these proxied emojis with [:emojiName]')
+		await channel.send(''.join([i[1] for i in client.proxyEmojis.items()]))
 		return
 	if text[0] in client.proxyEmojis:
 		if len(text)==2:
