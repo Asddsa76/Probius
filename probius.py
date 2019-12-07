@@ -269,17 +269,12 @@ class MyClient(discord.Client):
 		self.forwardedPosts=[]
 		self.drafts={}
 		self.proxyEmojis={}
-		self.pokedex=''
 		self.RedditWS=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 
 		'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes', 
 		'ridleyfire','bran76765','MarvellousBee','Naturage','derenash','Riokaii','D0ctorLogan','Demon_Ryu','hellobgs','Beg_For_Mercy']
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
-
-	async def fillPokedex(self):
-		pokedexChannel=client.get_channel(597140352411107328)
-		self.pokedex=((await pokedexChannel.fetch_message(597433561112641536)).content+'\n'+(await pokedexChannel.fetch_message(620339772833136640)).content+'\n').replace(':','')
 
 	async def fillPreviousPostTitles(self):
 		await self.wait_until_ready()
@@ -300,7 +295,6 @@ class MyClient(discord.Client):
 		print('Logged on as', self.user)
 		self.seenTitles=await self.fillPreviousPostTitles()		#Fills seenTitles with all current titles
 		self.proxyEmojis=await getProxyEmojis(client.get_guild(603924426769170433))
-		await self.fillPokedex()
 
 	async def on_message(self, message):
 		#Don't respond to ourselves
