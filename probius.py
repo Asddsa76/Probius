@@ -336,8 +336,7 @@ class MyClient(discord.Client):
 		#channel = self.get_channel(604394753722941451)#PT general-2
 		while not self.is_closed():
 			await asyncio.sleep(60)#Check for new posts every minute
-			async with aiohttp.ClientSession() as session:
-				await redditForwarding(self)
+			await redditForwarding(self)
 
 	async def bgTaskUNSORTED(self):
 		await self.wait_until_ready()

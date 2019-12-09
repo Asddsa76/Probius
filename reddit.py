@@ -38,25 +38,26 @@ async def fillPreviousPostTitles(client):#Called on startup
 
 async def redditForwarding(client):#Called every 60 seconds
 	#try:
-	page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')#Screw JSON parsing, I'll do it myclient
-	posts=page.split('"clicked": false, "title": "')[1:]
-	for post in posts:
-		[title,author,url] = await getPostInfo(post)
-		if author in redditors or 'genji' in title.lower():
-			if title not in client.seenTitles:#This post hasn't been processed before
-				client.seenTitles.append(title)
-				title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','')
-				client.forwardedPosts.append([title,author,url])
-				if 'genji' in title.lower():
-					await client.get_channel(568058278165348362).send('**'+title+'** <@183240974347141120><@247677408386351105>'+url)#Normie heroes
-				else:
-					if author in discordnames:
-						author=discordnames[author]
-					await client.get_channel(557366982471581718).send('**'+title+'** by '+author+': '+url)#General
-				await client.get_channel(643231901452337192).send('`'+title+' by '+author+'`')#log
-				print(title+' by '+author)
-				if author=='Gnueless':
-					await rotation(channel)
+	async with aiohttp.ClientSession() as session:
+		page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')#Screw JSON parsing, I'll do it myclient
+		posts=page.split('"clicked": false, "title": "')[1:]
+		for post in posts:
+			[title,author,url] = await getPostInfo(post)
+			if author in redditors or 'genji' in title.lower():
+				if title not in client.seenTitles:#This post hasn't been processed before
+					client.seenTitles.append(title)
+					title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','')
+					client.forwardedPosts.append([title,author,url])
+					if 'genji' in title.lower():
+						await client.get_channel(568058278165348362).send('**'+title+'** <@183240974347141120><@247677408386351105>'+url)#Normie heroes
+					else:
+						if author in discordnames:
+							author=discordnames[author]
+						await client.get_channel(557366982471581718).send('**'+title+'** by '+author+': '+url)#General
+					await client.get_channel(643231901452337192).send('`'+title+' by '+author+'`')#log
+					print(title+' by '+author)
+					if author=='Gnueless':
+						await rotation(channel)
 	'''except:
 		await client.get_channel(643231901452337192).send('Something went wrong with subreddit forwarding')
 		print('Something went wrong with subreddit forwarding')'''
