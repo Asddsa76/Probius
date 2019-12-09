@@ -78,9 +78,12 @@ async def mainProbius(client,message,texts):
 				cutoff=-int(text[1])
 			else:
 				cutoff=0
-			output='Recent Reddit posts by Wind Striders:\n'
+			output='Recent Reddit posts:\n'
 			for i in client.forwardedPosts[cutoff:]:
-				output+='**'+i[0]+'** by '+i[1]+': <'+i[2]+'>\n'
+				author=i[1]
+				if author in discordnames:
+						author=discordnames[author]
+				output+='**'+i[0]+'** by '+author+': <'+i[2]+'>\n'
 			await printLarge(message.channel,output)
 			continue
 		if hero == 'avatar':
