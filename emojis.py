@@ -65,7 +65,8 @@ async def emoji(client,text,channel,message='NONE'):
 		return
 	if text[0]=='proxy':
 		await channel.send('Use these proxied emojis with [:emojiName]')
-		await channel.send(''.join([i[1] for i in client.proxyEmojis.items()]))
+		hiddenEmojis=['wheeze','volumeup']
+		await channel.send(''.join([i[1] for i in client.proxyEmojis.items() if i[1].split(':')[1] not in hiddenEmojis]))
 		return
 	if text[0] in client.proxyEmojis:
 		if len(text)==2:
