@@ -23,6 +23,7 @@ from rotation import *			#Weekly rotation
 from quotes import *			#Lock-in quotes
 from draft import *
 from pokedex import *
+from reddit import *
 
 async def mainProbius(client,message,texts):
 	buildsAliases=['guide','build','b','g','builds','guides']
@@ -249,19 +250,6 @@ def findTexts(message):
 	texts=[text[leftBrackets[i]:rightBrackets[i]].split('/') for i in range(len(leftBrackets))]
 	return texts
 
-async def fetch(session, url):
-	async with session.get(url) as response:
-		return await response.text()
-
-async def getPostInfo(post):
-	title=post.split('", "')[0]
-	post=post.split('"author": "')[1]
-	author=post.split('"')[0]
-	post=post.split('"permalink": "')[1]
-	shortUrl=post.split('"')[0]
-	url='https://old.reddit.com'+shortUrl
-	return [title,author,url]
-
 class MyClient(discord.Client):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
@@ -269,31 +257,13 @@ class MyClient(discord.Client):
 		self.forwardedPosts=[]
 		self.drafts={}
 		self.proxyEmojis={}
-		self.RedditWS=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 
-		'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes', 
-		'ridleyfire','bran76765','MarvellousBee','Naturage','derenash','Riokaii','D0ctorLogan','Demon_Ryu','hellobgs','Beg_For_Mercy']
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
 
-	async def fillPreviousPostTitles(self):
-		await self.wait_until_ready()
-		async with aiohttp.ClientSession() as session:
-			page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api?limit=100&sort=new')
-			posts=page.split('"clicked": false, "title": "')[1:]
-			output=[]
-			for post in posts:
-				[title,author,url] = await getPostInfo(post)#Newest post that has been checked
-				output.append(title)
-				if author in self.RedditWS:
-					title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','')
-					self.forwardedPosts.append([title,author,url])
-			self.forwardedPosts=self.forwardedPosts[::-1]
-			return output
-
 	async def on_ready(self):
 		print('Logged on as', self.user)
-		self.seenTitles=await self.fillPreviousPostTitles()		#Fills seenTitles with all current titles
+		self.seenTitles=await fillPreviousPostTitles(self)#Fills seenTitles with all current titles
 		self.proxyEmojis=await getProxyEmojis(client.get_guild(603924426769170433))
 
 	async def on_message(self, message):
@@ -364,24 +334,7 @@ class MyClient(discord.Client):
 		while not self.is_closed():
 			await asyncio.sleep(60)#Check for new posts every minute
 			async with aiohttp.ClientSession() as session:
-				try:
-					page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')#Screw JSON parsing, I'll do it myself
-					posts=page.split('"clicked": false, "title": "')[1:]
-					for post in posts:
-						[title,author,url] = await getPostInfo(post)
-						if author in self.RedditWS:
-							if title not in self.seenTitles:#This post hasn't been processed before
-								self.seenTitles.append(title)
-								title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','')
-								self.forwardedPosts.append([title,author,url])
-								await channel.send('**'+title+'** by '+author+': '+url)
-								await self.get_channel(643231901452337192).send('`'+title+' by '+author+'`')#log
-								print(title+' by '+author)
-								if author=='Gnueless':
-									await rotation(channel)
-				except:
-					await self.get_channel(643231901452337192).send('Something went wrong with subreddit forwarding')
-					print('Something went wrong with subreddit forwarding')
+				await redditForwarding(self)
 
 	async def bgTaskUNSORTED(self):
 		await self.wait_until_ready()
