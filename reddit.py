@@ -51,7 +51,7 @@ async def redditForwarding(client):#Called every 60 seconds
 						title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','')
 						client.forwardedPosts.append([title,author,url])
 						if 'genji' in title.lower():
-							await client.get_channel(568058278165348362).send('**'+title+'** <@183240974347141120><@247677408386351105>'+url)#Normie heroes
+							await client.get_channel(568058278165348362).send('**'+title+'** <@183240974347141120> <@247677408386351105>'+url)#Normie heroes
 						elif 'samuro' in title.lower():
 							await client.get_channel(564528564196605973).send('**'+title+'** <@329447886465138689>'+url)#Samuro-general
 						else:

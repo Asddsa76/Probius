@@ -244,6 +244,7 @@ async def welcome(member):
 		channel=guild.get_channel(557366982471581718)#general
 		rulesChannel=guild.get_channel(634012658625937408)#server-rules
 		await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted <:peepoLove:606862963478888449>')
+		await message.channel.send(file=discord.File('WS colours.png'))
 		await member.add_roles(guild.get_role(560435022427848705))#UNSORTED role
 
 def findTexts(message):
