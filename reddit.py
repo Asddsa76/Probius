@@ -41,7 +41,7 @@ async def fillPreviousPostTitles(client):#Called on startup
 async def redditForwarding(client):#Called every 60 seconds
 	try:
 		async with aiohttp.ClientSession() as session:
-			page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')#Screw JSON parsing, I'll do it myclient
+			page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')
 			posts=page.split('"clicked": false, "title": "')[1:]
 			for post in posts:
 				[title,author,url] = await getPostInfo(post)
