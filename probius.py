@@ -334,7 +334,6 @@ class MyClient(discord.Client):
 	async def bgTaskSubredditForwarding(self):
 		await self.wait_until_ready()
 		channel = self.get_channel(557366982471581718)#WS general
-		#channel = self.get_channel(604394753722941451)#PT general-2
 		while not self.is_closed():
 			await asyncio.sleep(60)#Check for new posts every minute
 			await redditForwarding(self)
