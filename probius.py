@@ -4,12 +4,12 @@
 #Data is pulled from HotS wiki
 #Project started on 14/9-2019
 
-import discord
 import asyncio
 import io
 import aiohttp
 import re
 import random
+import discord
 
 from aliases import *			#Spellcheck and alternate names for heroes
 from trimBrackets import *		#Trims < from text

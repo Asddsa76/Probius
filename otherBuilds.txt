@@ -16,7 +16,7 @@ Muradin; ZaneHyde: https://heroeshearth.com/builds/zanehyde/haymaker-is-garbage-
 Blaze; ZaneHyde: https://heroeshearth.com/builds/zanehyde/professor-pyromanias-pyromancy-101/
 The_Lost_Vikings; Loquen: https://www.youtube.com/watch?v=q4acsbUrkec
 Tracer; SamiSha: https://us.forums.blizzard.com/en/heroes/t/guide-tracer-the-cavalrys-here/12936
-Valeera; MBee: https://psionic-storm.com/en/builds/valeera-24054/
+Valeera; MBee: https://docs.google.com/document/d/1_gG6NCLItBLe8ZMni7hPxJH56xZ0rXUFPvXygO6UR4o/
 Uther; ZaneHyde: https://hots.heroeshearth.com/builds/zanehyde/beall-endall-main-tank-uther-guide/
 Junkrat; Mochrie: https://hots.heroeshearth.com/builds/Mochrie/mochries-postrework-junkrat-build-patch-248/
 Samuro; Ricardo's trick list: https://docs.google.com/document/d/1-RT-UkyKBiuTS4U4eXLLvlJzC2HgzzJSlNF6xecw5WA/
@@ -25,3 +25,4 @@ Map; Riokaii's Cursed Hollow: https://www.youtube.com/watch?v=HpGITmRrj-E
 Map; ZaneHyde's Volskaya Foundry: https://hots.heroeshearth.com/b/zanehyde/read/macro-primer-volskaya-foundry-5de55ca3e9d86/
 Map; ZaneHyde's Dragon Shire: https://hots.heroeshearth.com/b/zanehyde/read/storm-league-104-macro-amp-how-to-play-shire-5da5eb7d234fd/
 Map; ZaneHyde's Tomb of the Spider Queen: https://heroeshearth.com/b/zanehyde/read/macro-primer-tomb-of-the-spider-queen-5de89b7ee69eb/
+Valeera; HailFall: https://psionic-storm.com/en/builds/valeera-24218/
