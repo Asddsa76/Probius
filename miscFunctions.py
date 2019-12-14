@@ -84,3 +84,13 @@ def addHotkeys(hero,abilities):
 		abilities[i]='**['+hotkey+']** '+abilities[i]
 		i+=1
 	return abilities
+
+async def roll(text,message):
+	if len(text)==1:
+		n=6
+	else:
+		n=int(text[1])
+	from random import randint
+	from random import seed
+	seed()
+	await message.channel.send(str(randint(1,n)))

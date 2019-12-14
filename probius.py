@@ -24,6 +24,7 @@ from quotes import *			#Lock-in quotes
 from draft import *
 from pokedex import *
 from reddit import *
+from sorting import *
 
 async def mainProbius(client,message,texts):
 	buildsAliases=['guide','build','b','g','builds','guides']
@@ -46,6 +47,12 @@ async def mainProbius(client,message,texts):
 
 	for text in texts:
 		hero=text[0]
+		if hero=='roll':
+			await roll(text,message)
+			continue
+		if hero=='sort':
+			await sort(text[1],message,client)
+			continue
 		if hero in pokedexAliases:
 			await pokedex(client,message.channel,aliases(text[1]))
 			continue
