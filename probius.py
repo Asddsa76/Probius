@@ -282,6 +282,8 @@ class MyClient(discord.Client):
 			await mainProbius(self,message,texts)
 		elif '[' in message.content:
 			await mainProbius(self,message,[message.content.split('[')[1].lower().split('/')])
+			if message.content[0]=='[':
+				await message.delete()
 		
 	async def on_message_edit(self,before, after):
 		if '[' in after.content and ']' in after.content:
