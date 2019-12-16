@@ -79,11 +79,10 @@ async def loopFunction(heroes):
 		await future
 
 if __name__=='__main__':
-	hero=argv[1]
-	if hero=='all':
+	if len(argv)==1:
 		heroes=getHeroes()
 	else:
-		heroes=[aliases(hero)]
+		heroes=[aliases(argv[1])]
 
 	loop = asyncio.get_event_loop()
 	loop.run_until_complete(loopFunction(heroes))

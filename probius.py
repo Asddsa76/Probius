@@ -57,7 +57,10 @@ async def mainProbius(client,message,texts):
 			await pokedex(client,message.channel,aliases(text[1]))
 			continue
 		if hero==':summon':
-			await message.channel.send('༼ つ ◕_◕ ༽つ')
+			if len(text)==1:
+				await message.channel.send('༼ つ ◕\\_◕ ༽つ')
+			else:
+				await message.channel.send('༼ つ ◕\_◕ ༽つ ༼ つ ◕\_◕ ༽つ'+' Summon '+text[1]+'! ༼ つ ◕\_◕ ༽つ ༼ つ ◕\_◕ ༽つ')
 			continue
 		if hero in colourAliases:
 			await message.channel.send(file=discord.File('WS colours.png'))
