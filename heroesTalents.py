@@ -7,7 +7,6 @@ import asyncio
 import aiohttp
 import nest_asyncio
 nest_asyncio.apply()
-
 def trimForHeroesTalents(hero):
 	hero=hero.replace('The','').lower()
 	remove=".' -_"
@@ -16,14 +15,24 @@ def trimForHeroesTalents(hero):
 	hero=hero.replace('butcher','thebutcher').replace('ú','u').replace('cho','chogall')
 	return hero
 
+async def descriptionFortmatting(description):
+	if 'Repeatable Quest' in description:
+		description=description.replace('Repeatable Quest:','\n    **❢ Repeatable Quest:**')
+	else:
+		description=description.replace('Quest:','\n    **❢ Quest:**')
+	description=description.replace('Reward:','\n    **? Reward:**')
+	return description
+
 async def fetch(session, url):
 	async with session.get(url) as response:
 		return await response.text()
 
 async def downloadHero(hero,client,patch):
 	async with aiohttp.ClientSession() as session:
-		#page = await fetch(session, 'https://raw.githubusercontent.com/heroespatchnotes/heroes-talents/master/hero/'+hero+'.json')
-		page = await fetch(session, 'https://raw.githubusercontent.com/MGatner/heroes-talents/2.49.1.77662/hero/'+hero+'.json')
+		if patch=='':
+			page = await fetch(session, 'https://raw.githubusercontent.com/heroespatchnotes/heroes-talents/master/hero/'+hero+'.json')
+		else:
+			page = await fetch(session, 'https://raw.githubusercontent.com/MGatner/heroes-talents/'+patch+'/hero/'+hero+'.json')
 		#client.heroPages={...'genji':[abilities,talents], ...}
 		#newTalent='**['+str(i*3+1+int(i==6)-2*int(hero=='Chromie' and i!=0))+']** '#Level
 		#Quest: ❢
@@ -38,18 +47,20 @@ async def downloadHero(hero,client,patch):
 				output+=ability['name']+':** '
 				if 'cooldown' in ability:
 					output+='*'+str(ability['cooldown'])+' seconds;* '
-				output+=ability['description']
+				output+=await descriptionFortmatting(ability['description'])
 				abilities.append(output)
 
 		talents=[]
-		for tier in page['talents']:
+		keys=sorted(list(page['talents'].keys()),key=lambda x:int(x))
+		for key in keys:
+			tier=page['talents'][key]
 			talentTier=[]
-			for talent in page['talents'][tier]:
-				output=output='**['+str(tier)+'] '
+			for talent in tier:
+				output='**['+key+'] '
 				output+=talent['name']+':** '
 				if 'cooldown' in talent:
 					output+='*'+str(talent['cooldown'])+' seconds;* '
-				output+=talent['description']
+				output+=await descriptionFortmatting(talent['description'])
 				talentTier.append(output)
 			talents.append(talentTier)
 		client.heroPages[aliases(hero)]=(abilities,talents)
@@ -58,7 +69,11 @@ async def loopFunction(client,heroes,patch):
 	for future in asyncio.as_completed(map(downloadHero, heroes,repeat(client),repeat(patch))):
 		await future
 
-async def downloadAll(client,patch=''):
+async def downloadAll(client,argv):
+	if len(argv)==2:
+		patch=argv[1]
+	else:
+		patch=''
 	heroes=getHeroes()
 	heroes=list(map(trimForHeroesTalents,heroes))
 	loop = asyncio.get_event_loop()#running instead of event when calling from a coroutine. But running is for python3.7+

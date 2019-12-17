@@ -62,7 +62,7 @@ async def redditForwarding(client):#Called every 60 seconds
 						await client.get_channel(643231901452337192).send('`'+title+' by '+author+'`')#log
 						print(title+' by '+author)
 						if author=='Gnueless':
-							await rotation(channel)
+							await rotation(client.get_channel(557366982471581718))
 	except:
 		await client.get_channel(643231901452337192).send('Something went wrong with subreddit forwarding')
 		print('Something went wrong with subreddit forwarding')

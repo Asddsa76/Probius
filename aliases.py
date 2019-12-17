@@ -39,6 +39,8 @@ def aliases(hero):
 		return 'Greymane'
 	elif hero in ['besthero','madamada','weaboo','ineedhealing','weeb']:
 		return 'Genji'
+	elif hero in ['cg','chogall']:
+		return 'Cho'
 	elif hero in ['guldan','gd']:
 		return "Gul'dan"
 	elif hero in ['bowgenji']:

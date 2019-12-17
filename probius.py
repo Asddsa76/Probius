@@ -10,10 +10,11 @@ import aiohttp
 import re
 import random
 import discord
+from sys import argv#Where to get the JSONs
 
 from aliases import *			#Spellcheck and alternate names for heroes
 from printFunctions import *	#The functions that output the things to print
-from heroesTalents import *			#The function that imports the hero pages
+from heroesTalents import *		#The function that imports the hero pages
 from emojis import *			#Emojis
 from miscFunctions import*		#Edge cases and help message
 from getDiscordToken import *	#The token is in an untracked file because this is a public Github repo
@@ -67,10 +68,6 @@ async def mainProbius(client,message,texts):
 		if message.author.id==183240974347141120:
 			if hero=='serverchannels':
 				await message.channel.send([channel.name for channel in message.channel.guild.channels])
-				continue
-			if hero=='update':
-				client.heroPages={}
-				await downloadAll(client,text[1])
 				continue
 		if hero== 'unsorted' and message.channel.guild.name=='Wind Striders':
 			if 557521663894224912 in [role.id for role in message.author.roles]:#Olympian
@@ -146,12 +143,12 @@ async def mainProbius(client,message,texts):
 			await message.channel.send('All hero alternate names: <https://github.com/Asddsa76/Probius/blob/master/aliases.py>')
 			continue
 		if hero == 'all':
-			await printAll(message,text[1])
+			await printAll(client,message,text[1])
 			continue
 		if hero in ['emoji','emojis','emote','emotes']:
 			await message.channel.send('Emojis: [:hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.')
 			continue
-		#From here it's actual heroes
+		#From here it's actual heroes, or a search
 		if len(hero)==1 or (len(hero)==2 and ('1' in hero or '2' in hero)):#Patch notes have abilities in []. Don't want spammed triggers again. Numbers for R1, R2, etc.
 			continue
 		hero=aliases(hero)
@@ -165,11 +162,11 @@ async def mainProbius(client,message,texts):
 			if text[1] in heroStatsAliases:
 				await heroStats(hero,message.channel)
 				continue
-
-		(abilities,talents)=client.heroPages[hero]
-		if abilities==404:
+		try:
+			(abilities,talents)=client.heroPages[hero]
+		except:
 			try:#If no results, then "hero" isn't a hero
-				await printAll(message,text[0])
+				await printAll(client,message,text[0])
 			except:
 				pass
 			continue
@@ -283,7 +280,7 @@ class MyClient(discord.Client):
 		print('Filling up with Reddit posts...')
 		self.seenTitles=await fillPreviousPostTitles(self)#Fills seenTitles with all current titles
 		print('Downloading heroes...')
-		await downloadAll(self)
+		await downloadAll(self,argv)
 		print('Fetching proxy emojis...')
 		self.proxyEmojis=await getProxyEmojis(client.get_guild(603924426769170433))
 		print('Ready!')

@@ -62,16 +62,14 @@ async def printLarge(channel,inputstring):#Get long string. Print lines out in 2
 			output=strings.pop(0)
 	await channel.send(output)
 
-async def printAll(message,keyword):#When someone calls [all/keyword]
+async def printAll(client,message,keyword):#When someone calls [all/keyword]
 	async with message.channel.typing():
 		if len(keyword)<4 and message.author.id!=183240974347141120:
 			await message.channel.send('Please use a keyword with at least 4 letters minimum')
 			return
-		from heroPage import heroAbilitiesAndTalents
 		toPrint=''
 		for hero in getHeroes():
-			[abilities,talents]=heroAbilitiesAndTalents(hero)
-			abilities=extraD(abilities,hero)
+			(abilities,talents)=client.heroPages[hero]
 			output=printSearch(abilities,talents,keyword,hero)
 			if output=='':
 				continue
