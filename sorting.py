@@ -24,6 +24,8 @@ async def sort(text,message,client):
 		return
 	rolesToAdd=[]
 	for role in text:
+		role='platinum' if role=='plat' else role
+		role='diamond' if role=='dia' else role
 		for i in guild.roles:
 			if (i<bestBot and i>IM) or (i<bots and i>unsorted):
 				if i.name.lower().replace(' ','').replace('#','')==role.lower().replace(' ','').replace('#',''):

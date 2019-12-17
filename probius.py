@@ -12,9 +12,8 @@ import random
 import discord
 
 from aliases import *			#Spellcheck and alternate names for heroes
-from trimBrackets import *		#Trims < from text
 from printFunctions import *	#The functions that output the things to print
-from heroPage import *			#The function that imports the hero pages
+from heroesTalents import *			#The function that imports the hero pages
 from emojis import *			#Emojis
 from miscFunctions import*		#Edge cases and help message
 from getDiscordToken import *	#The token is in an untracked file because this is a public Github repo
@@ -68,6 +67,10 @@ async def mainProbius(client,message,texts):
 		if message.author.id==183240974347141120:
 			if hero=='serverchannels':
 				await message.channel.send([channel.name for channel in message.channel.guild.channels])
+				continue
+			if hero=='update':
+				client.heroPages={}
+				await downloadAll(client,text[1])
 				continue
 		if hero== 'unsorted' and message.channel.guild.name=='Wind Striders':
 			if 557521663894224912 in [role.id for role in message.author.roles]:#Olympian
@@ -149,7 +152,7 @@ async def mainProbius(client,message,texts):
 			await message.channel.send('Emojis: [:hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.')
 			continue
 		#From here it's actual heroes
-		if len(hero)==1:#Patch notes have abilities in []. Don't want spammed triggers again
+		if len(hero)<3:#Patch notes have abilities in []. Don't want spammed triggers again
 			continue
 		hero=aliases(hero)
 		if len(text)==2:#If user switches to hero first, then build/quote
@@ -163,8 +166,7 @@ async def mainProbius(client,message,texts):
 				await heroStats(hero,message.channel)
 				continue
 
-		[abilities,talents]=heroAbilitiesAndTalents(hero)
-		abilities=extraD(abilities,hero)
+		(abilities,talents)=client.heroPages[hero]
 		if abilities==404:
 			try:#If no results, then "hero" isn't a hero
 				await printAll(message,text[0])
@@ -274,11 +276,17 @@ class MyClient(discord.Client):
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
+		self.heroPages={}
 
 	async def on_ready(self):
 		print('Logged on as', self.user)
+		print('Filling up with Reddit posts...')
 		self.seenTitles=await fillPreviousPostTitles(self)#Fills seenTitles with all current titles
+		print('Downloading heroes...')
+		await downloadAll(self)
+		print('Fetching proxy emojis...')
 		self.proxyEmojis=await getProxyEmojis(client.get_guild(603924426769170433))
+		print('Ready!')
 
 	async def on_message(self, message):
 		#Don't respond to ourselves

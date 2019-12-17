@@ -25,7 +25,7 @@ def printTier(talents,tier):#Print a talent tier
 def printAbility(abilities,hotkey):#Prints abilities with matching hotkey
 	output=''
 	for ability in abilities:
-		if '**['+hotkey.upper()+']**' in ability:
+		if '**['+hotkey.upper()+']' in ability:
 			output+=ability+'\n'
 	return output
 
