@@ -35,22 +35,20 @@ async def downloadHero(hero,client,patch):
 					output='**['+ability['hotkey']+'] '
 				else:
 					output='**[D] '
-				output+=ability['name']+':**'
+				output+=ability['name']+':** '
 				if 'cooldown' in ability:
-					output+=' *'+str(ability['cooldown'])+' seconds;* '
+					output+='*'+str(ability['cooldown'])+' seconds;* '
 				output+=ability['description']
 				abilities.append(output)
-				if hero=='greymane':
-					print(ability['name'])
 
 		talents=[]
 		for tier in page['talents']:
 			talentTier=[]
 			for talent in page['talents'][tier]:
 				output=output='**['+str(tier)+'] '
-				output+=talent['name']+':**'
+				output+=talent['name']+':** '
 				if 'cooldown' in talent:
-					output+=' *'+str(talent['cooldown'])+' seconds;* '
+					output+='*'+str(talent['cooldown'])+' seconds;* '
 				output+=talent['description']
 				talentTier.append(output)
 			talents.append(talentTier)
@@ -63,7 +61,7 @@ async def loopFunction(client,heroes,patch):
 async def downloadAll(client,patch=''):
 	heroes=getHeroes()
 	heroes=list(map(trimForHeroesTalents,heroes))
-	loop = asyncio.get_running_loop()#running instead of event when calling from a coroutine
+	loop = asyncio.get_event_loop()#running instead of event when calling from a coroutine. But running is for python3.7+
 	loop.run_until_complete(loopFunction(client,heroes,patch))
 
 async def heroStats(hero,channel):
