@@ -34,8 +34,7 @@ async def downloadHero(hero,client,patch):
 		else:
 			page = await fetch(session, 'https://raw.githubusercontent.com/MGatner/heroes-talents/'+patch+'/hero/'+hero+'.json')
 		#client.heroPages={...'genji':[abilities,talents], ...}
-		#newTalent='**['+str(i*3+1+int(i==6)-2*int(hero=='Chromie' and i!=0))+']** '#Level
-		#Quest: ❢
+		#newTalent='**['+str(i*3+1+int(i==6)-2*int(hero=='Chromie' and i!=0))+']** 
 		page=loads(page)
 		abilities=[]
 		for i in page['abilities'].keys():
@@ -56,7 +55,7 @@ async def downloadHero(hero,client,patch):
 			tier=page['talents'][key]
 			talentTier=[]
 			for talent in tier:
-				output='**['+key+'] '
+				output='**['+str(int(key)-2*int(hero=='chromie' and key!='1'))+'] '
 				output+=talent['name']+':** '
 				if 'cooldown' in talent:
 					output+='*'+str(talent['cooldown'])+' seconds;* '
