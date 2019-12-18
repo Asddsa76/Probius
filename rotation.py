@@ -10,6 +10,8 @@ async def rotation(channel):
 		limitedHeroSkinsVariations=[]
 		limitedMounts=[]
 		saleWeek=''
+		skinsLimited=''
+		mountsLimited=''
 		for line in page:
 			if 'Week of ' in line:
 				lineIndex=line.index('Week of ')
@@ -25,7 +27,11 @@ async def rotation(channel):
 					gemPrices.append(line[line.index('Gems: ')+6:line.index('Gems: ')+9])
 			elif '#skins">' in line:
 				line=line.split('#skins">')[1]
-				line=line[:line.index('<ul><li>Added')].replace('</a>','')
+				if '<ul><li>Added' in line:
+					line=line[:line.index('<ul><li>Added')].replace('</a>','')
+					skinsLimited='Limited '
+				else:
+					line=line[:line.index('</a></li>')]
 
 				if '(' in line:
 					[hero,variant]=line.split('(')
@@ -41,17 +47,18 @@ async def rotation(channel):
 			elif '#mounts">' in line:
 				line=line.split('#mounts">')[1]
 				try:
-					limitedMounts.append(line[:line.index(' - Added')].replace('</a>',''))
-				except:
 					limitedMounts.append(line[:line.index('<ul><li>Added')].replace('</a>',''))
+					mountsLimited='Limited '
+				except:
+					limitedMounts.append(line[:line.index('</a></li>')])
 		if rotationHeroes:
 			output+=', '.join(rotationHeroes[:7])+'\n'
 			output+=', '.join(rotationHeroes[8:])+'\n'
 			output+=saleWeek
 			output+='**Sales:** '+', '.join([salesHeroes[i]+' '+gemPrices[i]+' Gems' for i in range(len(salesHeroes))])+'\n'
 		if limitedHeroSkins:
-			output+='**Limited Hero Skins:** \n '+'\n '.join([limitedHeroSkins[i]+'('+', '.join(limitedHeroSkinsVariations[i])+')' for i in range(len(limitedHeroSkins))])+'\n'
+			output+='**'+skinsLimited+'Hero Skins:** \n '+'\n '.join([limitedHeroSkins[i]+'('+', '.join(limitedHeroSkinsVariations[i])+')' for i in range(len(limitedHeroSkins))])+'\n'
 		if limitedMounts:
-			output+='**Limited Mounts:** '
+			output+='**'+mountsLimited+'Mounts:** '
 			output+=', '.join(limitedMounts)
 	await channel.send(output)

@@ -5,7 +5,7 @@ def aliases(hero):
 	hero=hero.lower().replace('_','').replace('.','').replace(' ','').replace("'","").replace('-','').replace('[','')#Trying to make this function idempotent
 	if hero in ['slug','snail']:
 		return 'Abathur'
-	elif hero in ['alexstrazsa']:
+	elif hero in ['alexstrazsa','dragonmom']:
 		return 'Alexstrasza'
 	elif hero in ['beetle','anubarak','bug']:
 		return "Anub'arak"

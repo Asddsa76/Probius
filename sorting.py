@@ -1,3 +1,6 @@
+async def trim(text):
+	return text.lower().replace(' ','').replace('#','')
+
 async def sort(text,message,client):
 	text=text.split(',')
 	guild=client.get_guild(535256944106012694)#Wind Striders
@@ -24,11 +27,12 @@ async def sort(text,message,client):
 		return
 	rolesToAdd=[]
 	for role in text:
+		role=await trim(role)
 		role='platinum' if role=='plat' else role
 		role='diamond' if role=='dia' else role
 		for i in guild.roles:
 			if (i<bestBot and i>IM) or (i<bots and i>unsorted):
-				if i.name.lower().replace(' ','').replace('#','')==role.lower().replace(' ','').replace('#',''):
+				if await trim(i.name)==role:
 					rolesToAdd.append(i)
 	if len(rolesToAdd)!=3:
 		await message.channel.send('At least one role was wrong or inaccessible')
