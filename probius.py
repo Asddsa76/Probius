@@ -47,6 +47,9 @@ async def mainProbius(client,message,texts):
 
 	for text in texts:
 		hero=text[0]
+		if hero=='updatepokedex':
+			await updatePokedex(client,text,message)
+			continue
 		if hero=='roll':
 			await roll(text,message)
 			continue
@@ -279,10 +282,12 @@ class MyClient(discord.Client):
 		print('Logged on as', self.user)
 		print('Filling up with Reddit posts...')
 		self.seenTitles=await fillPreviousPostTitles(self)#Fills seenTitles with all current titles
-		print('Downloading heroes...')
-		await downloadAll(self,argv)
 		print('Fetching proxy emojis...')
 		self.proxyEmojis=await getProxyEmojis(client.get_guild(603924426769170433))
+		#print('Creating the Pokedex...')
+		#await createPokedex(self)
+		print('Downloading heroes...')
+		await downloadAll(self,argv)
 		print('Ready!')
 
 	async def on_message(self, message):

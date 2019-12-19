@@ -1,8 +1,9 @@
 from miscFunctions import *
+from aliases import *
 
-async def fillPokedex(client):
+async def fillPokedex(client):#Fills internal state with pokedex members
 	pokedexChannel=client.get_channel(597140352411107328)
-	return ((await pokedexChannel.fetch_message(597433561112641536)).content+'\n'+(await pokedexChannel.fetch_message(620339772833136640)).content+'\n').replace(':','')
+	return ((await pokedexChannel.fetch_message(657059472950296576)).content+'\n'+(await pokedexChannel.fetch_message(657059477194932264)).content+'\n').replace(':','')
 
 async def pokedex(client,channel,hero):
 	pokedex=await fillPokedex(client)
@@ -39,3 +40,43 @@ async def pingPokedex(client,message,member):
 		mains=pokedex.split(hero)[1].split('\n')[0]
 		await message.channel.send(member.mention+' wants to start a'+'n'*(message.content[0] in vowels)+' '+message.content.split('Our ')[0]+mains)
 	await message.delete()
+
+async def pokedexCreationTrim(text):
+	return text.replace('<@!460270968879841291>','').replace('  ',' ')
+
+async def updatePokedex(client,text,message):
+	if 557521663894224912 not in [role.id for role in message.author.roles]:
+		await message.channel.send('You need to be a mod to update the Pokedex!')
+		return
+	if len(text)!=3:
+		await message.channel.send('Syntax is [updatepokedex/hero/ping].')
+		return
+
+	pokedexChannel=client.get_channel(597140352411107328)
+	hero=aliases(text[1])
+	if hero not in getHeroes():
+		await message.channel.send(hero+' is not a valid hero.')
+		return
+	channel=message.channel
+	if hero[0]<'M' or hero=='The_Butcher':
+		message=await pokedexChannel.fetch_message(657059472950296576)
+	else:
+		message=await pokedexChannel.fetch_message(657059477194932264)
+
+	hero=hero.replace('_','')
+	oldMessage=message.content
+	before,after=oldMessage.split(hero)
+	afterHeroes=after.split('\n')
+	mains,after=afterHeroes[0],afterHeroes[1:]
+	user=text[2].replace(' ','')
+	removal=0
+	if user in mains:
+		removal=1
+		mains=mains.replace(' '+user,'')
+	else:
+		mains+=' '+user
+	await message.edit(content=before+hero+mains+'\n'+'\n'.join(after))
+	if removal:
+		await channel.send(user+' has been removed from '+hero)
+	else:
+		await channel.send(user+' has been added to '+hero)
