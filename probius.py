@@ -249,14 +249,16 @@ async def mainProbius(client,message,texts):
 						await message.channel.send("Error: exceeded Discord's 2000 character limit. Be more specific")
 					print('2000 limit')
 
-async def welcome(member):
+async def welcome(member,client):
 	guild=member.guild
 	if guild.name=='Wind Striders':
 		print(member.name+' joined')
 		channel=guild.get_channel(557366982471581718)#general
 		rulesChannel=guild.get_channel(634012658625937408)#server-rules
 		await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted and unlock the rest of the channels <:peepoLove:606862963478888449>')
-		await channel.send(file=discord.File('WS colours.png'))
+		if client.lastWelcomeImage:
+			await client.lastWelcomeImage.delete()
+		client.lastWelcomeImage =await channel.send(file=discord.File('WS colours.png'))
 		await member.add_roles(guild.get_role(560435022427848705))#UNSORTED role
 
 def findTexts(message):
@@ -277,6 +279,7 @@ class MyClient(discord.Client):
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
 		self.heroPages={}
+		self.lastWelcomeImage=''
 
 	async def on_ready(self):
 		print('Logged on as', self.user)
@@ -348,7 +351,7 @@ class MyClient(discord.Client):
 			await client.get_guild(623202246062243861).get_member(payload.user_id).remove_roles(client.get_guild(623202246062243861).get_role(643975988023394324))
 
 	async def on_member_join(self,member):
-		await welcome(member)
+		await welcome(member,self)
 
 	async def getAvatar(self,channel,userMention):
 		userString=userMention.replace('\\','').replace(' ','')[2:-1].replace('!','')#\ to not ping them, space because discord makes one after mention, ! for nitro users with custom
