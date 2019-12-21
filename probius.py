@@ -255,7 +255,7 @@ async def welcome(member):
 		print(member.name+' joined')
 		channel=guild.get_channel(557366982471581718)#general
 		rulesChannel=guild.get_channel(634012658625937408)#server-rules
-		await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted <:peepoLove:606862963478888449>')
+		await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted and unlock the rest of the channels <:peepoLove:606862963478888449>')
 		await channel.send(file=discord.File('WS colours.png'))
 		await member.add_roles(guild.get_role(560435022427848705))#UNSORTED role
 
@@ -304,6 +304,8 @@ class MyClient(discord.Client):
 			await mainProbius(self,message,[message.content.split('[')[1].lower().split('/')])
 			if message.content[0]=='[':
 				await message.delete()
+		if message.channel.id==607922629902598154:
+			await message.add_reaction('🍰')
 		
 	async def on_message_edit(self,before, after):
 		if '[' in after.content and ']' in after.content:
