@@ -304,8 +304,8 @@ class MyClient(discord.Client):
 			await mainProbius(self,message,[message.content.split('[')[1].lower().split('/')])
 			if message.content[0]=='[':
 				await message.delete()
-		if message.channel.id==607922629902598154:
-			await message.add_reaction('🍰')
+		#if message.channel.id==607922629902598154:
+			#await message.add_reaction('🍰')
 		
 	async def on_message_edit(self,before, after):
 		if '[' in after.content and ']' in after.content:
