@@ -29,3 +29,11 @@ async def roll(text,message):
 	from random import seed
 	seed()
 	await message.channel.send(str(randint(1,n)))
+
+async def getAvatar(client,channel,userMention):
+	if '<' not in userMention:
+		await channel.send('Need a ping')
+		return
+	userString=userMention.replace(' ','')[2:-1].replace('!','')#Space because discord makes one after mention, ! for nicknames
+	user=client.get_user(int(userString))
+	await channel.send(user.avatar_url)

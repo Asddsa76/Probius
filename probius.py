@@ -100,7 +100,7 @@ async def mainProbius(client,message,texts):
 			await printLarge(message.channel,output)
 			continue
 		if hero == 'avatar':
-			await client.getAvatar(message.channel,text[1])
+			await getAvatar(client,message.channel,text[1])
 			continue
 		if hero=='':#Empty string. Aliases returns Abathur when given this.
 			continue
@@ -352,11 +352,6 @@ class MyClient(discord.Client):
 
 	async def on_member_join(self,member):
 		await welcome(member,self)
-
-	async def getAvatar(self,channel,userMention):
-		userString=userMention.replace('\\','').replace(' ','')[2:-1].replace('!','')#\ to not ping them, space because discord makes one after mention, ! for nitro users with custom
-		user=self.get_user(int(userString))
-		await channel.send(user.avatar_url)
 
 	async def bgTaskSubredditForwarding(self):
 		await self.wait_until_ready()
