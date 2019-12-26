@@ -37,6 +37,7 @@ async def mainProbius(client,message,texts):
 	colourAliases=['colour','colours','c','colors','color']
 	heroStatsAliases=['stats','info']
 	pokedexAliases=['pokedex','main','mains','p','m']
+	updateupdatepokedexAliases=['updatepokedex','up']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -46,8 +47,8 @@ async def mainProbius(client,message,texts):
 		await client.get_channel(643231901452337192).send('`'+loggingMessage+'`')
 
 	for text in texts:
-		hero=text[0]
-		if hero=='updatepokedex':
+		hero=text[0].replace(' ','')
+		if hero in updateupdatepokedexAliases:
 			await updatePokedex(client,text,message)
 			continue
 		if hero=='roll':
@@ -108,6 +109,9 @@ async def mainProbius(client,message,texts):
 			await draft(client,message.channel,text)
 			continue
 		if hero in randomAliases:
+			if len(text)==1:
+				await message.channel.send(getQuote(random.choice(getHeroes())))
+				continue
 			hero=random.choice(getHeroes())
 		if hero in ['help','info']:
 			await message.channel.send(helpMessage())
@@ -297,7 +301,7 @@ class MyClient(discord.Client):
 		#Don't respond to ourselves
 		if message.author == self.user:
 			return
-		ignoredUsers=['Rick Astley','PogChamp',"Swann's Helper"]
+		ignoredUsers=['Rick Astley','PogChamp',"Swann's Helper",'FredBoat♪♪']
 		if message.author.name in ignoredUsers:
 			return
 		if '[' in message.content and ']' in message.content:
@@ -307,8 +311,8 @@ class MyClient(discord.Client):
 			await mainProbius(self,message,[message.content.split('[')[1].lower().split('/')])
 			if message.content[0]=='[':
 				await message.delete()
-		#if message.channel.id==607922629902598154:
-			#await message.add_reaction('🍰')
+		if message.author.id==410481791204327424:
+			await message.add_reaction('<:OrphAYAYA:657172520092565514>')
 		
 	async def on_message_edit(self,before, after):
 		if '[' in after.content and ']' in after.content:

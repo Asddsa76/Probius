@@ -48,12 +48,16 @@ async def updatePokedex(client,text,message):
 	if 557521663894224912 not in [role.id for role in message.author.roles]:
 		await message.channel.send('You need to be a mod to update the Pokedex!')
 		return
-	if len(text)!=3:
-		await message.channel.send('Syntax is [updatepokedex/hero/ping].')
+	if len(text)!=2:
+		await message.channel.send('Syntax is [updatepokedex/hero, ping].')
+		return
+	heroPing=text[1].split(',')
+	if len(heroPing)!=2:
+		await message.channel.send('Syntax is [updatepokedex/hero, ping].')
 		return
 
 	pokedexChannel=client.get_channel(597140352411107328)
-	hero=aliases(text[1])
+	hero=aliases(heroPing[0])
 	if hero not in getHeroes():
 		await message.channel.send(hero+' is not a valid hero.')
 		return
@@ -63,12 +67,12 @@ async def updatePokedex(client,text,message):
 	else:
 		message=await pokedexChannel.fetch_message(657059477194932264)
 
-	hero=hero.replace('_','')
+	hero=hero.replace('_',' ')
 	oldMessage=message.content
 	before,after=oldMessage.split(hero)
 	afterHeroes=after.split('\n')
 	mains,after=afterHeroes[0],afterHeroes[1:]
-	user=text[2].replace(' ','')
+	user=heroPing[1].replace(' ','')
 	removal=0
 	if user in mains:
 		removal=1
