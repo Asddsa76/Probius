@@ -5,6 +5,8 @@ def aliases(hero):
 	hero=hero.lower().replace('_','').replace('.','').replace(' ','').replace("'","").replace('-','').replace('[','')#Trying to make this function idempotent
 	if hero in ['slug','snail']:
 		return 'Abathur'
+	elif hero in ['highlord','sith','sithlord','edgelord']:
+		return 'Alarak'
 	elif hero in ['alexstrazsa','dragonmom']:
 		return 'Alexstrasza'
 	elif hero in ['beetle','anubarak','bug']:
@@ -21,6 +23,8 @@ def aliases(hero):
 		return 'Deckard'
 	elif hero in ['amazon']:
 		return 'Cassia'
+	elif hero in ['yoshi']:
+		return 'Dehaka'
 	elif hero in ['dibbles']:
 		return 'Diablo'
 	elif hero in ['dw','destroyer','neltharion']:
@@ -75,7 +79,7 @@ def aliases(hero):
 		return "Mal'Ganis"
 	elif hero in ['medihv','raven']:
 		return 'Medivh'
-	elif hero in ['fish']:
+	elif hero in ['fish','murloc']:
 		return 'Murky'
 	elif hero in ['witchdoctor']:
 		return 'Nazeebo'
@@ -99,6 +103,8 @@ def aliases(hero):
 		return 'Stitches'
 	elif hero in ['sylvannas']:
 		return 'Sylvanas'
+	elif hero in ['executor','templar']:
+		return 'Tassadar'
 	elif hero in ['thebutcher']:
 		return 'The_Butcher'
 	elif hero in ['tlv','thelostvikings','lostvikings']:

@@ -60,6 +60,9 @@ async def mainProbius(client,message,texts):
 		if hero in pokedexAliases:
 			await pokedex(client,message.channel,aliases(text[1]))
 			continue
+		if hero==':disapproval':
+			await message.channel.send('ಠ_ಠ')
+			continue
 		if hero==':summon':
 			if len(text)==1:
 				await message.channel.send('༼ つ ◕\\_◕ ༽つ')
@@ -259,7 +262,8 @@ async def welcome(member,client):
 		print(member.name+' joined')
 		channel=guild.get_channel(557366982471581718)#general
 		rulesChannel=guild.get_channel(634012658625937408)#server-rules
-		await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted and unlock the rest of the channels <:peepoLove:606862963478888449>')
+		message=await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514>')
+		await message.add_reaction('<:OrphAYAYA:657172520092565514>')
 		if client.lastWelcomeImage:
 			await client.lastWelcomeImage.delete()
 		client.lastWelcomeImage =await channel.send(file=discord.File('WS colours.png'))
@@ -311,8 +315,8 @@ class MyClient(discord.Client):
 			await mainProbius(self,message,[message.content.split('[')[1].lower().split('/')])
 			if message.content[0]=='[':
 				await message.delete()
-		if message.author.id==410481791204327424:
-			await message.add_reaction('<:OrphAYAYA:657172520092565514>')
+		#if message.author.id==410481791204327424:
+			#await message.add_reaction('<:OrphAYAYA:657172520092565514>')
 		
 	async def on_message_edit(self,before, after):
 		if '[' in after.content and ']' in after.content:
