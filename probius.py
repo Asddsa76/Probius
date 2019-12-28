@@ -128,10 +128,11 @@ async def mainProbius(client,message,texts):
 		if hero in rotationAlises:
 			await rotation(message.channel)
 			continue
-		if hero=='good bot':
+		if hero=='goodbot':
+			await message.channel.send('Good bot response from if loop')
 			await emoji(client,['Probius','love'],message.channel)
 			continue
-		if hero=='bad bot':
+		if hero=='badbot':
 			await emoji(client,['Probius','sad'],message.channel)
 			continue
 		if ':' in hero:
@@ -263,7 +264,6 @@ async def welcome(member,client):
 		channel=guild.get_channel(557366982471581718)#general
 		rulesChannel=guild.get_channel(634012658625937408)#server-rules
 		message=await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514>')
-		await message.add_reaction('<:OrphAYAYA:657172520092565514>')
 		if client.lastWelcomeImage:
 			await client.lastWelcomeImage.delete()
 		client.lastWelcomeImage =await channel.send(file=discord.File('WS colours.png'))
