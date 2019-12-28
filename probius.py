@@ -129,7 +129,6 @@ async def mainProbius(client,message,texts):
 			await rotation(message.channel)
 			continue
 		if hero=='goodbot':
-			await message.channel.send('Good bot response from if loop')
 			await emoji(client,['Probius','love'],message.channel)
 			continue
 		if hero=='badbot':
