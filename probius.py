@@ -38,6 +38,7 @@ async def mainProbius(client,message,texts):
 	heroStatsAliases=['stats','info']
 	pokedexAliases=['pokedex','main','mains','p','m']
 	updateupdatepokedexAliases=['updatepokedex','up']
+	emojiAliases=['emoji','emojis','emote','emotes']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -55,7 +56,7 @@ async def mainProbius(client,message,texts):
 			await roll(text,message)
 			continue
 		if hero=='sort':
-			await sort(text[1],message,client)
+			await sortFromMessage(text[1],message,client)
 			continue
 		if hero in pokedexAliases:
 			await pokedex(client,message.channel,aliases(text[1]))
@@ -155,7 +156,7 @@ async def mainProbius(client,message,texts):
 		if hero == 'all':
 			await printAll(client,message,text[1])
 			continue
-		if hero in ['emoji','emojis','emote','emotes']:
+		if hero in emojiAliases:
 			await message.channel.send('Emojis: [:hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.')
 			continue
 		#From here it's actual heroes, or a search
@@ -344,6 +345,9 @@ class MyClient(discord.Client):
 			print(output)
 			await client.get_channel(643231901452337192).send('`'+output+'`')
 			await pingPokedex(self,message,member)
+			return
+		elif str(payload.emoji)=='⚽' and message.channel.id==557366982471581718:
+			await sortFromReaction(message,member.id,self)
 			return
 
 		if member.name=='Asddsa76':#Reaction copying

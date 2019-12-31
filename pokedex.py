@@ -61,6 +61,10 @@ async def updatePokedex(client,text,message):
 	if hero not in getHeroes():
 		await message.channel.send(hero+' is not a valid hero.')
 		return
+	user=heroPing[1].replace(' ','')
+	if '<@' not in user:
+		await message.channel.send('`'+user+'` is not a ping.')
+		return
 	channel=message.channel
 	if hero[0]<'M' or hero=='The_Butcher':
 		message=await pokedexChannel.fetch_message(657059472950296576)
@@ -72,7 +76,7 @@ async def updatePokedex(client,text,message):
 	before,after=oldMessage.split(hero)
 	afterHeroes=after.split('\n')
 	mains,after=afterHeroes[0],afterHeroes[1:]
-	user=heroPing[1].replace(' ','')
+	
 	removal=0
 	if user in mains:
 		removal=1
