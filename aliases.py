@@ -23,7 +23,7 @@ def aliases(hero):
 		return 'Deckard'
 	elif hero in ['amazon']:
 		return 'Cassia'
-	elif hero in ['chromie','sandgnome']:
+	elif hero in ['sandgnome']:
 		return 'Chromie'
 	elif hero in ['yoshi']:
 		return 'Dehaka'

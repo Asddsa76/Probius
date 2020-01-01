@@ -1,21 +1,6 @@
 from aliases import *
 from miscFunctions import *
 
-def printAbilities(abilities):#No identifier, print all abilities
-	if len(abilities)<8:
-		output=''
-		for i in abilities:
-			output+=i+'\n'
-		return output
-	else:
-		output1=''
-		output2=''
-		for i in abilities[:5]:
-			output1+=i+'\n'
-		for i in abilities[5:]:
-			output2+=i+'\n'
-		return[output1,output2]
-
 def printTier(talents,tier):#Print a talent tier
 	output=''
 	for i in talents[tier]:

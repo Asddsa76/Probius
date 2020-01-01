@@ -190,11 +190,9 @@ async def mainProbius(client,message,texts):
 				return
 		except:
 			quote=getQuote(hero)
-			output=printAbilities(abilities)
-			if len(output)!=2:
-				output=quote+output
-			else:
-				output[0]=quote+output[0]
+			output='\n'.join(abilities)
+			await printLarge(message.channel,quote+output)
+			continue
 		if output=='':
 			if tier.isdigit():#Talent tier
 				tier=int(tier)
