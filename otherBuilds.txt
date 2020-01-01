@@ -27,3 +27,6 @@ Map; ZaneHyde's Dragon Shire: https://hots.heroeshearth.com/b/zanehyde/read/stor
 Map; ZaneHyde's Tomb of the Spider Queen: https://heroeshearth.com/b/zanehyde/read/macro-primer-tomb-of-the-spider-queen-5de89b7ee69eb/
 Valeera; HailFall: https://psionic-storm.com/en/builds/valeera-24218/
 Map; Nexus Compendium: https://nexuscompendium.com/battlegrounds
+Map; ZaneHyde's Sky Temple: https://hots.heroeshearth.com/b/zanehyde/read/macro-primer-sky-templenbsp-5e0d037fc3ee3/
+Varian; ZaneHyde: https://heroeshearth.com/builds/zanehyde/taunt-varian-guide-updated/
+Fenix; Riokaii: https://docs.google.com/document/d/1y2ZTj9P-WKpU5cKAAnw57poZ7RVzfwuDpqNUei7MwG4/edit
