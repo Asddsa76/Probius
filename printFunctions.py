@@ -10,9 +10,9 @@ def printAbilities(abilities):#No identifier, print all abilities
 	else:
 		output1=''
 		output2=''
-		for i in abilities[0:4]:
+		for i in abilities[:5]:
 			output1+=i+'\n'
-		for i in abilities[4:]:
+		for i in abilities[5:]:
 			output2+=i+'\n'
 		return[output1,output2]
 

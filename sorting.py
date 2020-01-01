@@ -33,6 +33,9 @@ async def sort(roles,member,olympian,client):
 		role='na' if role=='us' else role
 		role='unranked' if role=='ur' else role
 		role='grandmaster' if role=='gm' else role
+		role='na' if role=='america' else role
+		role='na' if role=='americas' else role
+		role='unranked' if role=='qm' else role
 		for i in guild.roles:
 			if (i<bestBot and i>IM) or (i<bots and i>unsorted):
 				if await trim(i.name)==role:
@@ -54,7 +57,11 @@ async def sortFromMessage(text,message,client):
 	await sort(roles,unsortedMember,message.author,client)
 
 async def sortFromReaction(message,reacterID,client):
-	roles=(await trim(message.content)).split(',')
+	roles=await trim(message.content)
+	if '/' in roles:
+		roles=roles.split('/')
+	else:
+		roles=roles.split(',')
 	unsortedMember=message.author
 	guild=client.get_guild(535256944106012694)
 	olympian=guild.get_member(int(reacterID))
