@@ -37,8 +37,11 @@ async def mainProbius(client,message,texts):
 	colourAliases=['colour','colours','c','colors','color']
 	heroStatsAliases=['stats','info']
 	pokedexAliases=['pokedex','main','mains','p','m']
-	updateupdatepokedexAliases=['updatepokedex','up']
+	updatePokedexAliases=['updatepokedex','up']
 	emojiAliases=['emoji','emojis','emote','emotes']
+	coinsAliases=['coin','flip','coinflip','cf']
+	redditAliases=['reddit','re']
+	helpAliases=['help','info']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -49,7 +52,7 @@ async def mainProbius(client,message,texts):
 
 	for text in texts:
 		hero=text[0].replace(' ','')
-		if hero in updateupdatepokedexAliases:
+		if hero in updatePokedexAliases:
 			await updatePokedex(client,text,message)
 			continue
 		if hero=='roll':
@@ -85,13 +88,12 @@ async def mainProbius(client,message,texts):
 				await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted before Blackstorm purges you <:peepoLove:606862963478888449>')
 				continue
 		if hero == 'vote':
-			await message.add_reaction('\U0001f44d')
-			await message.add_reaction('\U0001f44e')
+			await vote(message,text)
 			continue
-		if hero in ['coin','flip','coinflip','cf']:
+		if hero in coinsAliases:
 			await message.channel.send(random.choice(['Heads','Tails']))
 			continue
-		if hero in ['reddit','re']:
+		if hero in redditAliases:
 			if len(text)==2:
 				cutoff=-int(text[1])
 			else:
@@ -117,7 +119,7 @@ async def mainProbius(client,message,texts):
 				await message.channel.send(getQuote(random.choice(getHeroes())))
 				continue
 			hero=random.choice(getHeroes())
-		if hero in ['help','info']:
+		if hero in helpAliases:
 			await message.channel.send(helpMessage())
 			continue
 		if hero in buildsAliases:

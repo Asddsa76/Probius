@@ -37,3 +37,14 @@ async def getAvatar(client,channel,userMention):
 	userString=userMention.replace(' ','')[2:-1].replace('!','')#Space because discord makes one after mention, ! for nicknames
 	user=client.get_user(int(userString))
 	await channel.send(user.avatar_url)
+
+async def vote(message,text):
+	await message.add_reaction('\U0001f44d')
+	await message.add_reaction('\U0001f44e')
+	if len(text)==2:
+		n=int(text[1])
+		if n<1 or n>9:
+			await message.channel.send('Out of range')
+			return
+		for i in range(1,n+1):
+			await message.add_reaction(str(i)+'\N{combining enclosing keycap}')
