@@ -39,8 +39,6 @@ async def getAvatar(client,channel,userMention):
 	await channel.send(user.avatar_url)
 
 async def vote(message,text):
-	await message.add_reaction('\U0001f44d')
-	await message.add_reaction('\U0001f44e')
 	if len(text)==2:
 		n=int(text[1])
 		if n<1 or n>9:
@@ -48,3 +46,6 @@ async def vote(message,text):
 			return
 		for i in range(1,n+1):
 			await message.add_reaction(str(i)+'\N{combining enclosing keycap}')
+	else:
+		await message.add_reaction('\U0001f44d')
+		await message.add_reaction('\U0001f44e')
