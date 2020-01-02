@@ -257,18 +257,6 @@ async def mainProbius(client,message,texts):
 						await message.channel.send("Error: exceeded Discord's 2000 character limit. Be more specific")
 					print('2000 limit')
 
-async def welcome(member,client):
-	guild=member.guild
-	if guild.name=='Wind Striders':
-		print(member.name+' joined')
-		channel=guild.get_channel(557366982471581718)#general
-		rulesChannel=guild.get_channel(634012658625937408)#server-rules
-		await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514>')
-		if client.lastWelcomeImage:
-			await client.lastWelcomeImage.delete()
-		client.lastWelcomeImage =await channel.send(file=discord.File('WS colours.png'))
-		await member.add_roles(guild.get_role(560435022427848705))#UNSORTED role
-
 def findTexts(message):
 	text=message.content.lower()
 	leftBrackets=[1+m.start() for m in re.finditer('\[',text)]#Must escape brackets when using regex
@@ -305,8 +293,7 @@ class MyClient(discord.Client):
 		#Don't respond to ourselves
 		if message.author == self.user:
 			return
-		ignoredUsers=['Rick Astley','PogChamp',"Swann's Helper",'FredBoat♪♪']
-		if message.author.name in ignoredUsers:
+		if message.author.bot:
 			return
 		if '[' in message.content and ']' in message.content:
 			texts=findTexts(message)
@@ -362,7 +349,23 @@ class MyClient(discord.Client):
 			await client.get_guild(623202246062243861).get_member(payload.user_id).remove_roles(client.get_guild(623202246062243861).get_role(643975988023394324))
 
 	async def on_member_join(self,member):
-		await welcome(member,self)
+		guild=member.guild
+		if guild.name=='Wind Striders':
+			print(member.name+' joined')
+			channel=guild.get_channel(557366982471581718)#general
+			rulesChannel=guild.get_channel(634012658625937408)#server-rules
+			await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514>')
+			if self.lastWelcomeImage:
+				await self.lastWelcomeImage.delete()
+			self.lastWelcomeImage =await channel.send(file=discord.File('WS colours.png'))
+			await member.add_roles(guild.get_role(560435022427848705))#UNSORTED role
+
+	async def on_member_remove(self,member):
+		guild=member.guild
+		if guild.name=='Wind Striders':
+			print(member.name+' left')
+			channel=guild.get_channel(576018992624435220)#pepega
+			await channel.send(member.mention+ 'left the server <:peepoSad:606614842354171904>')
 
 	async def bgTaskSubredditForwarding(self):
 		await self.wait_until_ready()

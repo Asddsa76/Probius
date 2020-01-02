@@ -4,10 +4,10 @@ from rotation import *
 
 redditors=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 
 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes', 
-'ridleyfire','bran76765','MarvellousBee','Naturage','Derenash','Riokaii','D0ctorLogan','Demon_Ryu','hellobgs','Beg_For_Mercy','Russisch','Valamar1732']
+'ridleyfire','bran76765','MarvellousBee','Naturage','Derenash','Riokaii','D0ctorLogan','Demon_Ryu','hellobgs','Beg_For_Mercy','Russisch','Valamar1732','ArashiNoShad0w']
 
-discordnames={'Pscythic':'Soren Ily', 'SotheBee':'Sothe', 'slapperoni':'slap','secret3332':'SecretChaos','Archlichofthestorm':'Trolldareon','ThatDoomedStudent':'Carbon','InfiniteEarth':'Flash',
-'KillMeWithMemes':'Nick','ridleyfire':'HailFall','bran76765':'Parthuin','Demon_Ryu':'Messa','Russisch':'Ekata'}
+discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','secret3332':'SecretChaos','Archlichofthestorm':'Trolldareon','ThatDoomedStudent':'Carbon','InfiniteEarth':'Flash',
+'KillMeWithMemes':'Nick','ridleyfire':'HailFall','bran76765':'Parthuin','Demon_Ryu':'Messa','Russisch':'Ekata','ArashiNoShad0w':'LeviathaN'}
 
 keywords=['genji','samuro']#Posts with these in title gets forwarded regardless of author
 
