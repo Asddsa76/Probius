@@ -365,7 +365,7 @@ class MyClient(discord.Client):
 		if guild.name=='Wind Striders':
 			print(member.name+' left')
 			channel=guild.get_channel(576018992624435220)#pepega
-			await channel.send(member.mention+ 'left the server <:peepoSad:606614842354171904>')
+			await channel.send(member.name+ 'left the server <:peepoSad:606614842354171904>')
 
 	async def bgTaskSubredditForwarding(self):
 		await self.wait_until_ready()
