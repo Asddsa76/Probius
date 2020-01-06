@@ -1,9 +1,14 @@
 from miscFunctions import *
 from aliases import *
 
+pokedexMessageIDs=[657059472950296576,657059477194932264]
+
 async def fillPokedex(client):#Fills internal state with pokedex members
 	pokedexChannel=client.get_channel(597140352411107328)
-	return ((await pokedexChannel.fetch_message(657059472950296576)).content+'\n'+(await pokedexChannel.fetch_message(657059477194932264)).content+'\n').replace(':','')
+	output=''
+	for i in pokedexMessageIDs:
+		output+=(await pokedexChannel.fetch_message(i)).content+'\n'
+	return output.replace(':','')
 
 async def pokedex(client,channel,hero):
 	pokedex=await fillPokedex(client)
@@ -56,7 +61,6 @@ async def updatePokedex(client,text,message):
 		await message.channel.send('Syntax is [updatepokedex/hero, ping].')
 		return
 
-	pokedexChannel=client.get_channel(597140352411107328)
 	hero=aliases(heroPing[0])
 	if hero not in getHeroes():
 		await message.channel.send(hero+' is not a valid hero.')
@@ -66,10 +70,11 @@ async def updatePokedex(client,text,message):
 		await message.channel.send('`'+user+'` is not a ping.')
 		return
 	channel=message.channel
+	pokedexChannel=client.get_channel(597140352411107328)
 	if hero[0]<'M' or hero=='The_Butcher':
-		message=await pokedexChannel.fetch_message(657059472950296576)
+		message=await pokedexChannel.fetch_message(pokedexMessageIDs[0])
 	else:
-		message=await pokedexChannel.fetch_message(657059477194932264)
+		message=await pokedexChannel.fetch_message(pokedexMessageIDs[1])
 
 	hero=hero.replace('_',' ')
 	oldMessage=message.content
@@ -88,3 +93,10 @@ async def updatePokedex(client,text,message):
 		await channel.send(user+' has been removed from '+hero)
 	else:
 		await channel.send(user+' has been added to '+hero)
+
+async def removePokedex(client,MemberID): #Removes an user from all pokedex heroes
+	pokedexChannel=client.get_channel(597140352411107328)
+	for messageID in pokedexMessageIDs:
+		message=await pokedexChannel.fetch_message(messageID)
+		MemberID=str(MemberID)
+		await message.edit(content=message.content.replace(' <@'+MemberID+'>','').replace(' <@!'+MemberID+'>',''))

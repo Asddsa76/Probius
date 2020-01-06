@@ -283,8 +283,6 @@ class MyClient(discord.Client):
 		self.seenTitles=await fillPreviousPostTitles(self)#Fills seenTitles with all current titles
 		print('Fetching proxy emojis...')
 		self.proxyEmojis=await getProxyEmojis(client.get_guild(603924426769170433))
-		#print('Creating the Pokedex...')
-		#await createPokedex(self)
 		print('Downloading heroes...')
 		await downloadAll(self,argv)
 		print('Ready!')
@@ -354,9 +352,11 @@ class MyClient(discord.Client):
 			print(member.name+' joined')
 			channel=guild.get_channel(557366982471581718)#general
 			rulesChannel=guild.get_channel(634012658625937408)#server-rules
-			await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514>')
-			if self.lastWelcomeImage:
+			await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** separated with commas, to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514>')
+			try:
 				await self.lastWelcomeImage.delete()
+			except:
+				pass
 			self.lastWelcomeImage =await channel.send(file=discord.File('WS colours.png'))
 			await member.add_roles(guild.get_role(560435022427848705))#UNSORTED role
 
@@ -366,6 +366,7 @@ class MyClient(discord.Client):
 			print(member.name+' left')
 			channel=guild.get_channel(576018992624435220)#pepega
 			await channel.send(member.name+' left the server <:samudab:578998204142452747>')
+			await removePokedex(self,member.id)
 
 	async def bgTaskSubredditForwarding(self):
 		await self.wait_until_ready()
