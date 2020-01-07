@@ -363,6 +363,10 @@ class MyClient(discord.Client):
 	async def on_member_remove(self,member):
 		guild=member.guild
 		if guild.name=='Wind Striders':
+			unsorted=guild.get_role(560435022427848705)
+			if unsorted in member.roles:
+				print(member.name+' left (unsorted)')
+				return
 			print(member.name+' left')
 			channel=guild.get_channel(576018992624435220)#pepega
 			await channel.send(member.name+' left the server <:samudab:578998204142452747>')
