@@ -111,6 +111,8 @@ def aliases(hero):
 		return 'The_Butcher'
 	elif hero in ['tlv','thelostvikings','lostvikings']:
 		return 'The_Lost_Vikings'
+	elif hero in ['tyrone']:
+		return 'Tyrael'
 	elif hero in ['demonhunter','vala']:
 		return 'Valla'
 	elif hero in ['wm']:

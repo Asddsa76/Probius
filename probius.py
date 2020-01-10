@@ -30,7 +30,7 @@ async def mainProbius(client,message,texts):
 	buildsAliases=['guide','build','b','g','builds','guides']
 	quotesAliases=['quote','q','quotes']
 	rotationAlises=['rotation','rot','r']
-	aliasesAliases=['aliases','names','acronyms','a','n']
+	aliasesAliases=['aliases','names','acronyms','n']
 	wikipageAliases=['all','page','wiki']
 	randomAliases=['random','ra','rand']
 	draftAliases=['draft','d','phantomdraft','pd','mockdraft','md']
@@ -42,6 +42,7 @@ async def mainProbius(client,message,texts):
 	coinsAliases=['coin','flip','coinflip','cf']
 	redditAliases=['reddit','re']
 	helpAliases=['help','info']
+	talentAliases=['talent','talents']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -52,6 +53,9 @@ async def mainProbius(client,message,texts):
 
 	for text in texts:
 		hero=text[0].replace(' ','')
+		if hero in talentAliases:
+			await message.channel.send("Call a hero's talent tier with [hero/level]")
+			continue
 		if hero in updatePokedexAliases:
 			await updatePokedex(client,text,message)
 			continue
@@ -86,6 +90,7 @@ async def mainProbius(client,message,texts):
 				role=channel.guild.get_role(560435022427848705)#UNSORTED
 				rulesChannel=channel.guild.get_channel(634012658625937408)#server-rules
 				await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **(`Region`, `Rank`, and `Preferred Colour`)** to get sorted before Blackstorm purges you <:peepoLove:606862963478888449>')
+				await channel.send(file=discord.File('WS colours.png'))
 				continue
 		if hero == 'vote':
 			await vote(message,text)
@@ -106,7 +111,7 @@ async def mainProbius(client,message,texts):
 				output+='**'+i[0]+'** by '+author+': <'+i[2]+'>\n'
 			await printLarge(message.channel,output)
 			continue
-		if hero == 'avatar':
+		if hero in ['avatar','a']:
 			await getAvatar(client,message.channel,text[1])
 			continue
 		if hero=='':#Empty string. Aliases returns Abathur when given this.
@@ -273,7 +278,7 @@ class MyClient(discord.Client):
 		self.proxyEmojis={}
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
-		self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
+		#self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
 		self.heroPages={}
 		self.lastWelcomeImage=''
 
