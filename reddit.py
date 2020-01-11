@@ -31,9 +31,12 @@ async def fillPreviousPostTitles(client):#Called on startup
 		posts=page.split('"clicked": false, "title": "')[1:]
 		output=[]
 		for post in posts:
-			[title,author,url] = await getPostInfo(post)#Newest post that has been checked
+			try:#Reddit's .api did some weird stuff recently
+				[title,author,url] = await getPostInfo(post)#Newest post that has been checked
+			except:
+				continue
 			output.append(title)
-			if author in redditors or sum(1 for i in keywords if i in title.lower()):
+			if author in redditors or sum(1 for i in keywords if i.lower() in title.lower()):
 				title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','')
 				client.forwardedPosts.append([title,author,url])
 		client.forwardedPosts=client.forwardedPosts[::-1]
@@ -45,7 +48,10 @@ async def redditForwarding(client):#Called every 60 seconds
 			page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')
 			posts=page.split('"clicked": false, "title": "')[1:]
 			for post in posts:
-				[title,author,url] = await getPostInfo(post)
+				try:
+					[title,author,url] = await getPostInfo(post)
+				except:
+					continue
 				if author in redditors or sum(1 for i in keywords if i in title.lower()):
 					if title not in client.seenTitles:#This post hasn't been processed before
 						client.seenTitles.append(title)
