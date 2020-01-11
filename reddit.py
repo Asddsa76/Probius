@@ -60,7 +60,7 @@ async def redditForwarding(client):#Called every 60 seconds
 						else:
 							if author in discordnames:
 								author=discordnames[author]
-							await client.get_channel(607922629902598154).send('**'+title+'** by '+author+': '+url)#secret-cabal
+							await client.get_channel(665317972646166538).send('**'+title+'** by '+author+': '+url)#reddit-posts
 						await client.get_channel(643231901452337192).send('`'+title+' by '+author+'`')#log
 						print(title+' by '+author)
 						if author=='Gnueless' and 'rotation' in title.lower():
