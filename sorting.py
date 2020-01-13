@@ -13,8 +13,10 @@ async def sort(roles,member,olympian,client):
 	#Colours between bestBot and IM
 	bestBot=guild.get_role(635187043676323842)
 	IM=guild.get_role(557550150109888513)
-	#Ranks and regions between bots and unsorted
-	bots=guild.get_role(574138911409045504)
+	#Ranks and regions between lopez and core member
+	lopez=guild.get_role(571525173698756608)
+	coreMember=guild.get_role(571321937821696001)
+
 	unsorted=guild.get_role(560435022427848705)
 
 	if unsorted not in member.roles:
@@ -37,7 +39,7 @@ async def sort(roles,member,olympian,client):
 		role='na' if role=='americas' else role
 		role='unranked' if role=='qm' else role
 		for i in guild.roles:
-			if (i<bestBot and i>IM) or (i<bots and i>unsorted):
+			if (i<bestBot and i>IM) or (i<lopez and i>coreMember):
 				if await trim(i.name)==role:
 					rolesToAdd.append(i)
 	if len(rolesToAdd)!=3:
