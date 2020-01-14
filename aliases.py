@@ -17,6 +17,8 @@ def aliases(hero):
 		return 'Arthas'
 	elif hero in ['dunklord']:
 		return 'Azmodan'
+	elif hero in ['firebat']:
+		return 'Blaze'
 	elif hero in ['bw']:
 		return 'Brightwing'
 	elif hero in ['cain']:
