@@ -298,6 +298,8 @@ class MyClient(discord.Client):
 			return
 		if message.author.bot:
 			return
+		if message.author.id in [184405311681986560]:
+			return
 		if '[' in message.content and ']' in message.content:
 			texts=findTexts(message)
 			await mainProbius(self,message,texts)
