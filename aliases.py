@@ -3,7 +3,7 @@ from miscFunctions import getHeroes
 def aliases(hero):
 	#The Wiki redirects correctly most upper/lowercase results, but not all acronyms
 	hero=hero.lower().replace('_','').replace('.','').replace(' ','').replace("'","").replace('-','').replace('[','')#Trying to make this function idempotent
-	if hero in ['slug','snail']:
+	if hero in ['slug','snail','malarialarva']:
 		return 'Abathur'
 	elif hero in ['highlord','sith','sithlord','edgelord']:
 		return 'Alarak'
