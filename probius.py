@@ -55,7 +55,7 @@ async def mainProbius(client,message,texts):
 		hero=text[0].replace(' ','')
 		if hero in ['trait','r','w','e']:#Do nothing
 			continue
-		if hero == d and message.channel.id not in [643996299678449684,643975810256076820,643975833970540555]: #[D] outside of drafting channel, trait
+		if hero == 'd' and message.channel.id not in [643996299678449684,643975810256076820,643975833970540555]: #[D] outside of drafting channel, trait
 			continue
 		if hero in talentAliases:
 			await message.channel.send("Call a hero's talent tier with [hero/level]")
