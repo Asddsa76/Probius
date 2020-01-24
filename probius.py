@@ -53,6 +53,10 @@ async def mainProbius(client,message,texts):
 
 	for text in texts:
 		hero=text[0].replace(' ','')
+		if hero in ['trait','r','w','e']:#Do nothing
+			continue
+		if hero == d and message.channel.id not in [643996299678449684,643975810256076820,643975833970540555]: #[D] outside of drafting channel, trait
+			continue
 		if hero in talentAliases:
 			await message.channel.send("Call a hero's talent tier with [hero/level]")
 			continue
@@ -154,7 +158,7 @@ async def mainProbius(client,message,texts):
 		if hero in quotesAliases:
 			if len(text)==2:
 				await message.channel.send(getQuote(aliases(text[1])))
-			else:
+			elif text[0]!='q':#Calling [q] alone shouldn't show link, but [q/hero] works, as well as [quotes]
 				await message.channel.send('All hero select quotes: <https://github.com/Asddsa76/Probius/blob/master/quotes.txt>')
 			continue
 		if hero in aliasesAliases:
