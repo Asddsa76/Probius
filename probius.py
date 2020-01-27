@@ -17,7 +17,7 @@ from printFunctions import *	#The functions that output the things to print
 from heroesTalents import *		#The function that imports the hero pages
 from emojis import *			#Emojis
 from miscFunctions import*		#Edge cases and help message
-from getDiscordToken import *	#The token is in an untracked file because this is a public Github repo
+from getProbiusToken import *	#The token is in an untracked file because this is a public Github repo
 from builds import *			#Hero builds
 from rotation import *			#Weekly rotation
 from quotes import *			#Lock-in quotes
@@ -315,6 +315,13 @@ class MyClient(discord.Client):
 			#await message.add_reaction('<:OrphAYAYA:657172520092565514>')
 		
 	async def on_message_edit(self,before, after):
+		#Don't respond to ourselves
+		if message.author == self.user:
+			return
+		if message.author.bot:
+			return
+		if message.author.id in [184405311681986560]:
+			return
 		if '[' in after.content and ']' in after.content:
 			try:
 				beforeTexts=findTexts(before)
@@ -400,4 +407,4 @@ class MyClient(discord.Client):
 			await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`** to get sorted before Blackstorm purges you <:peepoLove:606862963478888449>')
 
 client = MyClient()
-client.run(getDiscordToken())
+client.run(getProbiusToken())

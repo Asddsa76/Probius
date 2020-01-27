@@ -1,5 +1,8 @@
 async def trim(text):
-	return text.lower().replace(' ','').replace('#','').replace('<@&557521663894224912>','')
+	toRemove=[' ','#','<@&557521663894224912>','*']
+	for i in toRemove:
+		text=text.replace(i,'')
+	return text
 
 async def sort(roles,member,olympian,client):
 	guild=client.get_guild(535256944106012694)#Wind Striders

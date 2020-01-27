@@ -1,3 +1,4 @@
+Map; Nexus Compendium: https://nexuscompendium.com/battlegrounds
 Samuro; Derenash (outdated): https://www.heroesfire.com/hots/guide/samurebs-en-16848
 Samuro; Nick (outdated): https://www.heroesfire.com/hots/guide/master-of-illusion-samuro-16151
 Samuro; Blackstorm (in progress AND outdated <:KEKW:633471264513720339>): https://docs.google.com/document/d/1jbA0Z9Yg_koLqyd27VZ3uu-qbTOKSuuiSlmxgJBJ6SI/edit
@@ -26,7 +27,6 @@ Map; ZaneHyde's Volskaya Foundry: https://hots.heroeshearth.com/b/zanehyde/read/
 Map; ZaneHyde's Dragon Shire: https://hots.heroeshearth.com/b/zanehyde/read/storm-league-104-macro-amp-how-to-play-shire-5da5eb7d234fd/
 Map; ZaneHyde's Tomb of the Spider Queen: https://heroeshearth.com/b/zanehyde/read/macro-primer-tomb-of-the-spider-queen-5de89b7ee69eb/
 Valeera; HailFall: https://psionic-storm.com/en/builds/valeera-24218/
-Map; Nexus Compendium: https://nexuscompendium.com/battlegrounds
 Map; ZaneHyde's Sky Temple: https://hots.heroeshearth.com/b/zanehyde/read/macro-primer-sky-templenbsp-5e0d037fc3ee3/
 Varian; ZaneHyde: https://heroeshearth.com/builds/zanehyde/taunt-varian-guide-updated/
 Fenix; Riokaii: https://docs.google.com/document/d/1y2ZTj9P-WKpU5cKAAnw57poZ7RVzfwuDpqNUei7MwG4/edit
