@@ -297,12 +297,8 @@ class MyClient(discord.Client):
 		print('Ready!')
 
 	async def on_message(self, message):
-		#Don't respond to ourselves
-		if message.author == self.user:
-			return
+		#Don't respond to bots
 		if message.author.bot:
-			return
-		if message.author.id in [184405311681986560]:
 			return
 		if '[' in message.content and ']' in message.content:
 			texts=findTexts(message)
@@ -316,11 +312,7 @@ class MyClient(discord.Client):
 		
 	async def on_message_edit(self,before, after):
 		#Don't respond to ourselves
-		if message.author == self.user:
-			return
-		if message.author.bot:
-			return
-		if message.author.id in [184405311681986560]:
+		if before.author.bot:
 			return
 		if '[' in after.content and ']' in after.content:
 			try:
