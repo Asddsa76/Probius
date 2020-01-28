@@ -285,6 +285,7 @@ class MyClient(discord.Client):
 		#self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
 		self.heroPages={}
 		self.lastWelcomeImage=''
+		self.ready=False#Wait until ready before taking commands
 
 	async def on_ready(self):
 		print('Logged on as', self.user)
@@ -294,11 +295,14 @@ class MyClient(discord.Client):
 		self.proxyEmojis=await getProxyEmojis(client.get_guild(603924426769170433))
 		print('Downloading heroes...')
 		await downloadAll(self,argv)
+		self.ready=True
 		print('Ready!')
 
 	async def on_message(self, message):
 		#Don't respond to bots
 		if message.author.bot:
+			return
+		if self.ready==False:
 			return
 		if '[' in message.content and ']' in message.content:
 			texts=findTexts(message)
@@ -396,7 +400,7 @@ class MyClient(discord.Client):
 		rulesChannel=channel.guild.get_channel(634012658625937408)#server-rules
 		while not self.is_closed():
 			await asyncio.sleep(60*60*24)#Sleep 24 hours
-			await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`** to get sorted before Blackstorm purges you <:peepoLove:606862963478888449>')
+			await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels Blackstorm purges you <:peepoLove:606862963478888449>')
 
 client = MyClient()
 client.run(getProbiusToken())

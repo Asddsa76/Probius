@@ -2,7 +2,7 @@ async def trim(text):
 	toRemove=[' ','#','<@&557521663894224912>','*']
 	for i in toRemove:
 		text=text.replace(i,'')
-	return text
+	return text.lower()
 
 async def sort(roles,member,olympian,client):
 	guild=client.get_guild(535256944106012694)#Wind Striders
@@ -43,10 +43,10 @@ async def sort(roles,member,olympian,client):
 		role='unranked' if role=='qm' else role
 		for i in guild.roles:
 			if (i<bestBot and i>IM) or (i<lopez and i>coreMember):
-				if await trim(i.name)==role:
+				if await trim(i.name)==await trim(role):
 					rolesToAdd.append(i)
 	if len(rolesToAdd)!=3:
-		await channel.send('At least one role was wrong or inaccessible')
+		await channel.send('At least one role was wrong or inaccessible. Valid roles: '+', '.join(rolesToAdd))
 		return
 	memberRole=guild.get_role(557522023190888468)
 	rolesToAdd.append(memberRole)
