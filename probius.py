@@ -47,7 +47,7 @@ async def mainProbius(client,message,texts):
 		if '['+i+'/' in message.content.lower():
 			break
 	else:#The elusive for else control flow
-		loggingMessage=message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author)+' '*(18-len(str(message.author)))+' '+message.content
+		loggingMessage=message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author.name)+' '*(18-len(str(message.author.name)))+' '+message.content
 		print(loggingMessage)
 		await client.get_channel(643231901452337192).send('`'+loggingMessage+'`')
 
