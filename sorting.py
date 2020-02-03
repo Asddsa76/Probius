@@ -37,6 +37,7 @@ async def sort(roles,member,olympian,client):
 		role='na' if role=='northamerica' else role
 		role='na' if role=='us' else role
 		role='unranked' if role=='ur' else role
+		role='unranked' if role=='none' else role
 		role='grandmaster' if role=='gm' else role
 		role='na' if role=='america' else role
 		role='na' if role=='americas' else role
