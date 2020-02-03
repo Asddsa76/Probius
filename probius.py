@@ -47,7 +47,9 @@ async def mainProbius(client,message,texts):
 		if '['+i+'/' in message.content.lower():
 			break
 	else:#The elusive for else control flow
-		loggingMessage=message.channel.guild.name+' '*(15-len(message.channel.guild.name))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author.name)+' '*(18-len(str(message.author.name)))+' '+message.content
+		guildname=message.channel.guild.name
+		guildname='Nexus school' if guildname=='Nexus Schoolhouse' else guildname#Nexus Schoolhouse is too long
+		loggingMessage=guildname+' '*(15-len(guildname))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author.name)+' '*(18-len(str(message.author.name)))+' '+message.content
 		print(loggingMessage)
 		await client.get_channel(643231901452337192).send('`'+loggingMessage+'`')
 
@@ -309,7 +311,7 @@ class MyClient(discord.Client):
 			await mainProbius(self,message,texts)
 		elif '[' in message.content:
 			await mainProbius(self,message,[message.content.split('[')[1].lower().split('/')])
-			if message.content[0]=='[' and message.guild.id in [535256944106012694,603924426769170433]:
+			if message.content[0]=='[' and message.guild.id == 535256944106012694:
 				await message.delete()
 		#if message.author.id==410481791204327424:
 			#await message.add_reaction('<:OrphAYAYA:657172520092565514>')

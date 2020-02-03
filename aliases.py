@@ -49,7 +49,7 @@ def aliases(hero):
 		return 'Genji'
 	elif hero in ['cg','chogall']:
 		return 'Cho'
-	elif hero in ['guldan','gd']:
+	elif hero in ['guldan','gd','ghouldan','daniel']:
 		return "Gul'dan"
 	elif hero in ['bowgenji']:
 		return 'Hanzo'
@@ -63,15 +63,15 @@ def aliases(hero):
 		return 'Junkrat'
 	elif hero in ['kt','kaelthas']:#He came to HotS first. Use KTZ for your beloved lich.
 		return "Kael'thas"
-	elif hero in ['ktz','kelthuzad']:
+	elif hero in ['ktz','kelthuzad','lich']:
 		return "Kel'Thuzad"
-	elif hero in ['karazhim']:
+	elif hero in ['karazhim','monk']:
 		return 'Kharazim'
 	elif hero in ['janitor']:
 		return 'Leoric'
 	elif hero in ['lili','li-li']:
 		return 'Li_Li'
-	elif hero in ['lm','liming']:
+	elif hero in ['lm','liming','wizard']:
 		return 'Li-Ming'
 	elif hero in ['medic','ltmorales']:
 		return 'Lt._Morales'
@@ -119,6 +119,8 @@ def aliases(hero):
 		return 'Valla'
 	elif hero in ['wm']:
 		return 'Whitemane'
+	elif hero in ['necromancer']:
+		return 'Xul'
 	elif hero in ['goat','spacegoat']:
 		return 'Yrel'
 	elif hero in ['zerathul']:
