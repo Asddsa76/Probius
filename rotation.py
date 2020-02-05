@@ -9,6 +9,7 @@ async def rotation(channel):
 		limitedHeroSkins=[]
 		limitedHeroSkinsVariations=[]
 		limitedMounts=[]
+		goldMounts=[]
 		saleWeek=''
 		skinsLimited=''
 		mountsLimited=''
@@ -19,7 +20,7 @@ async def rotation(channel):
 					output='**Free rotation w'+line[lineIndex+1:lineIndex+18]+':** from <https://nexuscompendium.com/>\n'
 				else:
 					saleWeek='**Heroic Deals and Limited-Time Items w'+line[lineIndex+1:lineIndex+18]+':**\n'
-			if '<td valign="top" ' in line:
+			elif '<td valign="top" ' in line:
 				if len(rotationHeroes)<14 and 'All Heroes' not in rotationHeroes:
 					rotationHeroes.append(line[line.index('title="')+7:line.index('" alt')])
 				else:
@@ -51,6 +52,9 @@ async def rotation(channel):
 					mountsLimited='Limited '
 				except:
 					limitedMounts.append(line[:line.index('</a></li>')])
+			elif '<li>Gold Mount -' in line:
+				goldMounts.append(line.split('">')[1].split('<ul><li>')[0].replace('</a> -',''))
+
 		if rotationHeroes:
 			output+=', '.join(rotationHeroes[:7])+'\n'
 			output+=', '.join(rotationHeroes[8:])+'\n'
@@ -61,4 +65,6 @@ async def rotation(channel):
 		if limitedMounts:
 			output+='**'+mountsLimited+'Mounts:** '
 			output+=', '.join(limitedMounts)
+		if goldMounts:
+			output+='**Gold mounts:** '+', '.join(goldMounts)
 	await channel.send(output)
