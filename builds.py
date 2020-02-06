@@ -13,7 +13,7 @@ async def guide(hero,channel):
 	
 	with open('elitesparkleBuilds.txt','r') as f:
 		for i in f:
-			if hero.lower().replace('_','-').replace('.','').replace("'","") in i:
+			if hero.lower().replace('_','-').replace('.','').replace("'","").replace('ú','u') in i:
 				await channel.send(output+'Elitesparkle: <'+i[:-1]+'>')#<> prevents thumbnails. [:-1] removes the \n at end of i
 				return
 		if output:
