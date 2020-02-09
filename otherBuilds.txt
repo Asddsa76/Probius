@@ -22,7 +22,7 @@ Uther; ZaneHyde: https://hots.heroeshearth.com/builds/zanehyde/beall-endall-main
 Junkrat; Mochrie: https://hots.heroeshearth.com/builds/Mochrie/mochries-postrework-junkrat-build-patch-248/
 Samuro; Ricardo's trick list: https://docs.google.com/document/d/1-RT-UkyKBiuTS4U4eXLLvlJzC2HgzzJSlNF6xecw5WA/
 Garrosh; ZaneHyde: https://heroeshearth.com/builds/zanehyde/every-way-to-throw-every-build-you-can-go/
-Map; Riokaii's Cursed Hollow: https://www.youtube.com/watch?v=HpGITmRrj-E
+Map; Riokaii's Fundamentals of Macro: https://www.youtube.com/watch?v=HpGITmRrj-E
 Map; ZaneHyde's Volskaya Foundry: https://hots.heroeshearth.com/b/zanehyde/read/macro-primer-volskaya-foundry-5de55ca3e9d86/
 Map; ZaneHyde's Dragon Shire: https://hots.heroeshearth.com/b/zanehyde/read/storm-league-104-macro-amp-how-to-play-shire-5da5eb7d234fd/
 Map; ZaneHyde's Tomb of the Spider Queen: https://heroeshearth.com/b/zanehyde/read/macro-primer-tomb-of-the-spider-queen-5de89b7ee69eb/
@@ -35,3 +35,4 @@ Map; ZaneHyde's Alterac Pass: https://hots.heroeshearth.com/b/zanehyde/read/macr
 Samuro; Munky 1: https://www.youtube.com/watch?v=DLg0LdrOKHY
 Samuro; Munky 2: https://www.youtube.com/watch?v=29LqAHnCCDc
 Tracer; Mochrie: https://heroeshearth.com/builds/Mochrie/the-only-tracer-build-grandmaster-tracer-main/
+Anub'arak; ZaneHyde: https://heroeshearth.com/builds/zanehyde/thinking-mans-tank/

@@ -1,5 +1,5 @@
 async def trim(text):
-	toRemove=[' ','#','<@&557521663894224912>','*']
+	toRemove=[' ','#','<@&557521663894224912>','*','\n']
 	for i in toRemove:
 		text=text.replace(i,'')
 	return text.lower()
@@ -8,7 +8,7 @@ async def sort(roles,member,olympian,client):
 	guild=client.get_guild(535256944106012694)#Wind Striders
 	channel=guild.get_channel(557366982471581718)#general
 	if 557521663894224912 not in [role.id for role in olympian.roles]:
-		await channel.send('You need to be a mod to sort users!')
+		#await channel.send('You need to be a mod to sort users!')
 		return
 	if len(roles)!=3:
 		await channel.send('Need ping and 3 roles')
