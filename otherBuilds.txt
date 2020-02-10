@@ -1,10 +1,6 @@
-Map; Nexus Compendium: https://nexuscompendium.com/battlegrounds
-Samuro; Derenash (outdated): https://www.heroesfire.com/hots/guide/samurebs-en-16848
-Samuro; Nick (outdated): https://www.heroesfire.com/hots/guide/master-of-illusion-samuro-16151
+Map; Riokaii's Fundamentals of Macro: https://www.youtube.com/watch?v=HpGITmRrj-E
+Map; Nexus Compendium's list of timings: https://nexuscompendium.com/battlegrounds
 Samuro; Blackstorm (in progress AND outdated <:KEKW:633471264513720339>): https://docs.google.com/document/d/1jbA0Z9Yg_koLqyd27VZ3uu-qbTOKSuuiSlmxgJBJ6SI/edit
-Probius; Arena: https://reddit.com/r/heroesofthestorm/comments/aq527e/
-Whitemane; Anemonemeer (pre rework): https://reddit.com/r/heroesofthestorm/comments/bzmac6/
-Artanis; Jdelrio: https://reddit.com/r/heroesofthestorm/comments/c5un8i/
 Mal'Ganis; ZaneHyde: https://heroeshearth.com/builds/zanehyde/i-am-eternal/
 D.Va; ZaneHyde: https://heroeshearth.com/builds/zanehyde/d-va-main-tank-the-nichest-build-this-side-of-the-rework/
 Arthas; ZaneHyde: https://heroeshearth.com/builds/zanehyde/traditional-tanky-arthas/
@@ -22,7 +18,6 @@ Uther; ZaneHyde: https://hots.heroeshearth.com/builds/zanehyde/beall-endall-main
 Junkrat; Mochrie: https://hots.heroeshearth.com/builds/Mochrie/mochries-postrework-junkrat-build-patch-248/
 Samuro; Ricardo's trick list: https://docs.google.com/document/d/1-RT-UkyKBiuTS4U4eXLLvlJzC2HgzzJSlNF6xecw5WA/
 Garrosh; ZaneHyde: https://heroeshearth.com/builds/zanehyde/every-way-to-throw-every-build-you-can-go/
-Map; Riokaii's Fundamentals of Macro: https://www.youtube.com/watch?v=HpGITmRrj-E
 Map; ZaneHyde's Volskaya Foundry: https://hots.heroeshearth.com/b/zanehyde/read/macro-primer-volskaya-foundry-5de55ca3e9d86/
 Map; ZaneHyde's Dragon Shire: https://hots.heroeshearth.com/b/zanehyde/read/storm-league-104-macro-amp-how-to-play-shire-5da5eb7d234fd/
 Map; ZaneHyde's Tomb of the Spider Queen: https://heroeshearth.com/b/zanehyde/read/macro-primer-tomb-of-the-spider-queen-5de89b7ee69eb/
