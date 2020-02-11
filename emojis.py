@@ -28,18 +28,19 @@ async def sendEmoji(file,channel):
 
 async def carbotSpray(hero,channel):
 	hero=aliases(hero)
-	if hero in ['Deflect','Parry','Evade','Haha','Sleep']:
-		imageFormat='.gif'
-		if hero=='Deflect':
-			hero='Ninja_Skills'
-		elif hero=='Parry':
-			hero="Paryin'_with_Varian"
-		elif hero=='Evade':
-			hero='Evade_This...'
-		elif hero=='Haha':
-			hero='Ha_HA_ha_HA!'
-		elif hero=='Sleep':
-			hero='Sleeping_Dragon'
+	imageFormat='.gif'
+	if hero=='Deflect':
+		hero='Ninja_Skills'
+	elif hero=='Parry':
+		hero="Paryin'_with_Varian"
+	elif hero=='Evade':
+		hero='Evade_This...'
+	elif hero=='Haha':
+		hero='Ha_HA_ha_HA!'
+	elif hero=='Sleep':
+		hero='Sleeping_Dragon'
+	elif hero=='Shield':
+		hero="Can't_Touch_This"
 	else:
 		hero='Carbot_'+hero
 		imageFormat='.png'
