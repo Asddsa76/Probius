@@ -12,7 +12,6 @@ Zarya; ZaneHyde: https://heroeshearth.com/builds/zanehyde/this-hero-should-be-fi
 Muradin; ZaneHyde: https://heroeshearth.com/builds/zanehyde/haymaker-is-garbage-and-so-are-you/
 Blaze; ZaneHyde: https://heroeshearth.com/builds/zanehyde/professor-pyromanias-pyromancy-101/
 The_Lost_Vikings; Loquen: https://www.youtube.com/watch?v=q4acsbUrkec
-Tracer; SamiSha: https://us.forums.blizzard.com/en/heroes/t/guide-tracer-the-cavalrys-here/12936
 Valeera; MBee: https://docs.google.com/document/d/1_gG6NCLItBLe8ZMni7hPxJH56xZ0rXUFPvXygO6UR4o/
 Uther; ZaneHyde: https://hots.heroeshearth.com/builds/zanehyde/beall-endall-main-tank-uther-guide/
 Junkrat; Mochrie: https://hots.heroeshearth.com/builds/Mochrie/mochries-postrework-junkrat-build-patch-248/
@@ -30,5 +29,8 @@ Map; ZaneHyde's Alterac Pass: https://hots.heroeshearth.com/b/zanehyde/read/macr
 Samuro; Munky 1: https://www.youtube.com/watch?v=DLg0LdrOKHY
 Samuro; Munky 2: https://www.youtube.com/watch?v=29LqAHnCCDc
 Tracer; Mochrie: https://heroeshearth.com/builds/Mochrie/the-only-tracer-build-grandmaster-tracer-main/
+Tracer; SamiSha: https://us.forums.blizzard.com/en/heroes/t/guide-tracer-the-cavalrys-here/12936
 Anub'arak; ZaneHyde: https://heroeshearth.com/builds/zanehyde/thinking-mans-tank/
 Sylvanas; Riokaii: https://i.imgur.com/NHLWAwf.png
+Replay; SamiSha's replay hotkeys: https://us.forums.blizzard.com/en/heroes/t/extensive-replay-hotkey-guide/2937
+Maiev; CavalierGuest: https://www.twitch.tv/videos/536023825?t=1h19m11s
