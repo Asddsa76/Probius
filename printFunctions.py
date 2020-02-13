@@ -15,6 +15,7 @@ def printAbility(abilities,hotkey):#Prints abilities with matching hotkey
 	return output
 
 def printSearch(abilities, talents, name, hero):#Prints abilities and talents with the name of the identifier
+	name=abilityAliases(hero,name)
 	if '--' in name:
 		[name,exclude]=name.split('--')
 	else:

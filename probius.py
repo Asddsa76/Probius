@@ -43,6 +43,7 @@ async def mainProbius(client,message,texts):
 	redditAliases=['reddit','re']
 	helpAliases=['help','info']
 	talentAliases=['talent','talents']
+	rollAliases=['roll','dice']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -65,7 +66,7 @@ async def mainProbius(client,message,texts):
 		if hero in updatePokedexAliases:
 			await updatePokedex(client,text,message)
 			continue
-		if hero=='roll':
+		if hero in rollAliases:
 			await roll(text,message)
 			continue
 		if hero=='sort':
@@ -234,7 +235,6 @@ async def mainProbius(client,message,texts):
 				await message.channel.send('<https://heroesofthestorm.gamepedia.com/Data:'+hero+'#Skills>')
 				continue
 			else:
-				tier=abilityAliases(hero,tier)
 				output=printSearch(abilities, talents, tier, hero)
 		
 		if len(output)==2:#If len is 2, then it's an array with output split in half
