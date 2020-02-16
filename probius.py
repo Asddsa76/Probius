@@ -50,13 +50,15 @@ async def mainProbius(client,message,texts):
 	else:#The elusive for else control flow
 		guildname=message.channel.guild.name
 		guildname='Nexus school' if guildname=='Nexus Schoolhouse' else guildname#Nexus Schoolhouse is too long
-		loggingMessage=guildname+' '*(15-len(guildname))+message.channel.name+' '+' '*(17-len(message.channel.name))+str(message.author.name)+' '*(18-len(str(message.author.name)))+' '+message.content
+		channelName=message.channel.name
+		channelName='hots' if channelName=='heroes-got-canceled' else channelName
+		loggingMessage=guildname+' '*(15-len(guildname))+channelName+' '+' '*(17-len(channelName))+str(message.author.name)+' '*(18-len(str(message.author.name)))+' '+message.content
 		print(loggingMessage)
 		await client.get_channel(643231901452337192).send('`'+loggingMessage+'`')
 
 	for text in texts:
 		hero=text[0].replace(' ','')
-		if hero in ['trait','r','w','e']:#Do nothing
+		if hero in ['trait','r','w','e','passive','react']:#Do nothing
 			continue
 		if hero == 'd' and message.channel.id not in [643996299678449684,643975810256076820,643975833970540555,672921422544502952]: #[D] outside of drafting channel, trait
 			continue
