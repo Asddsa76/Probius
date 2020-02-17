@@ -3,6 +3,7 @@ from miscFunctions import *
 
 def simplifyName(hero):#Shorten all names with 10+ letters, and turn underscores into spaces
 	hero=hero.replace('_',' ')
+	return hero
 	if hero=='The Lost Vikings':
 		return 'TLV'
 	elif hero=='The Butcher':
@@ -115,8 +116,11 @@ Commands:
 				hero=aliases(text)
 				if hero in getHeroes():
 					draftList.append(simplifyName(hero))
-					if hero=='Samuro' and len(draftList) in [2,3,4,5,11,12]:#Numbers are the bans
-						await channel.send('<:banned:557364849940758528>')#Bots can use emojis from all servers the bot is in! :D
+					if len(draftList) in [2,3,4,5,11,12]:#Numbers are the bans
+						if hero=='Samuro':
+							await channel.send('<:banned:557364849940758528>')
+						elif hero=='Valeera':
+							await channel.send('<:bannedVal:679014495447678998>')
 				else:
 					await channel.send(text+' is not a valid hero.')
 

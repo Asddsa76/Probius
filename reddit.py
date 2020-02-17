@@ -9,7 +9,7 @@ redditors=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen
 discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','secret3332':'SecretChaos','Archlichofthestorm':'Trolldareon','ThatDoomedStudent':'Carbon','InfiniteEarth':'Flash',
 'KillMeWithMemes':'Nick','ridleyfire':'HailFall','bran76765':'Parthuin','Demon_Ryu':'Messa','Russisch':'Ekata','ArashiNoShad0w':'LeviathaN'}
 
-keywords=['Genji','Samuro','Free-to-Play Hero Rotation & Heroic Deals','Tracer']#Posts with these in title gets forwarded regardless of author
+keywords=['Genji','Samuro','Free-to-Play Hero Rotation & Heroic Deals','Tracer','Maiev']#Posts with these in title gets forwarded regardless of author
 
 async def getPostInfo(post):
 	title=post.split('", "')[0]

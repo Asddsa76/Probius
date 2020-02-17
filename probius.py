@@ -25,6 +25,7 @@ from draft import *
 from pokedex import *
 from reddit import *
 from sorting import *
+from patchNotes import *
 
 async def mainProbius(client,message,texts):
 	buildsAliases=['guide','build','b','g','builds','guides']
@@ -44,6 +45,7 @@ async def mainProbius(client,message,texts):
 	helpAliases=['help','info']
 	talentAliases=['talent','talents']
 	rollAliases=['roll','dice']
+	patchNotesAliases=['patchnotes','patch','pn','pa']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -61,6 +63,9 @@ async def mainProbius(client,message,texts):
 		if hero in ['trait','r','w','e','passive','react']:#Do nothing
 			continue
 		if hero == 'd' and message.channel.id not in [643996299678449684,643975810256076820,643975833970540555,672921422544502952]: #[D] outside of drafting channel, trait
+			continue
+		if hero in patchNotesAliases:
+			await patchNotes(message.channel,text[1])
 			continue
 		if hero in talentAliases:
 			await message.channel.send("Call a hero's talent tier with [hero/level]")
