@@ -2,7 +2,7 @@ import asyncio
 import aiohttp
 from rotation import *
 
-redditors=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'jdelrioc', 'Pscythic', 'Elitesparkle', 'slapperoni', 
+redditors=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'Pscythic', 'Elitesparkle', 'slapperoni', 
 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes', 
 'ridleyfire','bran76765','MarvellousBee','Naturage','Derenash','Riokaii','D0ctorLogan','Demon_Ryu','hellobgs','Beg_For_Mercy','Russisch','Valamar1732','ArashiNoShad0w','Mochrie1713']
 
@@ -61,6 +61,8 @@ async def redditForwarding(client):#Called every 60 seconds
 							await client.get_channel(568058278165348362).send('**'+title+'** <@183240974347141120> <@247677408386351105> <@408114527947980802> '+url)#Normie heroes
 						elif 'tracer' in title.lower():
 							await client.get_channel(568058278165348362).send('**'+title+'** <@213235635266387980> '+url)#Normie heroes
+						elif 'maiev' in title.lower():
+							await client.get_channel(568058278165348362).send('**'+title+'** <@247677408386351105> '+url)#Normie heroes
 						elif 'Free-to-Play Hero Rotation & Heroic Deals' in title:
 							await client.get_channel(557366982471581718).send('**'+title+'** by '+author+': '+url)#general
 						elif 'samuro' in title.lower():
