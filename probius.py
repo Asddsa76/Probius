@@ -306,8 +306,8 @@ class MyClient(discord.Client):
 		self.seenTitles=await fillPreviousPostTitles(self)#Fills seenTitles with all current titles
 		print('Fetching proxy emojis...')
 		self.proxyEmojis=await getProxyEmojis(client.get_guild(603924426769170433))
-		'''print('Downloading heroes...')
-		await downloadAll(self,argv)'''
+		print('Downloading heroes...')
+		await downloadAll(self,argv)
 		self.ready=True
 		print('Ready!')
 
