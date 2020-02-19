@@ -46,6 +46,7 @@ async def mainProbius(client,message,texts):
 	talentAliases=['talent','talents']
 	rollAliases=['roll','dice']
 	patchNotesAliases=['patchnotes','patch','pn','pa']
+	deleteAliases=['delete','deletemessages','deletemessage']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -63,6 +64,9 @@ async def mainProbius(client,message,texts):
 		if hero in ['trait','r','w','e','passive','react']:#Do nothing
 			continue
 		if hero == 'd' and message.channel.id not in [643996299678449684,643975810256076820,643975833970540555,672921422544502952]: #[D] outside of drafting channel, trait
+			continue
+		if hero in deleteAliases:
+			await deleteMessages(message.author,text[1],client)
 			continue
 		if hero in patchNotesAliases:
 			await patchNotes(message.channel,text[1])
@@ -302,8 +306,8 @@ class MyClient(discord.Client):
 		self.seenTitles=await fillPreviousPostTitles(self)#Fills seenTitles with all current titles
 		print('Fetching proxy emojis...')
 		self.proxyEmojis=await getProxyEmojis(client.get_guild(603924426769170433))
-		print('Downloading heroes...')
-		await downloadAll(self,argv)
+		'''print('Downloading heroes...')
+		await downloadAll(self,argv)'''
 		self.ready=True
 		print('Ready!')
 

@@ -34,7 +34,7 @@ async def getAvatar(client,channel,userMention):
 	if '<' not in userMention:
 		await channel.send('Need a ping')
 		return
-	userString=userMention.replace(' ','')[2:-1].replace('!','')#Space because discord makes one after mention, ! for nicknames
+	userString=userMention[2:-1].replace('!','').replace(' ','')
 	user=client.get_user(int(userString))
 	await channel.send(user.avatar_url)
 
@@ -49,3 +49,20 @@ async def vote(message,text):
 	else:
 		await message.add_reaction('\U0001f44d')
 		await message.add_reaction('\U0001f44e')
+
+async def deleteMessages(author,ping,client):
+	guild=client.get_guild(535256944106012694)#Wind Striders
+	if 557521663894224912 not in [role.id for role in author.roles]:
+		return
+		
+	userId=int(ping.replace(' ','').replace('!','')[2:-1])
+	deletedCount=0
+	for channel in guild.text_channels:
+		try:
+			async for message in channel.history(limit=20):
+				if message.author.id==userId:
+					await message.delete()
+					deletedCount+=1
+		except:
+			pass
+	await guild.get_channel(576018992624435220).send('Deleted '+str(deletedCount)+' messages from '+ping)
