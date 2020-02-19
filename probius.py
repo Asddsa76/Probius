@@ -223,9 +223,12 @@ async def mainProbius(client,message,texts):
 				tier=int(tier)
 				output=printTier(talents,int(tier/3)+int(hero=='Chromie' and tier not in [1,18]))#Talents for Chromie come 2 lvls sooner, except lvl 1
 			elif tier in ['mount','z']:
-				output=abilities[-1]#Last ability. It's heroic if the hero has normal mount, but that's an user error
+				if hero=='Deathwing':
+					output=abilities[-2]
+				else:
+					output=abilities[-1]#Last ability. It's heroic if the hero has normal mount, but that's an user error
 			elif tier=='extra':
-				if hero in ['Zeratul','Gazlowe','Nova','Whitemane']:#Some heroes have the entry for 1 button between D and Q, these have them last
+				if hero in ['Zeratul','Gazlowe','Nova','Whitemane','Deathwing']:#Some heroes have the entry for 1 button between D and Q, these have them last
 					output=abilities[-1]
 				elif hero=='Gall':#Gall has extra and a special mount
 					output=abilities[-2]

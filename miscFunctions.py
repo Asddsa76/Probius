@@ -35,7 +35,7 @@ async def getAvatar(client,channel,userMention):
 	if '<' not in userMention:
 		await channel.send('Need a ping')
 		return
-	userString=userMention[2:-1].replace('!','').replace(' ','')
+	userString=userMention.replace(' ','')[2:-1].replace('!','')
 	user=client.get_user(int(userString))
 	await channel.send(user.avatar_url)
 
