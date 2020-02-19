@@ -69,7 +69,7 @@ async def mainProbius(client,message,texts):
 			await deleteMessages(message.author,text[1],client)
 			continue
 		if hero in patchNotesAliases:
-			await patchNotes(message.channel,text[1])
+			await patchNotes(message.channel,text)
 			continue
 		if hero in talentAliases:
 			await message.channel.send("Call a hero's talent tier with [hero/level]")

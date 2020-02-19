@@ -6,6 +6,7 @@ def helpMessage():
 	output+="[Hero/info] for hero info\n"
 	output+="[build/Hero] for hero builds/guides from Elitesparkle and others.\n"
 	output+="[rotation] for free weekly rotation from Gnub.\n"
+	output+="[patchnotes/hero] for patch notes from <https://heroespatchnotes.com>\n"
 	output+="Emojis: [:Hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.\n"
 	output+="Mock drafting: [draft/info].\n"
 	output+="My public repository: <https://github.com/Asddsa76/Probius>"
