@@ -20,12 +20,19 @@ async def patchNotes(channel,text):
 		if splitText:
 			text=splitText.pop(0)
 			if text.isdigit():
-				patch=patches[int(text)]
+				if int(text)<len(patches):
+					patch=patches[int(text)]
+				else:
+					await channel.send(hero+" doesn't have "+text+' patches yet.')
+					return
 			else:
 				for trialPatch in patches[1:]:
 					if text.lower() in trialPatch.lower():
 						patch=trialPatch
 						break
+				else:
+					await channel.send(hero+"'s "+'"'+text+'" has never been changed!')
+					return
 		else:
 			patch=patches[1]
 
