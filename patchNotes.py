@@ -23,7 +23,7 @@ async def patchNotes(channel,text):
 				if int(text)<len(patches):
 					patch=patches[int(text)]
 				else:
-					await channel.send(hero+" doesn't have "+text+' patches yet.')
+					await channel.send(hero.capitalize()+" doesn't have "+text+' patches yet.')
 					return
 			else:
 				for trialPatch in patches[1:]:
@@ -31,7 +31,7 @@ async def patchNotes(channel,text):
 						patch=trialPatch
 						break
 				else:
-					await channel.send(hero+"'s "+'"'+text+'" has never been changed!')
+					await channel.send(hero.capitalize()+"'s "+'"'+text+'" has never been changed!')
 					return
 		else:
 			patch=patches[1]
