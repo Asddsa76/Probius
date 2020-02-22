@@ -11,6 +11,7 @@ import re
 import random
 import discord
 from sys import argv#Where to get the JSONs
+from discord.ext import tasks
 
 from aliases import *			#Spellcheck and alternate names for heroes
 from printFunctions import *	#The functions that output the things to print
@@ -64,6 +65,9 @@ async def mainProbius(client,message,texts):
 		if hero in ['trait','r','w','e','passive','react']:#Do nothing
 			continue
 		if hero == 'd' and message.channel.id not in [643996299678449684,643975810256076820,643975833970540555,672921422544502952]: #[D] outside of drafting channel, trait
+			continue
+		if text==['re','error']:#[re/error] to troubleshoot subreddit forwarding error
+			await client.post_loop()
 			continue
 		if hero in deleteAliases:
 			await deleteMessages(message.author,text[1],client)
@@ -326,7 +330,8 @@ class MyClient(discord.Client):
 		elif '[' in message.content:
 			await mainProbius(self,message,[message.content.split('[')[1].lower().split('/')])
 			if message.content[0]=='[' and message.guild.id == 535256944106012694:
-				await message.delete()
+				#await message.delete()
+				pass
 		#if message.author.id==410481791204327424:
 			#await message.add_reaction('<:OrphAYAYA:657172520092565514>')
 		
@@ -417,6 +422,14 @@ class MyClient(discord.Client):
 		while not self.is_closed():
 			await asyncio.sleep(60*60*24)#Sleep 24 hours
 			await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels Blackstorm purges you <:peepoLove:606862963478888449>')
+
+	async def post_loop(self):
+		if self.bgTask0.failed():
+			import traceback
+			error = self.bgTask0.exception()
+			traceback.print_exception(type(error), error, error.__traceback__)
+		else:
+			print('Reddit forwarding has not failed yet.')
 
 client = MyClient()
 client.run(getProbiusToken())
