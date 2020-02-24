@@ -334,7 +334,7 @@ class MyClient(discord.Client):
 				pass
 		#if message.author.id==410481791204327424:
 			#await message.add_reaction('<:OrphAYAYA:657172520092565514>')
-		if message.embeds and 'https://us.forums.blizzard.com' in message.content:
+		if message.embeds and 'forums.blizzard.com' in message.content:
 			try:
 				await message.edit(suppress=True)
 			except:
