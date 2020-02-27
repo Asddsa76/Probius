@@ -9,7 +9,7 @@ redditors=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen
 discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','secret3332':'SecretChaos','Archlichofthestorm':'Trolldareon','ThatDoomedStudent':'Carbon','InfiniteEarth':'Flash',
 'KillMeWithMemes':'Nick','ridleyfire':'HailFall','bran76765':'Parthuin','Demon_Ryu':'Messa','Russisch':'Ekata','ArashiNoShad0w':'LeviathaN'}
 
-keywords=['Genji','Samuro','Free-to-Play Hero Rotation & Heroic Deals','Tracer','Maiev']#Posts with these in title gets forwarded regardless of author
+keywords=['Genji','Samuro','Tracer','Maiev']#Posts with these in title gets forwarded regardless of author
 
 async def getPostInfo(post):
 	title=post.split('", "')[0]
@@ -52,7 +52,7 @@ async def redditForwarding(client):#Called every 60 seconds
 					[title,author,url] = await getPostInfo(post)
 				except:
 					continue
-				if author in redditors or sum(1 for i in keywords if i in title.lower()):
+				if author in redditors or sum(1 for i in keywords if i.lower() in title.lower()):
 					if title not in client.seenTitles:#This post hasn't been processed before
 						client.seenTitles.append(title)
 						title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','')
