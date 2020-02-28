@@ -106,6 +106,10 @@ async def mainProbius(client,message,texts):
 			if hero=='serverchannels':
 				await message.channel.send([channel.name for channel in message.channel.guild.channels])
 				continue
+			if hero=='repeat' and len(text)==2:
+				await message.channel.send(text[1].capitalize())
+				await message.delete()
+				continue
 		if hero== 'unsorted' and message.channel.guild.name=='Wind Striders':
 			if 557521663894224912 in [role.id for role in message.author.roles]:#Olympian
 				channel = client.get_channel(557366982471581718)#WSgeneral

@@ -35,7 +35,7 @@ def aliases(hero):
 		return 'Deathwing'
 	elif hero in ['dva','gremlin']:
 		return 'D.Va'
-	elif hero in ['etc']:
+	elif hero in ['etc','cow']:
 		return 'E.T.C.'
 	elif hero in ['bird']:
 		return 'Falstad'
@@ -65,6 +65,8 @@ def aliases(hero):
 		return "Kael'thas"
 	elif hero in ['ktz','kelthuzad','lich']:
 		return "Kel'Thuzad"
+	elif hero in ['sarah']:
+		return 'Kerrigan'
 	elif hero in ['karazhim','monk']:
 		return 'Kharazim'
 	elif hero in ['janitor']:
