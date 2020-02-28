@@ -23,7 +23,7 @@ async def sort(roles,member,olympian,client):
 	unsorted=guild.get_role(560435022427848705)
 
 	if unsorted not in member.roles:
-		await channel.send('**'+member.name+'** is not unsorted')
+		#await channel.send('**'+member.name+'** is not unsorted')
 		return
 	roles=list(set(roles))
 	if len(roles)!=3:
