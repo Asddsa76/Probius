@@ -32,7 +32,8 @@ async def rotation(channel):
 					line=line[:line.index('<ul><li>Added')].replace('</a>','')
 					skinsLimited='Limited '
 				else:
-					line=line[:line.index('</a></li>')]
+					#line=line[:line.index('</a>')]
+					continue
 
 				if '(' in line:
 					[hero,variant]=line.split('(')
