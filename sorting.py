@@ -42,9 +42,14 @@ async def sort(roles,member,olympian,client):
 		role='na' if role=='america' else role
 		role='na' if role=='americas' else role
 		role='unranked' if role=='qm' else role
+		role='master' if role=='masters' else role
 		for i in guild.roles:
 			if (i<bestBot and i>IM) or (i<lopez and i>coreMember):
 				if await trim(i.name)==await trim(role):
+					rolesToAdd.append(i)
+				elif await trim(i.name)==await trim(''.join([i for i in role if not i.isdigit()])):#Rank numbers
+					rolesToAdd.append(i)
+				elif await trim(i.name)==await trim(role+'1'):#Add colour #1
 					rolesToAdd.append(i)
 	if len(rolesToAdd)!=3:
 		await channel.send('At least one role was wrong or inaccessible. Valid roles: '+', '.join([i.name for i in rolesToAdd]))
