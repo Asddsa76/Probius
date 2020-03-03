@@ -336,8 +336,6 @@ class MyClient(discord.Client):
 			if message.content[0]=='[' and message.guild.id == 535256944106012694:
 				#await message.delete()
 				pass
-		#if message.author.id==410481791204327424:
-			#await message.add_reaction('<:OrphAYAYA:657172520092565514>')
 		if message.embeds and 'forums.blizzard.com' in message.content:
 			try:
 				await message.edit(suppress=True)

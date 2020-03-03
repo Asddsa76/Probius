@@ -31,26 +31,32 @@ async def sort(roles,member,olympian,client):
 		return
 	rolesToAdd=[]
 	for role in roles:
-		role='platinum' if role=='plat' else role
-		role='diamond' if role=='dia' else role
-		role='eu' if role=='europe' else role
-		role='na' if role=='northamerica' else role
-		role='na' if role=='us' else role
-		role='unranked' if role=='ur' else role
-		role='unranked' if role=='none' else role
-		role='grandmaster' if role=='gm' else role
-		role='na' if role=='america' else role
-		role='na' if role=='americas' else role
-		role='unranked' if role=='qm' else role
-		role='master' if role=='masters' else role
-		for i in guild.roles:
-			if (i<bestBot and i>IM) or (i<lopez and i>coreMember):
-				if await trim(i.name)==await trim(role):
-					rolesToAdd.append(i)
-				elif await trim(i.name)==await trim(''.join([i for i in role if not i.isdigit()])):#Rank numbers
-					rolesToAdd.append(i)
-				elif await trim(i.name)==await trim(role+'1'):#Add colour #1
-					rolesToAdd.append(i)
+		try:
+			role='platinum' if role=='plat' else role
+			role='diamond' if role=='dia' else role
+			role='eu' if role=='europe' else role
+			role='na' if role=='northamerica' else role
+			role='na' if role=='us' else role
+			role='unranked' if role=='ur' else role
+			role='unranked' if role=='none' else role
+			role='grandmaster' if role=='gm' else role
+			role='na' if role=='america' else role
+			role='na' if role=='americas' else role
+			role='unranked' if role=='qm' else role
+			role='master' if role=='masters' else role
+			for i in sorted(guild.roles):
+				if (i<bestBot and i>IM) or (i<lopez and i>coreMember):
+					if await trim(i.name)==await trim(role):
+						rolesToAdd.append(i)
+					elif await trim(i.name)==await trim(''.join([i for i in role if not i.isdigit()])):#Rank numbers
+						rolesToAdd.append(i)
+					elif await trim(i.name)==await trim(role+'1'):#Add colour #1
+						rolesToAdd.append(i)
+					else:
+						continue
+					raise Exception('Role done!')
+		except:
+			pass
 	if len(rolesToAdd)!=3:
 		await channel.send('At least one role was wrong or inaccessible. Valid roles: '+', '.join([i.name for i in rolesToAdd]))
 		return
