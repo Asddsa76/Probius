@@ -323,8 +323,7 @@ class MyClient(discord.Client):
 		print('Ready!')
 
 	async def on_message(self, message):
-		#Don't respond to bots
-		if message.author.bot:
+		if message.author.bot:#Don't respond to bots
 			return
 		if self.ready==False:
 			return
@@ -334,16 +333,8 @@ class MyClient(discord.Client):
 		elif '[' in message.content:
 			await mainProbius(self,message,[message.content.split('[')[1].lower().split('/')])
 			if message.content[0]=='[' and message.guild.id == 535256944106012694:
-				#await message.delete()
 				pass
-		if message.embeds:
-			for i in ['forums.blizzard.com','psionic-storm.com']:#Forum embeds are huge image, psionic-storm builds/talent embeds link to wrong build number or blank calculator
-				if i in message.content:
-					try:
-						await message.edit(suppress=True)
-						return
-					except:
-						pass
+		await removeEmbeds(message)
 		
 	async def on_message_edit(self,before, after):
 		#Don't respond to ourselves
@@ -357,6 +348,8 @@ class MyClient(discord.Client):
 			newTexts=[i for i in findTexts(after) if i not in beforeTexts]
 			if newTexts:#Nonempty lists have boolean value true
 				await mainProbius(self,after,newTexts)
+
+		await removeEmbeds(after)
 
 	async def on_raw_reaction_add(self,payload):
 		member=client.get_user(payload.user_id)
