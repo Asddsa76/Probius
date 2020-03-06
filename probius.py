@@ -336,11 +336,14 @@ class MyClient(discord.Client):
 			if message.content[0]=='[' and message.guild.id == 535256944106012694:
 				#await message.delete()
 				pass
-		if message.embeds and 'forums.blizzard.com' in message.content:
-			try:
-				await message.edit(suppress=True)
-			except:
-				pass
+		if message.embeds:
+			for i in ['forums.blizzard.com','psionic-storm.com']:#Forum embeds are huge image, psionic-storm builds/talent embeds link to wrong build number or blank calculator
+				if i in message.content:
+					try:
+						await message.edit(suppress=True)
+						return
+					except:
+						pass
 		
 	async def on_message_edit(self,before, after):
 		#Don't respond to ourselves
