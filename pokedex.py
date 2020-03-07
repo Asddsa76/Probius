@@ -105,7 +105,7 @@ async def updatePokedex(client,text,message):
 			pokedex_as_string_array.append(hero_mains_string + '\n')
 	
 	i = 0
-	async for pokedex_message in pokedex_channel.history(limit=50):
+	async for pokedex_message in reversed(pokedex_channel.history(limit=50)):
 		await pokedex_message.edit(content=pokedex_as_string_array[i])
 		i += 1
 
