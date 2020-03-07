@@ -426,13 +426,5 @@ class MyClient(discord.Client):
 			await asyncio.sleep(60*60*24)#Sleep 24 hours
 			await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels Blackstorm purges you <:peepoLove:606862963478888449>')
 
-	async def post_loop(self):
-		if self.bgTask0.failed():
-			import traceback
-			error = self.bgTask0.exception()
-			traceback.print_exception(type(error), error, error.__traceback__)
-		else:
-			print('Reddit forwarding has not failed yet.')
-
 client = MyClient()
 client.run(getProbiusToken())
