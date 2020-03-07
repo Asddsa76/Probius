@@ -1,14 +1,6 @@
 from miscFunctions import *
 from aliases import *
 
-async def fixPokedex(client):
-	import asyncio
-	channel=client.get_channel(597140352411107328)
-	async for message in channel.history(limit=4):
-		if message.id==685945199532310583:
-			await channel.send(message.content)
-
-
 async def fillPokedex(client):#Fills internal state with pokedex members
 	pokedexChannel=client.get_channel(597140352411107328)
 	output=''

@@ -37,6 +37,15 @@ async def downloadHero(hero,client,patch):
 		#client.heroPages={...'genji':[abilities,talents], ...}
 		page=loads(page)
 		abilities=[]
+		if hero in ['auriel', 'ltmorales', 'valeera', 'deathwing', 'zarya']:
+			resource='energy'
+		elif hero=='chen':
+			resource='brew':
+		elif hero=='sonya':
+			resource='fury'
+		else:
+			resource='mana'
+			
 		for i in page['abilities'].keys():
 			for ability in page['abilities'][i]:
 				if 'hotkey' in ability:
@@ -44,11 +53,16 @@ async def downloadHero(hero,client,patch):
 				else:
 					output='**[D] '
 				output+=ability['name']+':** '
-				if 'cooldown' in ability:
-					output+='*'+str(ability['cooldown'])+' seconds'
-				if 'manaCost' in ability:
-					output+='*'+str(ability['manaCost'])+' mana'
-				output+=';* '+await descriptionFortmatting(ability['description'])
+				if 'cooldown' in ability or 'manaCost' in ability:
+					output+='*'
+					if 'cooldown' in ability:
+						output+=str(ability['cooldown'])+' seconds'
+						if 'manaCost' in ability:
+							output+=', '
+					if 'manaCost' in ability:
+						output+=str(ability['manaCost'])+' '+resource
+					output+=';* '
+				output+=await descriptionFortmatting(ability['description'])
 				abilities.append(output)
 
 		talents=[]
