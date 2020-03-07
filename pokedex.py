@@ -96,9 +96,9 @@ async def updatePokedex(client,text,message):
 
 	pokedex_as_string_array=[]
 	i = 0
-	pokedex_as_string_array.append('')
+	pokedex_as_string_array.append('\n')
 	for hero_mains_string in pokedex_as_individual_hero_strings:
-		if (len(pokedex_as_string_array[i] + hero_mains_string) < 2000):
+		if (len(pokedex_as_string_array[i] + hero_mains_string + '\n') < 2000):
 			pokedex_as_string_array[i] += hero_mains_string + '\n'
 		else:
 			i += 1
