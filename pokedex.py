@@ -1,13 +1,11 @@
 from miscFunctions import *
 from aliases import *
 
-pokedexMessageIDs=[657059472950296576,657059477194932264]
-
 async def fillPokedex(client):#Fills internal state with pokedex members
 	pokedexChannel=client.get_channel(597140352411107328)
 	output=''
-	for i in pokedexMessageIDs:
-		output+=(await pokedexChannel.fetch_message(i)).content+'\n'
+	async for message in pokedexChannel.history(limit=50):
+		output+=message.content+'\n'
 	return output.replace(':','')
 
 async def pokedex(client,channel,hero):
@@ -121,7 +119,6 @@ async def updatePokedex(client,text,message):
 
 async def removePokedex(client,MemberID): #Removes an user from all pokedex heroes
 	pokedexChannel=client.get_channel(597140352411107328)
-	for messageID in pokedexMessageIDs:
-		message=await pokedexChannel.fetch_message(messageID)
+	async for message in pokedexChannel.history(limit=50):
 		MemberID=str(MemberID)
 		await message.edit(content=message.content.replace(' <@'+MemberID+'>','').replace(' <@!'+MemberID+'>',''))
