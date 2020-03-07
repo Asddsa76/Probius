@@ -40,12 +40,12 @@ async def downloadHero(hero,client,patch):
 		if hero in ['auriel', 'ltmorales', 'valeera', 'deathwing', 'zarya']:
 			resource='energy'
 		elif hero=='chen':
-			resource='brew':
+			resource='brew'
 		elif hero=='sonya':
 			resource='fury'
 		else:
 			resource='mana'
-			
+
 		for i in page['abilities'].keys():
 			for ability in page['abilities'][i]:
 				if 'hotkey' in ability:
