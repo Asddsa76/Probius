@@ -78,7 +78,7 @@ async def updatePokedex(client,text,message):
 	pokedex_as_string = ''
 	for pokedex_message in pokedex_messages:
 		# Prepend the strings
-		pokedex_as_string = pokedex_message.content + pokedex_as_string
+		pokedex_as_string = pokedex_message + pokedex_as_string
 	
 	# Let's update the message before splitting it
 	hero=hero.replace('_',' ')
