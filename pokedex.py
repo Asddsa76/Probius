@@ -104,14 +104,14 @@ async def updatePokedex(client,text,message):
 			i += 1
 			pokedex_as_string_array.append(hero_mains_string + '\n')
 	
-	i = 0
-	async for pokedex_message in reversed(pokedex_channel.history(limit=50)):
+	i = len(pokedex_as_string_array)
+	async for pokedex_message in pokedex_channel.history(limit=50):
 		await pokedex_message.edit(content=pokedex_as_string_array[i])
-		i += 1
+		i -= 1
 
 	# We've run out of messages, do we have content left?
 	# We're never going to add two messages from 1 edit call, no need to worry about that.
-	if len(pokedex_as_string_array)<1:
+	if i == 0:
 		message_to_edit = await pokedex_channel.send('This will be edited soon.')
 		await message_to_edit.edit(content=pokedex_as_string_array[i])
 	
