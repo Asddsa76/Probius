@@ -45,8 +45,10 @@ async def downloadHero(hero,client,patch):
 					output='**[D] '
 				output+=ability['name']+':** '
 				if 'cooldown' in ability:
-					output+='*'+str(ability['cooldown'])+' seconds;* '
-				output+=await descriptionFortmatting(ability['description'])
+					output+='*'+str(ability['cooldown'])+' seconds'
+				if 'manaCost' in ability:
+					output+='*'+str(ability['manaCost'])+' mana'
+				output+=';* '+await descriptionFortmatting(ability['description'])
 				abilities.append(output)
 
 		talents=[]
