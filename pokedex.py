@@ -70,10 +70,15 @@ async def updatePokedex(client,text,message):
 
 	pokedex_channel=client.get_channel(597140352411107328)
 
+	pokedex_messages=[]
 	# We're unlikely to ever go above 50 messages in the pokedex.
-	pokedex_as_string = ''
 	async for pokedex_message in pokedex_channel.history(limit=50):
-		pokedex_as_string += pokedex_message.content
+		pokedex_messages.append(pokedex_message.content)
+
+	pokedex_as_string = ''
+	for pokedex_message in pokedex_messages:
+		# Prepend the strings
+		pokedex_as_string = pokedex_message.content + pokedex_as_string
 	
 	# Let's update the message before splitting it
 	hero=hero.replace('_',' ')
@@ -98,8 +103,6 @@ async def updatePokedex(client,text,message):
 		else:
 			i += 1
 			pokedex_as_string_array.append(hero_mains_string + '\n')
-	
-	pokedex_as_string = '\n'.join(pokedex_as_individual_hero_strings)
 	
 	i = 0
 	async for pokedex_message in pokedex_channel.history(limit=50):
