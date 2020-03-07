@@ -84,22 +84,25 @@ async def updatePokedex(client,text,message):
 	hero=hero.replace('_',' ')
 
 	pokedex_as_individual_hero_strings=pokedex_as_string.split('\n')
+	pokedex_as_individual_hero_strings_new=''
 
 	for hero_mains_string in pokedex_as_individual_hero_strings:
 		if hero in hero_mains_string:
 			removal=False
 			if user in hero_mains_string:
 				removal=True
-				hero_mains_string=hero_mains_string.replace(' '+user,'')
+				pokedex_as_individual_hero_strings_new.append(hero_mains_string.replace(' '+user,''))
 			else:
-				hero_mains_string+=' '+user
+				pokedex_as_individual_hero_strings_new.append(hero_mains_string+=' '+user)
+		else:
+			pokedex_as_individual_hero_strings_new.append(hero_mains_string)
 
 	pokedex_as_string_array=[]
 	i = 0
 	pokedex_as_string_array.append('\n')
-	for hero_mains_string in pokedex_as_individual_hero_strings:
+	for hero_mains_string in pokedex_as_individual_hero_strings_new:
 		if (len(pokedex_as_string_array[i] + hero_mains_string + '\n') < 2000):
-			pokedex_as_string_array[i] += hero_mains_string + '\n'
+			pokedex_as_string_array[i] += (hero_mains_string + '\n')
 		else:
 			i += 1
 			pokedex_as_string_array.append(hero_mains_string + '\n')
