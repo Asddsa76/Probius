@@ -67,19 +67,19 @@ async def updatePokedex(client,text,message):
 	if '<@' not in user:
 		await message.channel.send('`'+user+'` is not a ping.')
 		return
- 
+
 	pokedex_channel=client.get_channel(597140352411107328)
- 
+
 	# We're unlikely to ever go above 50 messages in the pokedex.
- 	pokedex_as_string = ''
+	pokedex_as_string = ''
 	async for pokedex_message in pokedex_channel.history(limit=50):
 		pokedex_as_string += pokedex_message.content
 	
 	# Let's update the message before splitting it
 	hero=hero.replace('_',' ')
- 
+
 	pokedex_as_individual_hero_strings=pokedex_as_string.split('\n')
-  
+
 	for hero_mains_string in pokedex_as_individual_hero_strings:
 		if hero in hero_mains_string:
 			removal=False
@@ -88,27 +88,32 @@ async def updatePokedex(client,text,message):
 				hero_mains_string=hero_mains_string.replace(' '+user,'')
 			else:
 				hero_mains_string+=' '+user
-    
+
+	pokedex_as_string_array=[]
 	i = 0
+<<<<<<< HEAD
  	pokedex_as_string_array = []
 	pokedex_as_string_array[0] = ''
+=======
+	pokedex_as_string_array.append('')
+>>>>>>> Bugged pokedex :(
 	for hero_mains_string in pokedex_as_individual_hero_strings:
-		if (len(pokedex_as_string_array[i] + hero_mains_string < 2000)):
+		if (len(pokedex_as_string_array[i] + hero_mains_string) < 2000):
 			pokedex_as_string_array[i] += hero_mains_string + '\n'
 		else:
 			i += 1
-			pokedex_as_string_array[i] = hero_mains_string + '\n'
-    
+			pokedex_as_string_array.append(hero_mains_string + '\n')
+	
 	pokedex_as_string = '\n'.join(pokedex_as_individual_hero_strings)
 	
 	i = 0
 	async for pokedex_message in pokedex_channel.history(limit=50):
 		await pokedex_message.edit(content=pokedex_as_string_array[i])
 		i += 1
-  
+
 	# We've run out of messages, do we have content left?
 	# We're never going to add two messages from 1 edit call, no need to worry about that.
-	if (pokedex_as_string_array[i]):
+	if len(pokedex_as_string_array)<1:
 		message_to_edit = await pokedex_channel.send('This will be edited soon.')
 		await message_to_edit.edit(content=pokedex_as_string_array[i])
 	
