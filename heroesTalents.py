@@ -37,7 +37,7 @@ async def downloadHero(hero,client,patch):
 		#client.heroPages={...'genji':[abilities,talents], ...}
 		page=loads(page)
 		abilities=[]
-		if hero in ['auriel', 'ltmorales', 'valeera', 'deathwing', 'zarya']:
+		if hero in ['ltmorales', 'valeera', 'deathwing', 'zarya']:
 			resource='energy'
 		elif hero=='chen':
 			resource='brew'

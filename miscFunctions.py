@@ -70,7 +70,7 @@ async def deleteMessages(author,ping,client):
 
 async def removeEmbeds(message):#Some embeds are instant, others are edited in by discord. Call in both on_message and on_message_edit
 	if message.embeds:
-		for i in ['forums.blizzard.com','psionic-storm.com']:#Forum embeds are huge image, psionic-storm builds/talent embeds link to wrong build number or blank calculator
+		for i in ['forums.blizzard.com','psionic-storm.com','heroespatchnotes.com']:#Forum embeds are huge image, psionic-storm builds/talent embeds link to wrong build number or blank calculator
 			if i in message.content:
 				try:
 					await message.edit(suppress=True)
