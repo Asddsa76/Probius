@@ -31,7 +31,7 @@ from patchNotes import *
 async def mainProbius(client,message,texts):
 	buildsAliases=['guide','build','b','g','builds','guides']
 	quotesAliases=['quote','q','quotes']
-	rotationAlises=['rotation','rot']
+	rotationAlises=['rotation','rot','sale','sales']
 	aliasesAliases=['aliases','names','acronyms','n']
 	wikipageAliases=['all','page','wiki']
 	randomAliases=['random','ra','rand']

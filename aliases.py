@@ -115,6 +115,8 @@ def aliases(hero):
 		return 'The_Butcher'
 	elif hero in ['tlv','thelostvikings','lostvikings']:
 		return 'The_Lost_Vikings'
+	elif hero in ['lena','oxton','lenaoxton','mosquito']:
+		return 'Tracer'
 	elif hero in ['tyrone']:
 		return 'Tyrael'
 	elif hero in ['demonhunter','vala']:
@@ -127,7 +129,7 @@ def aliases(hero):
 		return 'Yrel'
 	elif hero in ['zerathul']:
 		return 'Zeratul'
-	elif hero in ["zj",'zuljin']:
+	elif hero in ["zj",'zuljin','troll']:
 		return "Zul'jin"
 
 	for i in getHeroes():#Substring
