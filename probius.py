@@ -53,7 +53,8 @@ async def mainProbius(client,message,texts):
 			break
 	else:#The elusive for else control flow
 		guildname=message.channel.guild.name
-		guildname='Nexus school' if guildname=='Nexus Schoolhouse' else guildname#Nexus Schoolhouse is too long
+		guildname='Nexus school' if guildname=='Nexus Schoolhouse' else guildname#Nexus Schoolhouse is too long 
+		guildname='Schuifpui' if guildname=='De Schuifpui Schavuiten' else guildname
 		channelName=message.channel.name
 		channelName='hots' if channelName=='heroes-got-canceled' else channelName
 		loggingMessage=guildname+' '*(15-len(guildname))+channelName+' '+' '*(17-len(channelName))+str(message.author.name)+' '*(18-len(str(message.author.name)))+' '+message.content
