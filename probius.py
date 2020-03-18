@@ -67,9 +67,6 @@ async def mainProbius(client,message,texts):
 			continue
 		if hero == 'd' and message.channel.id not in [643996299678449684,643975810256076820,643975833970540555,672921422544502952]: #[D] outside of drafting channel, trait
 			continue
-		if text==['re','error']:#[re/error] to troubleshoot subreddit forwarding error
-			await client.post_loop()
-			continue
 		if hero in deleteAliases:
 			await deleteMessages(message.author,text[1],client)
 			continue
@@ -98,7 +95,7 @@ async def mainProbius(client,message,texts):
 			if len(text)==1:
 				await message.channel.send('༼ つ ◕\\_◕ ༽つ')
 			else:
-				await message.channel.send('༼ つ ◕\_◕ ༽つ ༼ つ ◕\_◕ ༽つ'+' Summon '+text[1]+'! ༼ つ ◕\_◕ ༽つ ༼ つ ◕\_◕ ༽つ')
+				await message.channel.send('༼ つ ◕\_◕ ༽つ ༼ つ ◕\_◕ ༽つ'+' Summon '+message.content.split('[')[1].split('/')[1].split(']')[0] +'! ༼ つ ◕\_◕ ༽つ ༼ つ ◕\_◕ ༽つ')#text[1] is all lowercase etc.
 			continue
 		if hero in colourAliases:
 			await message.channel.send(file=discord.File('WS colours.png'))
@@ -240,17 +237,13 @@ async def mainProbius(client,message,texts):
 				else:
 					output=abilities[-1]#Last ability. It's heroic if the hero has normal mount, but that's an user error
 			elif tier=='extra':
-				if hero in ['Zeratul','Gazlowe','Nova','Whitemane','Deathwing']:#Some heroes have the entry for 1 button between D and Q, these have them last
+				if hero in ['Zeratul','Gazlowe','Nova','Whitemane','Deathwing','Gall','Stitches']:#Some heroes have the entry for 1 button between D and Q, these have them last
 					output=abilities[-1]
-				elif hero=='Gall':#Gall has extra and a special mount
-					output=abilities[-2]
-				elif hero=='Stitches':#Hook is after Q
-					output=abilities[2]
 				else:
 					output=abilities[1]
 			elif tier=='r':#Ultimate
 				if hero=='Tracer':#She starts with her heroic already unlocked, and only has 1 heroic
-					output=abilities[4]
+					output=abilities[3]
 				else:
 					output=printTier(talents,3-2*int(hero=='Varian'))#Varian's heroics are at lvl 4
 			elif len(tier)==1 and tier in 'dqwe':#Ability (dqwe)
