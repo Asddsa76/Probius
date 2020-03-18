@@ -152,7 +152,10 @@ async def mainProbius(client,message,texts):
 				continue
 			hero=random.choice(getHeroes())
 		if hero in helpAliases:
-			await message.channel.send(helpMessage())
+			if len(text)==2 and hero in heroStatsAliases:#[info/hero]
+				await heroStats(aliases(text[1]),message.channel)
+			else:
+				await message.channel.send(helpMessage())
 			continue
 		if hero in buildsAliases:
 			if len(text)==2:
