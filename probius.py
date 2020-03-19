@@ -27,6 +27,7 @@ from pokedex import *
 from reddit import *
 from sorting import *
 from patchNotes import *
+from lfg import *
 
 async def mainProbius(client,message,texts):
 	buildsAliases=['guide','build','b','g','builds','guides']
@@ -48,6 +49,7 @@ async def mainProbius(client,message,texts):
 	rollAliases=['roll','dice']
 	patchNotesAliases=['patchnotes','patch','pn','pa']
 	deleteAliases=['delete','deletemessages','deletemessage']
+	lfgAlises=['lfg','find']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -63,7 +65,10 @@ async def mainProbius(client,message,texts):
 
 	for text in texts:
 		hero=text[0].replace(' ','')
-		if hero in ['trait','r','w','e','passive','react']:#Do nothing
+		if hero in ['trait','r','w','e','passive','react','...']:#Do nothing
+			continue
+		if hero in lfgAlises:
+			await lfg(message.channel,text[1],client)
 			continue
 		if hero == 'd' and message.channel.id not in [643996299678449684,643975810256076820,643975833970540555,672921422544502952]: #[D] outside of drafting channel, trait
 			continue
@@ -188,7 +193,7 @@ async def mainProbius(client,message,texts):
 			await message.channel.send('All hero alternate names: <https://github.com/Asddsa76/Probius/blob/master/aliases.py>')
 			continue
 		if hero == 'all':
-			await printAll(client,message,text[1])
+			await printAll(client,message,text[1],True)
 			continue
 		if hero in emojiAliases:
 			await message.channel.send('Emojis: [:hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.')
@@ -254,7 +259,7 @@ async def mainProbius(client,message,texts):
 				await message.channel.send('<https://heroesofthestorm.gamepedia.com/Data:'+hero+'#Skills>')
 				continue
 			else:
-				output=printSearch(abilities, talents, tier, hero)
+				output=await printSearch(abilities, talents, tier, hero, True)
 		
 		if len(output)==2:#If len is 2, then it's an array with output split in half
 			if message.channel.name=='rage':

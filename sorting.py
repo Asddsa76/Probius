@@ -1,3 +1,5 @@
+from lfg import roleAliases
+
 async def trim(text):
 	toRemove=[' ','#','<@&557521663894224912>','*','\n']
 	for i in toRemove:
@@ -32,18 +34,7 @@ async def sort(roles,member,olympian,client):
 	rolesToAdd=[]
 	for role in roles:
 		try:
-			role='platinum' if role=='plat' else role
-			role='diamond' if role=='dia' else role
-			role='eu' if role=='europe' else role
-			role='na' if role=='northamerica' else role
-			role='na' if role=='us' else role
-			role='unranked' if role=='ur' else role
-			role='unranked' if role=='none' else role
-			role='grandmaster' if role=='gm' else role
-			role='na' if role=='america' else role
-			role='na' if role=='americas' else role
-			role='unranked' if role=='qm' else role
-			role='master' if role=='masters' else role
+			role=roleAliases(role)
 			for i in sorted(guild.roles):
 				if (i<bestBot and i>IM) or (i<lopez and i>coreMember):
 					if await trim(i.name)==await trim(role):

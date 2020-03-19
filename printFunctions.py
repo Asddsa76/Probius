@@ -14,7 +14,12 @@ def printAbility(abilities,hotkey):#Prints abilities with matching hotkey
 			output+=ability+'\n'
 	return output
 
-def printSearch(abilities, talents, name, hero):#Prints abilities and talents with the name of the identifier
+async def deepAndShallowSearchFoundBool(ability,string,deep):
+	if not deep:
+		ability=ability.split(':')[0]
+	return 1 if string in ability.lower() else 0
+
+async def printSearch(abilities, talents, name, hero, deep=False):#Prints abilities and talents with the name of the identifier
 	name=abilityAliases(hero,name)
 	if '--' in name:
 		[name,exclude]=name.split('--')
@@ -23,7 +28,7 @@ def printSearch(abilities, talents, name, hero):#Prints abilities and talents wi
 	namelist=name.split('&')
 	output=''
 	for ability in abilities:
-		if sum([1 for i in namelist if i in ability.lower()])==len(namelist) and exclude not in ability.lower():
+		if sum([1 for i in namelist if await deepAndShallowSearchFoundBool(ability,i,deep)])==len(namelist) and exclude not in ability.lower():
 			output+=ability+'\n'
 	levelTiers=[0,1,2,3,4,5,6]
 	if hero=='Varian':
@@ -33,7 +38,7 @@ def printSearch(abilities, talents, name, hero):#Prints abilities and talents wi
 	for i in levelTiers:
 		talentTier=talents[i]
 		for talent in talentTier:
-			if sum([1 for i in namelist if i in talent.lower()])==len(namelist) and exclude not in talent.lower():
+			if sum([1 for i in namelist if await deepAndShallowSearchFoundBool(talent,i,deep)])==len(namelist) and exclude not in talent.lower():
 				output+=talent+'\n'
 	return output
 
@@ -48,7 +53,7 @@ async def printLarge(channel,inputstring):#Get long string. Print lines out in 2
 			output=strings.pop(0)
 	await channel.send(output)
 
-async def printAll(client,message,keyword):#When someone calls [all/keyword]
+async def printAll(client,message,keyword, deep=False):#When someone calls [all/keyword]
 	async with message.channel.typing():
 		if len(keyword)<4 and message.author.id!=183240974347141120:
 			await message.channel.send('Please use a keyword with at least 4 letters minimum')
@@ -56,7 +61,7 @@ async def printAll(client,message,keyword):#When someone calls [all/keyword]
 		toPrint=''
 		for hero in getHeroes():
 			(abilities,talents)=client.heroPages[hero]
-			output=printSearch(abilities,talents,keyword,hero)
+			output=await printSearch(abilities,talents,keyword,hero,deep)
 			if output=='':
 				continue
 			toPrint+='`'+hero.replace('_',' ')+':` '+output

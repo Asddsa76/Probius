@@ -22,13 +22,16 @@ async def additionalInfo(hero,name,description):
 	'valla':{'Strafe':'The duration of Hatred is paused when channeling, and reset to full when Strafe ends.'},
 	'alexstrasza':{
 		'Cleansing Flame':'Dragonqueen: Cleansing Flame is cast instantly, and its cooldown is reduced by 10s. The duration of Dragonqueen is paused, while basic abilities continue to cool down while in flight.',
-		'Dragon Scales':'Getting Stunned, Rooted, or Silenced while Dragon Scales is active refreshes its duration to 2 seconds.'},
+		'Dragon Scales':'Getting Stunned, Rooted, or Silenced while Dragon Scales is active refreshes its duration to 2 seconds.',
+		'Life-Binder':'Dragonqueen: The cast range of Life-Binder is increased from 6 to 9.'},
 	'maiev':{'Spirit of Vengeance':'Reactivate to teleport to the spirit.'},
 	'sylvanas':{'Haunting Wave':'Sylvanas is unstoppable while flying to the banshee.'},
 	'lunara':{'Leaping Strike':'Lunara is unstoppable while leaping.'},
 	'chen':{'Storm, Earth, Fire':'Using Storm, Earth, Fire removes most negative effects from Chen.'},
 	'guldan':{'Life Tap':'Costs 222 (+4% per level) Health.'},
-	'johanna':{"Heaven's Fury":'4 bolts per second per enemy, up to 2 enemies.'}
+	'johanna':{"Heaven's Fury":'4 bolts per second per enemy, up to 2 enemies.'},
+	'tyrande':{"Huntress' Fury":"Splashes do not trigger any of Tyrande's Basic Attack related effects."},
+	'tracer':{'Ricochet':'Ricochet shots do not interact with Bullet Time or Focus Fire.'}
 	}
 	if hero in addDict:
 		if name in addDict[hero]:
@@ -39,7 +42,8 @@ async def fixTooltips(hero,name,description):
 	fixDict={#Replaces text using strikethrough
 	'tracer':{'Sleight of Hand':['20%','23%']},
 	'cassia':{'War Traveler':['8%','4%','1 second','0.5 seconds']},
-	'sylvanas':{'Haunting Wave':['teleport','fly']}
+	'sylvanas':{'Haunting Wave':['teleport','fly']},
+	'tyrande':{'Light of Elune':['damages an enemy','Auto Attacks an enemy, or deals spell damage to an enemy hero']}
 	}
 	if hero in fixDict:
 		if name in fixDict[hero]:
@@ -127,10 +131,15 @@ async def downloadAll(client,argv):
 	loop = asyncio.get_event_loop()#running instead of event when calling from a coroutine. But running is for python3.7+
 	loop.run_until_complete(loopFunction(client,heroes,patch))
 
-async def heroStats(hero,channel):
+async def heroStats(hero,channel,allowRecursion=True):
 	if hero=='The_Lost_Vikings':
 		for i in ['Olaf','Baleog','Erik']:
 			await heroStats(i,channel)
+	elif hero=='Rexxar' and allowRecursion:
+		for i in ['Rexxar','Misha']:
+			await heroStats(i,channel,False)# :spaghetti:
+	elif hero=='Gall':
+		await heroStats('Cho',channel)
 	else:
 		async with aiohttp.ClientSession() as session:
 			page = await fetch(session, 'https://heroesofthestorm.gamepedia.com/index.php?title=Data:'+hero)
