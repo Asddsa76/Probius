@@ -14,7 +14,7 @@ def printAbility(abilities,hotkey):#Prints abilities with matching hotkey
 			output+=ability+'\n'
 	return output
 
-async def deepAndShallowSearchFoundBool(ability,string,deep):
+def deepAndShallowSearchFoundBool(ability,string,deep):
 	if not deep:
 		ability=ability.split(':')[0]
 	return 1 if string in ability.lower() else 0
@@ -28,7 +28,7 @@ async def printSearch(abilities, talents, name, hero, deep=False):#Prints abilit
 	namelist=name.split('&')
 	output=''
 	for ability in abilities:
-		if sum([1 for i in namelist if await deepAndShallowSearchFoundBool(ability,i,deep)])==len(namelist) and exclude not in ability.lower():
+		if sum([1 for i in namelist if deepAndShallowSearchFoundBool(ability,i,deep)])==len(namelist) and exclude not in ability.lower():
 			output+=ability+'\n'
 	levelTiers=[0,1,2,3,4,5,6]
 	if hero=='Varian':
@@ -38,7 +38,7 @@ async def printSearch(abilities, talents, name, hero, deep=False):#Prints abilit
 	for i in levelTiers:
 		talentTier=talents[i]
 		for talent in talentTier:
-			if sum([1 for i in namelist if await deepAndShallowSearchFoundBool(talent,i,deep)])==len(namelist) and exclude not in talent.lower():
+			if sum([1 for i in namelist if deepAndShallowSearchFoundBool(talent,i,deep)])==len(namelist) and exclude not in talent.lower():
 				output+=talent+'\n'
 	return output
 
