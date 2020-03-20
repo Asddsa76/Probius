@@ -1,4 +1,4 @@
-async def roleAliases(role):
+def roleAliases(role):
 	role='grandmaster' if role=='gm' else role
 	role='master' if role=='masters' else role
 	role='diamond' if role=='dia' else role
@@ -11,7 +11,7 @@ async def roleAliases(role):
 	return role
 
 async def lfg(channel,text,client):
-	inputRoles=[await roleAliases(j) for j in text.replace(' ','').split(',')]
+	inputRoles=[roleAliases(j) for j in text.replace(' ','').split(',')]
 	roles=[i for i in channel.guild.roles if i.name.lower().replace(' ','') in inputRoles]
 	people=[i for i in channel.guild.members if len(roles)==sum(1 for j in roles if j in i.roles)]
 
