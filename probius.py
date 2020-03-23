@@ -50,6 +50,7 @@ async def mainProbius(client,message,texts):
 	patchNotesAliases=['patchnotes','patch','pn','pa']
 	deleteAliases=['delete','deletemessages','deletemessage']
 	lfgAlises=['lfg','find']
+	listAliases=['list','waitlist','wl']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -66,6 +67,9 @@ async def mainProbius(client,message,texts):
 	for text in texts:
 		hero=text[0].replace(' ','')
 		if hero in ['trait','r','w','e','passive','react','...']:#Do nothing
+			continue
+		if hero in listAliases:
+			await waitList(message,text,client)
 			continue
 		if hero in lfgAlises:
 			await lfg(message.channel,text[1],client)
@@ -311,6 +315,7 @@ class MyClient(discord.Client):
 		#self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
 		self.heroPages={}
 		self.lastWelcomeImage=''
+		self.waitList=[]
 		self.ready=False#Wait until ready before taking commands
 
 	async def on_ready(self):
@@ -335,7 +340,7 @@ class MyClient(discord.Client):
 		elif '[' in message.content:
 			await mainProbius(self,message,[message.content.split('[')[1].lower().split('/')])
 			if message.content[0]=='[' and message.guild.id == 535256944106012694:
-				pass
+				pass#Delete was here
 		await removeEmbeds(message)
 		if message.author.id==0:#Birthday cake
 			await message.add_reaction('🍰')

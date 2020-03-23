@@ -121,6 +121,8 @@ Commands:
 							await channel.send('<:banned:557364849940758528>')
 						elif hero=='Valeera':
 							await channel.send('<:bannedVal:679014495447678998>')
+						elif hero=='Tassadar':
+							await channel.send('<:bannedLogan:673197798786596864>')
 				else:
 					await channel.send(text+' is not a valid hero.')
 

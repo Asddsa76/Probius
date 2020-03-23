@@ -76,3 +76,16 @@ async def removeEmbeds(message):#Some embeds are instant, others are edited in b
 					await message.edit(suppress=True)
 				except:
 					return
+
+async def waitList(message,text,client):
+	if len(text)==1:
+		await message.channel.send('Wait list: '+' ,'.join([i.name for i in client.waitList]))
+	elif text[1] in ['join','next']:
+		client.waitList.append(message.author)
+		await message.channel.send(message.author.name+' has been added to the wait list.')
+	elif text[1] in ['ping','here']:
+		await message.channel.send('Wait list: '+', '.join([i.mention for i in client.waitList]))
+	elif text[1]=='clear':
+		client.waitList=[]
+	elif text[1] in ['leave','unnext']:
+		del client.waitList[client.waitList.index(message.author)]

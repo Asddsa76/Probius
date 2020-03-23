@@ -14,7 +14,10 @@ async def rotation(channel):
 		skinsLimited=''
 		mountsLimited=''
 		for line in page:
-			if 'Week of ' in line:
+			if 'Special Free-to-Play Period ' in line:
+				line=line.split('">')[1].split('<')[0]
+				output='**Free rotation '+line+':** from <https://nexuscompendium.com/>\n'
+			elif 'Week of ' in line:
 				lineIndex=line.index('Week of ')
 				if 'Heroic Deals and Limited-Time Items ' not in line:
 					output='**Free rotation w'+line[lineIndex+1:lineIndex+18]+':** from <https://nexuscompendium.com/>\n'
