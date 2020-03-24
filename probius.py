@@ -291,10 +291,9 @@ async def mainProbius(client,message,texts):
 					print('No results')
 				else:
 					if message.channel.name=='rage':
-						await message.channel.send("ERROR: EXCEEDED DISCORD'S 2000 CHARACTER LIMIT. BE MORE SPECIFIC")
+						await printLarge(message.channel,output.upper())
 					else:
-						await message.channel.send("Error: exceeded Discord's 2000 character limit. Be more specific")
-					print('2000 limit')
+						await printLarge(message.channel,output)
 
 def findTexts(message):
 	text=message.content.lower()
