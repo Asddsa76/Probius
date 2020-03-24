@@ -100,6 +100,8 @@ async def downloadHero(hero,client,patch):
 				output+=await descriptionFortmatting(ability['description'])
 				output=await fixTooltips(hero,ability['name'],output)
 				abilities.append(output)
+		if hero=='samuro':
+			abilities.append("**[D] Image Transmission:** *14 seconds;* Activate to switch places with a target Mirror Image, removing most negative effects from Samuro and the Mirror Image.\n**Advancing Strikes:** Basic Attacks against enemy Heroes increase Samuro's Movement Speed by 25% for 2 seconds.")
 
 		talents=[]
 		keys=sorted(list(page['talents'].keys()),key=lambda x:int(x))
