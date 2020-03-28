@@ -302,6 +302,8 @@ def findTexts(message):
 	texts=[text[leftBrackets[i]:rightBrackets[i]].split('/') for i in range(len(leftBrackets))]
 	return texts
 
+wsReactionRoles={'🇧':577935915448795137,'🇩':664126658084601857,'🇱':693038480783048774}
+
 class MyClient(discord.Client):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
@@ -365,7 +367,10 @@ class MyClient(discord.Client):
 			return
 
 		message=await client.get_channel(payload.channel_id).fetch_message(payload.message_id)
-		if message.author.id==603924594956435491 and str(payload.emoji)=='👎':#Message is from Probius, and is downvoted with thumbs down
+		if message.id==693380327413907487:
+			if str(payload.emoji) in wsReactionRoles:
+				await client.get_guild(535256944106012694).get_member(payload.user_id).add_roles(client.get_guild(535256944106012694).get_role(wsReactionRoles[str(payload.emoji)]))
+		elif message.author.id==603924594956435491 and str(payload.emoji)=='👎':#Message is from Probius, and is downvoted with thumbs down
 			output=member.name+' deleted a message from Probius'
 			print(output)
 			await client.get_channel(643231901452337192).send('`'+output+'`')
@@ -389,8 +394,12 @@ class MyClient(discord.Client):
 
 	async def on_raw_reaction_remove(self,payload):
 		member=client.get_user(payload.user_id)
+		message=await client.get_channel(payload.channel_id).fetch_message(payload.message_id)
 		if payload.channel_id==643972679132774410:#ZH Mockdrafting-role
 			await client.get_guild(623202246062243861).get_member(payload.user_id).remove_roles(client.get_guild(623202246062243861).get_role(643975988023394324))
+		elif message.id==693380327413907487:
+			if str(payload.emoji) in wsReactionRoles:
+				await client.get_guild(535256944106012694).get_member(payload.user_id).remove_roles(client.get_guild(535256944106012694).get_role(wsReactionRoles[str(payload.emoji)]))
 
 	async def on_member_join(self,member):
 		guild=member.guild

@@ -14,10 +14,10 @@ async def lfg(channel,text,client):
 	inputRoles=[roleAliases(j) for j in text.replace(' ','').split(',')]
 	roles=[i for i in channel.guild.roles if i.name.lower().replace(' ','') in inputRoles]
 	people=[i for i in channel.guild.members if len(roles)==sum(1 for j in roles if j in i.roles)]
-
+	lfgRole=client.get_guild(535256944106012694).get_role(693038480783048774)
 	if len(roles)!=len(inputRoles):
 		await channel.send('Invalid roles!')
 	elif people:
-		await channel.send(', '.join([i.name for i in people]))
+		await channel.send(', '.join(['**'+i.name+'**' if lfgRole in i.roles else i.name for i in people]))
 	else:
 		await channel.send('No people found!')
