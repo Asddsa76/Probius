@@ -18,6 +18,6 @@ async def lfg(channel,text,client):
 	if len(roles)!=len(inputRoles):
 		await channel.send('Invalid roles!')
 	elif people:
-		await channel.send(', '.join(['**'+i.name+'**' if lfgRole in i.roles else i.name for i in people]))
+		await channel.send(', '.join(['**'+i.nick+'**' if lfgRole in i.roles else i.nick for i in people]))
 	else:
 		await channel.send('No people found!')

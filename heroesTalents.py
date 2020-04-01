@@ -43,7 +43,8 @@ async def fixTooltips(hero,name,description):
 	'tracer':{'Sleight of Hand':['20%','23%']},
 	'cassia':{'War Traveler':['8%','4%','1 second','0.5 seconds']},
 	'sylvanas':{'Haunting Wave':['teleport','fly']},
-	'tyrande':{'Light of Elune':['damages an enemy','Auto Attacks an enemy, or deals spell damage to an enemy hero']}
+	'tyrande':{'Light of Elune':['damages an enemy','Auto Attacks an enemy, or deals spell damage to an enemy hero']},
+	'malfurion':{"Nature's Balance":['area','radius']}
 	}
 	if hero in fixDict:
 		if name in fixDict[hero]:

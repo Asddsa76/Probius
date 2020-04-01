@@ -330,6 +330,11 @@ class MyClient(discord.Client):
 		self.ready=True
 		print('Ready!')
 
+
+	async def on_message_delete(self,message):
+		if message.channel.guild.id==535256944106012694:#WS
+			await printLarge(client.get_channel(694876665020678175),'``'+message.author.name+':``\n'+message.content)
+
 	async def on_message(self, message):
 		if message.author.bot:#Don't respond to bots
 			return
