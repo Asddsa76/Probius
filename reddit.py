@@ -17,7 +17,7 @@ async def getPostInfo(post):
 	author=post.split('"')[0]
 	post=post.split('"permalink": "')[1]
 	shortUrl=post.split('"')[0]
-	url='https://old.reddit.com'+shortUrl
+	url='https://www.reddit.com'+shortUrl
 	return [title,author,url]
 
 async def fetch(session, url):
