@@ -42,8 +42,8 @@ async def printSearch(abilities, talents, name, hero, deep=False):#Prints abilit
 				output+=talent+'\n'
 	return output
 
-async def printLarge(channel,inputstring):#Get long string. Print lines out in 2000 character chunks
-	strings=[i+'\n' for i in inputstring.split('\n')]
+async def printLarge(channel,inputstring,separator='\n'):#Get long string. Print lines out in 2000 character chunks
+	strings=[i+separator for i in inputstring.split(separator)]
 	output=strings.pop(0)
 	while strings:
 		if len(output)+len(strings[0])<2000:

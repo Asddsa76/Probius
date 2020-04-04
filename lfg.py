@@ -1,3 +1,5 @@
+from printFunctions import printLarge
+
 def roleAliases(role):
 	role='grandmaster' if role=='gm' else role
 	role='master' if role=='masters' else role
@@ -18,6 +20,10 @@ async def lfg(channel,text,client):
 	if len(roles)!=len(inputRoles):
 		await channel.send('Invalid roles!')
 	elif people:
-		await channel.send(', '.join(['**'+i.nick+'**' if lfgRole in i.roles else i.nick for i in people]))
+		peopleNames=[]
+		for i in people:
+			name=i.nick if i.nick else i.name
+			peopleNames.append('**'+name+'**' if lfgRole in i.roles else name)
+		await printLarge(channel,', '.join(peopleNames),',')
 	else:
 		await channel.send('No people found!')
