@@ -322,6 +322,7 @@ class MyClient(discord.Client):
 	async def on_ready(self):
 		print('Logged on as', self.user)
 		print('Filling up with Reddit posts...')
+		self.forwardedPosts=[]
 		self.seenTitles=await fillPreviousPostTitles(self)#Fills seenTitles with all current titles
 		print('Fetching proxy emojis...')
 		self.proxyEmojis=await getProxyEmojis(client.get_guild(603924426769170433))
