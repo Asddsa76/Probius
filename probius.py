@@ -333,7 +333,7 @@ class MyClient(discord.Client):
 
 
 	async def on_message_delete(self,message):
-		if message.text!='' and message.channel.guild.id==535256944106012694:#WS
+		if message.content and message.channel.guild.id==535256944106012694:#WS
 			await printLarge(client.get_channel(694876665020678175),'``'+message.channel.name+', '+message.author.name+':``\n'+message.content)
 
 	async def on_message(self, message):
