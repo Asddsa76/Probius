@@ -59,6 +59,10 @@ async def updatePokedex(client,text,message):
 		await message.channel.send('Syntax is [updatepokedex/hero, ping].')
 		return
 
+	if heroPing[0] in ['remove','delete','all']:
+		await removePokedex(client,heroPing[1].replace(' ','').replace('!','')[2:-1])
+		await message.channel.send(heroPing[1]+' has been removed from all pokedex entries.')
+		return
 	hero=aliases(heroPing[0])
 	if hero not in getHeroes():
 		await message.channel.send(hero+' is not a valid hero.')
