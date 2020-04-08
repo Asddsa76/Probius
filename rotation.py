@@ -28,7 +28,8 @@ async def rotation(channel):
 					rotationHeroes.append(line[line.index('title="')+7:line.index('" alt')])
 				else:
 					salesHeroes.append(line[line.index('title="')+7:line.index('" alt')])
-					gemPrices.append(line[line.index('Gems: ')+6:line.index('Gems: ')+9])
+					gemPriceIndex=line.index(' <img src="/images/icon/gem.png"')
+					gemPrices.append(line[gemPriceIndex-3:gemPriceIndex])
 			elif '/skins/' in line:
 				line=line.split('">')[1]
 				if '<ul><li>Added' in line:
@@ -63,7 +64,7 @@ async def rotation(channel):
 			output+=', '.join(rotationHeroes[:7])+'\n'
 			output+=', '.join(rotationHeroes[8:])+'\n'
 			output+=saleWeek
-			output+='**Sales:** '+', '.join([salesHeroes[i]+' '+gemPrices[i]+' Gems' for i in range(len(salesHeroes))])+'\n'
+			output+='**Sales:** '+', '.join([salesHeroes[i]+' '+gemPrices[i]+'<:nexusGem:697311645248127006>' for i in range(len(salesHeroes))])+'\n'
 		if limitedHeroSkins:
 			output+='**'+skinsLimited+'Hero Skins:** \n '+'\n '.join([limitedHeroSkins[i]+'('+', '.join(limitedHeroSkinsVariations[i])+')' for i in range(len(limitedHeroSkins))])+'\n'
 		if limitedMounts:
