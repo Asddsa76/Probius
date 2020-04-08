@@ -23,7 +23,7 @@ async def printBuild(client,channel,text):
 	build,hero=text.split(',')#Example: T0230303,DVa
 	hero=aliases(hero)
 	(abilities,talents)=client.heroPages[hero]
-	build=build.replace('q','1').replace('w','2').replace('e','3').replace('r','4')
+	build=build.replace('q','1').replace('w','2').replace('e','3').replace('r','4').replace('t','5')
 	output=[]
 	for j,i in enumerate(build[1:]):
 		if i=='0':continue
