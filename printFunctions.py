@@ -30,6 +30,11 @@ async def printBuild(client,channel,text):
 		output.append(talents[j][int(i)-1])
 	await printLarge(channel,'\n'.join(output))
 
+async def addUnderscoresAndNewline(namelist,ability):
+	for i in namelist:
+		ability=ability.replace(i,'__'+i+'__').replace(i.capitalize(),'__'+i.capitalize()+'__').replace(i.title(),'__'+i.title()+'__')
+	return ability+'\n'
+
 async def printSearch(abilities, talents, name, hero, deep=False):#Prints abilities and talents with the name of the identifier
 	name=abilityAliases(hero,name)
 	if '--' in name:
@@ -40,7 +45,7 @@ async def printSearch(abilities, talents, name, hero, deep=False):#Prints abilit
 	output=''
 	for ability in abilities:
 		if sum([1 for i in namelist if deepAndShallowSearchFoundBool(ability,i,deep)])==len(namelist) and exclude not in ability.lower():
-			output+=ability+'\n'
+			output+=await addUnderscoresAndNewline(namelist,ability)
 	levelTiers=[0,1,2,3,4,5,6]
 	if hero=='Varian':
 		del levelTiers[1]
@@ -50,7 +55,7 @@ async def printSearch(abilities, talents, name, hero, deep=False):#Prints abilit
 		talentTier=talents[i]
 		for talent in talentTier:
 			if sum([1 for i in namelist if deepAndShallowSearchFoundBool(talent,i,deep)])==len(namelist) and exclude not in talent.lower():
-				output+=talent+'\n'
+				output+=await addUnderscoresAndNewline(namelist,talent)
 	return output
 
 async def printLarge(channel,inputstring,separator='\n'):#Get long string. Print lines out in 2000 character chunks
