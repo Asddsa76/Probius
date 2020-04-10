@@ -70,26 +70,25 @@ async def printLarge(channel,inputstring,separator='\n'):#Get long string. Print
 	await channel.send(output)
 
 async def printAll(client,message,keyword, deep=False):#When someone calls [all/keyword]
-	async with message.channel.typing():
-		if len(keyword)<4 and message.author.id!=183240974347141120:
-			await message.channel.send('Please use a keyword with at least 4 letters minimum')
-			return
-		toPrint=''
-		for hero in getHeroes():
-			(abilities,talents)=client.heroPages[hero]
-			output=await printSearch(abilities,talents,keyword,hero,deep)
-			if output=='':
-				continue
-			toPrint+='`'+hero.replace('_',' ')+':` '+output
-		if toPrint=='':
-			return
-		botChannels={'Wind Striders':571531013558239238,'The Hydeout':638160998305497089,'De Schuifpui Schavuiten':687351660502057021}
-		if toPrint.count('\n')>5 and message.channel.guild.name in botChannels:#If the results is more lines than this, it gets dumped in specified bot channel
-			channel=message.channel.guild.get_channel(botChannels[message.channel.guild.name])
-			introText=message.author.mention+", Here's all heroes' "+'"'+keyword+'":\n'
-			toPrint=introText+toPrint
-		else:
-			channel=message.channel
+	if len(keyword)<4 and message.author.id!=183240974347141120:
+		await message.channel.send('Please use a keyword with at least 4 letters minimum')
+		return
+	toPrint=''
+	for hero in getHeroes():
+		(abilities,talents)=client.heroPages[hero]
+		output=await printSearch(abilities,talents,keyword,hero,deep)
+		if output=='':
+			continue
+		toPrint+='`'+hero.replace('_',' ')+':` '+output
+	if toPrint=='':
+		return
+	botChannels={'Wind Striders':571531013558239238,'The Hydeout':638160998305497089,'De Schuifpui Schavuiten':687351660502057021}
+	if toPrint.count('\n')>5 and message.channel.guild.name in botChannels:#If the results is more lines than this, it gets dumped in specified bot channel
+		channel=message.channel.guild.get_channel(botChannels[message.channel.guild.name])
+		introText=message.author.mention+", Here's all heroes' "+'"'+keyword+'":\n'
+		toPrint=introText+toPrint
+	else:
+		channel=message.channel
 	await printLarge(channel,toPrint)
 
 if __name__ == '__main__':

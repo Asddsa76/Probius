@@ -44,7 +44,8 @@ async def fixTooltips(hero,name,description):
 	'cassia':{'War Traveler':['8%','4%','1 second','0.5 seconds']},
 	'sylvanas':{'Haunting Wave':['teleport','fly']},
 	'tyrande':{'Light of Elune':['damages an enemy','Auto Attacks an enemy, or deals spell damage to an enemy hero']},
-	'malfurion':{"Nature's Balance":['area','radius']}
+	'malfurion':{"Nature's Balance":['area','radius']},
+	'auriel':{"Swift Sweep":['50%','100%']}
 	}
 	if hero in fixDict:
 		if name in fixDict[hero]:
