@@ -71,6 +71,7 @@ async def mainProbius(client,message,texts):
 			continue
 		if hero=='core':
 			await coreAbilities(message.channel,await mapAliases(text[1]))
+			continue
 		if hero in listAliases:
 			await waitList(message,text,client)
 			continue

@@ -1,5 +1,4 @@
-import asyncio
-import aiohttp
+from urllib.request import urlopen
 
 async def getMaps():
 	return ['alterac-pass','battlefield-of-eternity','blackhearts-bay','braxis-holdout','cursed-hollow','dragon-shire','garden-of-terror',
@@ -30,9 +29,8 @@ async def fetch(session, url):
 async def coreAbilities(channel,battleground):
 	if battleground in ['alterac-pass','haunted-mines','towers-of-doom']:
 		await channel.send('No special abilities.')
-	async with aiohttp.ClientSession() as session:
-		page=''.join(i for i in [await fetch(session, 'https://nexuscompendium.com/battlegrounds/'+battleground)]).split('Core Ability - ')[1]
-		coreAbilityName=page.split('<')[0]
-		page=page.split('The Core ')[1]
-		coreDescription=page.split('<')[0]
-		await channel.send('``'+await mapString(battleground)+'`` **Core Ability - '+coreAbilityName+':** The Core '+coreDescription)
+	page=''.join(i for i in [urlopen('https://nexuscompendium.com/battlegrounds/'+battleground).read().decode('utf-8')]).split('Core Ability - ')[1]
+	coreAbilityName=page.split('<')[0]
+	page=page.split('The Core ')[1]
+	coreDescription=page.split('<')[0]
+	await channel.send('``'+await mapString(battleground)+'`` **Core Ability - '+coreAbilityName+':** The Core '+coreDescription)
