@@ -28,6 +28,7 @@ from reddit import *
 from sorting import *
 from patchNotes import *
 from lfg import *
+from maps import *
 
 async def mainProbius(client,message,texts):
 	buildsAliases=['guide','build','b','g','builds','guides']
@@ -68,6 +69,8 @@ async def mainProbius(client,message,texts):
 		hero=text[0].replace(' ','')
 		if hero in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
+		if hero=='core':
+			await coreAbilities(message.channel,await mapAliases(text[1]))
 		if hero in listAliases:
 			await waitList(message,text,client)
 			continue
