@@ -31,7 +31,10 @@ async def additionalInfo(hero,name,description):
 	'guldan':{'Life Tap':'Costs 222 (+4% per level) Health.'},
 	'johanna':{"Heaven's Fury":'4 bolts per second per enemy, up to 2 enemies.'},
 	'tyrande':{"Huntress' Fury":"Splashes do not trigger any of Tyrande's Basic Attack related effects."},
-	'tracer':{'Ricochet':'Ricochet shots do not interact with Bullet Time or Focus Fire.'}
+	'tracer':{'Ricochet':'Ricochet shots do not interact with Bullet Time or Focus Fire.'},
+	'imperius':{'Impaling Light':'The damage bonus is per brand and stacks to 375%'},
+	'malfurion':{'Moonfire':'The area itself stays revealed for 2 seconds.',
+		'Celestial Alignment':'Also extends the reveal of located area to 5 seconds.'}
 	}
 	if hero in addDict:
 		if name in addDict[hero]:
