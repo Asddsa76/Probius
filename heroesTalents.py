@@ -34,7 +34,8 @@ async def additionalInfo(hero,name,description):
 	'tracer':{'Ricochet':'Ricochet shots do not interact with Bullet Time or Focus Fire.'},
 	'imperius':{'Impaling Light':'The damage bonus is per brand and stacks to 375%'},
 	'malfurion':{'Moonfire':'The area itself stays revealed for 2 seconds.',
-		'Celestial Alignment':'Also extends the reveal of located area to 5 seconds.'}
+		'Celestial Alignment':'Also extends the reveal of located area to 5 seconds.'},
+	'tassadar':{'Psychic Shock':'Psionic rift deals 2 additional ticks of damage.'}
 	}
 	if hero in addDict:
 		if name in addDict[hero]:

@@ -1,15 +1,16 @@
 def helpMessage():
-	output="[Hero] to see that hero's abilities.\n"
-	output+="[Hero/level] for that hero's talents at that level.\n"
-	output+="[Hero/hotkey] for the ability on that hotkey.\n"
-	output+="[Hero/searchterm] to search for something in that hero's abilities or talents. & or -- in searchterm for AND and exclusions\n"
-	output+="[Hero/info] for hero info\n"
-	output+="[build/Hero] for hero builds/guides from Elitesparkle and others.\n"
-	output+="[rotation] for free weekly rotation from Gnub.\n"
-	output+="[patchnotes/hero] for patch notes from <https://heroespatchnotes.com>\n"
-	output+="Emojis: [:Hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.\n"
-	output+="Mock drafting: [draft/info].\n"
-	output+="My public repository: <https://github.com/Asddsa76/Probius>"
+	output="""[Hero] to see that hero's abilities.
+	[Hero/level] for that hero's talents at that level.
+	[Hero/hotkey] for the ability on that hotkey.
+	[Hero/searchterm] to search for something in that hero's abilities or talents. & or -- in searchterm for AND and exclusions
+	[Hero/info] for hero info
+	[build/Hero] for hero builds/guides from Elitesparkle and others.
+	[rotation] for free weekly rotation from Gnub.
+	[patchnotes/hero] for patch notes from <https://heroespatchnotes.com>
+	Emojis: [:Hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.
+	Mock drafting: [draft/info].
+	[battleground/X] and [core/X], where X is a battleground, for a map of the battleground or a description of the core's abilities
+	My public repository: <https://github.com/Asddsa76/Probius>"""
 	return output
 
 def getHeroes():#Returns an alphabetically sorted list of all heroes.

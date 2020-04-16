@@ -40,7 +40,7 @@ async def mainProbius(client,message,texts):
 	draftAliases=['draft','d','phantomdraft','pd','mockdraft','md']
 	colourAliases=['colour','colours','c','colors','color']
 	heroStatsAliases=['stats','info']
-	pokedexAliases=['pokedex','main','mains','p','m']
+	pokedexAliases=['pokedex','main','mains','p']
 	updatePokedexAliases=['updatepokedex','up']
 	emojiAliases=['emoji','emojis','emote','emotes']
 	coinsAliases=['coin','flip','coinflip','cf']
@@ -52,6 +52,7 @@ async def mainProbius(client,message,texts):
 	deleteAliases=['delete','deletemessages','deletemessage']
 	lfgAlises=['lfg','find']
 	listAliases=['list','waitlist','wl']
+	mapImageAliases=['map','m','battleground','bg']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -68,6 +69,9 @@ async def mainProbius(client,message,texts):
 	for text in texts:
 		hero=text[0].replace(' ','')
 		if hero in ['trait','r','w','e','passive','react','...']:#Do nothing
+			continue
+		if hero in mapImageAliases:
+			await message.channel.send(file=discord.File('Maps/'+(await mapAliases(text[1]))+'.jpg'))
 			continue
 		if hero=='core':
 			await coreAbilities(message.channel,await mapAliases(text[1]))
