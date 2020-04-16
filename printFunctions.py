@@ -1,5 +1,6 @@
 from aliases import *
 from miscFunctions import *
+import re
 
 def printTier(talents,tier):#Print a talent tier
 	output=''
@@ -32,7 +33,8 @@ async def printBuild(client,channel,text):
 
 async def addUnderscoresAndNewline(namelist,ability):
 	for i in namelist:
-		ability=ability.replace(i,'__'+i+'__').replace(i.capitalize(),'__'+i.capitalize()+'__').replace(i.title(),'__'+i.title()+'__')
+		#ability=ability.replace(i,'__'+i+'__').replace(i.capitalize(),'__'+i.capitalize()+'__').replace(i.title(),'__'+i.title()+'__')
+		ability=re.sub(i, '__'+i+'__', ability, flags=re.IGNORECASE)
 	return ability+'\n'
 
 async def printSearch(abilities, talents, name, hero, deep=False):#Prints abilities and talents with the name of the identifier

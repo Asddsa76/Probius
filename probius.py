@@ -90,7 +90,8 @@ async def mainProbius(client,message,texts):
 			await message.channel.send("Call a hero's talent tier with [hero/level]")
 			continue
 		if hero in updatePokedexAliases:
-			await updatePokedex(client,text,message)
+			#await updatePokedex(client,text,message)
+			await message.channel.send('Pokedex is down for maintennce. Try again *soon™️*.')
 			continue
 		if hero in rollAliases:
 			await roll(text,message)
