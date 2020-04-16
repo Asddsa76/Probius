@@ -32,9 +32,14 @@ async def printBuild(client,channel,text):
 	await printLarge(channel,'\n'.join(output))
 
 async def addUnderscoresAndNewline(namelist,ability):
+	indices=[]
 	for i in namelist:
 		#ability=ability.replace(i,'__'+i+'__').replace(i.capitalize(),'__'+i.capitalize()+'__').replace(i.title(),'__'+i.title()+'__')
-		ability=re.sub(i, '__'+i+'__', ability, flags=re.IGNORECASE)
+		indicesA=[m.start() for m in re.finditer(i,ability.lower())]
+		indices+=[j+len(i) for j in indicesA]+indicesA
+	indices.sort(key=lambda x:-x)#Sort in descending order
+	for i in indices:
+		ability=ability[:i]+'__'+ability[i:]
 	return ability+'\n'
 
 async def printSearch(abilities, talents, name, hero, deep=False):#Prints abilities and talents with the name of the identifier
