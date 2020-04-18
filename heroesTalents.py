@@ -39,7 +39,7 @@ async def additionalInfo(hero,name,description):
 	}
 	if hero in addDict:
 		if name in addDict[hero]:
-			description+=' **'+addDict[hero][name]+'**'
+			description+=' ***'+addDict[hero][name]+'***'
 	return description
 
 async def fixTooltips(hero,name,description):
@@ -54,7 +54,7 @@ async def fixTooltips(hero,name,description):
 	if hero in fixDict:
 		if name in fixDict[hero]:
 			for i in range(len(fixDict[hero][name])//2):
-				description=description.replace(fixDict[hero][name][2*i],'~~'+fixDict[hero][name][2*i]+'~~ '+'**'+fixDict[hero][name][2*i+1]+'**')
+				description=description.replace(fixDict[hero][name][2*i],'~~'+fixDict[hero][name][2*i]+'~~ '+'***'+fixDict[hero][name][2*i+1]+'***')
 	return await additionalInfo(hero,name,description)
 
 async def descriptionFortmatting(description):

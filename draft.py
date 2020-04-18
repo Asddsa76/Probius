@@ -1,5 +1,7 @@
 from aliases import *
 from miscFunctions import *
+from maps import *
+import discord
 
 def simplifyName(hero):#Shorten all names with 10+ letters, and turn underscores into spaces
 	hero=hero.replace('_',' ')
@@ -111,7 +113,13 @@ Commands:
 			await channel.send(simplifyName(aliases(text))+' has already been picked/banned. Choose another!')
 		else:
 			if len(draftList)==0:#Map name doesn't need check
-				draftList.append(text.capitalize())
+				try:
+					battleground=await mapAliases(text)
+				except:
+					await channel.send('`Unrecognized battleground!`')
+					return
+				draftList.append(await mapString(battleground))
+				await channel.send(file=discord.File('Maps/'+battleground+'.jpg'))
 			else:
 				hero=aliases(text)
 				if hero in getHeroes():
