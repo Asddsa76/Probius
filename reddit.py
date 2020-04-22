@@ -3,7 +3,7 @@ import aiohttp
 from rotation import *
 
 redditors=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'Pscythic', 'Elitesparkle', 'slapperoni', 
-'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'zanehyde', 'Pelaberus', 'KillMeWithMemes', 
+'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'Pelaberus', 'KillMeWithMemes', 
 'ridleyfire','bran76765','MarvellousBee','Naturage','Derenash','Riokaii','D0ctorLogan','Demon_Ryu','hellobgs','Beg_For_Mercy','Russisch','Valamar1732','ArashiNoShad0w','Mochrie1713','lemindhawk','Goshin26']
 
 discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','secret3332':'SecretChaos','Archlichofthestorm':'Trolldareon','ThatDoomedStudent':'Carbon','InfiniteEarth':'Flash',
@@ -76,8 +76,6 @@ async def redditForwarding(client):#Called every 60 seconds
 						print(title+' by '+author)
 						if author=='Gnueless' and 'rotation' in title.lower():
 							await rotation(client.get_channel(557366982471581718))
-						if author=='zanehyde':
-							await client.get_channel(623252090419937320).send('**'+title+'** '+url)#ZH general
 	except:
 		await client.get_channel(643231901452337192).send('Something went wrong with subreddit forwarding')
 		print('Something went wrong with subreddit forwarding')

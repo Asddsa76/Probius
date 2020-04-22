@@ -39,7 +39,8 @@ async def additionalInfo(hero,name,description):
 		'Shock Ray':'0.375 second wind up before beam starts, additional 0.75 second channel while beam is moving. If the channel is interrupted, beam instantly disappears.'},
 	'zarya':{'Energy':'The damage bonus is multiplicative.'},
 	'orphea':{'Overflowing Chaos':'The damage bonus is multiplicative.'},
-	'tychus':{'Focusing Diodes':'The damage bonus is multiplicative.'}
+	'tychus':{'Focusing Diodes':'The damage bonus is multiplicative.'},
+	'mephisto':{'Spite':'Also extends mana regeneration from the healing globe.'}
 	}
 	if hero in addDict:
 		if name in addDict[hero]:

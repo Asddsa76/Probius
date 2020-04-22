@@ -95,7 +95,7 @@ async def mainProbius(client,message,texts):
 			continue
 		if hero in updatePokedexAliases:
 			#await updatePokedex(client,text,message)
-			await message.channel.send('Pokedex is down for maintennce. Try again *soon™️*.')
+			await message.channel.send('Pokedex is down for maintenance. Try again *soon™️*.')
 			continue
 		if hero in rollAliases:
 			await roll(text,message)
@@ -413,14 +413,9 @@ class MyClient(discord.Client):
 		if member.name=='Asddsa76':#Reaction copying
 			await message.add_reaction(payload.emoji)
 
-		if payload.channel_id==643972679132774410:#ZH Mockdrafting-role
-			await client.get_guild(623202246062243861).get_member(payload.user_id).add_roles(client.get_guild(623202246062243861).get_role(643975988023394324))
-
 	async def on_raw_reaction_remove(self,payload):
 		member=client.get_user(payload.user_id)
 		message=await client.get_channel(payload.channel_id).fetch_message(payload.message_id)
-		if payload.channel_id==643972679132774410:#ZH Mockdrafting-role
-			await client.get_guild(623202246062243861).get_member(payload.user_id).remove_roles(client.get_guild(623202246062243861).get_role(643975988023394324))
 		elif message.id==693380327413907487:
 			if str(payload.emoji) in wsReactionRoles:
 				await client.get_guild(535256944106012694).get_member(payload.user_id).remove_roles(client.get_guild(535256944106012694).get_role(wsReactionRoles[str(payload.emoji)]))
