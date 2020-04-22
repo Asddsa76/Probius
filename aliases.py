@@ -1,8 +1,11 @@
 from miscFunctions import getHeroes
 
+def aliasTrim(hero):
+	return hero.lower().replace('_','').replace('.','').replace(' ','').replace("'","").replace('-','').replace('[','')
+
 def aliases(hero):
 	#The Wiki redirects correctly most upper/lowercase results, but not all acronyms
-	hero=hero.lower().replace('_','').replace('.','').replace(' ','').replace("'","").replace('-','').replace('[','')#Trying to make this function idempotent
+	hero=aliasTrim(hero)
 	if hero in ['slug','snail','malarialarva']:
 		return 'Abathur'
 	elif hero in ['highlord','sith','sithlord','edgelord']:
@@ -133,7 +136,7 @@ def aliases(hero):
 		return "Zul'jin"
 
 	for i in getHeroes():#Substring
-		if hero in i.lower():
+		if hero in aliasTrim(i):
 			return i
 	return hero.capitalize().replace(' ','_')#Emoji pages are case sensitive
 

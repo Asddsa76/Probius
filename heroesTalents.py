@@ -35,7 +35,11 @@ async def additionalInfo(hero,name,description):
 	'imperius':{'Impaling Light':'The damage bonus is per brand and stacks to 375%'},
 	'malfurion':{'Moonfire':'The area itself stays revealed for 2 seconds.',
 		'Celestial Alignment':'Also extends the reveal of located area to 5 seconds.'},
-	'tassadar':{'Psychic Shock':'Psionic rift deals 2 additional ticks of damage.'}
+	'tassadar':{'Psychic Shock':'Psionic Storm deals 2 additional ticks of damage.',
+		'Shock Ray':'0.375 second wind up before beam starts, additional 0.75 second channel while beam is moving. If the channel is interrupted, beam instantly disappears.'},
+	'zarya':{'Energy':'The damage bonus is multiplicative.'},
+	'orphea':{'Overflowing Chaos':'The damage bonus is multiplicative.'},
+	'tychus':{'Focusing Diodes':'The damage bonus is multiplicative.'}
 	}
 	if hero in addDict:
 		if name in addDict[hero]:
