@@ -416,7 +416,7 @@ class MyClient(discord.Client):
 	async def on_raw_reaction_remove(self,payload):
 		member=client.get_user(payload.user_id)
 		message=await client.get_channel(payload.channel_id).fetch_message(payload.message_id)
-		elif message.id==693380327413907487:
+		if message.id==693380327413907487:
 			if str(payload.emoji) in wsReactionRoles:
 				await client.get_guild(535256944106012694).get_member(payload.user_id).remove_roles(client.get_guild(535256944106012694).get_role(wsReactionRoles[str(payload.emoji)]))
 

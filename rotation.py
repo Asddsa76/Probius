@@ -58,7 +58,7 @@ async def rotation(channel):
 				except:
 					limitedMounts.append(line[:line.index('</a></li>')])
 			elif '<li>Gold Mount -' in line:
-				goldMounts.append(line.split('">')[1].split('<ul><li>')[0].replace('</a> -',''))
+				goldMounts.append(line.split('">')[1].split('<img src="/images/icon/gold.png"')[0].replace('</a> -','')+'<:nexusGold:697439249120624690>')
 
 		if rotationHeroes:
 			output+=', '.join(rotationHeroes[:7])+'\n'
