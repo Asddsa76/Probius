@@ -109,7 +109,10 @@ async def updatePokedex(client,text,message):
 			pokedex_as_string_array[i] += (hero_mains_string + '\n')
 		else:
 			i += 1
-			pokedex_as_string_array.append(hero_mains_string + '\n')
+            pokedex_as_string_array.append(hero_mains_string + '\n')
+
+	# Sort the string array alphabetically. Makes sure we're always in the right order.
+    pokedex_as_string_array.sort()
 	
 	i = (len(pokedex_as_string_array) - 1)
 	async for pokedex_message in pokedex_channel.history(limit=50):
