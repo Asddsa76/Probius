@@ -2,6 +2,9 @@ from urllib.request import urlopen
 from miscFunctions import getHeroes
 from aliases import aliases
 
+async def trimForIcyVeinsAndPsionicStorm(hero):
+	return hero.lower().replace('_','-').replace('.','').replace("'","").replace('ú','u').replace(' ','-')
+
 async def guide(hero,channel):
 	output=''
 	with open('otherBuilds.txt','r') as f:
@@ -11,9 +14,15 @@ async def guide(hero,channel):
 				[author,link]=authorAndLink.split(': ')
 				output+=author+': <'+link.replace('\n','')+'>\n'
 	
+	with open('icyVeinsHeroes.txt','r') as f:
+		for i in f:
+			if hero==aliases(i):
+				await channel.send(output+'Icy Veins: <https://www.icy-veins.com/heroes/'+await trimForIcyVeinsAndPsionicStorm(hero)+'-build-guide>')#<> prevents thumbnails.
+				return
+
 	with open('elitesparkleBuilds.txt','r') as f:
 		for i in f:
-			if hero.lower().replace('_','-').replace('.','').replace("'","").replace('ú','u') in i:
+			if await trimForIcyVeinsAndPsionicStorm(hero) in i:
 				await channel.send(output+'Elitesparkle: <'+i[:-1]+'>')#<> prevents thumbnails. [:-1] removes the \n at end of i
 				return
 		if output:

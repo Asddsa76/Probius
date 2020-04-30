@@ -1,7 +1,7 @@
 from miscFunctions import getHeroes
 
 def aliasTrim(hero):
-	return hero.lower().replace('_','').replace('.','').replace(' ','').replace("'","").replace('-','').replace('[','')
+	return hero.lower().replace('_','').replace('.','').replace(' ','').replace("'","").replace('-','').replace('[','').replace('\n','')
 
 def aliases(hero):
 	#The Wiki redirects correctly most upper/lowercase results, but not all acronyms
