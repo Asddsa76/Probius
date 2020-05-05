@@ -1,7 +1,13 @@
 from aliases import *
 from miscFunctions import *
 from maps import *
+from emojis import emoji
 import discord
+
+banEmojis={'Ana':'🍌',
+'Samuro':'<:banned:557364849940758528>',
+'Tassadar':'<:bannedLogan:673197798786596864>',
+'Valeera':'<:bannedVal:679014495447678998>'}
 
 def simplifyName(hero):#Shorten all names with 10+ letters, and turn underscores into spaces
 	hero=hero.replace('_',' ')
@@ -71,8 +77,12 @@ async def printDraft(client,channel,draftList):#Print state, and the next action
 			output+=' ---------->'
 	await channel.send(output+'```')
 
-
 async def draft(client,channel,text):
+	try:
+		draftList=client.drafts[channel.id]
+	except:
+		client.drafts[channel.id]=[]
+		draftList=client.drafts[channel.id]
 	if len(text)==2:
 		if text[1] in ['help','info']:
 			output='''MOCK DRAFTING GUIDE
@@ -90,12 +100,12 @@ Commands:
 - "Undo" will revert the previous input.'''
 			await channel.send(output)
 			return
-	try:
-		draftList=client.drafts[channel.id]
-	except:
-		client.drafts[channel.id]=[]
-		await channel.send('New draft started! Choose map')
-		return
+		if await mapAliases(text[1]) in await getMaps() and len(draftList) in [0,17]:
+			battleground=await mapAliases(text[1])
+			draftList.append(await mapString(battleground))
+			await channel.send(file=discord.File('Maps/'+battleground+'.jpg'))
+			await printDraft(client,channel,draftList)
+			return
 	if len(text)==1: #[draft] with no second part. To call status
 		await printDraft(client,channel,draftList)
 		return
@@ -125,12 +135,12 @@ Commands:
 				if hero in getHeroes():
 					draftList.append(simplifyName(hero))
 					if len(draftList) in [2,3,4,5,11,12]:#Numbers are the bans
-						if hero=='Samuro':
-							await channel.send('<:banned:557364849940758528>')
-						elif hero=='Valeera':
-							await channel.send('<:bannedVal:679014495447678998>')
-						elif hero=='Tassadar':
-							await channel.send('<:bannedLogan:673197798786596864>')
+						if hero in banEmojis.keys():
+							await channel.send(banEmojis[hero])
+						else:
+							await emoji(client,[hero,'sad'],channel)
+					else:
+						await emoji(client,[hero,'happy'],channel)
 				else:
 					await channel.send(text+' is not a valid hero.')
 

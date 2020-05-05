@@ -82,8 +82,8 @@ async def mainProbius(client,message,texts):
 		if hero in lfgAlises:
 			await lfg(message.channel,text[1],client)
 			continue
-		if hero == 'd' and message.channel.id not in [643996299678449684,643975810256076820,643975833970540555,672921422544502952]: #[D] outside of drafting channel, trait
-			continue
+		#if hero == 'd' and message.channel.id not in [643996299678449684,643975810256076820,643975833970540555,672921422544502952]: #[D] outside of drafting channel, trait
+		#	continue
 		if hero in deleteAliases:
 			await deleteMessages(message.author,text[1],client)
 			continue
