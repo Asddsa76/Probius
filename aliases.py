@@ -200,6 +200,8 @@ def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest
 	elif hero=='Tyrael':
 		if name in ['swordhole']:
 			return 'sword of justice'
+		if name in ['judgement']:
+			return 'judgment'
 	elif hero=='Zeratul':
 		if name in ['za warudo','vp']:
 			return 'void prison'

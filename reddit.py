@@ -10,7 +10,7 @@ redditors=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen
 discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','secret3332':'SecretChaos','Archlichofthestorm':'Trolldareon','ThatDoomedStudent':'Carbon','InfiniteEarth':'Flash',
 'KillMeWithMemes':'Nick','ridleyfire':'HailFall','bran76765':'Parthuin','Demon_Ryu':'Messa','Russisch':'Ekata','ArashiNoShad0w':'LeviathaN','TiredZealot':'Jdelrio'}
 
-keywords=['Genji','Samuro','Tracer','Maiev']#Posts with these in title gets forwarded regardless of author
+keywords=['Genji','Samuro','Maiev']#Posts with these in title gets forwarded regardless of author
 
 async def getPostInfo(post):
 	title=post.split('", "')[0]
@@ -60,8 +60,6 @@ async def redditForwarding(client):#Called every 60 seconds
 						client.forwardedPosts.append([title,author,url])
 						if 'genji' in title.lower():
 							await client.get_channel(568058278165348362).send('**'+title+'** <@183240974347141120> <@247677408386351105> <@408114527947980802> '+url)#Normie heroes
-						elif 'tracer' in title.lower():
-							await client.get_channel(568058278165348362).send('**'+title+'** <@213235635266387980> '+url)#Normie heroes
 						elif 'maiev' in title.lower():
 							await client.get_channel(568058278165348362).send('**'+title+'** <@247677408386351105> '+url)#Normie heroes
 						elif 'Free-to-Play Hero Rotation & Heroic Deals' in title:
