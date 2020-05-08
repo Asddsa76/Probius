@@ -12,6 +12,7 @@ import random
 import discord
 from sys import argv#Where to get the JSONs
 from discord.ext import tasks
+from discord.ext import commands
 
 from aliases import *			#Spellcheck and alternate names for heroes
 from printFunctions import *	#The functions that output the things to print
@@ -53,6 +54,7 @@ async def mainProbius(client,message,texts):
 	lfgAlises=['lfg','find']
 	listAliases=['list','waitlist','wl']
 	mapImageAliases=['map','m','battleground','bg']
+	restartAliases=['restart','shutdown','stop']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -70,6 +72,8 @@ async def mainProbius(client,message,texts):
 		hero=text[0].replace(' ','')
 		if hero in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
+		if hero in restartAliases:
+			await client.logout()
 		if hero in mapImageAliases:
 			await message.channel.send(file=discord.File('Maps/'+(await mapAliases(text[1]))+'.jpg'))
 			continue
@@ -461,5 +465,7 @@ class MyClient(discord.Client):
 			await asyncio.sleep(60*60*24)#Sleep 24 hours
 			await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels Blackstorm purges you <:peepoLove:606862963478888449>')
 
-client = MyClient()
-client.run(getProbiusToken())
+while 1: #Restart
+	asyncio.set_event_loop(asyncio.new_event_loop())
+	client = MyClient()
+	client.run(getProbiusToken())

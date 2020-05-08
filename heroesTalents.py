@@ -49,7 +49,8 @@ async def additionalInfo(hero,name,description):
 
 async def fixTooltips(hero,name,description):
 	fixDict={#Replaces text using strikethrough
-	'tracer':{'Sleight of Hand':['20%','24.5%']},
+	'tracer':{'Sleight of Hand':['20%','24.5%'],
+		'Reload':['0.75','0.8125']},
 	'cassia':{'War Traveler':['8%','4%','1 second','0.5 seconds']},
 	'sylvanas':{'Haunting Wave':['teleport','fly']},
 	'tyrande':{'Light of Elune':['damages an enemy','Auto Attacks an enemy, or deals spell damage to an enemy hero']},
