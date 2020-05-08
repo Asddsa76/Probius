@@ -140,6 +140,6 @@ Commands:
 					else:
 						await emoji(client,[hero,'happy'],channel)
 				else:
-					await channel.send(text+' is not a valid hero.')
+					await channel.send('Invalid hero!')
 
 	await printDraft(client,channel,draftList)

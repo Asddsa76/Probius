@@ -16,7 +16,7 @@ async def pokedex(client,channel,hero):
 				print(hero.replace('_',' '))
 		return
 	if hero not in getHeroes():
-		await channel.send('No hero "'+hero+'"')
+		await channel.send('Invalid hero!')
 		return
 	
 	hero=hero.replace('_',' ')
@@ -65,11 +65,11 @@ async def updatePokedex(client,text,message):
 		return
 	hero=aliases(heroPing[0])
 	if hero not in getHeroes():
-		await message.channel.send(hero+' is not a valid hero.')
+		await message.channel.send('Invalid hero!')
 		return
 	user=heroPing[1].replace(' ','')
 	if '<@' not in user:
-		await message.channel.send('`'+user+'` is not a ping.')
+		await message.channel.send('Invalid ping!')
 		return
 
 	pokedex_channel=client.get_channel(597140352411107328)
