@@ -1,13 +1,12 @@
 Abathur
 Alarak
+Alexstrasza
 Ana
 Anduin
 Artanis
 Arthas
 Auriel
 Azmodan
-Brightwing
-Cassia
 Chen
 D.va
 Deathwing
@@ -15,13 +14,15 @@ Dehaka
 Fenix
 Garrosh
 Hanzo
-Imperius
 Johanna
 Kael'thas
+Leoric
 Li Li
+Lt. Morales
 Mal'Ganis
 Medivh
 Muradin
+Nazeebo
 Raynor
 Rehgar
 Rexxar
@@ -29,18 +30,14 @@ Samuro
 Stitches
 Tassadar
 The Lost Vikings
+Thrall
 Tracer
 Tyrael
 Tyrande
 Uther
+Varian
+Whitemane
 Xul
 Yrel
 Zagara
 Zarya
-Whitemane
-Nazeebo
-Lt. Morales
-Alexstrasza
-Leoric
-Thrall
-Varian
