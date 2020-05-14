@@ -115,6 +115,8 @@ async def mainProbius(client,message,texts):
 		if hero==':summon':
 			if len(text)==1:
 				await message.channel.send('༼ つ ◕\\_◕ ༽つ')
+			elif '@' in text[1]:
+				await message.channel.send('༼ つ ◕\_◕ ༽つ ༼ つ ◕\_◕ ༽つ'+' Summon '+message.author.mention+'! ༼ つ ◕\_◕ ༽つ ༼ つ ◕\_◕ ༽つ')
 			else:
 				await message.channel.send('༼ つ ◕\_◕ ༽つ ༼ つ ◕\_◕ ༽つ'+' Summon '+message.content.split('[')[1].split('/')[1].split(']')[0] +'! ༼ つ ◕\_◕ ༽つ ༼ つ ◕\_◕ ༽つ')#text[1] is all lowercase etc.
 			continue

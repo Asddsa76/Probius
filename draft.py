@@ -9,25 +9,9 @@ banEmojis={'Ana':'🍌',
 'Tassadar':'<:bannedLogan:673197798786596864>',
 'Valeera':'<:bannedVal:679014495447678998>'}
 
-def simplifyName(hero):#Shorten all names with 10+ letters, and turn underscores into spaces
+def simplifyName(hero):#Turn underscores into spaces
 	hero=hero.replace('_',' ')
 	return hero
-	if hero=='The Lost Vikings':
-		return 'TLV'
-	elif hero=='The Butcher':
-		return 'Butcher'
-	elif hero=='Sgt. Hammer':
-		return 'Hammer'
-	elif hero=='Lt. Morales':
-		return 'Morales'
-	elif hero=='Alexstrasza':
-		return 'Alex'
-	elif hero=='Brightwing':
-		return 'BW'
-	elif hero=="Kel'Thuzad":
-		return 'KTZ'
-	else:
-		return hero
 
 async def printDraft(client,channel,draftList):#Print state, and the next action to be done
 	if channel.id not in client.drafts:
@@ -73,6 +57,20 @@ async def printDraft(client,channel,draftList):#Print state, and the next action
 		output+='Next action: '+nextAction
 		if nextTurnIsTeamB:
 			output+=' ---------->'
+
+	if len(draftList)>1:
+		hero=aliases(draftList[-1]).replace('_',' ').replace('The Butcher','Butcher')
+		fileName=''
+		if len(draftList) in [2,3,4,5,11,12]:#Numbers are the bans
+			if hero in banEmojis.keys():
+				output=banEmojis[hero]+'\n'+output
+			else:
+				await channel.send(output+'```',file=discord.File('Emojis/'+hero+' sad.png'))
+				return
+		else:
+			await channel.send(output+'```',file=discord.File('Emojis/'+hero+' happy.png'))
+			return
+
 	await channel.send(output+'```')
 
 async def draft(client,channel,text):
@@ -114,9 +112,7 @@ Commands:
 		return
 	if text in ['undo','u']:
 		await channel.send('Undid '+draftList.pop())
-		await printDraft(client,channel,draftList)
-		return
-	if len(draftList)<17:
+	elif len(draftList)<17:
 		if simplifyName(aliases(text)) in draftList:
 			await channel.send(simplifyName(aliases(text))+' has already been picked/banned. Choose another!')
 		else:
@@ -132,13 +128,6 @@ Commands:
 				hero=aliases(text)
 				if hero in getHeroes():
 					draftList.append(simplifyName(hero))
-					if len(draftList) in [2,3,4,5,11,12]:#Numbers are the bans
-						if hero in banEmojis.keys():
-							await channel.send(banEmojis[hero])
-						else:
-							await emoji(client,[hero,'sad'],channel)
-					else:
-						await emoji(client,[hero,'happy'],channel)
 				else:
 					await channel.send('Invalid hero!')
 
