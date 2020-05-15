@@ -364,6 +364,12 @@ class MyClient(discord.Client):
 			return
 		if self.ready==False:
 			return
+		if message.content.count('@')>50 and message.channel.guild.id==535256944106012694:
+			username=message.author.name
+			channel=message.channel
+			await message.channel.guild.ban(message.author,reason='Spam: over 50 pings in one message.')
+			await channel.send('Banned '+username+' for excessive pings!')
+			return
 		if '[' in message.content and ']' in message.content:
 			texts=findTexts(message)
 			await mainProbius(self,message,texts)
@@ -431,7 +437,7 @@ class MyClient(discord.Client):
 			print(member.name+' joined')
 			channel=guild.get_channel(557366982471581718)#general
 			rulesChannel=guild.get_channel(634012658625937408)#server-rules
-			await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514>')
+			await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514> :OrphAYAYA::pepechocolate:')
 			try:
 				await self.lastWelcomeImage.delete()
 			except:
@@ -458,7 +464,7 @@ class MyClient(discord.Client):
 			await asyncio.sleep(60)#Check for new posts every minute
 			await redditForwarding(self)
 
-	async def bgTaskUNSORTED(self):
+	'''async def bgTaskUNSORTED(self):
 		await self.wait_until_ready()
 		channel = self.get_channel(557366982471581718)#WSgeneral
 		role=channel.guild.get_role(560435022427848705)#UNSORTED
@@ -466,7 +472,7 @@ class MyClient(discord.Client):
 		while not self.is_closed():
 			await asyncio.sleep(60*60*24)#Sleep 24 hours
 			await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels Blackstorm purges you <:peepoLove:606862963478888449>')
-
+'''
 while 1: #Restart
 	asyncio.set_event_loop(asyncio.new_event_loop())
 	client = MyClient()
