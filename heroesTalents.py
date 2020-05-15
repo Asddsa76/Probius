@@ -55,7 +55,8 @@ async def fixTooltips(hero,name,description):
 	'sylvanas':{'Haunting Wave':['teleport','fly']},
 	'tyrande':{'Light of Elune':['damages an enemy','Auto Attacks an enemy, or deals spell damage to an enemy hero']},
 	'malfurion':{"Nature's Balance":['area','radius']},
-	'auriel':{"Swift Sweep":['50%','100%']}
+	'auriel':{"Swift Sweep":['50%','100%']},
+	'muradin':{'Grand Slam':['1 charge','2 charges']}
 	}
 	if hero in fixDict:
 		if name in fixDict[hero]:
