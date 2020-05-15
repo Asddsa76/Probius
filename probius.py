@@ -437,7 +437,7 @@ class MyClient(discord.Client):
 			print(member.name+' joined')
 			channel=guild.get_channel(557366982471581718)#general
 			rulesChannel=guild.get_channel(634012658625937408)#server-rules
-			await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514> :OrphAYAYA::pepechocolate:')
+			await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514> <:pepechocolate:710225579085004913>')
 			try:
 				await self.lastWelcomeImage.delete()
 			except:

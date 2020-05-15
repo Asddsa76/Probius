@@ -25,7 +25,10 @@ async def additionalInfo(hero,name,description):
 		'Dragon Scales':'Getting Stunned, Rooted, or Silenced while Dragon Scales is active refreshes its duration to 2 seconds.',
 		'Life-Binder':'Dragonqueen: The cast range of Life-Binder is increased from 6 to 9.'},
 	'maiev':{'Spirit of Vengeance':'Reactivate to teleport to the spirit.'},
-	'sylvanas':{'Haunting Wave':'Sylvanas is unstoppable while flying to the banshee.'},
+	'sylvanas':{
+		'Haunting Wave':'Sylvanas is unstoppable while flying to the banshee.',
+		'Mercenary Queen':'Mercenaries will not be stunned if the third application is through Festering Wounds or Remorseless.',
+		'Black Arrows':'Remorseless shots do not disable enemies.'},
 	'lunara':{'Leaping Strike':'Lunara is unstoppable while leaping.'},
 	'chen':{'Storm, Earth, Fire':'Using Storm, Earth, Fire removes most negative effects from Chen.'},
 	'guldan':{'Life Tap':'Costs 222 (+4% per level) Health.'},
@@ -41,6 +44,7 @@ async def additionalInfo(hero,name,description):
 	'orphea':{'Overflowing Chaos':'The damage bonus is multiplicative.'},
 	'tychus':{'Focusing Diodes':'The damage bonus is multiplicative.'},
 	'mephisto':{'Spite':'Also extends mana regeneration from the healing globe.'}
+	'muradin':{'Grand Slam':'If an ally participates in the takedown, a second charge is gained'}
 	}
 	if hero in addDict:
 		if name in addDict[hero]:
@@ -55,9 +59,7 @@ async def fixTooltips(hero,name,description):
 	'sylvanas':{'Haunting Wave':['teleport','fly']},
 	'tyrande':{'Light of Elune':['damages an enemy','Auto Attacks an enemy, or deals spell damage to an enemy hero']},
 	'malfurion':{"Nature's Balance":['area','radius']},
-	'auriel':{"Swift Sweep":['50%','100%']},
-	'muradin':{'Grand Slam':['1 charge','2 charges']}
-	}
+	'auriel':{"Swift Sweep":['50%','100%']}}
 	if hero in fixDict:
 		if name in fixDict[hero]:
 			for i in range(len(fixDict[hero][name])//2):
