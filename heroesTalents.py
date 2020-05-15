@@ -43,7 +43,7 @@ async def additionalInfo(hero,name,description):
 	'zarya':{'Energy':'The damage bonus is multiplicative.'},
 	'orphea':{'Overflowing Chaos':'The damage bonus is multiplicative.'},
 	'tychus':{'Focusing Diodes':'The damage bonus is multiplicative.'},
-	'mephisto':{'Spite':'Also extends mana regeneration from the healing globe.'}
+	'mephisto':{'Spite':'Also extends mana regeneration from the healing globe.'},
 	'muradin':{'Grand Slam':'If an ally participates in the takedown, a second charge is gained'}
 	}
 	if hero in addDict:
