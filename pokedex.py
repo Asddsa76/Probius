@@ -18,7 +18,7 @@ async def pokedex(client,channel,hero):
 	if '@' in hero:#Find all heroes the user is listed in
 		user=hero.replace(' ','').replace('!','').replace('@','@!')
 		heroes=pokedex.split('\n')
-		output=[i.split(' <')[0] for i in heroes if user in i]
+		output=sorted([i.split(' <')[0] for i in heroes if user in i])
 		if output:
 			await channel.send(', '.join(output))
 			return
