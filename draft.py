@@ -13,8 +13,8 @@ def simplifyName(hero):#Turn underscores into spaces
 	hero=hero.replace('_',' ')
 	return hero
 
-async def printDraft(client,channel,draftList):#Print state, and the next action to be done
-	if channel.id not in client.drafts:
+async def printDraft(drafts,channel,draftList):#Print state, and the next action to be done
+	if channel.id not in drafts:
 		await channel.send(channel.id+' does not currently have an active draft.')
 		return
 	if not draftList:
@@ -59,7 +59,7 @@ async def printDraft(client,channel,draftList):#Print state, and the next action
 			output+=' ---------->'
 
 	if len(draftList)>1:
-		hero=aliases(draftList[-1]).replace('_',' ').replace('The Butcher','Butcher')
+		hero=aliases(draftList[-1]).replace('_',' ').replace('The Butcher','Butcher').replace("Mal'Ganis","Mal'ganis")
 		fileName=''
 		if len(draftList) in [2,3,4,5,11,12]:#Numbers are the bans
 			if hero in banEmojis.keys():
@@ -73,12 +73,12 @@ async def printDraft(client,channel,draftList):#Print state, and the next action
 
 	await channel.send(output+'```')
 
-async def draft(client,channel,text):
+async def draft(drafts,channel,text):
 	try:
-		draftList=client.drafts[channel.id]
+		draftList=drafts[channel.id]
 	except:
-		client.drafts[channel.id]=[]
-		draftList=client.drafts[channel.id]
+		drafts[channel.id]=[]
+		draftList=drafts[channel.id]
 	if len(text)==2:
 		if text[1] in ['help','info']:
 			output='''MOCK DRAFTING GUIDE
@@ -100,14 +100,14 @@ Commands:
 			battleground=await mapAliases(text[1])
 			draftList.append(await mapString(battleground))
 			await channel.send(file=discord.File('Maps/'+battleground+'.jpg'))
-			await printDraft(client,channel,draftList)
+			await printDraft(drafts,channel,draftList)
 			return
 	if len(text)==1: #[draft] with no second part. To call status
-		await printDraft(client,channel,draftList)
+		await printDraft(drafts,channel,draftList)
 		return
 	text=text[1]
 	if text in ['new','start','n','s','reset','r']:
-		client.drafts[channel.id]=[]
+		drafts[channel.id]=[]
 		await channel.send('New draft started! Choose map')
 		return
 	if text in ['undo','u']:
@@ -131,4 +131,4 @@ Commands:
 				else:
 					await channel.send('Invalid hero!')
 
-	await printDraft(client,channel,draftList)
+	await printDraft(drafts,channel,draftList)

@@ -164,7 +164,7 @@ async def mainProbius(client,message,texts):
 		if hero=='':#Empty string. Aliases returns Abathur when given this.
 			continue
 		if hero in draftAliases:
-			await draft(client,message.channel,text)
+			await draft(drafts,message.channel,text)
 			continue
 		if hero in randomAliases:
 			if len(text)==1:
@@ -326,13 +326,13 @@ def findTexts(message):
 	return texts
 
 wsReactionRoles={'🇧':577935915448795137,'🇩':664126658084601857,'🇱':693038480783048774}
+drafts={}#Outside of client so it doesn't reset on periodic restarts or [restart]
 
 class MyClient(discord.Client):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		self.seenTitles=[]
 		self.forwardedPosts=[]
-		self.drafts={}
 		self.proxyEmojis={}
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
