@@ -56,7 +56,7 @@ async def printSearch(abilities, talents, name, hero, deep=False):#Prints abilit
 	levelTiers=[0,1,2,3,4,5,6]
 	if hero=='Varian':
 		del levelTiers[1]
-	elif hero=='Tracer':
+	elif hero in ['Tracer','Deathwing']:
 		pass
 	else:
 		del levelTiers[3]
