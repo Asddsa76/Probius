@@ -18,17 +18,17 @@ def aliases(hero):
 		return 'Artanis'
 	elif hero in ['lichking','lk']:
 		return 'Arthas'
-	elif hero in ['dunklord']:
+	elif hero in ['dunklord','azmodunk']:
 		return 'Azmodan'
 	elif hero in ['firebat']:
 		return 'Blaze'
-	elif hero in ['bw']:
+	elif hero in ['bw','faeriedragon']:
 		return 'Brightwing'
 	elif hero in ['cain']:
 		return 'Deckard'
 	elif hero in ['amazon']:
 		return 'Cassia'
-	elif hero in ['sandgnome']:
+	elif hero in ['sandgnome','sandhitler']:
 		return 'Chromie'
 	elif hero in ['yoshi']:
 		return 'Dehaka'
@@ -48,15 +48,15 @@ def aliases(hero):
 		return 'Gazlowe'
 	elif hero in ['graymane','gm']:
 		return 'Greymane'
-	elif hero in ['besthero','madamada','weaboo','ineedhealing','weeb']:
+	elif hero in ['lowestwinrate','madamada','weaboo','ineedhealing','weeb']:
 		return 'Genji'
-	elif hero in ['cg','chogall']:
+	elif hero in ['besthero','cg','chogall']:
 		return 'Cho'
-	elif hero in ['guldan','gd','ghouldan','daniel','warlock']:
+	elif hero in ['guldan','gd','ghouldan','daniel','warlock','guldangerous']:
 		return "Gul'dan"
 	elif hero in ['bowgenji']:
 		return 'Hanzo'
-	elif hero in ['ilidan']:
+	elif hero in ['ilidan','illidumb']:
 		return 'Illidan'
 	elif hero in ['dreadlord']:
 		return "Jaina"
@@ -64,7 +64,9 @@ def aliases(hero):
 		return 'Johanna'
 	elif hero in ['jr']:
 		return 'Junkrat'
-	elif hero in ['kt','kaelthas']:#He came to HotS first. Use KTZ for your beloved lich.
+	# elif hero in ['kt','kaelthas']:#He came to HotS first. Use KTZ for your beloved lich. 
+	# no u, fake kt
+	elif hero in ['kaelthas']:
 		return "Kael'thas"
 	elif hero in ['ktz','kelthuzad','lich']:
 		return "Kel'Thuzad"
@@ -90,19 +92,21 @@ def aliases(hero):
 		return 'Medivh'
 	elif hero in ['fish','murloc']:
 		return 'Murky'
-	elif hero in ['witchdoctor']:
+	elif hero in ['witchdoctor','brap']:
 		return 'Nazeebo'
-	elif hero in ['voreloli']:
+	elif hero in ['voreloli','nexusoc']:
 		return 'Orphea'
 	elif hero in ['probe']:
 		return 'Probius'
 	elif hero in ['jimmy']:
 		return 'Raynor'
+	elif hero in ['firelord']:
+		return 'Ragnaros'
 	elif hero in ['reghar','rhegar']:
 		return 'Rehgar'
 	elif hero in ['misha']:
 		return 'Rexxar'
-	elif hero in ['worsthero','uselesshero','grandpa']:
+	elif hero in ['worsthero','uselesshero','grandpa','blademaster']:
 		return 'Samuro'
 	elif hero in ['sgthammer']:
 		return 'Sgt._Hammer'
