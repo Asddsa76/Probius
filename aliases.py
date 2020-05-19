@@ -92,7 +92,7 @@ def aliases(hero):
 		return 'Medivh'
 	elif hero in ['fish','murloc']:
 		return 'Murky'
-	elif hero in ['witchdoctor','brap']:
+	elif hero in ['witchdoctor','brap','aieee']:
 		return 'Nazeebo'
 	elif hero in ['voreloli','nexusoc']:
 		return 'Orphea'
