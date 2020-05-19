@@ -60,7 +60,7 @@ async def fixTooltips(hero,name,description):
 	'tyrande':{'Light of Elune':['damages an enemy','Auto Attacks an enemy, or deals spell damage to an enemy hero']},
 	'malfurion':{"Nature's Balance":['area','radius']},
 	'auriel':{"Swift Sweep":['50%','100%']},
-	'deathwing':{'2 seconds','1.5 seconds'}}
+	'deathwing':{'Bellowing Roar':['2 seconds','1.5 seconds']}}
 	if hero in fixDict:
 		if name in fixDict[hero]:
 			for i in range(len(fixDict[hero][name])//2):
