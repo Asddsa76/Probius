@@ -48,9 +48,9 @@ def aliases(hero):
 		return 'Gazlowe'
 	elif hero in ['graymane','gm']:
 		return 'Greymane'
-	elif hero in ['lowestwinrate','madamada','weaboo','ineedhealing','weeb']:
+	elif hero in ['besthero','lowestwinrate','madamada','weaboo','ineedhealing','weeb']:
 		return 'Genji'
-	elif hero in ['besthero','cg','chogall']:
+	elif hero in ['cg','chogall']:
 		return 'Cho'
 	elif hero in ['guldan','gd','ghouldan','daniel','warlock','guldangerous']:
 		return "Gul'dan"
@@ -64,9 +64,8 @@ def aliases(hero):
 		return 'Johanna'
 	elif hero in ['jr']:
 		return 'Junkrat'
-	# elif hero in ['kt','kaelthas']:#He came to HotS first. Use KTZ for your beloved lich. 
+	elif hero in ['kt','kaelthas']:#He came to HotS first. Use KTZ for your beloved lich. 
 	# no u, fake kt
-	elif hero in ['kaelthas']:
 		return "Kael'thas"
 	elif hero in ['ktz','kelthuzad','lich']:
 		return "Kel'Thuzad"
