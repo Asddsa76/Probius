@@ -59,7 +59,7 @@ async def printDraft(drafts,channel,draftList):#Print state, and the next action
 			output+=' ---------->'
 
 	if len(draftList)>1:
-		hero=aliases(draftList[-1]).replace('_',' ').replace('The Butcher','Butcher').replace("Mal'Ganis","Mal'ganis")
+		hero=aliases(draftList[-1]).replace('_',' ').replace('The Butcher','Butcher').capitalize()
 		fileName=''
 		if len(draftList) in [2,3,4,5,11,12]:#Numbers are the bans
 			if hero in banEmojis.keys():
