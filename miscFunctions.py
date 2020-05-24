@@ -93,12 +93,12 @@ async def waitList(message,text,client):
 
 async def confidence(channel,text):
 	try:
-	wr,n=text[1].replace(' ','').split(',')
-	wr=float(wr)
-	n=int(n)
-	a=1.96*(wr*(100-wr)/n)
-	lower=str(wr-a)[:4]
-	upper=str(wr+a)[:4]
-	await channel.send('We are 95% confident that the winrate is between '+lower+'% and '+upper+'%.')
+		wr,n=text[1].replace(' ','').split(',')
+		wr=float(wr)
+		n=int(n)
+		a=1.96*(wr*(100-wr)/n)
+		lower=str(wr-a)[:4]
+		upper=str(wr+a)[:4]
+		await channel.send('We are 95% confident that the winrate is between '+lower+'% and '+upper+'%.')
 	except:
 		await channel.send('Find a 95% confidence interval with [ci/winrate,games]')
