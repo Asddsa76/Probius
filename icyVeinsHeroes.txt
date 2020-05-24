@@ -10,7 +10,6 @@ Azmodan
 Chen
 D.va
 Deathwing
-Dehaka
 Fenix
 Garrosh
 Hanzo
@@ -20,21 +19,16 @@ Leoric
 Li Li
 Lt. Morales
 Mal'Ganis
-Medivh
-Muradin
 Nazeebo
 Raynor
 Rehgar
 Rexxar
 Samuro
 Stitches
-Tassadar
 The Lost Vikings
 Thrall
-Tracer
 Tyrael
 Tyrande
-Uther
 Varian
 Whitemane
 Xul
