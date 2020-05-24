@@ -55,6 +55,7 @@ async def mainProbius(client,message,texts):
 	listAliases=['list','waitlist','wl']
 	mapImageAliases=['map','m','battleground','bg']
 	restartAliases=['restart','shutdown','stop']
+	confidenceAliases=['ci','confidence','confidenceinterval']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -72,6 +73,8 @@ async def mainProbius(client,message,texts):
 		hero=text[0].replace(' ','')
 		if hero in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
+		if hero in confidenceAliases:
+			await confidence(message.channel,text)
 		if hero in restartAliases:
 			await client.logout()
 		if hero in mapImageAliases:
