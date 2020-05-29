@@ -75,6 +75,7 @@ async def mainProbius(client,message,texts):
 			continue
 		if hero in confidenceAliases:
 			await confidence(message.channel,text)
+			continue
 		if hero in restartAliases:
 			await client.logout()
 		if hero in mapImageAliases:
@@ -409,6 +410,11 @@ class MyClient(discord.Client):
 			if str(payload.emoji) in wsReactionRoles:
 				await client.get_guild(535256944106012694).get_member(payload.user_id).add_roles(client.get_guild(535256944106012694).get_role(wsReactionRoles[str(payload.emoji)]))
 		elif message.author.id==603924594956435491 and str(payload.emoji)=='👎':#Message is from Probius, and is downvoted with thumbs down
+			if message.channel.id in [665317972646166538,597140352411107328]:#Message is in reddit posts or pokedex
+				output='Naughty '+member.name+' tried to ruin #reddit-posts or the #pokedex D:'
+				print(output)
+				await client.get_channel(557366982471581718).send(output)
+				return
 			output=member.name+' deleted a message from Probius'
 			print(output)
 			await client.get_channel(643231901452337192).send('`'+output+'`')

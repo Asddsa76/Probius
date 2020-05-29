@@ -18,7 +18,6 @@ def trimForHeroesTalents(hero):
 
 async def additionalInfo(hero,name,description):
 	addDict={#Adds text to the end of descriptions
-	'cassia':{'War Traveler':'The bonus is not lost when stutterstepping.'},
 	'valla':{'Strafe':'The duration of Hatred is paused when channeling, and reset to full when Strafe ends.'},
 	'alexstrasza':{
 		'Cleansing Flame':'Dragonqueen: Cleansing Flame is cast instantly, and its cooldown is reduced by 10s. The duration of Dragonqueen is paused, while basic abilities continue to cool down while in flight.',
