@@ -1,10 +1,11 @@
 from lfg import roleAliases
 
 async def trim(text):
-	toRemove=[' ','#','<@&557521663894224912>','*','\n']
+	toRemove=[' ','#','<@&557521663894224912>','*','\n','league']
+	text=text.lower()
 	for i in toRemove:
 		text=text.replace(i,'')
-	return text.lower()
+	return text
 
 async def sort(roles,member,olympian,client):
 	guild=client.get_guild(535256944106012694)#Wind Striders
