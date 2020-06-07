@@ -96,7 +96,7 @@ async def confidence(channel,text):
 		wr,n=text[1].replace(' ','').split(',')
 		wr=float(wr)
 		n=int(n)
-		a=1.96*(wr*(100-wr)/n)
+		a=1.96*(wr*(100-wr)/n)**0.5
 		lower=str(wr-a)[:4]
 		upper=str(wr+a)[:4]
 		await channel.send('We are 95% confident that the winrate is between '+lower+'% and '+upper+'%.')
