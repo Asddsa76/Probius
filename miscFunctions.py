@@ -101,4 +101,4 @@ async def confidence(channel,text):
 		upper=str(wr+a)[:4]
 		await channel.send('We are 95% confident that the winrate is between '+lower+'% and '+upper+'%.')
 	except:
-		await channel.send('Find a 95% confidence interval with [ci/winrate,games]')
+		await channel.send('Find a 95% confidence interval with [ci/winrate,games] \nhttps://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval')

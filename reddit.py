@@ -16,6 +16,7 @@ mindhawk_keywords=['Kerrigan','Cho','Gall',"Cho'Gall",'Orphea','Ming','Ragnaros'
 
 async def getPostInfo(post):
 	title=post.split('", "')[0]
+	title=title.replace('\u2019',"'")
 	post=post.split('"author": "')[1]
 	author=post.split('"')[0]
 	post=post.split('"permalink": "')[1]

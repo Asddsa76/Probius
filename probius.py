@@ -140,7 +140,7 @@ async def mainProbius(client,message,texts):
 				channel = client.get_channel(557366982471581718)#WSgeneral
 				role=channel.guild.get_role(560435022427848705)#UNSORTED
 				rulesChannel=channel.guild.get_channel(634012658625937408)#server-rules
-				await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`** to get sorted before Blackstorm purges you <:peepoLove:606862963478888449>')
+				await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`**, separated by commas, to get sorted before Blackstorm purges you <:OrphAYAYA:657172520092565514> <:pepechocolate:710225579085004913>')
 				await channel.send(file=discord.File('WS colours.png'))
 				continue
 		if hero == 'vote':
