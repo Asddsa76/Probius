@@ -7,28 +7,40 @@ Artanis
 Arthas
 Auriel
 Azmodan
+Brightwing
 Chen
 D.va
 Deathwing
+Dehaka
 Fenix
 Garrosh
+Gul'dan
 Hanzo
+Jaina
 Johanna
 Kael'thas
 Leoric
 Li Li
 Lt. Morales
+Lucio
+Lunara
+Maiev
 Mal'Ganis
+Medivh
+Mephisto
+Muradin
 Nazeebo
 Raynor
 Rehgar
 Rexxar
 Samuro
+Sonya
 Stitches
 The Lost Vikings
 Thrall
 Tyrael
 Tyrande
+Valeera
 Varian
 Whitemane
 Xul
