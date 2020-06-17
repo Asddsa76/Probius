@@ -61,14 +61,15 @@ async def printDraft(drafts,channel,draftList):#Print state, and the next action
 	if len(draftList)>1:
 		hero=aliases(draftList[-1]).replace('_',' ').replace('The Butcher','Butcher').capitalize()
 		fileName=''
+		fileExtension='.PNG' if hero=='Maiev' else '.png'
 		if len(draftList) in [2,3,4,5,11,12]:#Numbers are the bans
 			if hero in banEmojis.keys():
 				output=banEmojis[hero]+'\n'+output
 			else:
-				await channel.send(output+'```',file=discord.File('Emojis/'+hero+' sad.png'))
+				await channel.send(output+'```',file=discord.File('Emojis/'+hero+' sad'+fileExtension))
 				return
 		else:
-			await channel.send(output+'```',file=discord.File('Emojis/'+hero+' happy.png'))
+			await channel.send(output+'```',file=discord.File('Emojis/'+hero+' happy'+fileExtension))
 			return
 
 	await channel.send(output+'```')
