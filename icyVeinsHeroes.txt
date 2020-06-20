@@ -8,6 +8,7 @@ Arthas
 Auriel
 Azmodan
 Brightwing
+Cassia
 Chen
 D.va
 Deathwing
@@ -26,6 +27,7 @@ Lunara
 Maiev
 Mal'Ganis
 Medivh
+Mei
 Mephisto
 Muradin
 Nazeebo
