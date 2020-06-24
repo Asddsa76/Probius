@@ -9,6 +9,8 @@ banEmojis={'Ana':'🍌',
 'Tassadar':'<:bannedLogan:673197798786596864>',
 'Valeera':'<:bannedVal:679014495447678998>'}
 
+banEmojis={}
+
 def simplifyName(hero):#Turn underscores into spaces
 	hero=hero.replace('_',' ')
 	return hero

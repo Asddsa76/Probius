@@ -18,7 +18,7 @@ def getHeroes():#Returns an alphabetically sorted list of all heroes.
 	'Cassia', 'Chen', 'Cho', 'Chromie', 'D.Va', 'Deathwing', 'Deckard', 'Dehaka', 'Diablo', 'E.T.C.', 'Falstad', 'Fenix', 'Gall', 'Garrosh', 
 	'Gazlowe', 'Genji', 'Greymane', "Gul'dan", 'Hanzo', 'Illidan', 'Imperius', 'Jaina', 'Johanna', 'Junkrat', "Kael'thas", "Kel'Thuzad", 
 	'Kerrigan', 'Kharazim', 'Leoric', 'Li-Ming', 'Li_Li', 'Lt._Morales', 'Lúcio', 'Lunara', 'Maiev', "Mal'Ganis", 'Malfurion', 'Malthael', 
-	'Medivh', 'Mephisto', 'Muradin', 'Murky', 'Nazeebo', 'Nova', 'Orphea', 'Probius', 'Qhira', 'Ragnaros', 'Raynor', 'Rehgar', 'Rexxar', 
+	'Medivh', 'Mei', 'Mephisto', 'Muradin', 'Murky', 'Nazeebo', 'Nova', 'Orphea', 'Probius', 'Qhira', 'Ragnaros', 'Raynor', 'Rehgar', 'Rexxar', 
 	'Samuro', 'Sgt._Hammer', 'Sonya', 'Stitches', 'Stukov', 'Sylvanas', 'Tassadar', 'The_Butcher', 'The_Lost_Vikings', 'Thrall', 'Tracer', 
 	'Tychus', 'Tyrael', 'Tyrande', 'Uther', 'Valeera', 'Valla', 'Varian', 'Whitemane', 'Xul', 'Yrel', 'Zagara', 'Zarya', 'Zeratul', "Zul'jin"]
 
@@ -101,4 +101,4 @@ async def confidence(channel,text):
 		upper=str(wr+a)[:4]
 		await channel.send('We are 95% confident that the winrate is between '+lower+'% and '+upper+'%.')
 	except:
-		await channel.send('Find a 95% confidence interval with [ci/winrate,games] \nhttps://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval')
+		await channel.send('Find a 95% confidence interval with [ci/winrate,games] \n<https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval>')

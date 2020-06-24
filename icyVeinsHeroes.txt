@@ -26,6 +26,7 @@ Lunara
 Maiev
 Mal'Ganis
 Medivh
+Mei
 Mephisto
 Muradin
 Nazeebo
