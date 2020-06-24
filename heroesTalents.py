@@ -20,7 +20,7 @@ async def additionalInfo(hero,name,description):
 	addDict={#Adds text to the end of descriptions
 	'valla':{'Strafe':'The duration of Hatred is paused when channeling, and reset to full when Strafe ends.'},
 	'alexstrasza':{
-		'Cleansing Flame':'Dragonqueen: Cleansing Flame is cast instantly, and its cooldown is reduced by 10s. The duration of Dragonqueen is paused, while basic abilities continue to cool down while in flight.',
+		'Cleansing Flame':'Dragonqueen: Cleansing Flame is cast instantly. The duration of Dragonqueen is paused, while basic abilities continue to cool down while in flight.',
 		'Dragon Scales':'Getting Stunned, Rooted, or Silenced while Dragon Scales is active refreshes its duration to 2 seconds.',
 		'Life-Binder':'Dragonqueen: The cast range of Life-Binder is increased from 6 to 9.'},
 	'maiev':{'Spirit of Vengeance':'Reactivate to teleport to the spirit.'},
