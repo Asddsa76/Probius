@@ -357,6 +357,10 @@ class MyClient(discord.Client):
 		await downloadAll(self,argv)
 		self.ready=True
 		print('Ready!')
+		for channel in self.get_guild(535256944106012694).channels:
+			if ord(channel.name[0])>122:
+				await channel.edit(name=channel.name[1:])
+
 
 
 	async def on_message_delete(self,message):

@@ -89,6 +89,8 @@ def aliases(hero):
 		return "Mal'Ganis"
 	elif hero in ['medihv','raven']:
 		return 'Medivh'
+	elif hero in ['mai','may','mey']:
+		return 'Mei'
 	elif hero in ['fish','murloc']:
 		return 'Murky'
 	elif hero in ['witchdoctor','brap','aieee']:
@@ -144,7 +146,10 @@ def aliases(hero):
 	return hero.capitalize().replace(' ','_')#Emoji pages are case sensitive
 
 def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest lowercase
-	if hero=='Cassia':
+	if hero=='Azmodan':
+		if name in ['sieging wrath']:
+			return 'demonic invasion'
+	elif hero=='Cassia':
 		if name in ['volleyball','tetherball']:
 			return 'ball lightning'
 	elif hero=='Fenix':
