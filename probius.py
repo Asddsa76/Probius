@@ -357,9 +357,6 @@ class MyClient(discord.Client):
 		await downloadAll(self,argv)
 		self.ready=True
 		print('Ready!')
-		for channel in self.get_guild(535256944106012694).channels:
-			if ord(channel.name[0])>122:
-				await channel.edit(name=channel.name[1:])
 
 
 
@@ -386,7 +383,7 @@ class MyClient(discord.Client):
 			if message.content[0]=='[' and message.guild.id == 535256944106012694:
 				pass#Delete was here
 		await removeEmbeds(message)
-		if message.author.id==0:#Birthday cake
+		if message.author.id==213235635266387980:#Birthday cake
 			await message.add_reaction('🍰')
 		
 	async def on_message_edit(self,before, after):
