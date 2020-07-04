@@ -383,7 +383,7 @@ class MyClient(discord.Client):
 			if message.content[0]=='[' and message.guild.id == 535256944106012694:
 				pass#Delete was here
 		await removeEmbeds(message)
-		if message.author.id==213235635266387980:#Birthday cake
+		if message.author.id==0:#Birthday cake
 			await message.add_reaction('🍰')
 		
 	async def on_message_edit(self,before, after):
