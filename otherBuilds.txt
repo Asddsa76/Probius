@@ -28,7 +28,7 @@ Ragnaros; MindHawk: https://psionic-storm.com/en/talent-calculator/ragnaros/#tal
 Cho; MindHawk: https://psionic-storm.com/en/talent-calculator/cho/#talents=1.3-3-2-1.2-2.1-1-1
 Gall; MindHawk: https://psionic-storm.com/en/talent-calculator/gall/#talents=1-2-1.3-2-3-1-2.1
 Alarak; MindHawk: https://psionic-storm.com/en/talent-calculator/alarak/#talents=2-3-3-2-2-2.1-2.3.4
-Kel'thuzad; MindHawk: https://psionic-storm.com/en/talent-calculator/kelthuzad/#talents=3.1-2.1.3-2-1.2-2-3-4
+Kel'Thuzad; MindHawk: https://psionic-storm.com/en/talent-calculator/kelthuzad/#talents=3.1-2.1.3-2-1.2-2-3-4
 Li-Ming; MindHawk: https://psionic-storm.com/en/talent-calculator/li-ming/#talents=2.1-2.1-3-2-2-1-2
 Kerrigan; MindHawk: https://psionic-storm.com/en/talent-calculator/kerrigan/#talents=3-1.2.3-2-1-2.1.3-2-3.4
 Imperius; MindHawk: https://psionic-storm.com/en/talent-calculator/imperius/#talents=1-2.1-1-2.1-1-1.2.3-3
@@ -45,10 +45,10 @@ Stukov; MindHawk: https://psionic-storm.com/en/talent-calculator/stukov/#talents
 Sylvanas; MindHawk: https://psionic-storm.com/en/talent-calculator/sylvanas/#talents=1-1-2-1-3-3.2-1.4
 The_Lost_Vikings; MindHawk: https://psionic-storm.com/en/talent-calculator/the-lost-vikings/#talents=4.3-4.2-2.3-2-2-1-4
 Mephisto; MindHawk: https://psionic-storm.com/en/talent-calculator/mephisto/#talents=2-3-1.2-2-3.2-3.1-2
-Lucio; MindHawk: https://psionic-storm.com/en/talent-calculator/lucio/#talents=2.3-1.2.3-3.1-2.1-3-2.1-2.3
+Lúcio; MindHawk: https://psionic-storm.com/en/talent-calculator/lucio/#talents=2.3-1.2.3-3.1-2.1-3-2.1-2.3
 Qhira; MindHawk: https://psionic-storm.com/en/talent-calculator/qhira/#talents=1.2-1.3-2-2-1-1-3.4
 Raynor; MindHawk: https://psionic-storm.com/en/talent-calculator/raynor/#talents=3-1-2-1.2-1-1-4.1.3
 Xul; MindHawk: https://psionic-storm.com/en/talent-calculator/xul/#talents=1-3-2.3-2-3-1.2-3
 Chromie; MindHawk: https://psionic-storm.com/en/talent-calculator/chromie/#talents=1.2-2.3-3-2-1.3-1.3-3.2
-Kael'Thas; MindHawk: https://psionic-storm.com/en/talent-calculator/kaelthas/#talents=3-1.2-1-1.2-1.2-2.1-4
+Kael'thas; MindHawk: https://psionic-storm.com/en/talent-calculator/kaelthas/#talents=3-1.2-1-1.2-1.2-2.1-4
 Samuro; Jdelrio: https://hots.heroeshearth.com/builds/jdelrio/illusion-master-100/
