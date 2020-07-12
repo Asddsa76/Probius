@@ -12,6 +12,7 @@ Cassia
 Chen
 D.va
 Deathwing
+Dehaka
 Fenix
 Garrosh
 Gul'dan
@@ -19,6 +20,8 @@ Hanzo
 Jaina
 Johanna
 Kael'thas
+Karazim
+Imperius
 Leoric
 Li Li
 Lt. Morales
@@ -36,8 +39,10 @@ Rehgar
 Rexxar
 Samuro
 Stitches
+Tassadar
 The Lost Vikings
 Thrall
+Tracer
 Tyrael
 Tyrande
 Valeera
