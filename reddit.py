@@ -14,6 +14,8 @@ keywords=['Genji','Samuro','Maiev']#Posts with these in title gets forwarded reg
 
 mindhawk_keywords=['Kerrigan','Cho','Gall',"Cho'Gall",'Orphea','Ming','Ragnaros']
 
+total_keywords=keywords + mindhawk_keywords
+
 async def getPostInfo(post):
 	title=post.split('", "')[0]
 	title=title.replace('\u2019',"'")
@@ -56,7 +58,7 @@ async def redditForwarding(client):#Called every 60 seconds
 					[title,author,url] = await getPostInfo(post)
 				except:
 					continue
-				if author in redditors or sum(1 for i in keywords if i.lower() in title.lower()):
+				if author in redditors or sum(1 for i in total_keywords if i.lower() in title.lower()):
 					if title not in client.seenTitles:#This post hasn't been processed before
 						client.seenTitles.append(title)
 						title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','')
