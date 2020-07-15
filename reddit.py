@@ -67,7 +67,7 @@ async def redditForwarding(client):#Called every 60 seconds
 							await client.get_channel(568058278165348362).send('**'+title+'** <@183240974347141120> <@247677408386351105> <@408114527947980802> '+url)#Normie heroes
 						elif 'maiev' in title.lower():
 							await client.get_channel(568058278165348362).send('**'+title+'** <@247677408386351105> '+url)#Normie heroes
-						elif any(x in title.lower() for x in mindhawk_keywords):
+						elif any(x.lower() in title.lower() for x in mindhawk_keywords):
 							await client.get_channel(568058278165348362).send('**'+title+'** <@129702871837966336> '+url)#Normie heroes
 						elif 'Free-to-Play Hero Rotation & Heroic Deals' in title:
 							await client.get_channel(557366982471581718).send('**'+title+'** by '+author+': '+url)#general
