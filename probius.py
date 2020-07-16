@@ -367,6 +367,8 @@ class MyClient(discord.Client):
 	async def on_message(self, message):
 		if message.author.bot:#Don't respond to bots
 			return
+		if '>' in message.content:#Don't respond to quoted text
+			return
 		if self.ready==False:
 			return
 		if message.content.count('@')>50 and message.channel.guild.id==535256944106012694:
