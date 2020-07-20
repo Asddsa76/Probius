@@ -10,7 +10,7 @@ async def guide(hero,channel):
 	with open('mindHawkBuilds.txt','r') as f:
 		for i in f:
 			if await trimForIcyVeinsAndPsionicStorm(hero) in i:
-				output+='MindHawk: <'+i+'>')#<> prevents thumbnails.
+				output+='MindHawk: <'+i+'>'#<> prevents thumbnails.
 	with open('otherBuilds.txt','r') as f:
 		for i in f:
 			if hero in i:
