@@ -12,7 +12,7 @@ discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','
 
 keywords=['Genji','Samuro','Maiev']#Posts with these in title gets forwarded regardless of author
 
-mindhawk_keywords=['Kerrigan','Cho ','Gall',"Cho'Gall",'Orphea','Li-Ming','Ragnaros', 'Li Ming']
+mindhawk_keywords=['Kerrigan','Cho ','Gall',"Cho'Gall",'Orphea','Li-Ming','Ragnaros', 'Li Ming', 'chogall']
 
 total_keywords=keywords + mindhawk_keywords
 
