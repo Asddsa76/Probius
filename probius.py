@@ -128,7 +128,7 @@ async def mainProbius(client,message,texts):
 			await message.channel.send(file=discord.File('WS colours.png'))
 			continue
 		if message.author.id==329447886465138689:
-			await channel.send('<@329447886465138689> :OrphAYAYA:')
+			await message.channel.send('<@329447886465138689> :OrphAYAYA:')
 		if message.author.id==183240974347141120:
 			if hero=='serverchannels':
 				await message.channel.send([channel.name for channel in message.channel.guild.channels])
