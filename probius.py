@@ -128,7 +128,7 @@ async def mainProbius(client,message,texts):
 			await message.channel.send(file=discord.File('WS colours.png'))
 			continue
 		if message.author.id==329447886465138689:
-			await message.channel.send('<@329447886465138689> :OrphAYAYA:')
+			await message.channel.send('<@329447886465138689> <:OrphAYAYA:657172520092565514>')
 		if message.author.id==183240974347141120:
 			if hero=='serverchannels':
 				await message.channel.send([channel.name for channel in message.channel.guild.channels])
@@ -369,11 +369,11 @@ class MyClient(discord.Client):
 	async def on_message(self, message):
 		if message.author.bot:#Don't respond to bots
 			return
-		if '>' in message.content:#Don't respond to quoted text
+		if '>' in message.content and '<' not in message.content:#Don't respond to quoted text. > is quote, but also in pings
 			return
 		# Don't tell Blackie
-		if message.author.id==329447886465138689 and ':pepePolice:' in message.content:
-			await message.channel.send(':pylonbat: Bad <@329447886465138689> no bullying! :pylonbat:')
+		if message.author.id==329447886465138689 and 'pepePolice' in message.content:
+			await message.channel.send('<:pylonbat:680074737258594335> Bad <@329447886465138689> no bullying! <:pylonbat:680074737258594335>')
 		if self.ready==False:
 			return
 		if message.content.count('@')>50 and message.channel.guild.id==535256944106012694:
