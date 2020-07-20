@@ -372,7 +372,7 @@ class MyClient(discord.Client):
 		if '>' in message.content:#Don't respond to quoted text
 			return
 		# Don't tell Blackie
-		if message.author.id==329447886465138689 && ':pepePolice:' in message.content:
+		if message.author.id==329447886465138689 and ':pepePolice:' in message.content:
 			await message.channel.send(':pylonbat: Bad <@329447886465138689> no bullying! :pylonbat:')
 		if self.ready==False:
 			return
