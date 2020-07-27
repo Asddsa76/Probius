@@ -73,6 +73,9 @@ async def mainProbius(client,message,texts):
 		hero=text[0].replace(' ','')
 		if hero in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
+		if hero=='membercount':
+			await memberCount(message.channel)
+			continue
 		if hero in confidenceAliases:
 			await confidence(message.channel,text)
 			continue
@@ -461,6 +464,7 @@ class MyClient(discord.Client):
 				pass
 			self.lastWelcomeImage =await channel.send(file=discord.File('WS colours.png'))
 			await member.add_roles(guild.get_role(560435022427848705))#UNSORTED role
+			await memberCount(channel)
 
 	async def on_member_remove(self,member):
 		guild=member.guild

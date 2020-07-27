@@ -102,3 +102,6 @@ async def confidence(channel,text):
 		await channel.send('We are 95% confident that the winrate is between '+lower+'% and '+upper+'%.')
 	except:
 		await channel.send('Find a 95% confidence interval with [ci/winrate,games] \n<https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval>')
+
+async def memberCount(channel):
+	await channel.send(channel.guild.name+' has '+str(len(channel.guild.members))+' members!')
