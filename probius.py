@@ -377,6 +377,11 @@ class MyClient(discord.Client):
 		# Don't tell Blackie
 		if message.author.id==329447886465138689 and 'pepePolice' in message.content:
 			await message.channel.send('<:pylonbat:680074737258594335> Bad <@329447886465138689> no bullying! <:pylonbat:680074737258594335>')
+		if message.author.id==329447886465138689 and '[' not in message.content:
+			# 5% chance to bully Blackstorm even if he didn't ping probe. He deserves it.
+			random_int = random.randint(1,20)
+			if random_int == 1:
+				await message.channel.send('<@329447886465138689> <:OrphAYAYA:657172520092565514>')
 		if self.ready==False:
 			return
 		if message.content.count('@')>50 and message.channel.guild.id==535256944106012694:
