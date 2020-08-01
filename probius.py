@@ -73,6 +73,9 @@ async def mainProbius(client,message,texts):
 		hero=text[0].replace(' ','')
 		if hero in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
+		if hero=='ping':
+			await ping(message.channel)
+			continue
 		if hero=='membercount':
 			await memberCount(message.channel)
 			continue
@@ -362,7 +365,6 @@ class MyClient(discord.Client):
 		await downloadAll(self,argv)
 		self.ready=True
 		print('Ready!')
-
 
 
 	async def on_message_delete(self,message):

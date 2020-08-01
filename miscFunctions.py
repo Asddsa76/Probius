@@ -105,3 +105,10 @@ async def confidence(channel,text):
 
 async def memberCount(channel):
 	await channel.send(channel.guild.name+' has '+str(len(channel.guild.members))+' members!')
+
+async def ping(channel):
+	await channel.send("""In cmd.exe:
+		`US West:    ping 24.105.30.129`
+		`US Central: ping 24.105.62.129`
+		`Brazil:     ping 54.207.104.145`
+		`EU:         ping 185.60.112.157`""")
