@@ -374,12 +374,6 @@ class MyClient(discord.Client):
 	async def on_message(self, message):
 		if message.author.bot:#Don't respond to bots
 			return
-		# 0.25% chance to ping Blackstorm on ANY message
-		random_int = random.randint(1,400)
-		if random_int == 1:
-			await message.channel.send('<@329447886465138689> <:OrphAYAYA:657172520092565514>')
-		if '>' in message.content and '<' not in message.content:#Don't respond to quoted text. > is quote, but also in pings
-			return
 		# Don't tell Blackie
 		if message.author.id==329447886465138689 and 'pepePolice' in message.content:
 			await message.channel.send('<:pylonbat:680074737258594335> Bad <@329447886465138689> no bullying! <:pylonbat:680074737258594335>')
