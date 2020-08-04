@@ -91,8 +91,14 @@ async def printAll(client,message,keyword, deep=False):#When someone calls [all/
 		toPrint+='`'+hero.replace('_',' ')+':` '+output
 	if toPrint=='':
 		return
-	botChannels={'Wind Striders':571531013558239238,'The Hydeout':638160998305497089,'De Schuifpui Schavuiten':687351660502057021}
-	if toPrint.count('\n')>5 and message.channel.guild.name in botChannels:#If the results is more lines than this, it gets dumped in specified bot channel
+	botChannels={'Wind Striders':571531013558239238,'De Schuifpui Schavuiten':687351660502057021}
+	if len(toPrint)>2000 and message.channel.guild.name in botChannels:#If the results is over one message, it gets dumped in specified bot channel
+		if len(toPrint)>20000:
+			await message.add_reaction('<:BAN:606932063974850577>')
+			x=len(toPrint)
+			y=int(x/2000)
+			await message.channel.send('No! Bad '+message.author.mention+'! (Sending '+str(x)+' characters would require over '+str(y)+' messages)')
+			return
 		channel=message.channel.guild.get_channel(botChannels[message.channel.guild.name])
 		introText=message.author.mention+", Here's all heroes' "+'"'+keyword+'":\n'
 		toPrint=introText+toPrint
