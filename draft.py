@@ -15,7 +15,7 @@ def simplifyName(hero):#Turn underscores into spaces
 	hero=hero.replace('_',' ')
 	return hero
 
-async def printDraft(drafts,channel,draftList):#Print state, and the next action to be done
+async def printDraft(drafts,channel,draftList,lastDraftMessageDict):#Print state, and the next action to be done
 	if channel.id not in drafts:
 		await channel.send(channel.id+' does not currently have an active draft.')
 		return
@@ -68,15 +68,21 @@ async def printDraft(drafts,channel,draftList):#Print state, and the next action
 			if hero in banEmojis.keys():
 				output=banEmojis[hero]+'\n'+output
 			else:
-				await channel.send(output+'```',file=discord.File('Emojis/'+hero+' sad'+fileExtension))
+				if channel in lastDraftMessageDict:
+					await lastDraftMessageDict[channel].delete()
+				lastDraftMessageDict[channel]=await channel.send(output+'```',file=discord.File('Emojis/'+hero+' sad'+fileExtension))
 				return
 		else:
-			await channel.send(output+'```',file=discord.File('Emojis/'+hero+' happy'+fileExtension))
+			if channel in lastDraftMessageDict:
+				await lastDraftMessageDict[channel].delete()
+			lastDraftMessageDict[channel]=await channel.send(output+'```',file=discord.File('Emojis/'+hero+' happy'+fileExtension))
 			return
 
-	await channel.send(output+'```')
+	if channel in lastDraftMessageDict:
+		await lastDraftMessageDict[channel].delete()
+	lastDraftMessageDict[channel]=await channel.send(output+'```')
 
-async def draft(drafts,channel,text):
+async def draft(drafts,channel,text,lastDraftMessageDict):
 	try:
 		draftList=drafts[channel.id]
 	except:
@@ -100,17 +106,21 @@ Commands:
 			await channel.send(output)
 			return
 		if await mapAliases(text[1]) in await getMaps() and len(draftList) in [0,17]:
+			drafts[channel.id]=[]
+			draftList=drafts[channel.id]
+			if channel in lastDraftMessageDict:del lastDraftMessageDict[channel]
 			battleground=await mapAliases(text[1])
 			draftList.append(await mapString(battleground))
-			await channel.send(file=discord.File('Maps/'+battleground+'.jpg'))
-			await printDraft(drafts,channel,draftList)
+			await channel.send('New draft started!',file=discord.File('Maps/'+battleground+'.jpg'))
+			await printDraft(drafts,channel,draftList,lastDraftMessageDict)
 			return
 	if len(text)==1: #[draft] with no second part. To call status
-		await printDraft(drafts,channel,draftList)
+		await printDraft(drafts,channel,draftList,lastDraftMessageDict)
 		return
 	text=text[1]
 	if text in ['new','start','n','s','reset','r']:
 		drafts[channel.id]=[]
+		if channel in lastDraftMessageDict:del lastDraftMessageDict[channel]
 		await channel.send('New draft started! Choose map')
 		return
 	if text in ['undo','u']:
@@ -118,6 +128,7 @@ Commands:
 	elif len(draftList)<17:
 		if simplifyName(aliases(text)) in draftList:
 			await channel.send(simplifyName(aliases(text))+' has already been picked/banned. Choose another!')
+			return
 		else:
 			if len(draftList)==0:#Map name doesn't need check
 				try:
@@ -133,5 +144,6 @@ Commands:
 					draftList.append(simplifyName(hero))
 				else:
 					await channel.send('Invalid hero!')
+					return
 
-	await printDraft(drafts,channel,draftList)
+	await printDraft(drafts,channel,draftList,lastDraftMessageDict)

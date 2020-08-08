@@ -32,6 +32,9 @@ from lfg import *
 from maps import *
 
 async def mainProbius(client,message,texts):
+	if message.author.id==410481791204327424:
+		await message.channel.send('<:bongocat:740080434343444520> Unblock me '+message.author.mention+'! <:bongocat:740080434343444520>')
+		return
 	buildsAliases=['guide','build','b','g','builds','guides']
 	quotesAliases=['quote','q','quotes']
 	rotationAlises=['rotation','rot','sale','sales']
@@ -176,7 +179,7 @@ async def mainProbius(client,message,texts):
 		if hero=='':#Empty string. Aliases returns Abathur when given this.
 			continue
 		if hero in draftAliases:
-			await draft(drafts,message.channel,text)
+			await draft(drafts,message.channel,text,lastDraftMessageDict)
 			continue
 		if hero in randomAliases:
 			if len(text)==1:
@@ -339,6 +342,7 @@ def findTexts(message):
 
 wsReactionRoles={'🇧':577935915448795137,'🇩':664126658084601857,'🇱':693038480783048774}
 drafts={}#Outside of client so it doesn't reset on periodic restarts or [restart]
+lastDraftMessageDict={}
 
 class MyClient(discord.Client):
 	def __init__(self, *args, **kwargs):
