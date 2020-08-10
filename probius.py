@@ -151,7 +151,7 @@ async def mainProbius(client,message,texts):
 				channel = client.get_channel(557366982471581718)#WSgeneral
 				role=channel.guild.get_role(560435022427848705)#UNSORTED
 				rulesChannel=channel.guild.get_channel(634012658625937408)#server-rules
-				await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`**, separated by commas, to get sorted before Blackstorm purges you <:OrphAYAYA:657172520092565514> <:pepechocolate:710225579085004913>')
+				await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and type here the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`**, separated by commas, to get sorted before Blackstorm purges you <:OrphAYAYA:657172520092565514> <:pepechocolate:710225579085004913>')
 				await channel.send(file=discord.File('WS colours.png'))
 				continue
 		if hero == 'vote':
@@ -380,6 +380,9 @@ class MyClient(discord.Client):
 			return
 		if '>' in message.content and '<' not in message.content:#Don't respond to quoted text. > is quote, but also in pings
 			return
+		if 560435022427848705 in [role.id for role in message.author.roles]:
+			await message.channel.send('Unsorted message <@&557521663894224912>')
+			return
 		# Don't tell Blackie
 		if message.author.id==329447886465138689 and 'pepePolice' in message.content:
 			await message.channel.send('<:pylonbat:680074737258594335> Bad <@329447886465138689> no bullying! <:pylonbat:680074737258594335>')
@@ -423,6 +426,8 @@ class MyClient(discord.Client):
 			return
 
 		message=await client.get_channel(payload.channel_id).fetch_message(payload.message_id)
+		if message.author.id==670832046389854239:#Advisor wrote message
+			return
 		if message.id==693380327413907487:
 			if str(payload.emoji) in wsReactionRoles:
 				await client.get_guild(535256944106012694).get_member(payload.user_id).add_roles(client.get_guild(535256944106012694).get_role(wsReactionRoles[str(payload.emoji)]))
@@ -463,7 +468,7 @@ class MyClient(discord.Client):
 			print(member.name+' joined')
 			channel=guild.get_channel(557366982471581718)#general
 			rulesChannel=guild.get_channel(634012658625937408)#server-rules
-			await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514> <:pepechocolate:710225579085004913>')
+			await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and type here the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514> <:pepechocolate:710225579085004913>')
 			try:
 				await self.lastWelcomeImage.delete()
 			except:
