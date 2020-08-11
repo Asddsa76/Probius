@@ -381,9 +381,9 @@ class MyClient(discord.Client):
 		if '>' in message.content and '<' not in message.content:#Don't respond to quoted text. > is quote, but also in pings
 			return
 		if 560435022427848705 in [role.id for role in message.author.roles]:
-			await message.channel.send('Unsorted message <@&557521663894224912>')
+			await client.get_channel(576018992624435220).send('Unsorted message: '+message.jump_url)
 			return
-		# Don't tell Blackie
+		# Don't tell Blackie 
 		if message.author.id==329447886465138689 and 'pepePolice' in message.content:
 			await message.channel.send('<:pylonbat:680074737258594335> Bad <@329447886465138689> no bullying! <:pylonbat:680074737258594335>')
 		if self.ready==False:
