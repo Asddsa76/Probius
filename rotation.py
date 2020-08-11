@@ -62,7 +62,7 @@ async def rotation(channel):
 
 		if rotationHeroes:
 			output+=', '.join(rotationHeroes[:7])+'\n'
-			output+=', '.join(rotationHeroes[8:])+'\n'
+			output+=', '.join(rotationHeroes[7:])+'\n'
 			output+=saleWeek
 			output+='**Sales:** '+', '.join([salesHeroes[i]+' '+gemPrices[i]+'<:nexusGem:697311645248127006>' for i in range(len(salesHeroes))])+'\n'
 		if limitedHeroSkins:
