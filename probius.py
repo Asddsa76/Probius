@@ -376,6 +376,8 @@ class MyClient(discord.Client):
 			await printLarge(client.get_channel(694876665020678175),'``'+message.channel.name+', '+message.author.name+':``\n'+message.content)
 
 	async def on_message(self, message):
+		if message.author.id==272526395337342977 and message.channel.id==557366982471581718:#Blizztrack posts in general
+			await message.channel.send('<@183240974347141120> Patch')
 		if message.author.bot:#Don't respond to bots
 			return
 		if '>' in message.content and '<' not in message.content:#Don't respond to quoted text. > is quote, but also in pings
