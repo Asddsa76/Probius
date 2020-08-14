@@ -5,6 +5,8 @@ async def trim(text):
 	text=text.lower()
 	for i in toRemove:
 		text=text.replace(i,'')
+	if '<@' in text:
+		text=text[:text.index('<')]+text[1+text.index('>'):]#Remove pings
 	return text
 
 async def sort(roles,member,olympian,client):
