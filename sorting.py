@@ -61,8 +61,9 @@ async def sort(roles,member,olympian,client):
 	await channel.send('**'+member.name+'** has been sorted!')
 
 async def sortFromMessage(text,message,client):
-	unsortedMember,text=(await trim(text)).split('>')
+	unsortedMember,text=text.split('>')
 	unsortedMember+='>'
+	text=await trim(text)
 	guild=client.get_guild(535256944106012694)#Wind Striders
 	unsortedMember=guild.get_member(int(unsortedMember.replace(' ','')[2:-1].replace('!','')))
 
