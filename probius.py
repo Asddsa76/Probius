@@ -151,7 +151,7 @@ async def mainProbius(client,message,texts):
 				channel = client.get_channel(557366982471581718)#WSgeneral
 				role=channel.guild.get_role(560435022427848705)#UNSORTED
 				rulesChannel=channel.guild.get_channel(634012658625937408)#server-rules
-				await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and type here the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`**, separated by commas, to get sorted before Blackstorm purges you <:OrphAYAYA:657172520092565514> <:pepechocolate:710225579085004913>')
+				await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and type here the info at top **`Region`, `Rank`, and `Preferred Colour`**, separated by commas, to get sorted before Blackstorm purges you <:OrphAYAYA:657172520092565514>')
 				await channel.send(file=discord.File('WS colours.png'))
 				continue
 		if hero == 'vote':
@@ -382,8 +382,11 @@ class MyClient(discord.Client):
 			return
 		if '>' in message.content and '<' not in message.content:#Don't respond to quoted text. > is quote, but also in pings
 			return
-		if 560435022427848705 in [role.id for role in message.author.roles]:
-			await client.get_channel(576018992624435220).send('***Unsorted message:*** **'+message.author.name+'**: '+message.content+'\n'+message.jump_url)
+		if 560435022427848705 in [role.id for role in message.author.roles]:#Unsorted
+			try:
+				await sortFromReaction(message,603924594956435491,self)
+			except:
+				await client.get_channel(576018992624435220).send('***Unsorted message:*** **'+message.author.name+'**: '+message.content+'\n'+message.jump_url)
 			return
 		# Don't tell Blackie 
 		if message.author.id==329447886465138689 and 'pepePolice' in message.content:
@@ -470,13 +473,14 @@ class MyClient(discord.Client):
 			print(member.name+' joined')
 			channel=guild.get_channel(557366982471581718)#general
 			rulesChannel=guild.get_channel(634012658625937408)#server-rules
-			await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and type here the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514> <:pepechocolate:710225579085004913>')
+			await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and type here the info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514>')
 			try:
 				await self.lastWelcomeImage.delete()
 			except:
 				pass
 			self.lastWelcomeImage =await channel.send(file=discord.File('WS colours.png'))
 			await member.add_roles(guild.get_role(560435022427848705))#UNSORTED role
+			await channel.send('https://cdn.discordapp.com/attachments/576018992624435220/743917827718905896/sorting.gif')
 			await memberCount(channel)
 
 	async def on_member_remove(self,member):
