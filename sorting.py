@@ -32,7 +32,7 @@ async def sort(roles,member,olympian,client):
 		return
 	roles=list(set(roles))
 	if len(roles)!=3:
-		await channel.send('Need 3 *different* roles')
+		#await channel.send('Need 3 *different* roles')
 		return
 	rolesToAdd=[]
 	for role in roles:
@@ -52,7 +52,7 @@ async def sort(roles,member,olympian,client):
 		except:
 			pass
 	if len(rolesToAdd)!=3:
-		await channel.send('At least one role was wrong or inaccessible. Valid roles: '+', '.join([i.name for i in rolesToAdd]))
+		#await channel.send('At least one role was wrong or inaccessible. Valid roles: '+', '.join([i.name for i in rolesToAdd]))
 		return
 	memberRole=guild.get_role(557522023190888468)
 	rolesToAdd.append(memberRole)
