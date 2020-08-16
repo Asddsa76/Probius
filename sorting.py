@@ -16,7 +16,7 @@ async def sort(roles,member,olympian,client):
 		#await channel.send('You need to be a mod to sort users!')
 		return
 	if len(roles)!=3:
-		await channel.send('Need ping and 3 roles')
+		#await channel.send('Need ping and 3 roles')
 		return
 	#Colours between bestBot and IM
 	bestBot=guild.get_role(635187043676323842)
