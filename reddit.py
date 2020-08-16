@@ -43,7 +43,7 @@ async def fillPreviousPostTitles(client):#Called on startup
 				continue
 			output.append(title)
 			if author in redditors or sum(1 for i in keywords if i.lower() in title.lower()):
-				title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','')
+				title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','').replace('\u2019',"'")
 				client.forwardedPosts.append([title,author,url])
 		client.forwardedPosts=client.forwardedPosts[::-1]
 		return output
@@ -61,7 +61,7 @@ async def redditForwarding(client):#Called every 60 seconds
 				if author in redditors or sum(1 for i in total_keywords if i.lower() in title.lower()):
 					if title not in client.seenTitles:#This post hasn't been processed before
 						client.seenTitles.append(title)
-						title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','')
+						title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','').replace('\u2019',"'")
 						client.forwardedPosts.append([title,author,url])
 						if 'genji' in title.lower():
 							await client.get_channel(568058278165348362).send('**'+title+'** <@183240974347141120> <@247677408386351105> <@408114527947980802> '+url)#Normie heroes

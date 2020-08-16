@@ -354,7 +354,7 @@ class MyClient(discord.Client):
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
 		#self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
 		self.heroPages={}
-		self.lastWelcomeImage=''
+		self.lastWelcomeImage=[]
 		self.waitList=[]
 		self.ready=False#Wait until ready before taking commands
 
@@ -478,10 +478,10 @@ class MyClient(discord.Client):
 				await self.lastWelcomeImage.delete()
 			except:
 				pass
-			self.lastWelcomeImage =await channel.send(file=discord.File('WS colours.png'))
+			self.lastWelcomeImage =[await channel.send(file=discord.File('WS colours.png'))]
 			await member.add_roles(guild.get_role(560435022427848705))#UNSORTED role
-			await channel.send('https://cdn.discordapp.com/attachments/576018992624435220/743917827718905896/sorting.gif')
-			await memberCount(channel)
+			self.lastWelcomeImage.append(await channel.send('https://cdn.discordapp.com/attachments/576018992624435220/743917827718905896/sorting.gif'))
+			#await memberCount(channel)
 
 	async def on_member_remove(self,member):
 		guild=member.guild
