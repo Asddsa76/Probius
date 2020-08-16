@@ -475,7 +475,8 @@ class MyClient(discord.Client):
 			rulesChannel=guild.get_channel(634012658625937408)#server-rules
 			await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and type here the info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514>')
 			try:
-				await self.lastWelcomeImage.delete()
+				for i in self.lastWelcomeImage:
+					await i.delete()
 			except:
 				pass
 			self.lastWelcomeImage =[await channel.send(file=discord.File('WS colours.png'))]
