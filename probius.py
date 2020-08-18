@@ -494,7 +494,7 @@ class MyClient(discord.Client):
 				await channel.send(member.name+' (unsorted) left <:samudab:578998204142452747>')
 				return
 			print(member.name+' left')
-			channel=guild.get_channel(557366982471581718)#general
+			channel=guild.get_channel(576018992624435220)#pepega
 			await channel.send(member.name+' left the server <:samudab:578998204142452747>')
 			await removePokedex(self,member.id)
 

@@ -58,13 +58,13 @@ async def rotation(channel):
 				except:
 					limitedMounts.append(line[:line.index('</a></li>')])
 			elif '<li>Gold Mount -' in line:
-				goldMounts.append(line.split('">')[1].split('<img src="/images/icon/gold.png"')[0].replace('</a> -','')+'<:nexusGold:697439249120624690>')
+				goldMounts.append(line.split('">')[1].split('<img src="/images/icon/gold.png"')[0].replace('</a> -','')+'<:nexusGold:744794020487626837>')
 
 		if rotationHeroes:
 			output+=', '.join(rotationHeroes[:7])+'\n'
 			output+=', '.join(rotationHeroes[7:])+'\n'
 			output+=saleWeek
-			output+='**Sales:** '+', '.join([salesHeroes[i]+' '+gemPrices[i]+'<:nexusGem:697311645248127006>' for i in range(len(salesHeroes))])+'\n'
+			output+='**Sales:** '+', '.join([salesHeroes[i]+' '+gemPrices[i]+'<:nexusGem:697309829051449424>' for i in range(len(salesHeroes))])+'\n'
 		if limitedHeroSkins:
 			output+='**'+skinsLimited+'Hero Skins:** \n '+'\n '.join([limitedHeroSkins[i]+'('+', '.join(limitedHeroSkinsVariations[i])+')' for i in range(len(limitedHeroSkins))])+'\n'
 		if limitedMounts:
