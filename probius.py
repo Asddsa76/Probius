@@ -359,6 +359,17 @@ class MyClient(discord.Client):
 		self.ready=False#Wait until ready before taking commands
 
 	async def on_ready(self):
+		'''twinkles=[]
+		guild=client.get_guild(535256944106012694)
+		for i in guild.members:
+			try:
+				if 'twinkle' in i.nick.lower():
+					twinkles.append(i.nick+' ('+i.name+')')
+			except:pass
+		'''
+		twinkles=[i.nick+' ('+i.name+')' for i in client.get_guild(535256944106012694).members if i.nick if 'twinkle' in i.nick.lower()]
+		await client.get_channel(557366982471581718).send('\n'.join(twinkles)+'\n'+str(len(twinkles))+' Twinkles')
+
 		print('Logged on as', self.user)
 		print('Filling up with Reddit posts...')
 		self.forwardedPosts=[]
@@ -495,6 +506,8 @@ class MyClient(discord.Client):
 				channel=guild.get_channel(557366982471581718)#general
 				await channel.send(member.name+' (unsorted) left <:samudab:578998204142452747>')
 				return
+			core=guild.get_role(571321937821696001)
+			if core not in member.roles: return
 			print(member.name+' left')
 			channel=guild.get_channel(576018992624435220)#pepega
 			await channel.send(member.name+' left the server <:samudab:578998204142452747>')
