@@ -1,5 +1,5 @@
 from urllib.request import urlopen
-from miscFunctions import getHeroes
+from printFunctions import getHeroes
 from aliases import aliases
 
 async def trimForIcyVeinsAndPsionicStorm(hero):

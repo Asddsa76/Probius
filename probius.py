@@ -59,6 +59,7 @@ async def mainProbius(client,message,texts):
 	mapImageAliases=['map','m','battleground','bg']
 	restartAliases=['restart','shutdown','stop']
 	confidenceAliases=['ci','confidence','confidenceinterval']
+	heroAliases=['hero', 'heroes', 'bruiser', 'healer', 'support', 'ranged', 'melee', 'assassin', 'mage', 'marksman', 'tank', 'marksmen']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -75,6 +76,9 @@ async def mainProbius(client,message,texts):
 	for text in texts:
 		hero=text[0].replace(' ','')
 		if hero in ['trait','r','w','e','passive','react','...']:#Do nothing
+			continue
+		if hero in heroAliases+[i+'s' for i in heroAliases]:
+			await heroes(message,text,message.channel,client)
 			continue
 		if hero=='ping':
 			await ping(message.channel)
@@ -359,16 +363,8 @@ class MyClient(discord.Client):
 		self.ready=False#Wait until ready before taking commands
 
 	async def on_ready(self):
-		'''twinkles=[]
-		guild=client.get_guild(535256944106012694)
-		for i in guild.members:
-			try:
-				if 'twinkle' in i.nick.lower():
-					twinkles.append(i.nick+' ('+i.name+')')
-			except:pass
-		'''
 		twinkles=[i.nick+' ('+i.name+')' for i in client.get_guild(535256944106012694).members if i.nick if 'twinkle' in i.nick.lower()]
-		await client.get_channel(557366982471581718).send('\n'.join(twinkles)+'\n'+str(len(twinkles))+' Twinkles')
+		#await client.get_channel(557366982471581718).send('\n'.join(twinkles)+'\n'+str(len(twinkles))+' Twinkles')
 
 		print('Logged on as', self.user)
 		print('Filling up with Reddit posts...')
@@ -383,10 +379,12 @@ class MyClient(discord.Client):
 
 
 	async def on_message_delete(self,message):
-		if message.author.id==86920406476292096:#Pogchamp
+		if message.author.bot:
 			return
 		if message.content and message.channel.guild.id==535256944106012694:#WS
-			await removeEmbeds(await printLarge(client.get_channel(694876665020678175),'``'+message.channel.name+', '+message.author.name+':``\n'+message.content.replace('<@183240974347141120>','@Asddsa76')))
+			message=await printLarge(client.get_channel(694876665020678175),'``'+message.channel.name+', '+message.author.name+':``\n'+message.content.replace('<@183240974347141120>','@Asddsa76'))
+			try:await removeEmbeds(message)
+			except:pass
 
 	async def on_message(self, message):
 		if message.author.id==272526395337342977 and message.channel.id==557366982471581718:#Blizztrack posts in general

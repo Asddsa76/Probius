@@ -1,4 +1,4 @@
-from miscFunctions import *
+from printFunctions import *
 from urllib.request import urlopen
 from aliases import *
 from itertools import repeat

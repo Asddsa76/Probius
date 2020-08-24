@@ -1,5 +1,5 @@
 from aliases import *
-from miscFunctions import *
+from printFunctions import *
 from maps import *
 from emojis import emoji
 import discord

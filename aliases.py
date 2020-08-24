@@ -1,5 +1,3 @@
-from miscFunctions import getHeroes
-
 def aliasTrim(hero):
 	return hero.lower().replace('_','').replace('.','').replace(' ','').replace("'","").replace('-','').replace('[','').replace('\n','')
 
@@ -139,14 +137,18 @@ def aliases(hero):
 		return 'Zeratul'
 	elif hero in ["zj",'zuljin','troll']:
 		return "Zul'jin"
-
+		
+	from printFunctions import getHeroes
 	for i in getHeroes():#Substring
 		if hero in aliasTrim(i):
 			return i
 	return hero.capitalize().replace(' ','_')#Emoji pages are case sensitive
 
 def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest lowercase
-	if hero=='Azmodan':
+	if hero=='Ana':
+		if name=='nanoboost':
+			return 'nano boost'
+	elif hero=='Azmodan':
 		if name in ['sieging wrath']:
 			return 'demonic invasion'
 	elif hero=='Cassia':

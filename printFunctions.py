@@ -1,7 +1,45 @@
 from aliases import *
-from miscFunctions import *
 import re
 
+allHeroes={
+	'bruiser':['Artanis', 'Chen', 'D.Va', 'Deathwing', 'Dehaka', 'Imperius', 'Leoric', 'Malthael', 'Ragnaros', 'Rexxar', 'Sonya', 'Thrall', 'Varian', 'Xul', 'Yrel'],
+	'healer':['Alexstrasza', 'Ana', 'Anduin', 'Auriel', 'Brightwing', 'Deckard', 'Kharazim', 'Li_Li', 'Lt._Morales', 'Lúcio', 'Malfurion', 'Rehgar', 'Stukov', 'Tyrande', 'Uther', 'Whitemane'],
+	'mage':['Azmodan', 'Chromie', 'Gall', "Gul'dan", 'Jaina', "Kael'thas", "Kel'Thuzad", 'Li-Ming', 'Mephisto', 'Nazeebo', 'Orphea', 'Probius', 'Tassadar', 'Zagara',],
+	'marksman':['Cassia', 'Falstad', 'Fenix', 'Genji', 'Greymane', 'Hanzo', 'Junkrat', 'Lunara', 'Nova', 'Raynor', 'Sgt._Hammer', 'Sylvanas', 'Tracer', 'Tychus', 'Valla', "Zul'jin"],
+	'melee':['Alarak', 'Gazlowe', 'Illidan', 'Kerrigan', 'Maiev', 'Murky', 'Qhira', 'Samuro', 'The_Butcher', 'Valeera', 'Zeratul'],
+	'support':['Abathur', 'Medivh', 'The_Lost_Vikings', 'Zarya'],
+	'tank':["Anub'arak", 'Arthas', 'Blaze', 'Cho', 'Diablo', 'E.T.C.', 'Garrosh', 'Johanna', "Mal'Ganis", 'Mei', 'Muradin', 'Stitches', 'Tyrael']
+}
+
+def getHeroes():#Returns an alphabetically sorted list of all allHeroes.
+	return sorted([j for i in allHeroes.values() for j in i])
+
+async def getRoleHeroes(role):
+	if role=='ranged':
+		return allHeroes['mage']+allHeroes['marksman']
+	elif role=='assassin':
+		return (await getRoleHeroes('ranged'))+allHeroes['melee']
+	else:
+		return allHeroes[role]
+
+async def heroes(message,text,channel,client):
+	#['hero', 'heroes', 'bruiser', 'healer', 'support', 'ranged', 'melee', 'assassin', 'mage', 'marksman', 'tank']
+	role=text[0].replce('marksmen','marksman')
+	if role[-1]=='s':role=role[:-1]
+	if len(text)==1:
+		if role in ['hero', 'heroe']:
+			await channel.send('\n'.join(['**'+i.capitalize()+':** '+', '.join(allHeroes[i]).replace('_',' ') for i in allHeroes]))
+		elif role=='assassin':
+			await channel.send('\n'.join(['**'+i.capitalize()+':** '+', '.join(allHeroes[i]).replace('_',' ') for i in ['mage', 'marksman', 'melee']]))
+		elif role=='ranged':
+			await channel.send('\n'.join(['**'+i.capitalize()+':** '+', '.join(allHeroes[i]).replace('_',' ') for i in ['mage', 'marksman']]))
+		else:
+			await channel.send('**'+role.capitalize()+':** '+', '.join(allHeroes[role]).replace('_',' '))
+	else:
+		if role in ['hero', 'heroe']:
+			await printAll(client,message,text[1])
+		else:
+			await printAll(client,message,text[1], 1, await getRoleHeroes(role))
 def printTier(talents,tier):#Print a talent tier
 	output=''
 	for i in talents[tier]:
@@ -78,12 +116,12 @@ async def printLarge(channel,inputstring,separator='\n'):#Get long string. Print
 			output=strings.pop(0)
 	await channel.send(output)
 
-async def printAll(client,message,keyword, deep=False):#When someone calls [all/keyword]
+async def printAll(client,message,keyword, deep=False, heroList=getHeroes()):#When someone calls [all/keyword]
 	if len(keyword)<4 and message.author.id!=183240974347141120:
 		await message.channel.send('Please use a keyword with at least 4 letters minimum')
 		return
 	toPrint=''
-	for hero in getHeroes():
+	for hero in heroList:
 		(abilities,talents)=client.heroPages[hero]
 		output=await printSearch(abilities,talents,keyword,hero,deep)
 		if output=='':
@@ -107,7 +145,6 @@ async def printAll(client,message,keyword, deep=False):#When someone calls [all/
 	await printLarge(channel,toPrint)
 
 if __name__ == '__main__':
-	from miscFunctions import *
 	from heroPage import heroAbilitiesAndTalents
 
 	output=[]
