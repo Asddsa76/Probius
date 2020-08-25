@@ -79,7 +79,7 @@ async def mainProbius(client,message,texts):
 			continue
 		if hero=='twinkle':
 			twinkles=[i.nick+' ('+i.name+')' for i in client.get_guild(535256944106012694).members if i.nick if 'twinkle' in i.nick.lower()]
-			await client.get_channel(557366982471581718).send('\n'.join(twinkles)+'\n'+str(len(twinkles))+' Twinkles')
+			await message.channel.send('\n'.join(twinkles)+'\n'+str(len(twinkles))+' Twinkles')
 			continue
 		if hero in heroAliases+[i+'s' for i in heroAliases]:
 			await heroes(message,text,message.channel,client)
