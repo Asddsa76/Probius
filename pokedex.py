@@ -1,4 +1,4 @@
-from miscFunctions import *
+from printFunctions import *
 from aliases import *
 
 async def fillPokedex(client):#Fills internal state with pokedex members
