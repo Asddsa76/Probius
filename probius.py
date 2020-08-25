@@ -77,6 +77,10 @@ async def mainProbius(client,message,texts):
 		hero=text[0].replace(' ','')
 		if hero in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
+		if hero=='twinkle':
+			twinkles=[i.nick+' ('+i.name+')' for i in client.get_guild(535256944106012694).members if i.nick if 'twinkle' in i.nick.lower()]
+			await client.get_channel(557366982471581718).send('\n'.join(twinkles)+'\n'+str(len(twinkles))+' Twinkles')
+			continue
 		if hero in heroAliases+[i+'s' for i in heroAliases]:
 			await heroes(message,text,message.channel,client)
 			continue
@@ -363,9 +367,6 @@ class MyClient(discord.Client):
 		self.ready=False#Wait until ready before taking commands
 
 	async def on_ready(self):
-		twinkles=[i.nick+' ('+i.name+')' for i in client.get_guild(535256944106012694).members if i.nick if 'twinkle' in i.nick.lower()]
-		#await client.get_channel(557366982471581718).send('\n'.join(twinkles)+'\n'+str(len(twinkles))+' Twinkles')
-
 		print('Logged on as', self.user)
 		print('Filling up with Reddit posts...')
 		self.forwardedPosts=[]
