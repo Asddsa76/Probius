@@ -520,9 +520,9 @@ class MyClient(discord.Client):
 			await asyncio.sleep(60)#Check for new posts every minute
 			await redditForwarding(self)
 	async def on_member_update(self,before,after):
-		if member.guild.id==535256944106012694:
-			core=member.guild.get_role(571321937821696001)
-			olympian=member.guild.get_role(557521663894224912)
+		if after.guild.id==535256944106012694:
+			core=after.guild.get_role(571321937821696001)
+			olympian=after.guild.get_role(557521663894224912)
 			if core in after.roles and core not in before.roles:
 				await self.get_channel(607922629902598154).send('Welcome '+after.mention+'!')
 			if olympian in after.roles and olympian not in before.roles:
