@@ -519,7 +519,14 @@ class MyClient(discord.Client):
 		while not self.is_closed():
 			await asyncio.sleep(60)#Check for new posts every minute
 			await redditForwarding(self)
-
+	async def on_member_update(self,before,after):
+		if member.guild.id==535256944106012694:
+			core=member.guild.get_role(571321937821696001)
+			olympian=member.guild.get_role(557521663894224912)
+			if core in after.roles and core not in before.roles:
+				await self.get_channel(607922629902598154).send('Welcome '+after.mention+'!')
+			if olympian in after.roles and olympian not in before.roles:
+				await self.get_channel(576018992624435220).send('Welcome '+after.mention+'!')
 	'''async def bgTaskUNSORTED(self):
 		await self.wait_until_ready()
 		channel = self.get_channel(557366982471581718)#WSgeneral
