@@ -58,7 +58,9 @@ async def fixTooltips(hero,name,description):
 	'sylvanas':{'Haunting Wave':['teleport','fly']},
 	'malfurion':{"Nature's Balance":['area','radius']},
 	'auriel':{"Swift Sweep":['50%','100%']},
-	'deathwing':{'Bellowing Roar':['2 seconds','1.5 seconds']}}
+	'deathwing':{'Bellowing Roar':['2 seconds','1.5 seconds']},
+	'varian':{'Victory Rush':['or Monster dies','dies, or when you kill a Monster']}
+	}
 	if hero in fixDict:
 		if name in fixDict[hero]:
 			for i in range(len(fixDict[hero][name])//2):
