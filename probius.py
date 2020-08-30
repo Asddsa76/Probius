@@ -400,7 +400,9 @@ class MyClient(discord.Client):
 			except:
 				await client.get_channel(576018992624435220).send('***Unsorted message:*** **'+message.author.name+'**: '+message.content+'\n'+message.jump_url)
 			return
-		if 'baelog' in message.content.lower():await message.channel.send('https://i.imgur.com/Nrcg11Z.png')
+		if 'baelog' in message.content.lower():
+			if message.channel.guild.id==535256944106012694:await client.get_channel(571531013558239238).send(message.author.mention+'\nhttps://i.imgur.com/Nrcg11Z.png')
+			else:await message.channel.send('https://i.imgur.com/Nrcg11Z.png')
 		# Don't tell Blackie 
 		if message.author.id==329447886465138689 and 'pepePolice' in message.content:
 			await message.channel.send('<:pylonbat:680074737258594335> Bad <@329447886465138689> no bullying! <:pylonbat:680074737258594335>')
