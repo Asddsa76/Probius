@@ -33,8 +33,9 @@ from maps import *
 
 async def mainProbius(client,message,texts):
 	if message.author.id==410481791204327424:
-		await message.channel.send('<:bongocat:740080434343444520> Unblock me '+message.author.mention+'! <:bongocat:740080434343444520>')
-		return
+		pass
+		#await message.channel.send('<:bongocat:740080434343444520> Unblock me '+message.author.mention+'! <:bongocat:740080434343444520>')
+		#return
 	buildsAliases=['guide','build','b','g','builds','guides']
 	quotesAliases=['quote','q','quotes']
 	rotationAlises=['rotation','rot','sale','sales']
