@@ -1,4 +1,5 @@
 from aliases import *
+import asyncio
 import re
 
 allHeroes={
@@ -108,10 +109,15 @@ async def printSearch(abilities, talents, name, hero, deep=False):#Prints abilit
 async def printLarge(channel,inputstring,separator='\n'):#Get long string. Print lines out in 2000 character chunks
 	strings=[i+separator for i in inputstring.split(separator)]
 	output=strings.pop(0)
+	i=0
 	while strings:
+		if i==4:#Don't make a long call in #probius hog all the bandwidth
+			i=0
+			await asyncio.sleep(5)
 		if len(output)+len(strings[0])<2000:
 			output+=strings.pop(0)
 		else:
+			i+=1
 			await channel.send(output)
 			output=strings.pop(0)
 	await channel.send(output)
@@ -131,12 +137,12 @@ async def printAll(client,message,keyword, deep=False, heroList=getHeroes()):#Wh
 		return
 	botChannels={'Wind Striders':571531013558239238,'De Schuifpui Schavuiten':687351660502057021}
 	if len(toPrint)>2000 and message.channel.guild.name in botChannels:#If the results is over one message, it gets dumped in specified bot channel
-		if len(toPrint)>20000:
+		'''if len(toPrint)>20000:
 			await message.add_reaction('<:BAN:606932063974850577>')
 			x=len(toPrint)
 			y=int(x/2000)
 			await message.channel.send('No! Bad '+message.author.mention+'! (Sending '+str(x)+' characters would require over '+str(y)+' messages)')
-			return
+			return'''
 		channel=message.channel.guild.get_channel(botChannels[message.channel.guild.name])
 		introText=message.author.mention+", Here's all heroes' "+'"'+keyword+'":\n'
 		toPrint=introText+toPrint

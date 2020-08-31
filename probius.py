@@ -389,6 +389,9 @@ class MyClient(discord.Client):
 			except:pass
 
 	async def on_message(self, message):
+		if message.embeds and message.channel.id==557366982471581718 and 'New dev tweet!' in message.content:#Message with embed in #general
+			await message.channel.send(message.embeds[0].thumbnail.url)
+			await message.edit(suppress=True)
 		if message.author.id==272526395337342977 and message.channel.id==557366982471581718:#Blizztrack posts in general
 			await message.channel.send('<@183240974347141120> Patch')
 		if message.author.bot:#Don't respond to bots
@@ -428,6 +431,9 @@ class MyClient(discord.Client):
 		
 	async def on_message_edit(self,before, after):
 		#Don't respond to ourselves
+		if after.embeds and after.channel.id==557366982471581718 and 'New dev tweet!' in after.content:#Message with embed in #general
+			await after.channel.send(after.embeds[0].thumbnail.url)
+			await after.edit(suppress=True)
 		if before.author.bot:
 			return
 		if '[' in after.content and ']' in after.content:
