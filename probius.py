@@ -160,7 +160,7 @@ async def mainProbius(client,message,texts):
 				role=channel.guild.get_role(560435022427848705)#UNSORTED
 				rulesChannel=channel.guild.get_channel(634012658625937408)#server-rules
 				await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and type here the info at top **`Region`, `Rank`, and `Preferred Colour`**, separated by commas, to get sorted before Blackstorm purges you <:OrphAYAYA:657172520092565514>')
-				await channel.send(file=discord.File('WS colours.png'))
+				await channel.send(content='https://cdn.discordapp.com/attachments/576018992624435220/743917827718905896/sorting.gif',file=discord.File('WS colours.png'))
 				continue
 		if hero == 'vote':
 			await vote(message,text)

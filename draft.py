@@ -2,6 +2,7 @@ from aliases import *
 from printFunctions import *
 from maps import *
 from emojis import emoji
+import asyncio
 import discord
 
 banEmojis={'Ana':'🍌',
@@ -82,7 +83,7 @@ async def printDraft(drafts,channel,draftList,lastDraftMessageDict):#Print state
 		await lastDraftMessageDict[channel].delete()
 	lastDraftMessageDict[channel]=await channel.send(output+'```')
 
-async def draft(drafts,channel,text,lastDraftMessageDict):
+async def draft(drafts,channel,text,lastDraftMessageDict,printDraftBool=True):
 	try:
 		draftList=drafts[channel.id]
 	except:
@@ -112,12 +113,17 @@ Commands:
 			battleground=await mapAliases(text[1])
 			draftList.append(await mapString(battleground))
 			await channel.send('New draft started!',file=discord.File('Maps/'+battleground+'.jpg'))
-			await printDraft(drafts,channel,draftList,lastDraftMessageDict)
+			if printDraftBool:await printDraft(drafts,channel,draftList,lastDraftMessageDict)
 			return
 	if len(text)==1: #[draft] with no second part. To call status
 		await printDraft(drafts,channel,draftList,lastDraftMessageDict)
 		return
 	text=text[1]
+	if text.count(','):
+		for i in text.split(','):
+			await draft(drafts,channel,['d',i],lastDraftMessageDict,False)
+		await channel.send('Draft filled! Type [d] to view')
+		return
 	if text in ['new','start','n','s','reset','r']:
 		drafts[channel.id]=[]
 		if channel in lastDraftMessageDict:del lastDraftMessageDict[channel]
@@ -146,4 +152,4 @@ Commands:
 					await channel.send('Invalid hero!')
 					return
 
-	await printDraft(drafts,channel,draftList,lastDraftMessageDict)
+	if printDraftBool:await printDraft(drafts,channel,draftList,lastDraftMessageDict)
