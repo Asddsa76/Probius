@@ -492,6 +492,7 @@ class MyClient(discord.Client):
 	async def on_member_join(self,member):
 		guild=member.guild
 		if guild.name=='Wind Striders':
+			await member.add_roles(guild.get_role(560435022427848705))#UNSORTED role
 			print(member.name+' joined')
 			channel=guild.get_channel(557366982471581718)#general
 			rulesChannel=guild.get_channel(634012658625937408)#server-rules
@@ -502,7 +503,6 @@ class MyClient(discord.Client):
 			except:
 				pass
 			self.lastWelcomeImage =[await channel.send(file=discord.File('WS colours.png'))]
-			await member.add_roles(guild.get_role(560435022427848705))#UNSORTED role
 			self.lastWelcomeImage.append(await channel.send('https://cdn.discordapp.com/attachments/576018992624435220/743917827718905896/sorting.gif'))
 			#await memberCount(channel)
 
