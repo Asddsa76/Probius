@@ -515,8 +515,8 @@ class MyClient(discord.Client):
 				channel=guild.get_channel(557366982471581718)#general
 				await channel.send(member.name+' (unsorted) left <:samudab:578998204142452747>')
 				return
-			core=guild.get_role(571321937821696001)
-			if core not in member.roles: return
+			#core=guild.get_role(571321937821696001)
+			#if core not in member.roles: return
 			print(member.name+' left')
 			channel=guild.get_channel(576018992624435220)#pepega
 			await channel.send(member.name+' left the server <:samudab:578998204142452747>')
