@@ -4,14 +4,14 @@ from rotation import *
 
 redditors=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'Pscythic', 'Elitesparkle', 'slapperoni', 
 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'Pelaberus', 'KillMeWithMemes', 
-'ridleyfire','bran76765','MarvellousBee','Naturage','Derenash','Riokaii','D0ctorLogan','Demon_Ryu','hellobgs','Beg_For_Mercy','Russisch','Valamar1732','ArashiNoShad0w',
+'ridleyfire','bran76765','MarvellousBee','Naturage','Derenash','Riokaii','Demon_Ryu','hellobgs','Beg_For_Mercy','Russisch','Valamar1732','ArashiNoShad0w',
 'Mochrie1713','lemindhawk','Goshin26','TiredZealot','MasterAblar','SHreddedWInd','MrWilbus','NotBelial','Dark_Polaroid']
 
 discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','secret3332':'SecretChaos','Archlichofthestorm':'Trolldaeron','ThatDoomedStudent':'Carbon','InfiniteEarth':'Flash',
 'KillMeWithMemes':'Nick','ridleyfire':'HailFall','bran76765':'Parthuin','Demon_Ryu':'Messa','Russisch':'Ekata','ArashiNoShad0w':'LeviathaN','TiredZealot':'Jdelrio','lemindhawk':'MindHawk',
 'Dark_Polaroid':'Medicake'}
 
-keywords=['Genji','Samuro','Maiev', ' Dva', 'Hanzo', 'Lucio']#Posts with these in title gets forwarded regardless of author
+keywords=['Genji','Samuro','Maiev', ' Dva', 'Hanzo', 'Lucio', 'Zeratul']#Posts with these in title gets forwarded regardless of author
 
 mindhawk_keywords=['Kerrigan','Cho ','Gall',"Cho'Gall",'Orphea','Li-Ming','Ragnaros', 'Li Ming', 'chogall']
 
@@ -82,6 +82,8 @@ async def redditForwarding(client):#Called every 60 seconds
 							await client.get_channel(564528564196605973).send('**'+title+'** <@329447886465138689> '+url)#Samuro-general
 						elif 'hanzo' in title.lower() or 'lucio' in title.lower():
 							await client.get_channel(568058278165348362).send('**'+title+'** <@160743140901388288>'+url)
+						elif 'zeratul' in title.lower():
+							await client.get_channel(568058278165348362).send('**'+title+'** <@191410663292272640>'+url)
 						else:
 							if author in discordnames:
 								author=discordnames[author]
