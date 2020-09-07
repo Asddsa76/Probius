@@ -21,10 +21,7 @@ async def roll(text,message):
 	await message.channel.send(str(randint(1,n)))
 
 async def getAvatar(client,channel,userMention):
-	if '<' not in userMention:
-		await channel.send('Need a ping')
-		return
-	userString=userMention.replace(' ','')[2:-1].replace('!','')
+	userString=userMention.replace(' ','').replace('!','').replace('<','').replace('>','').replace('@','')
 	user=client.get_user(int(userString))
 	await channel.send(user.avatar_url)
 
