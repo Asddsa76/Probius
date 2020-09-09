@@ -3,11 +3,11 @@ import asyncio
 import re
 
 allHeroes={
-	'bruiser':['Artanis', 'Chen', 'D.Va', 'Deathwing', 'Dehaka', 'Imperius', 'Leoric', 'Malthael', 'Ragnaros', 'Rexxar', 'Sonya', 'Thrall', 'Varian', 'Xul', 'Yrel'],
+	'bruiser':['Artanis', 'Chen', 'D.Va', 'Deathwing', 'Dehaka', 'Gazlowe', 'Imperius', 'Leoric', 'Malthael', 'Ragnaros', 'Rexxar', 'Sonya', 'Thrall', 'Varian', 'Xul', 'Yrel'],
 	'healer':['Alexstrasza', 'Ana', 'Anduin', 'Auriel', 'Brightwing', 'Deckard', 'Kharazim', 'Li_Li', 'Lt._Morales', 'Lúcio', 'Malfurion', 'Rehgar', 'Stukov', 'Tyrande', 'Uther', 'Whitemane'],
 	'mage':['Azmodan', 'Chromie', 'Gall', "Gul'dan", 'Jaina', "Kael'thas", "Kel'Thuzad", 'Li-Ming', 'Mephisto', 'Nazeebo', 'Orphea', 'Probius', 'Tassadar', 'Zagara',],
 	'marksman':['Cassia', 'Falstad', 'Fenix', 'Genji', 'Greymane', 'Hanzo', 'Junkrat', 'Lunara', 'Nova', 'Raynor', 'Sgt._Hammer', 'Sylvanas', 'Tracer', 'Tychus', 'Valla', "Zul'jin"],
-	'melee':['Alarak', 'Gazlowe', 'Illidan', 'Kerrigan', 'Maiev', 'Murky', 'Qhira', 'Samuro', 'The_Butcher', 'Valeera', 'Zeratul'],
+	'melee':['Alarak', 'Illidan', 'Kerrigan', 'Maiev', 'Murky', 'Qhira', 'Samuro', 'The_Butcher', 'Valeera', 'Zeratul'],
 	'support':['Abathur', 'Medivh', 'The_Lost_Vikings', 'Zarya'],
 	'tank':["Anub'arak", 'Arthas', 'Blaze', 'Cho', 'Diablo', 'E.T.C.', 'Garrosh', 'Johanna', "Mal'Ganis", 'Mei', 'Muradin', 'Stitches', 'Tyrael']
 }
