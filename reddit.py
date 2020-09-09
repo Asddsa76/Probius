@@ -64,11 +64,7 @@ async def redditForwarding(client):#Called every 60 seconds
 						client.seenTitles.append(title)
 						title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','').replace('\u2019',"'")
 						client.forwardedPosts.append([title,author,url])
-						if author=='NotBelial':
-							import random
-							random.seed()
-							await client.get_channel(557366982471581718).send('**'+title+'** by '+random.choice(client.get_role(571321937821696001).members).name+': '+url)#general, by random core member
-						elif 'genji' in title.lower():
+						if 'genji' in title.lower():
 							await client.get_channel(568058278165348362).send('**'+title+'** <@183240974347141120> <@247677408386351105> <@408114527947980802> '+url)#Normie heroes
 						elif 'maiev' in title.lower():
 							await client.get_channel(568058278165348362).send('**'+title+'** <@247677408386351105> '+url)#Normie heroes

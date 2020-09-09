@@ -368,6 +368,8 @@ class MyClient(discord.Client):
 		self.ready=False#Wait until ready before taking commands
 
 	async def on_ready(self):
+		#embed=(await self.get_channel(557366982471581718).fetch_message_fast(752935248005824583)).embeds[0]
+
 		print('Logged on as', self.user)
 		print('Filling up with Reddit posts...')
 		self.forwardedPosts=[]
@@ -393,7 +395,8 @@ class MyClient(discord.Client):
 			await message.channel.send(message.embeds[0].thumbnail.url)
 			await message.edit(suppress=True)
 		if message.author.id==272526395337342977 and message.channel.id==557366982471581718:#Blizztrack posts in general
-			await message.channel.send('<@183240974347141120> Patch')
+			#await message.channel.send('<@183240974347141120> Patch')
+			pass
 		if message.author.bot:#Don't respond to bots
 			return
 		if '>' in message.content and '<' not in message.content:#Don't respond to quoted text. > is quote, but also in pings
