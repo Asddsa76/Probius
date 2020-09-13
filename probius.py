@@ -78,9 +78,9 @@ async def mainProbius(client,message,texts):
 		hero=text[0].replace(' ','')
 		if hero in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
-		if hero=='twinkle':
-			twinkles=[i.nick+' ('+i.name+')' for i in client.get_guild(535256944106012694).members if i.nick if 'twinkle' in i.nick.lower()]
-			await message.channel.send('\n'.join(twinkles)+'\n'+str(len(twinkles))+' Twinkles')
+		if hero=='name':
+			twinkles=[i.nick+' ('+i.name+')' for i in message.guild.members if i.nick if text[1].lower() in i.nick.lower()]
+			await message.channel.send('\n'.join(twinkles)+'\n'+str(len(twinkles))+' '+text[1].capitalize()+'s')
 			continue
 		if hero in heroAliases+[i+'s' for i in heroAliases]:
 			await heroes(message,text,message.channel,client)
@@ -214,7 +214,10 @@ async def mainProbius(client,message,texts):
 			await emoji(client,['Probius','love'],message.channel)
 			continue
 		if hero=='badbot':
-			await emoji(client,[':pylonbat'],message.channel)
+			if message.author.id==183240974347141120:
+				await emoji(client,['Probius','sad'],message.channel)
+			else:
+				await emoji(client,[':pylonbat'],message.channel)
 			continue
 		if ':' in hero:
 			await emoji(client,text,message.channel,message)
