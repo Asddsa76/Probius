@@ -419,6 +419,9 @@ class MyClient(discord.Client):
 		# Don't tell Blackie 
 		if message.author.id==329447886465138689 and 'pepePolice' in message.content:
 			await message.channel.send('<:pylonbat:680074737258594335> Bad <@329447886465138689> no bullying! <:pylonbat:680074737258594335>')
+		# When SqueekyWheel asks for a draft, ping Stormie.
+		if message.author.id==329906727644299275 and 'draft' in message.content:
+			await message.channel.send('<@329447886465138689>, that means you <:OrphAYAYA:657172520092565514>')
 		if self.ready==False:
 			return
 		if message.content.count('@')>50 and message.channel.guild.id==535256944106012694:
