@@ -21,8 +21,18 @@ async def roll(text,message):
 	await message.channel.send(str(randint(1,n)))
 
 async def getAvatar(client,channel,userMention):
-	userString=userMention.replace(' ','').replace('!','').replace('<','').replace('>','').replace('@','')
-	user=client.get_user(int(userString))
+	u=userMention.replace(' ','').replace('!','').replace('<','').replace('>','').replace('@','').lower()
+	if u.isnumeric():
+		user=client.get_user(int(u))
+	else:
+		user=''
+		for i in channel.guild.members:
+			if i.name.lower()==u:
+				user=i
+			elif i.nick:
+				if i.nick.lower()==u:
+					user=i
+		if not user:return
 	await channel.send(user.avatar_url)
 
 async def vote(message,text):

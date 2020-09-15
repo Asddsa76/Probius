@@ -26,7 +26,7 @@ async def additionalInfo(hero,name,description):
 	'maiev':{'Spirit of Vengeance':'Reactivate to teleport to the spirit.'},
 	'sylvanas':{
 		'Haunting Wave':'Sylvanas is unstoppable while flying to the banshee.',
-		'Mercenary Queen':'Mercenaries will not be stunned if the third application is through Festering Wounds or Remorseless.',
+		'Mercenary Queen':'Mercenaries will not be stunned if the third application is through Remorseless.',
 		'Black Arrows':'Remorseless shots do not disable enemies.'},
 	'lunara':{'Leaping Strike':'Lunara is unstoppable while leaping.'},
 	'chen':{'Storm, Earth, Fire':'Using Storm, Earth, Fire removes most negative effects from Chen.'},
