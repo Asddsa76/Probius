@@ -12,23 +12,21 @@ Blaze
 Brightwing
 Cassia
 Chen
-Cho
+Chromie
 D.va
 Deathwing
 Dehaka
-Falstad
 Fenix
 Garrosh
-Gul'dan
 Hanzo
 Jaina
 Johanna
+Junkrat
 Kael'thas
-Kel'Thuzad
 Kharazim
-Imperius
 Leoric
 Li Li
+Li-Ming
 Lt. Morales
 Lucio
 Lunara
@@ -40,23 +38,32 @@ Mei
 Mephisto
 Muradin
 Nazeebo
+Orphea
+Probius
+Qhira
 Ragnaros
 Raynor
 Rehgar
 Rexxar
 Samuro
+Sonya
 Stitches
 Stukov
+Sylvanas
 Tassadar
+The Butcher
 The Lost Vikings
 Thrall
 Tracer
+Tychus
 Tyrael
 Tyrande
 Valeera
+Valla
 Varian
 Whitemane
 Xul
 Yrel
 Zagara
 Zarya
+Zul'jin
