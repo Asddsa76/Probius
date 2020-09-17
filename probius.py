@@ -79,7 +79,7 @@ async def mainProbius(client,message,texts):
 		if hero in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
 		if hero=='name':
-			twinkles=[i.nick+' ('+i.name+')' for i in message.guild.members if i.nick if text[1].lower() in i.nick.lower()]
+			twinkles=[(i.name if not i.nick else i.nick)+(' ('+i.name+')')*int(bool(i.nick)) for i in message.guild.members if text[1].lower() in i.name.lower() or i.nick and text[1].lower() in i.nick.lower()]
 			await message.channel.send('\n'.join(twinkles)+'\n'+str(len(twinkles))+' '+text[1].capitalize()+'s')
 			continue
 		if hero in heroAliases+[i+'s' for i in heroAliases]:

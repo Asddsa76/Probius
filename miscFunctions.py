@@ -25,14 +25,10 @@ async def getAvatar(client,channel,userMention):
 	if u.isnumeric():
 		user=client.get_user(int(u))
 	else:
-		user=''
-		for i in channel.guild.members:
-			if i.name.lower()==u:
-				user=i
-			elif i.nick:
-				if i.nick.lower()==u:
-					user=i
-		if not user:return
+		try:
+			user=[i for i in channel.guild.members if i.name.lower()==u or i.nick and i.nick.lower()==u][0]
+		except:
+			return
 	await channel.send(user.avatar_url)
 
 async def vote(message,text):
