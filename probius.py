@@ -203,6 +203,11 @@ async def mainProbius(client,message,texts):
 			continue
 		if hero in buildsAliases:
 			if len(text)==2:
+				if message.channel.guild.id==535256944106012694 and message.channel.id!=571531013558239238:#In WS, not in #probius
+					if message.guild.get_role(571321937821696001) not in message.author.roles:#Not core member
+						await message.guild.get_channel(571531013558239238).send(message.author.mention)
+						await guide(aliases(text[1]),message.guild.get_channel(571531013558239238))
+						continue
 				await guide(aliases(text[1]),message.channel)
 			else:
 				await message.channel.send("Elitesparkle's builds: <https://elitesparkle.wixsite.com/hots-builds>")
