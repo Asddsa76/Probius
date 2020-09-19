@@ -398,7 +398,7 @@ class MyClient(discord.Client):
 
 	async def on_message(self, message):
 		pingNames={'lemmie':190529178808877056, 'medicake':160743140901388288}
-		pingList=[pingNames[i] for i in pingNames.keys() if i in message]
+		pingList=[pingNames[i] for i in pingNames.keys() if i in message.content]
 		if pingList:
 			await message.channel.send(' '.join(['<@'+i+'>' for i in pingList]))
 			
