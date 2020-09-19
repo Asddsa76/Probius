@@ -397,6 +397,11 @@ class MyClient(discord.Client):
 			except:pass
 
 	async def on_message(self, message):
+		pingNames={'lemmie':190529178808877056, 'medicake':160743140901388288}
+		pingList=[pingNames[i] for i in pingNames.keys() if i in message]
+		if pingList:
+			await message.channel.send(' '.join(['<@'+i+'>' for i in pingList]))
+			
 		if message.embeds and message.channel.id==557366982471581718 and 'New dev tweet!' in message.content:#Message with embed in #general
 			await message.channel.send(message.embeds[0].thumbnail.url)
 			await message.edit(suppress=True)
