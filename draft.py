@@ -112,7 +112,8 @@ Commands:
 			if channel in lastDraftMessageDict:del lastDraftMessageDict[channel]
 			battleground=await mapAliases(text[1])
 			draftList.append(await mapString(battleground))
-			await channel.send('New draft started!',file=discord.File('Maps/'+battleground+'.jpg'))
+			await channel.send('New draft started!')#,file=discord.File('Maps/'+battleground+'.jpg'))
+			await mapImage(channel,battleground)
 			if printDraftBool:await printDraft(drafts,channel,draftList,lastDraftMessageDict)
 			return
 	if len(text)==1: #[draft] with no second part. To call status
@@ -143,7 +144,7 @@ Commands:
 					await channel.send('`Unrecognized battleground!`')
 					return
 				draftList.append(await mapString(battleground))
-				await channel.send(file=discord.File('Maps/'+battleground+'.jpg'))
+				await mapImage(channel,battleground)
 			else:
 				hero=aliases(text)
 				if hero in getHeroes():

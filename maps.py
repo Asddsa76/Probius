@@ -10,7 +10,7 @@ async def mapString(battleground):
 
 async def mapAliases(text):
 	maps=await getMaps()
-	text=text.lower().replace("'",'').replace(' ','')
+	text=text.lower().replace("'",'').replace(' ','').replace('-','')
 	for i in maps:#Acronyms
 		if text==''.join(j[0] for j in i.split('-')):
 			return i
@@ -21,6 +21,25 @@ async def mapAliases(text):
 		return 'blackhearts-bay'
 	elif text in ['dshire']:
 		return 'dragon-shire'
+
+async def mapImage(channel,battleground):
+	#Album: https://imgur.com/a/YxG3xM0
+	a={'alterac-pass':'https://i.imgur.com/LqPkUID.jpg',
+	'battlefield-of-eternity':'https://i.imgur.com/vERdWVA.jpg',
+	'blackhearts-bay':'https://i.imgur.com/dG2DwtY.jpg',
+	'braxis-holdout':'https://i.imgur.com/IjDIySs.jpg',
+	'cursed-hollow':'https://i.imgur.com/N9b93Mh.jpg',
+	'dragon-shire':'https://i.imgur.com/Klude4e.jpg',
+	'garden-of-terror':'https://i.imgur.com/hhvTMTP.jpg',
+	'hanamura-temple':'https://i.imgur.com/gSgjq3J.jpg',
+	'haunted-mines':'https://i.imgur.com/0V2bW2l.jpg',
+	'infernal-shrines':'https://i.imgur.com/vN5DJ9O.jpg',
+	'sky-temple':'https://i.imgur.com/KFtggPx.jpg',
+	'tomb-of-the-spider-queen':'https://i.imgur.com/0vM5YHt.jpg',
+	'towers-of-doom':'https://i.imgur.com/CbDuf1t.jpg',
+	'volskaya-foundry':'https://i.imgur.com/EJfg14Z.jpg',
+	'warhead-junction':'https://i.imgur.com/iNqClFu.jpg'}
+	await channel.send(a[await mapAliases(battleground)])
 
 async def fetch(session, url):
 	async with session.get(url) as response:

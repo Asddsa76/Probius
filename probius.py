@@ -94,10 +94,14 @@ async def mainProbius(client,message,texts):
 		if hero in confidenceAliases:
 			await confidence(message.channel,text)
 			continue
+		if hero=='exit' and message.author.id==183240974347141120:
+			global exitBool
+			exitBool=1
+			await client.close()
 		if hero in restartAliases:
 			await client.logout()
 		if hero in mapImageAliases:
-			await message.channel.send(file=discord.File('Maps/'+(await mapAliases(text[1]))+'.jpg'))
+			await mapImage(message.channel,text[1])
 			continue
 		if hero=='core':
 			await coreAbilities(message.channel,await mapAliases(text[1]))
@@ -296,20 +300,18 @@ async def mainProbius(client,message,texts):
 				tier=int(tier)
 				output=printTier(talents,int(tier/3)+int(hero=='Chromie' and tier not in [1,18]))#Talents for Chromie come 2 lvls sooner, except lvl 1
 			elif tier in ['mount','z']:
-				if hero=='Deathwing':
-					output=abilities[-2]
-				else:
-					output=abilities[-1]#Last ability. It's heroic if the hero has normal mount, but that's an user error
+				await message.channel.send(printAbility(abilities,'z'))
+				return
 			elif tier=='extra':
-				if hero in ['Zeratul','Gazlowe','Nova','Whitemane','Deathwing','Gall','Stitches']:#Some heroes have the entry for 1 button between D and Q, these have them last
-					output=abilities[-1]
-				else:
-					output=abilities[1]
+				await message.channel.send(printAbility(abilities,'1'))
+				return
 			elif tier=='r':#Ultimate
 				if hero=='Tracer':#She starts with her heroic already unlocked, and only has 1 heroic
 					output=abilities[3]
 				else:
 					output=printTier(talents,3-2*int(hero=='Varian'))#Varian's heroics are at lvl 4
+					if hero=='Deathwing':
+						output=abilities[3]+'\n'+output#Deathwing has Cataclysm baseline
 			elif len(tier)==1 and tier in 'dqwe':#Ability (dqwe)
 				output=printAbility(abilities,tier)
 			elif tier=='trait':
@@ -351,11 +353,18 @@ async def mainProbius(client,message,texts):
 						await printLarge(message.channel,output)
 
 def findTexts(message):
-	text=message.content.lower()
-	leftBrackets=[1+m.start() for m in re.finditer('\[',text)]#Must escape brackets when using regex
-	rightBrackets=[m.start() for m in re.finditer('\]',text)]
-	texts=[text[leftBrackets[i]:rightBrackets[i]].split('/') for i in range(len(leftBrackets))]
-	return texts
+	allTexts=[]
+	wholeText=message.content.lower()
+	for text in wholeText.split('\n'):
+		if '>' in text and '<' not in text:#This line is a quote
+			continue
+		leftBrackets=[1+m.start() for m in re.finditer('\[',text)]#Must escape brackets when using regex
+		rightBrackets=[m.start() for m in re.finditer('\]',text)]
+		texts=[text[leftBrackets[i]:rightBrackets[i]].split('/') for i in range(len(rightBrackets))]
+		if len(leftBrackets)>len(rightBrackets):#One extra unclosed at end
+			texts.append(text[leftBrackets[-1]:].split('/'))
+		allTexts+=texts
+	return allTexts
 
 wsReactionRoles={'🇧':577935915448795137,'🇩':664126658084601857,'🇱':693038480783048774}
 drafts={}#Outside of client so it doesn't reset on periodic restarts or [restart]
@@ -398,11 +407,11 @@ class MyClient(discord.Client):
 
 	async def on_message(self, message):
 		pingNames={'lemmie':190529178808877056, 'medicake':160743140901388288}
-		pingList=[pingNames[i] for i in pingNames.keys() if '@'+i in message.content]
+		pingList=[pingNames[i] for i in pingNames.keys() if '@'+i in message.content.replace(' ','')]
 		if pingList:
 			await message.channel.send(' '.join(['<@'+i+'>' for i in pingList]))
 			
-		if message.embeds and message.channel.id==557366982471581718 and 'New dev tweet!' in message.content:#Message with embed in #general
+		if message.embeds and message.channel.id==557366982471581718 and 'View tweet' in message.content:#Message with embed in #general
 			await message.channel.send(message.embeds[0].thumbnail.url)
 			await message.edit(suppress=True)
 		if message.author.id==272526395337342977 and message.channel.id==557366982471581718:#Blizztrack posts in general
@@ -414,8 +423,6 @@ class MyClient(discord.Client):
 					await self.get_channel(222817241249480704).send(output)
 			except:pass
 		if message.author.bot:#Don't respond to bots
-			return
-		if '>' in message.content and '<' not in message.content:#Don't respond to quoted text. > is quote, but also in pings
 			return
 		if 560435022427848705 in [role.id for role in message.author.roles]:#Unsorted
 			try:
@@ -440,13 +447,11 @@ class MyClient(discord.Client):
 			await message.channel.guild.ban(message.author,reason='Spam: over 50 pings in one message.')
 			await channel.send('Banned '+username+' for excessive pings!')
 			return
-		if '[' in message.content and ']' in message.content:
+
+		elif '[' in message.content:
 			texts=findTexts(message)
 			await mainProbius(self,message,texts)
-		elif '[' in message.content:
-			await mainProbius(self,message,[message.content.split('[')[1].lower().split('/')])
-			if message.content[0]=='[' and message.guild.id == 535256944106012694:
-				pass#Delete was here
+
 		await removeEmbeds(message)
 		if message.author.id==0:#Birthday cake
 			await message.add_reaction('🍰')
@@ -569,7 +574,9 @@ class MyClient(discord.Client):
 			await asyncio.sleep(60*60*24)#Sleep 24 hours
 			await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels Blackstorm purges you <:peepoLove:606862963478888449>')
 '''
+exitBool=0
 while 1: #Restart
 	asyncio.set_event_loop(asyncio.new_event_loop())
 	client = MyClient()
 	client.run(getProbiusToken())
+	if exitBool:break
