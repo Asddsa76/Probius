@@ -12,17 +12,22 @@ Blaze
 Brightwing
 Cassia
 Chen
-Chromie
 D.va
 Deathwing
 Dehaka
+Falstad
 Fenix
 Garrosh
+Gazlowe
+Genji
+Illidan
+Imperius
 Hanzo
 Jaina
 Johanna
 Junkrat
 Kael'thas
+Kel'Thuzad
 Kharazim
 Leoric
 Li Li
@@ -37,7 +42,9 @@ Medivh
 Mei
 Mephisto
 Muradin
+Murky
 Nazeebo
+Nova
 Orphea
 Probius
 Qhira
@@ -58,6 +65,7 @@ Tracer
 Tychus
 Tyrael
 Tyrande
+Uther
 Valeera
 Valla
 Varian
