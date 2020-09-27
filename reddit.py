@@ -4,11 +4,11 @@ from rotation import *
 
 redditors=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'Pscythic', 'Elitesparkle', 'slapperoni', 
 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'Pelaberus', 'KillMeWithMemes', 
-'ridleyfire','bran76765','MarvellousBee','Naturage','Derenash','Riokaii','Demon_Ryu','hellobgs','Beg_For_Mercy','Russisch','Valamar1732','ArashiNoShad0w',
-'lemindhawk','Goshin26','TiredZealot','MasterAblar','SHreddedWInd','MrWilbus','NotBelial','Dark_Polaroid']
+'bran76765','MarvellousBee','Naturage','Derenash','Riokaii','Demon_Ryu','hellobgs','Beg_For_Mercy','Russisch','Valamar1732','ArashiNoShad0w',
+'lemindhawk','Goshin26','TiredZealot','MasterAblar','SHreddedWInd','MrWilbus','NotBelial','Dark_Polaroid','Mochrie1713']
 
 discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','secret3332':'SecretChaos','Archlichofthestorm':'Trolldaeron','ThatDoomedStudent':'Carbon','InfiniteEarth':'Flash',
-'KillMeWithMemes':'Nick','ridleyfire':'HailFall','bran76765':'Parthuin','Demon_Ryu':'Messa','Russisch':'Ekata','ArashiNoShad0w':'LeviathaN','TiredZealot':'Jdelrio','lemindhawk':'MindHawk',
+'KillMeWithMemes':'Nick','bran76765':'Parthuin','Demon_Ryu':'Messa','Russisch':'Ekata','ArashiNoShad0w':'LeviathaN','TiredZealot':'Jdelrio','lemindhawk':'MindHawk',
 'Dark_Polaroid':'Medicake'}
 
 keywords=['Genji','Samuro','Maiev', ' Dva', 'Hanzo', 'Lucio', 'Zeratul']#Posts with these in title gets forwarded regardless of author
@@ -64,7 +64,11 @@ async def redditForwarding(client):#Called every 60 seconds
 						client.seenTitles.append(title)
 						title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','').replace('\u2019',"'")
 						client.forwardedPosts.append([title,author,url])
-						if 'genji' in title.lower():
+						if author in discordnames:
+								author=discordnames[author]
+							await client.get_channel(665317972646166538).send('**'+title+'** by '+author+': '+url)#reddit-posts
+							await client.get_channel(557366982471581718).send('**'+title+'** by '+author+': '+url)#general
+						elif 'genji' in title.lower():
 							await client.get_channel(568058278165348362).send('**'+title+'** <@183240974347141120> <@247677408386351105> <@408114527947980802> '+url)#Normie heroes
 						elif 'maiev' in title.lower():
 							await client.get_channel(568058278165348362).send('**'+title+'** <@247677408386351105> '+url)#Normie heroes
@@ -80,11 +84,6 @@ async def redditForwarding(client):#Called every 60 seconds
 							await client.get_channel(568058278165348362).send('**'+title+'** <@160743140901388288>'+url)
 						elif 'zeratul' in title.lower():
 							await client.get_channel(568058278165348362).send('**'+title+'** <@191410663292272640>'+url)
-						else:
-							if author in discordnames:
-								author=discordnames[author]
-							await client.get_channel(665317972646166538).send('**'+title+'** by '+author+': '+url)#reddit-posts
-							await client.get_channel(557366982471581718).send('**'+title+'** by '+author+': '+url)#general
 						await client.get_channel(643231901452337192).send('`'+title+' by '+author+'`')#log
 						print(title+' by '+author)
 						if author=='Gnueless' and 'rotation' in title.lower():
