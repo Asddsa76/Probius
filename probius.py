@@ -124,7 +124,12 @@ async def mainProbius(client,message,texts):
 			await message.channel.send("Call a hero's talent tier with [hero/level]")
 			continue
 		if hero in updatePokedexAliases:
+			if client.isEditingPokedex:
+				await message.channel.send('Please wait, the pokedex is already being edited!')
+				continue
+			client.isEditingPokedex=1
 			await updatePokedex(client,text,message)
+			client.isEditingPokedex=0
 			continue
 		if hero in rollAliases:
 			await roll(text,message)
@@ -382,6 +387,7 @@ class MyClient(discord.Client):
 		self.heroPages={}
 		self.lastWelcomeImage=[]
 		self.waitList=[]
+		self.isEditingPokedex=0
 		self.ready=False#Wait until ready before taking commands
 
 	async def on_ready(self):
