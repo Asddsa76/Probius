@@ -212,7 +212,7 @@ async def mainProbius(client,message,texts):
 			if len(text)==2:
 				if message.channel.guild.id==535256944106012694 and message.channel.id!=571531013558239238:#In WS, not in #probius
 					if message.guild.get_role(571321937821696001) not in message.author.roles:#Not core member
-						await message.guild.get_channel(571531013558239238).send(message.author.mention)
+						await message.guild.get_channel(571531013558239238).send(message.author.mention+' <:bonk:761981366744121354>')
 						await guide(aliases(text[1]),message.guild.get_channel(571531013558239238))
 						continue
 				await guide(aliases(text[1]),message.channel)
@@ -485,7 +485,7 @@ class MyClient(discord.Client):
 				await client.get_guild(535256944106012694).get_member(payload.user_id).add_roles(client.get_guild(535256944106012694).get_role(wsReactionRoles[str(payload.emoji)]))
 		elif message.author.id==603924594956435491 and str(payload.emoji)=='👎':#Message is from Probius, and is downvoted with thumbs down
 			if message.channel.id in [665317972646166538,597140352411107328]:#Message is in reddit posts or pokedex
-				output='Naughty '+member.mention+' tried to ruin #reddit-posts or the #pokedex D:'
+				output='Naughty '+member.mention+' tried to ruin #reddit-posts or the #pokedex <:bonk:761981366744121354>'
 				print(output)
 				await client.get_channel(557366982471581718).send(output)
 				return

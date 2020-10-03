@@ -156,7 +156,7 @@ def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest
 			return 'ball lightning'
 	elif hero=='Fenix':
 		if name in ['aiur noon']:
-			return 'salvo'
+			return 'purification salvo'
 	elif hero=='Genji':
 		if name in ['dblade']:
 			return 'dragonblade'
@@ -164,7 +164,7 @@ def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest
 			return 'dragon claw'
 	elif hero=='Leoric':
 		if name=='spooky hand':
-			return 'Drain Hope'
+			return 'drain hope'
 	elif hero=='Lúcio':
 		if name=='boop':
 			return 'soundwave'
