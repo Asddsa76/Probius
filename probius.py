@@ -159,7 +159,7 @@ async def mainProbius(client,message,texts):
 				await message.channel.send([channel.name for channel in message.channel.guild.channels])
 				continue
 			if hero=='repeat' and len(text)==2:
-				await message.channel.send(text[1].capitalize())
+				await message.channel.send(text[1])
 				await message.delete()
 				continue
 		if hero== 'unsorted' and message.channel.guild.name=='Wind Striders':
@@ -483,17 +483,21 @@ class MyClient(discord.Client):
 		if message.id==693380327413907487:
 			if str(payload.emoji) in wsReactionRoles:
 				await client.get_guild(535256944106012694).get_member(payload.user_id).add_roles(client.get_guild(535256944106012694).get_role(wsReactionRoles[str(payload.emoji)]))
+
 		elif message.author.id==603924594956435491 and str(payload.emoji)=='👎':#Message is from Probius, and is downvoted with thumbs down
 			if message.channel.id in [665317972646166538,597140352411107328]:#Message is in reddit posts or pokedex
-				output='Naughty '+member.mention+' tried to ruin #reddit-posts or the #pokedex <:bonk:761981366744121354>'
-				print(output)
-				await client.get_channel(557366982471581718).send(output)
+				output=member.mention+'<:bonk:761981366744121354>'
+				await client.get_channel(557366982471581718).send(output)#general
+				return
+			elif 'reddit.com' in message.content or '<:bonk:761981366744121354>' in message.content:
+				await message.channel.send(member.mention+'<:bonk:761981366744121354>')
 				return
 			output=member.name+' deleted a message from Probius'
 			print(output)
 			await client.get_channel(643231901452337192).send('`'+output+'`')
 			await message.delete()
 			return
+
 		elif message.author.id==603924594956435491 and 'React to ping' in message.content:#Message from Probius, pings Pokedex:
 			output=member.name+' started a balance discussion'
 			print(output)
