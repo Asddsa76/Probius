@@ -489,8 +489,10 @@ class MyClient(discord.Client):
 				output=member.mention+'<:bonk:761981366744121354>'
 				await client.get_channel(557366982471581718).send(output)#general
 				return
-			elif 'reddit.com' in message.content or '<:bonk:761981366744121354>' in message.content:
+			elif 'reddit.com' in message.content:
 				await message.channel.send(member.mention+'<:bonk:761981366744121354>')
+				return
+			elif '<:bonk:761981366744121354>' in message.content:
 				return
 			output=member.name+' deleted a message from Probius'
 			print(output)
