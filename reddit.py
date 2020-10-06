@@ -64,8 +64,9 @@ async def redditForwarding(client):#Called every 60 seconds
 						client.seenTitles.append(title)
 						title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','').replace('\u2019',"'")
 						client.forwardedPosts.append([title,author,url])
-						if author in discordnames:
-							author=discordnames[author]
+						if author in redditors:
+							if author in discordnames:
+								author=discordnames[author]
 							await client.get_channel(665317972646166538).send('**'+title+'** by '+author+': '+url)#reddit-posts
 							await client.get_channel(557366982471581718).send('**'+title+'** by '+author+': '+url)#general
 						elif 'genji' in title.lower():
