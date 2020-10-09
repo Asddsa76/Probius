@@ -500,7 +500,7 @@ class MyClient(discord.Client):
 			await message.delete()
 			return
 
-		elif message.author.id==603924594956435491 and 'React to ping' in message.content:#Message from Probius, pings Pokedex:
+		elif message.author.id==603924594956435491 and 'React to ping' in message.content and str(payload.emoji)=='👍':#Message from Probius, pings Pokedex:
 			output=member.name+' started a balance discussion'
 			print(output)
 			await client.get_channel(643231901452337192).send('`'+output+'`')
@@ -549,7 +549,7 @@ class MyClient(discord.Client):
 			#core=guild.get_role(571321937821696001)
 			#if core not in member.roles: return
 			print(member.name+' left')
-			channel=guild.get_channel(576018992624435220)#pepega
+			channel=guild.get_channel(616617012948631552)#super-secret-cabal
 			await channel.send(member.name+' left the server <:samudab:578998204142452747>')
 			await removePokedex(self,member.id)
 
