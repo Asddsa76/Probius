@@ -23,14 +23,15 @@ Garrosh
 Gazlowe
 Genji
 Greymane
+Hanzo
 Illidan
 Imperius
-Hanzo
 Jaina
 Johanna
 Junkrat
 Kael'thas
 Kel'Thuzad
+Kerrigan
 Kharazim
 Kerrigan
 Leoric
@@ -70,7 +71,6 @@ Tyrael
 Tyrande
 Uther
 Valeera
-Valla
 Varian
 Whitemane
 Xul
