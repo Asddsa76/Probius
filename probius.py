@@ -10,6 +10,7 @@ import aiohttp
 import re
 import random
 import discord
+import time
 from sys import argv#Where to get the JSONs
 from discord.ext import tasks
 from discord.ext import commands
@@ -30,6 +31,11 @@ from sorting import *
 from patchNotes import *
 from lfg import *
 from maps import *
+
+wsReactionRoles={'🇧':577935915448795137,'🇩':664126658084601857,'🇱':693038480783048774}
+drafts={}#Outside of client so it doesn't reset on periodic restarts or [restart]
+lastDraftMessageDict={}
+draftNames={}
 
 async def mainProbius(client,message,texts):
 	if message.author.id==410481791204327424:
@@ -195,7 +201,7 @@ async def mainProbius(client,message,texts):
 		if hero=='':#Empty string. Aliases returns Abathur when given this.
 			continue
 		if hero in draftAliases:
-			await draft(drafts,message.channel,text,lastDraftMessageDict)
+			await draft(drafts,message.channel,message.author,text,lastDraftMessageDict,draftNames)
 			continue
 		if hero in randomAliases:
 			if len(text)==1:
@@ -369,10 +375,6 @@ def findTexts(message):
 		allTexts+=texts
 	return allTexts
 
-wsReactionRoles={'🇧':577935915448795137,'🇩':664126658084601857,'🇱':693038480783048774}
-drafts={}#Outside of client so it doesn't reset on periodic restarts or [restart]
-lastDraftMessageDict={}
-
 class MyClient(discord.Client):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
@@ -541,7 +543,7 @@ class MyClient(discord.Client):
 		guild=member.guild
 		if guild.name=='Wind Striders':
 			unsorted=guild.get_role(560435022427848705)
-			if unsorted in member.roles:
+			if unsorted in member.roles:	
 				print(member.name+' left (unsorted)')
 				channel=guild.get_channel(557366982471581718)#general
 				await channel.send(member.name+' (unsorted) left <:samudab:578998204142452747>')

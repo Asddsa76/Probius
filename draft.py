@@ -16,20 +16,34 @@ def simplifyName(hero):#Turn underscores into spaces
 	hero=hero.replace('_',' ')
 	return hero
 
-async def printDraft(drafts,channel,draftList,lastDraftMessageDict):#Print state, and the next action to be done
+async def getWhiteSpaceLength(draftList):
+	order='mABABabbaaBAbbaab'
+	bansA=[]
+	for i in [1,3,11]:
+		try: bansA.append(draftList[i])
+		except:pass
+	return max(25,3+len(', '.join(bansA)))
+
+async def printDraft(drafts,channel,draftList,lastDraftMessageDict,draftNames):#Print state, and the next action to be done
 	if channel.id not in drafts:
 		await channel.send(channel.id+' does not currently have an active draft.')
 		return
 	if not draftList:
 		await channel.send('Pick a map')
 		return
-
 	#Order and map have been picked now
 	order='mABABabbaaBAbbaab'#map, order. AB bans, ab picks
 	bansA=[]
 	bansB=[]
 	picks=''
-	whitespaceAmount=32
+	#whitespaceAmount=32
+	whitespaceAmount=await getWhiteSpaceLength(draftList)
+	teamA='Team A'
+	teamB='Team B'
+	try:
+		teamA+=' ('+draftNames[channel.id][0]+')'
+		teamB+=' ('+draftNames[channel.id][1]+')'
+	except:pass
 	for i in range(1,len(draftList)):
 		if order[i]=='A':
 			bansA.append(draftList[i])
@@ -40,7 +54,7 @@ async def printDraft(drafts,channel,draftList,lastDraftMessageDict):#Print state
 		elif order[i]=='b':
 			picks+=' '*whitespaceAmount+draftList[i]+'\n'
 	output='```Map: '+draftList[0]+'\n\n'
-	output+='Team A'+' '*(whitespaceAmount-6)+'Team B\n'
+	output+=teamA+' '*(whitespaceAmount-len(teamA))+teamB+'\n'
 	output+='Bans: '+' '*(whitespaceAmount-6)+'Bans: \n'
 	output+=', '.join(bansA)+' '*(whitespaceAmount-len(', '.join(bansA)))+', '.join(bansB)+'\n'+'-'*(whitespaceAmount+15)+'\n'
 	output+='Picks:'+' '*(whitespaceAmount-6)+'Picks:\n'+picks+'\n'
@@ -58,6 +72,10 @@ async def printDraft(drafts,channel,draftList,lastDraftMessageDict):#Print state
 		else:
 			nextAction='Pick for team '+nextAction.upper()
 		output+='Next action: '+nextAction
+		try:
+			output+=' ('+draftNames[channel.id][nextTurnIsTeamB]+')'
+		except:
+			pass
 		if nextTurnIsTeamB:
 			output+=' ---------->'
 
@@ -83,7 +101,7 @@ async def printDraft(drafts,channel,draftList,lastDraftMessageDict):#Print state
 		await lastDraftMessageDict[channel].delete()
 	lastDraftMessageDict[channel]=await channel.send(output+'```')
 
-async def draft(drafts,channel,text,lastDraftMessageDict,printDraftBool=True):
+async def draft(drafts,channel,member,text,lastDraftMessageDict,draftNames,printDraftBool=True):
 	try:
 		draftList=drafts[channel.id]
 	except:
@@ -112,12 +130,13 @@ Commands:
 			if channel in lastDraftMessageDict:del lastDraftMessageDict[channel]
 			battleground=await mapAliases(text[1])
 			draftList.append(await mapString(battleground))
-			await channel.send('New draft started!')#,file=discord.File('Maps/'+battleground+'.jpg'))
+			await channel.send('New draft started!')
 			await mapImage(channel,battleground)
-			if printDraftBool:await printDraft(drafts,channel,draftList,lastDraftMessageDict)
+			draftNames[channel.id]=[]
+			if printDraftBool:await printDraft(drafts,channel,draftList,lastDraftMessageDict,draftNames)
 			return
 	if len(text)==1: #[draft] with no second part. To call status
-		await printDraft(drafts,channel,draftList,lastDraftMessageDict)
+		await printDraft(drafts,channel,draftList,lastDraftMessageDict,draftNames)
 		return
 	text=text[1]
 	if text.count(','):
@@ -129,10 +148,16 @@ Commands:
 		drafts[channel.id]=[]
 		if channel in lastDraftMessageDict:del lastDraftMessageDict[channel]
 		await channel.send('New draft started! Choose map')
+		draftNames[channel.id]=[]
 		return
 	if text in ['undo','u']:
 		await channel.send('Undid '+draftList.pop())
 	elif len(draftList)<17:
+		if len(draftList)==1:
+			draftNames[channel.id]=[member.nick or member.name]
+		elif len(draftList)==2:
+			draftNames[channel.id].append(member.nick or member.name)
+
 		if simplifyName(aliases(text)) in draftList:
 			await channel.send(simplifyName(aliases(text))+' has already been picked/banned. Choose another!')
 			return
@@ -153,4 +178,4 @@ Commands:
 					await channel.send('Invalid hero!')
 					return
 
-	if printDraftBool:await printDraft(drafts,channel,draftList,lastDraftMessageDict)
+	if printDraftBool:await printDraft(drafts,channel,draftList,lastDraftMessageDict,draftNames)
