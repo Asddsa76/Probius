@@ -24,6 +24,11 @@ async def getWhiteSpaceLength(draftList):
 		except:pass
 	return max(25,3+len(', '.join(bansA)))
 
+async def addCompleteReactions(completeDraft,message):
+	if completeDraft:
+		await message.add_reaction('🇦')
+		await message.add_reaction('🇧')
+
 async def printDraft(drafts,channel,draftList,lastDraftMessageDict,draftNames):#Print state, and the next action to be done
 	if channel.id not in drafts:
 		await channel.send(channel.id+' does not currently have an active draft.')
@@ -97,14 +102,13 @@ async def printDraft(drafts,channel,draftList,lastDraftMessageDict,draftNames):#
 			if channel in lastDraftMessageDict:
 				await lastDraftMessageDict[channel].delete()
 			lastDraftMessageDict[channel]=await channel.send(output+'```',file=discord.File('Emojis/'+hero+' happy'+fileExtension))
+			await addCompleteReactions(completeDraft,lastDraftMessageDict[channel])
 			return
 
 	if channel in lastDraftMessageDict:
 		await lastDraftMessageDict[channel].delete()
 	lastDraftMessageDict[channel]=await channel.send(output+'```')
-	if completeDraft:
-		await lastDraftMessageDict[channel].add_reaction('🇦')
-		await lastDraftMessageDict[channel].add_reaction('🇧')
+	await addCompleteReactions(completeDraft,lastDraftMessageDict[channel])
 
 async def draft(drafts,channel,member,text,lastDraftMessageDict,draftNames,printDraftBool=True):
 	try:

@@ -391,7 +391,7 @@ class MyClient(discord.Client):
 		self.ready=False#Wait until ready before taking commands
 
 	async def on_ready(self):
-		print('Logged on as', self.user)
+		print('Logged on...')
 		print('Filling up with Reddit posts...')
 		self.forwardedPosts=[]
 		self.seenTitles=await fillPreviousPostTitles(self)#Fills seenTitles with all current titles

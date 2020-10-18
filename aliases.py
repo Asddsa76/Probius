@@ -63,7 +63,6 @@ def aliases(hero):
 	elif hero in ['jr']:
 		return 'Junkrat'
 	elif hero in ['kt','kaelthas']:#He came to HotS first. Use KTZ for your beloved lich. 
-	# no u, fake kt
 		return "Kael'thas"
 	elif hero in ['ktz','kelthuzad','lich']:
 		return "Kel'Thuzad"
