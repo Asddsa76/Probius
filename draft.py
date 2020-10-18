@@ -141,7 +141,7 @@ Commands:
 	text=text[1]
 	if text.count(','):
 		for i in text.split(','):
-			await draft(drafts,channel,['d',i],lastDraftMessageDict,False)
+			await draft(drafts,channel,member,['d',i],lastDraftMessageDict,draftNames,False)
 		await channel.send('Draft filled! Type [d] to view')
 		return
 	if text in ['new','start','n','s','reset','r']:
