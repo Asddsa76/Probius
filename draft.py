@@ -59,8 +59,10 @@ async def printDraft(drafts,channel,draftList,lastDraftMessageDict,draftNames):#
 	output+=', '.join(bansA)+' '*(whitespaceAmount-len(', '.join(bansA)))+', '.join(bansB)+'\n'+'-'*(whitespaceAmount+15)+'\n'
 	output+='Picks:'+' '*(whitespaceAmount-6)+'Picks:\n'+picks+'\n'
 
+	completeDraft=0
 	if len(draftList)==17:
 		output+='Draft complete'
+		completeDraft=1
 	else:
 		nextAction=order[len(draftList)]
 		nextTurnIsTeamB=1
@@ -100,6 +102,9 @@ async def printDraft(drafts,channel,draftList,lastDraftMessageDict,draftNames):#
 	if channel in lastDraftMessageDict:
 		await lastDraftMessageDict[channel].delete()
 	lastDraftMessageDict[channel]=await channel.send(output+'```')
+	if completeDraft:
+		await lastDraftMessageDict[channel].add_reaction('🇦')
+		await lastDraftMessageDict[channel].add_reaction('🇧')
 
 async def draft(drafts,channel,member,text,lastDraftMessageDict,draftNames,printDraftBool=True):
 	try:
