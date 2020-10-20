@@ -2,8 +2,8 @@ import asyncio
 import aiohttp
 from rotation import *
 
-redditors=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'Pscythic', 'Elitesparkle', 'slapperoni', 
-'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'Pelaberus', 'KillMeWithMemes', 
+redditors=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'Pscythic', 'Elitesparkle', 'slapperoni',
+'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'Pelaberus', 'KillMeWithMemes',
 'bran76765','MarvellousBee','Naturage','Derenash','Riokaii','Demon_Ryu','hellobgs','Beg_For_Mercy','Russisch','Valamar1732','ArashiNoShad0w',
 'lemindhawk','Goshin26','TiredZealot','MasterAblar','SHreddedWInd','MrWilbus','NotBelial','Dark_Polaroid','Mochrie1713']
 
@@ -11,11 +11,43 @@ discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','
 'KillMeWithMemes':'Nick','bran76765':'Parthuin','Demon_Ryu':'Messa','Russisch':'Ekata','ArashiNoShad0w':'LeviathaN','TiredZealot':'Jdelrio','lemindhawk':'MindHawk',
 'Dark_Polaroid':'Medicake'}
 
-keywords=['Genji','Samuro','Maiev', ' Dva', 'Hanzo', 'Lucio', 'Zeratul']#Posts with these in title gets forwarded regardless of author
-
+keywords=['Genji','Samuro','Maiev', ' Dva', ['Hanzo', 'Lucio'], 'Zeratul', 'Valeera', 'Free-to-Play Hero Rotation & Heroic Deals']#Posts with these in title gets forwarded regardless of author
 mindhawk_keywords=['Kerrigan','Cho ','Gall',"Cho'Gall",'Orphea','Li-Ming','Ragnaros', 'Li Ming', 'chogall']
 
-total_keywords=keywords + mindhawk_keywords
+users=[
+    '<@183240974347141120> <@247677408386351105> <@408114527947980802> ',#Genji Normies
+    '<@329447886465138689> ',#Samuro-general
+    '<@247677408386351105> ',#Maiev normies
+    '<@84805890837864448> ',#D.va normies
+    '<@160743140901388288>',#Hanzo/Lucio normies
+    '<@191410663292272640>',#Zeratul normies
+    '<@364041091693150208>',#Valeera normies RIP MBot
+    '<@303140089402228736>',#Free rotation
+    '<@129702871837966336>',#Mindhawk normies
+]
+
+destinations = {
+"general":557366982471581718,
+"reddit-posts":665317972646166538,
+"log":643231901452337192,
+"Samuro-general":564528564196605973,
+"Normie-heroes":568058278165348362,
+}
+
+
+not_normie_heroes = {
+"samuro":"Samuro-general",
+'free-to-play hero rotation & heroic deals':"general"
+}
+#I wish i could just set a list as a dict's index lol
+
+total_keywords=keywords+mindhawk_keywords#Don't want to mess up your code somewhere
+#I suppose I could just remove this and add MH's keywords to the main list.
+
+
+
+keywords.append(mindhawk_keywords)
+dict = dict(zip(users,keywords))
 
 async def getPostInfo(post):
 	title=post.split('", "')[0]
@@ -70,23 +102,29 @@ async def redditForwarding(client):#Called every 60 seconds
 								author=discordnames[author]
 							await client.get_channel(665317972646166538).send('**'+title+'** by '+author+': '+url)#reddit-posts
 							await client.get_channel(557366982471581718).send('**'+title+'** by '+author+': '+url)#general
-						elif 'genji' in title.lower():
-							await client.get_channel(568058278165348362).send('**'+title+'** <@183240974347141120> <@247677408386351105> <@408114527947980802> '+url)#Normie heroes
-						elif 'maiev' in title.lower():
-							await client.get_channel(568058278165348362).send('**'+title+'** <@247677408386351105> '+url)#Normie heroes
-						elif any(x.lower() in title.lower() for x in mindhawk_keywords):
-							await client.get_channel(568058278165348362).send('**'+title+'** <@129702871837966336> '+url)#Normie heroes
-						elif ' dva' in title.lower().replace('.',''):
-							await client.get_channel(568058278165348362).send('**'+title+'** <@84805890837864448> '+url)#Normie heroes
-						elif 'Free-to-Play Hero Rotation & Heroic Deals' in title:
-							await client.get_channel(557366982471581718).send('**'+title+'** by '+author+': '+url)#general
-						elif 'samuro' in title.lower():
-							await client.get_channel(564528564196605973).send('**'+title+'** <@329447886465138689> '+url)#Samuro-general
-						elif 'hanzo' in title.lower() or 'lucio' in title.lower():
-							await client.get_channel(568058278165348362).send('**'+title+'** <@160743140901388288>'+url)
-						elif 'zeratul' in title.lower():
-							await client.get_channel(568058278165348362).send('**'+title+'** <@191410663292272640>'+url)
-						await client.get_channel(643231901452337192).send('`'+title+' by '+author+'`')#log
+						else:
+							ping_me = []
+							for Player in dict:
+							    if type(dict[Player]) is list:
+							        for hero in dict[Player]:
+							            if hero.lower() in title.lower():
+							                ping_me.append(Player)
+							                break
+							    elif type(dict[Player]) is str:
+							        if dict[Player].lower() in title.lower():
+							            ping_me.append(Player)
+							    else:
+							        print("Well played")
+							        await client.get_channel(destinations["log"]).send('Use strings or lists as hero names.')
+
+							ping_me="** "+" ".join(ping_me)
+							where = "Normie-heroes"
+							for i in not_normie_heroes:
+							    if i in title.lower():
+							        where = not_normie_heroes[i]
+
+							await client.get_channel(destinations["log"]).send('`'+title+' by '+author+'`')#log
+							await client.get_channel(destinations[where]).send('**'+title+ping_me+url)#Send to WS
 						print(title+' by '+author)
 						if author=='Gnueless' and 'rotation' in title.lower():
 							await rotation(client.get_channel(557366982471581718))
