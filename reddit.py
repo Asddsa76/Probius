@@ -64,6 +64,7 @@ async def redditForwarding(client):#Called every 60 seconds
 						client.seenTitles.append(title)
 						title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','').replace('\u2019',"'")
 						client.forwardedPosts.append([title,author,url])
+						url='\n'+url
 						if author in redditors:
 							if author in discordnames:
 								author=discordnames[author]
