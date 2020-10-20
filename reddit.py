@@ -11,11 +11,23 @@ discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','
 'KillMeWithMemes':'Nick','bran76765':'Parthuin','Demon_Ryu':'Messa','Russisch':'Ekata','ArashiNoShad0w':'LeviathaN','TiredZealot':'Jdelrio','lemindhawk':'MindHawk',
 'Dark_Polaroid':'Medicake'}
 
-keywords=['Genji','Samuro','Maiev', ' Dva', 'Hanzo', 'Lucio', 'Zeratul']#Posts with these in title gets forwarded regardless of author
+#Posts with these in title gets forwarded regardless of author
+keywords={
+'Genji':[183240974347141120,247677408386351105,408114527947980802],
+'Samuro':[329447886465138689],
+'Maiev':[247677408386351105], 
+' Dva:':[84805890837864448], 
+'Hanzo':[160743140901388288],
+'Lucio':[160743140901388288],
+'Zeratul':[191410663292272640],
+'Valeera':[364041091693150208]}
 
 mindhawk_keywords=['Kerrigan','Cho ','Gall',"Cho'Gall",'Orphea','Li-Ming','Ragnaros', 'Li Ming', 'chogall']
-
-total_keywords=keywords + mindhawk_keywords
+for i in mindhawk_keywords:
+	if i in keywords:
+		keywords[i].append(129702871837966336)
+	else:
+		keywords[i]=[129702871837966336]
 
 async def getPostInfo(post):
 	title=post.split('", "')[0]
@@ -31,6 +43,9 @@ async def fetch(session, url):
 	async with session.get(url) as response:
 		return await response.text()
 
+async def titleTrim(title):#Don't remove spaces because of Cho
+	return title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','').replace('\u2019',"'")
+
 async def fillPreviousPostTitles(client):#Called on startup
 	await client.wait_until_ready()
 	async with aiohttp.ClientSession() as session:
@@ -44,52 +59,47 @@ async def fillPreviousPostTitles(client):#Called on startup
 				continue
 			output.append(title)
 			if author in redditors or sum(1 for i in keywords if i.lower() in title.lower()):
-				title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','').replace('\u2019',"'")
+				title=await titleTrim(title)
 				client.forwardedPosts.append([title,author,url])
 		client.forwardedPosts=client.forwardedPosts[::-1]
 		return output
 
 async def redditForwarding(client):#Called every 60 seconds
-	try:
-		async with aiohttp.ClientSession() as session:
-			page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')
-			posts=page.split('"clicked": false, "title": "')[1:]
-			for post in posts:
-				try:
-					[title,author,url] = await getPostInfo(post)
-				except:
-					continue
-				if author in redditors or sum(1 for i in total_keywords if i.lower() in title.lower()):
-					if title not in client.seenTitles:#This post hasn't been processed before
-						client.seenTitles.append(title)
-						title=title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','').replace('\u2019',"'")
-						client.forwardedPosts.append([title,author,url])
-						url='\n'+url
-						if author in redditors:
-							if author in discordnames:
-								author=discordnames[author]
-							await client.get_channel(665317972646166538).send('**'+title+'** by '+author+': '+url)#reddit-posts
-							await client.get_channel(557366982471581718).send('**'+title+'** by '+author+': '+url)#general
-						elif 'genji' in title.lower():
-							await client.get_channel(568058278165348362).send('**'+title+'** <@183240974347141120> <@247677408386351105> <@408114527947980802> '+url)#Normie heroes
-						elif 'maiev' in title.lower():
-							await client.get_channel(568058278165348362).send('**'+title+'** <@247677408386351105> '+url)#Normie heroes
-						elif any(x.lower() in title.lower() for x in mindhawk_keywords):
-							await client.get_channel(568058278165348362).send('**'+title+'** <@129702871837966336> '+url)#Normie heroes
-						elif ' dva' in title.lower().replace('.',''):
-							await client.get_channel(568058278165348362).send('**'+title+'** <@84805890837864448> '+url)#Normie heroes
-						elif 'Free-to-Play Hero Rotation & Heroic Deals' in title:
-							await client.get_channel(557366982471581718).send('**'+title+'** by '+author+': '+url)#general
-						elif 'samuro' in title.lower():
-							await client.get_channel(564528564196605973).send('**'+title+'** <@329447886465138689> '+url)#Samuro-general
-						elif 'hanzo' in title.lower() or 'lucio' in title.lower():
-							await client.get_channel(568058278165348362).send('**'+title+'** <@160743140901388288>'+url)
-						elif 'zeratul' in title.lower():
-							await client.get_channel(568058278165348362).send('**'+title+'** <@191410663292272640>'+url)
+	async with aiohttp.ClientSession() as session:
+		page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')
+		posts=page.split('"clicked": false, "title": "')[1:]
+		for post in posts:
+			try:
+				[title,author,url] = await getPostInfo(post)
+			except:
+				continue
+			if author in redditors or sum(1 for i in keywords if i.lower() in title.lower()):
+				if title not in client.seenTitles:#This post hasn't been processed before
+					client.seenTitles.append(title)
+					title=await titleTrim(title)
+					client.forwardedPosts.append([title,author,url])
+					url='\n'+url
+					print(title+' by '+author)
+
+					toPing=[]
+					for i in keywords:
+						if i.lower() in title.lower():
+							toPing+=keywords[i]
+					if toPing:
+						toPing=' '.join(['<@'+str(i)+'>' for i in toPing])
+
+					if author in redditors:
+						if author in discordnames:
+							author=discordnames[author]
 						await client.get_channel(643231901452337192).send('`'+title+' by '+author+'`')#log
-						print(title+' by '+author)
+						await client.get_channel(665317972646166538).send('**'+title+'** by '+author+': '+url)#reddit-posts
+						if toPing:
+							await client.get_channel(557366982471581718).send('**'+title+'** by '+author+': '+url+'\n'+toPing)#general
+						else:
+							await client.get_channel(557366982471581718).send('**'+title+'** by '+author+': '+url)#general
 						if author=='Gnueless' and 'rotation' in title.lower():
 							await rotation(client.get_channel(557366982471581718))
-	except:
-		await client.get_channel(643231901452337192).send('Something went wrong with subreddit forwarding')
-		print('Something went wrong with subreddit forwarding')
+					else:
+						await client.get_channel(643231901452337192).send('`'+title+' by '+author+'`')#log
+						channel=[568058278165348362,564528564196605973]['samuro' in title.lower()]#Normie-heroes or Samuro
+						await client.get_channel(channel).send('**'+title+'** '+toPing+url)						
