@@ -42,6 +42,7 @@ Lunara
 Maiev
 Mal'Ganis
 Malfurion
+Malthael
 Medivh
 Mei
 Mephisto
