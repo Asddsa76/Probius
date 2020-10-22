@@ -123,9 +123,9 @@ async def printLarge(channel,inputstring,separator='\n'):#Get long string. Print
 	await channel.send(output)
 
 async def printAll(client,message,keyword, deep=False, heroList=getHeroes()):#When someone calls [all/keyword]
-	if len(keyword)<4 and message.author.id!=183240974347141120:
+	'''if len(keyword)<4 and message.author.id!=183240974347141120:
 		await message.channel.send('Please use a keyword with at least 4 letters minimum')
-		return
+		return'''
 	toPrint=''
 	for hero in heroList:
 		(abilities,talents)=client.heroPages[hero]
@@ -137,12 +137,6 @@ async def printAll(client,message,keyword, deep=False, heroList=getHeroes()):#Wh
 		return
 	botChannels={'Wind Striders':571531013558239238,'De Schuifpui Schavuiten':687351660502057021}
 	if len(toPrint)>2000 and message.channel.guild.name in botChannels:#If the results is over one message, it gets dumped in specified bot channel
-		'''if len(toPrint)>20000:
-			await message.add_reaction('<:BAN:606932063974850577>')
-			x=len(toPrint)
-			y=int(x/2000)
-			await message.channel.send('No! Bad '+message.author.mention+'! (Sending '+str(x)+' characters would require over '+str(y)+' messages)')
-			return'''
 		channel=message.channel.guild.get_channel(botChannels[message.channel.guild.name])
 		introText=message.author.mention+", Here's all heroes' "+'"'+keyword+'":\n'
 		toPrint=introText+toPrint
