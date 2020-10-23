@@ -437,7 +437,7 @@ class MyClient(discord.Client):
 				await client.get_channel(576018992624435220).send('***Unsorted message:*** **'+message.author.name+'**: '+message.content+'\n'+message.jump_url)
 			return
 		if 'baelog' in message.content.lower():
-			if message.channel.guild.id==535256944106012694:await client.get_channel(571531013558239238).send(message.author.mention+'\nhttps://i.imgur.com/Nrcg11Z.png')
+			if message.channel.guild.id==535256944106012694:await client.get_channel(571531013558239238).send(message.author.mention+'Ba**LE**og\nhttps://i.imgur.com/Nrcg11Z.png')
 			else:await message.channel.send('https://i.imgur.com/Nrcg11Z.png')
 		if self.ready==False:
 			return

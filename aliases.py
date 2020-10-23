@@ -161,6 +161,9 @@ def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest
 			return 'dragonblade'
 		elif name in ['dc','claw']:
 			return 'dragon claw'
+	elif hero='Hanzo':
+		if name=='potg':
+			return 'play of the game'
 	elif hero=='Leoric':
 		if name=='spooky hand':
 			return 'drain hope'

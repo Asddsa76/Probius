@@ -150,24 +150,25 @@ async def downloadAll(client,argv):
 	loop.run_until_complete(loopFunction(client,heroes,patch))
 
 async def heroStats(hero,channel,allowRecursion=True):
-	if hero=='The_Lost_Vikings':
-		for i in ['Olaf','Baleog','Erik']:
-			await heroStats(i,channel)
-	elif hero=='Rexxar' and allowRecursion:
-		for i in ['Rexxar','Misha']:
-			await heroStats(i,channel,False)# :spaghetti:
-	elif hero=='Gall':
-		await heroStats('Cho',channel)
-	else:
-		async with aiohttp.ClientSession() as session:
-			page = await fetch(session, 'https://heroesofthestorm.gamepedia.com/index.php?title=Data:'+hero)
-			page=''.join([i for i in page])
-			page=page.split('<td><code>skills</code>')[0]
+	async with channel.typing():
+		if hero=='The_Lost_Vikings':
+			for i in ['Olaf','Baleog','Erik']:
+				await heroStats(i,channel)
+		elif hero=='Rexxar' and allowRecursion:
+			for i in ['Rexxar','Misha']:
+				await heroStats(i,channel,False)# :spaghetti:
+		elif hero=='Gall':
+			await heroStats('Cho',channel)
+		else:
+			async with aiohttp.ClientSession() as session:
+				page = await fetch(session, 'https://heroesofthestorm.gamepedia.com/index.php?title=Data:'+hero)
+				page=''.join([i for i in page])
+				page=page.split('<td><code>skills</code>')[0]
 
-			output=[]
-			usefulStats=['date', 'health', 'resource', 'attack speed', 'attack range', 'attack damage', 'unit radius']
-			for i in usefulStats:
-				page=page.split('<td>'+i+'\n')[1]
-				page=page[page.index('<td>')+4:]
-				output.append('**'+i.replace('attack','aa').replace('unit ','').replace('health','hp').capitalize()+'**: '+str(page[:page.index('</td>')]).replace('\n',''))
-			await channel.send('``'+hero+':`` '+', '.join(output))
+				output=[]
+				usefulStats=['date', 'health', 'resource', 'attack speed', 'attack range', 'attack damage', 'unit radius']
+				for i in usefulStats:
+					page=page.split('<td>'+i+'\n')[1]
+					page=page[page.index('<td>')+4:]
+					output.append('**'+i.replace('attack','aa').replace('unit ','').replace('health','hp').capitalize()+'**: '+str(page[:page.index('</td>')]).replace('\n',''))
+				await channel.send('``'+hero+':`` '+', '.join(output))
