@@ -25,7 +25,7 @@ async def additionalInfo(hero,name,description):
 		'Life-Binder':'Dragonqueen: The cast range of Life-Binder is increased from 6 to 9.'},
 	'maiev':{'Spirit of Vengeance':'Reactivate to teleport to the spirit.'},
 	'sylvanas':{
-		'Haunting Wave':'Sylvanas is unstoppable while flying to the banshee.',
+		'Haunting Wave':'Sylvanas is unstoppable while flying to the banshee. ',
 		'Mercenary Queen':'Mercenaries will not be stunned if the third application is through Remorseless.',
 		'Black Arrows':'Remorseless shots do not disable enemies.'},
 	'lunara':{'Leaping Strike':'Lunara is unstoppable while leaping.'},
@@ -59,7 +59,8 @@ async def fixTooltips(hero,name,description):
 	'malfurion':{"Nature's Balance":['area','radius']},
 	'auriel':{"Swift Sweep":['50%','100%']},
 	'deathwing':{'Bellowing Roar':['2 seconds','1.5 seconds']},
-	'varian':{'Victory Rush':['or Monster dies','dies, or when you kill a Monster']}
+	'varian':{'Victory Rush':['or Monster dies','dies, or when you kill a Monster']},
+	'lili':{'Healing Brew':['ally (prioritizing Heroes)','allied Hero']}
 	}
 	if hero in fixDict:
 		if name in fixDict[hero]:
