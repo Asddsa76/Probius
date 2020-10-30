@@ -582,7 +582,10 @@ class MyClient(discord.Client):
 '''
 exitBool=0
 while 1: #Restart
+	intents = discord.Intents.default()  # All but the two privileged ones
+	intents.members = True  # Subscribe to the Members intent
+	
 	asyncio.set_event_loop(asyncio.new_event_loop())
-	client = MyClient()
+	client = MyClient(command_prefix='!', intents=intents)
 	client.run(getProbiusToken())
 	if exitBool:break
