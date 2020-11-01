@@ -31,7 +31,7 @@ async def additionalInfo(hero,name,description):
 	'lunara':{'Leaping Strike':'Lunara is unstoppable while leaping.'},
 	'chen':{'Storm, Earth, Fire':'Using Storm, Earth, Fire removes most negative effects from Chen.'},
 	'guldan':{'Life Tap':'Costs 222 (+4% per level) Health.'},
-	'johanna':{"Heaven's Fury":'4 bolts per second per enemy, up to 2 enemies.'},
+	'johanna':{"Heaven's Fury":'3 bolts per second per enemy, up to 2 enemies.'},
 	'tyrande':{"Huntress' Fury":"Splashes give cooldown reduction on Light of Elune, but do not trigger any of Tyrande's other Basic Attack related effects."},
 	'tracer':{'Ricochet':'Ricochet shots interact with Telefrag, but not Focus Fire.'},
 	'imperius':{'Impaling Light':'The damage bonus is per brand and stacks to 375%'},

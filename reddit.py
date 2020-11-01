@@ -69,10 +69,7 @@ async def redditForwarding(client):#Called every 60 seconds
 		page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')
 		posts=page.split('"clicked": false, "title": "')[1:]
 		for post in posts:
-			try:
-				[title,author,url] = await getPostInfo(post)
-			except:
-				continue
+			[title,author,url] = await getPostInfo(post)
 			if author in redditors or sum(1 for i in keywords if i.lower() in title.lower()):
 				if title not in client.seenTitles:#This post hasn't been processed before
 					client.seenTitles.append(title)
