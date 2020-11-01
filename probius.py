@@ -560,7 +560,10 @@ class MyClient(discord.Client):
 		channel = self.get_channel(557366982471581718)#WS general
 		while not self.is_closed():
 			await asyncio.sleep(60)#Check for new posts every minute
-			await redditForwarding(self)
+			try:
+				await redditForwarding(self)
+			except:
+				pass
 
 	async def on_member_update(self,before,after):
 		if after.guild.id==535256944106012694:
@@ -584,7 +587,7 @@ exitBool=0
 while 1: #Restart
 	intents = discord.Intents.default()  # All but the two privileged ones
 	intents.members = True  # Subscribe to the Members intent
-	
+
 	asyncio.set_event_loop(asyncio.new_event_loop())
 	client = MyClient(command_prefix='!', intents=intents)
 	client.run(getProbiusToken())
