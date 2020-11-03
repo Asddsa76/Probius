@@ -3,7 +3,7 @@ Alarak
 Alexstrasza
 Ana
 Anduin
-Anub'Arak
+Anub'arak
 Artanis
 Arthas
 Auriel
@@ -13,9 +13,12 @@ Brightwing
 Cassia
 Chen
 Cho
+Chromie
 D.va
 Deathwing
+Deckard
 Dehaka
+E.T.C.
 Falstad
 Fenix
 Gall
@@ -23,6 +26,7 @@ Garrosh
 Gazlowe
 Genji
 Greymane
+Gul'dan
 Hanzo
 Illidan
 Imperius
@@ -33,9 +37,9 @@ Kael'thas
 Kel'Thuzad
 Kerrigan
 Kharazim
-Kerrigan
 Leoric
 Li Li
+Li-Ming
 Lt. Morales
 Lucio
 Lunara
@@ -58,6 +62,7 @@ Raynor
 Rehgar
 Rexxar
 Samuro
+Sgt. Hammer
 Sonya
 Stitches
 Stukov
@@ -72,6 +77,7 @@ Tyrael
 Tyrande
 Uther
 Valeera
+Valla
 Varian
 Whitemane
 Xul
