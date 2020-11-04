@@ -56,7 +56,7 @@ def printAbility(abilities,hotkey):#Prints abilities with matching hotkey
 
 def deepAndShallowSearchFoundBool(ability,string,deep):#Python3.5 doesn't allow async functions inside list comprehension :(
 	if not deep:
-		ability=ability.split(':')[0]
+		ability=ability.split(':**')[0]
 	return 1 if string in ability.lower() else 0
 
 async def printBuild(client,channel,text):

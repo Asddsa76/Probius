@@ -402,15 +402,6 @@ class MyClient(discord.Client):
 		self.ready=True
 		print('Ready!')
 
-
-	async def on_message_delete(self,message):
-		if message.author.bot:
-			return
-		if message.content and message.channel.guild.id==535256944106012694:#WS
-			message=await printLarge(client.get_channel(694876665020678175),'``'+message.channel.name+', '+message.author.name+':``\n'+message.content.replace('<@!','<@').replace('<@183240974347141120>','@Asddsa76'))
-			try:await removeEmbeds(message)
-			except:pass
-
 	async def on_message(self, message):
 		pingNames={'lemmie':190529178808877056, 'medicake':160743140901388288}
 		pingList=[pingNames[i] for i in pingNames.keys() if '@'+i in message.content.replace(' ','')]
