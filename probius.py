@@ -469,10 +469,10 @@ class MyClient(discord.Client):
 		member=client.get_user(payload.user_id)
 		if member.id==603924594956435491:#Probius did reaction
 			return
-
-		print(member.name)
-		print(client.get_channel(payload.channel_id).name)
-		message=await client.get_channel(payload.channel_id).fetch_message(payload.message_id)
+		try:
+			message=await client.get_channel(payload.channel_id).fetch_message(payload.message_id)
+		except:
+			return
 		if message.author.id==670832046389854239:#Advisor wrote message
 			return
 		if message.id==693380327413907487:
