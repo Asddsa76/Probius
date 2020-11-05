@@ -470,6 +470,8 @@ class MyClient(discord.Client):
 		if member.id==603924594956435491:#Probius did reaction
 			return
 
+		print(member.name)
+		print(client.get_channel(payload.channel_id).name)
 		message=await client.get_channel(payload.channel_id).fetch_message(payload.message_id)
 		if message.author.id==670832046389854239:#Advisor wrote message
 			return
