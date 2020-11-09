@@ -104,3 +104,8 @@ In cmd.exe:
 		`US Central: ping 24.105.62.129`
 		`Brazil:     ping 54.207.104.145`
 		`EU:         ping 185.60.112.157`""")
+
+async def sortList(message):
+	a=message.content.split(']\n')[1].split('\n')
+	a.sort(key=lambda i:-int(i.split(': ')[1]))
+	await message.channel.send('\n'.join(a))

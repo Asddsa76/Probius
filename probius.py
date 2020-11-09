@@ -45,7 +45,7 @@ async def mainProbius(client,message,texts):
 	buildsAliases=['guide','build','b','g','builds','guides']
 	quotesAliases=['quote','q','quotes']
 	rotationAlises=['rotation','rot','sale','sales']
-	aliasesAliases=['aliases','names','acronyms','n']
+	aliasesAliases=['aliases','acronyms','n']
 	wikipageAliases=['all','page','wiki']
 	randomAliases=['random','ra','rand']
 	draftAliases=['draft','d','phantomdraft','pd','mockdraft','md']
@@ -84,7 +84,13 @@ async def mainProbius(client,message,texts):
 		hero=text[0].replace(' ','')
 		if hero in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
-		if hero=='name':
+		if hero =='sortlist':
+			if message.guild.get_role(557521663894224912) not in message.author.roles:#Not mod
+				await message.channel.send(message.author.mention+' <:bonk:761981366744121354>')
+			else:
+				await sortList(message)
+			continue
+		if hero in ['name', 'names']:
 			twinkles=[(i.name if not i.nick else i.nick)+(' ('+i.name+')')*int(bool(i.nick)) for i in message.guild.members if text[1].lower() in i.name.lower() or i.nick and text[1].lower() in i.nick.lower()]
 			await message.channel.send('\n'.join(twinkles)+'\n'+str(len(twinkles))+' '+text[1].capitalize()+'s')
 			continue
@@ -118,8 +124,6 @@ async def mainProbius(client,message,texts):
 		if hero in lfgAlises:
 			await lfg(message.channel,text[1],client)
 			continue
-		#if hero == 'd' and message.channel.id not in [643996299678449684,643975810256076820,643975833970540555,672921422544502952]: #[D] outside of drafting channel, trait
-		#	continue
 		if hero in deleteAliases:
 			await deleteMessages(message.author,text[1],client)
 			continue
