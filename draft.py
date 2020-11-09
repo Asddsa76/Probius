@@ -22,7 +22,7 @@ async def getWhiteSpaceLength(draftList,teamNameA):
 	for i in [1,3,11]:
 		try: bansA.append(draftList[i])
 		except:pass
-	return max(25,3+len(', '.join(bansA),12+len(teamNameA)))
+	return max(25,3+len(', '.join(bansA)),12+len(teamNameA))
 
 async def addCompleteReactions(completeDraft,message):
 	if completeDraft:
