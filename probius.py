@@ -183,17 +183,7 @@ async def mainProbius(client,message,texts):
 			await message.channel.send(random.choice(['Heads','Tails']))
 			continue
 		if hero in redditAliases:
-			if len(text)==2:
-				cutoff=-int(text[1])
-			else:
-				cutoff=0
-			output='Recent Reddit posts:\n'
-			for i in client.forwardedPosts[cutoff:]:
-				author=i[1]
-				if author in discordnames:
-						author=discordnames[author]
-				output+='**'+i[0]+'** by '+author+': <'+i[2]+'>\n'
-			await printLarge(message.channel,output)
+			await reddit(client,message,text)
 			continue
 		if hero in ['avatar','a']:
 			await getAvatar(client,message.channel,text[1])

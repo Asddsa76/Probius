@@ -16,13 +16,13 @@ def simplifyName(hero):#Turn underscores into spaces
 	hero=hero.replace('_',' ')
 	return hero
 
-async def getWhiteSpaceLength(draftList):
+async def getWhiteSpaceLength(draftList,teamNameA):
 	order='mABABabbaaBAbbaab'
 	bansA=[]
 	for i in [1,3,11]:
 		try: bansA.append(draftList[i])
 		except:pass
-	return max(25,3+len(', '.join(bansA)))
+	return max(25,3+len(', '.join(bansA),12+len(teamNameA)))
 
 async def addCompleteReactions(completeDraft,message):
 	if completeDraft:
@@ -42,7 +42,10 @@ async def printDraft(drafts,channel,draftList,lastDraftMessageDict,draftNames):#
 	bansB=[]
 	picks=''
 	#whitespaceAmount=32
-	whitespaceAmount=await getWhiteSpaceLength(draftList)
+	try:
+		whitespaceAmount=await getWhiteSpaceLength(draftList,draftNames[channel.id][0])
+	else:
+		whitespaceAmount=await getWhiteSpaceLength(draftList,'')
 	teamA='Team A'
 	teamB='Team B'
 	try:

@@ -1,6 +1,7 @@
 import asyncio
 import aiohttp
 from rotation import *
+from printFunctions import printLarge
 
 redditors=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'Pscythic', 'Elitesparkle', 'slapperoni', 
 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'Pelaberus', 'KillMeWithMemes', 
@@ -99,4 +100,17 @@ async def redditForwarding(client):#Called every 60 seconds
 					else:
 						await client.get_channel(643231901452337192).send('`'+title+' by '+author+'`')#log
 						channel=[568058278165348362,564528564196605973]['samuro' in title.lower()]#Normie-heroes or Samuro
-						await client.get_channel(channel).send('**'+title+'** '+toPing+url)						
+						await client.get_channel(channel).send('**'+title+'** '+toPing+url)
+
+async def reddit(client,message,text):
+	if len(text)==2:
+		cutoff=-int(text[1])
+	else:
+		cutoff=0
+	output='Recent Reddit posts:\n'
+	for i in client.forwardedPosts[cutoff:]:
+		author=i[1]
+		if author in discordnames:
+				author=discordnames[author]
+		output+='**'+i[0]+'** by '+author+': <'+i[2]+'>\n'
+	await printLarge(message.channel,output)

@@ -18,7 +18,9 @@ def trimForHeroesTalents(hero):
 
 async def additionalInfo(hero,name,description):
 	addDict={#Adds text to the end of descriptions
-	'valla':{'Strafe':'The duration of Hatred is paused when channeling, and reset to full when Strafe ends.'},
+	'valla':{
+		'Strafe':'The duration of Hatred is paused when channeling, and reset to full when Strafe ends.',
+		'Vault':'The damage bonus is multiplicative.'},
 	'alexstrasza':{
 		'Cleansing Flame':'Dragonqueen: Cleansing Flame is cast instantly. The duration of Dragonqueen is paused, while basic abilities continue to cool down while in flight.',
 		'Dragon Scales':'Getting Stunned, Rooted, or Silenced while Dragon Scales is active refreshes its duration to 2 seconds.',
@@ -44,6 +46,7 @@ async def additionalInfo(hero,name,description):
 	'tychus':{'Focusing Diodes':'The damage bonus is multiplicative.'},
 	'mephisto':{'Spite':'Also extends mana regeneration from the healing globe.'},
 	'muradin':{'Grand Slam':'If an ally participates in the takedown, a second charge is gained'}
+	'anubarak':{'Cocoon':'Each instance of damage reduces the remaining duration by 0.5 seconds.'}
 	}
 	if hero in addDict:
 		if name in addDict[hero]:
