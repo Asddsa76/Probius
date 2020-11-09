@@ -37,36 +37,33 @@ drafts={}#Outside of client so it doesn't reset on periodic restarts or [restart
 lastDraftMessageDict={}
 draftNames={}
 
+buildsAliases=['guide','build','b','g','builds','guides']
+quotesAliases=['quote','q','quotes']
+rotationAlises=['rotation','rot','sale','sales']
+aliasesAliases=['aliases','acronyms','n']
+wikipageAliases=['all','page','wiki']
+randomAliases=['random','ra','rand']
+draftAliases=['draft','d','phantomdraft','pd','mockdraft','md']
+colourAliases=['colour','colours','c','colors','color']
+heroStatsAliases=['stats','info']
+pokedexAliases=['pokedex','main','mains','p']
+updatePokedexAliases=['updatepokedex','up']
+emojiAliases=['emoji','emojis','emote','emotes']
+coinsAliases=['coin','flip','coinflip','cf']
+redditAliases=['reddit','re']
+helpAliases=['help','info']
+talentAliases=['talent','talents']
+rollAliases=['roll','dice']
+patchNotesAliases=['patchnotes','patch','pn','pa']
+deleteAliases=['delete','deletemessages','deletemessage']
+lfgAlises=['lfg','find']
+listAliases=['list','waitlist','wl']
+mapImageAliases=['map','m','battleground','bg']
+restartAliases=['restart','shutdown','stop']
+confidenceAliases=['ci','confidence','confidenceinterval']
+heroAliases=['hero', 'heroes', 'bruiser', 'healer', 'support', 'ranged', 'melee', 'assassin', 'mage', 'marksman', 'tank', 'marksmen']
+
 async def mainProbius(client,message,texts):
-	if message.author.id==410481791204327424:
-		pass
-		#await message.channel.send('<:bongocat:740080434343444520> Unblock me '+message.author.mention+'! <:bongocat:740080434343444520>')
-		#return
-	buildsAliases=['guide','build','b','g','builds','guides']
-	quotesAliases=['quote','q','quotes']
-	rotationAlises=['rotation','rot','sale','sales']
-	aliasesAliases=['aliases','acronyms','n']
-	wikipageAliases=['all','page','wiki']
-	randomAliases=['random','ra','rand']
-	draftAliases=['draft','d','phantomdraft','pd','mockdraft','md']
-	colourAliases=['colour','colours','c','colors','color']
-	heroStatsAliases=['stats','info']
-	pokedexAliases=['pokedex','main','mains','p']
-	updatePokedexAliases=['updatepokedex','up']
-	emojiAliases=['emoji','emojis','emote','emotes']
-	coinsAliases=['coin','flip','coinflip','cf']
-	redditAliases=['reddit','re']
-	helpAliases=['help','info']
-	talentAliases=['talent','talents']
-	rollAliases=['roll','dice']
-	patchNotesAliases=['patchnotes','patch','pn','pa']
-	deleteAliases=['delete','deletemessages','deletemessage']
-	lfgAlises=['lfg','find']
-	listAliases=['list','waitlist','wl']
-	mapImageAliases=['map','m','battleground','bg']
-	restartAliases=['restart','shutdown','stop']
-	confidenceAliases=['ci','confidence','confidenceinterval']
-	heroAliases=['hero', 'heroes', 'bruiser', 'healer', 'support', 'ranged', 'melee', 'assassin', 'mage', 'marksman', 'tank', 'marksmen']
 	for i in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+i+'/' in message.content.lower():
 			break
@@ -377,7 +374,6 @@ class MyClient(discord.Client):
 		self.proxyEmojis={}
 		# create the background task and run it in the background
 		self.bgTask0 = self.loop.create_task(self.bgTaskSubredditForwarding())
-		#self.bgTask1 = self.loop.create_task(self.bgTaskUNSORTED())
 		self.heroPages={}
 		self.lastWelcomeImage=[]
 		self.waitList=[]
@@ -524,7 +520,6 @@ class MyClient(discord.Client):
 				pass
 			self.lastWelcomeImage =[await channel.send(file=discord.File('WS colours.png'))]
 			self.lastWelcomeImage.append(await channel.send('https://cdn.discordapp.com/attachments/576018992624435220/743917827718905896/sorting.gif'))
-			#await memberCount(channel)
 
 	async def on_member_remove(self,member):
 		guild=member.guild
@@ -535,8 +530,6 @@ class MyClient(discord.Client):
 				channel=guild.get_channel(557366982471581718)#general
 				await channel.send(member.name+' (unsorted) left <:samudab:578998204142452747>')
 				return
-			#core=guild.get_role(571321937821696001)
-			#if core not in member.roles: return
 			print(member.name+' left')
 			channel=guild.get_channel(616617012948631552)#super-secret-cabal
 			await channel.send(member.name+' left the server <:samudab:578998204142452747>')
@@ -561,15 +554,6 @@ class MyClient(discord.Client):
 			if olympian in after.roles and olympian not in before.roles:
 				await self.get_channel(576018992624435220).send('Welcome '+after.mention+'!')
 				
-	'''async def bgTaskUNSORTED(self):
-		await self.wait_until_ready()
-		channel = self.get_channel(557366982471581718)#WSgeneral
-		role=channel.guild.get_role(560435022427848705)#UNSORTED
-		rulesChannel=channel.guild.get_channel(634012658625937408)#server-rules
-		while not self.is_closed():
-			await asyncio.sleep(60*60*24)#Sleep 24 hours
-			await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and ping **Olympian(mod)** with the **bolded** info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels Blackstorm purges you <:peepoLove:606862963478888449>')
-'''
 exitBool=0
 while 1: #Restart
 	intents = discord.Intents.default()  # All but the two privileged ones
