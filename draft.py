@@ -44,7 +44,7 @@ async def printDraft(drafts,channel,draftList,lastDraftMessageDict,draftNames):#
 	#whitespaceAmount=32
 	try:
 		whitespaceAmount=await getWhiteSpaceLength(draftList,draftNames[channel.id][0])
-	else:
+	except:
 		whitespaceAmount=await getWhiteSpaceLength(draftList,'')
 	teamA='Team A'
 	teamB='Team B'
