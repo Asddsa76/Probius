@@ -31,8 +31,9 @@ from sorting import *
 from patchNotes import *
 from lfg import *
 from maps import *
+from discordIDs import *
 
-wsReactionRoles={'🇧':577935915448795137,'🇩':664126658084601857,'🇱':693038480783048774}
+wsReactionRoles={'🇧':DiscordRoleIDs['BalanceTeam'],'🇩':DiscordRoleIDs['DraftAddict'],'🇱':DiscordRoleIDs['LFG']}
 drafts={}#Outside of client so it doesn't reset on periodic restarts or [restart]
 lastDraftMessageDict={}
 draftNames={}
@@ -64,8 +65,8 @@ confidenceAliases=['ci','confidence','confidenceinterval']
 heroAliases=['hero', 'heroes', 'bruiser', 'healer', 'support', 'ranged', 'melee', 'assassin', 'mage', 'marksman', 'tank', 'marksmen']
 
 async def mainProbius(client,message,texts):
-	for i in draftAliases: #Don't want to log draft commands because they really spam.
-		if '['+i+'/' in message.content.lower():
+	for draftAlias in draftAliases: #Don't want to log draft commands because they really spam.
+		if '['+draftAlias+'/' in message.content.lower():
 			break
 	else:#The elusive for else control flow
 		guildname=message.channel.guild.name
@@ -75,62 +76,65 @@ async def mainProbius(client,message,texts):
 		channelName='hots' if channelName=='heroes-got-canceled' else channelName
 		loggingMessage=guildname+' '*(15-len(guildname))+channelName+' '+' '*(17-len(channelName))+str(message.author.name)+' '*(18-len(str(message.author.name)))+' '+message.content
 		print(loggingMessage)
-		await client.get_channel(643231901452337192).send('`'+loggingMessage+'`')
+		await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`{}`'.format(loggingMessage))
 
 	for text in texts:
-		hero=text[0].replace(' ','')
-		if hero in ['trait','r','w','e','passive','react','...']:#Do nothing
+		command=text[0].replace(' ','')
+		if command in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
-		if hero =='sortlist':
-			if message.guild.get_role(557521663894224912) not in message.author.roles:#Not mod
+		if command =='sortlist':
+			if message.guild.get_role(DiscordRoleIDs['Olympian']) not in message.author.roles:#Not mod
 				await message.channel.send(message.author.mention+' <:bonk:761981366744121354>')
 			else:
 				await sortList(message)
 			continue
-		if hero in ['name', 'names']:
-			twinkles=[(i.name if not i.nick else i.nick)+(' ('+i.name+')')*int(bool(i.nick)) for i in message.guild.members if text[1].lower() in i.name.lower() or i.nick and text[1].lower() in i.nick.lower()]
-			await message.channel.send('\n'.join(twinkles)+'\n'+str(len(twinkles))+' '+text[1].capitalize()+'s')
+		if command in ['name', 'names']:
+			names=[
+				(i.nick or i.name)+(' ('+i.name+')')*int(bool(i.nick)) 
+				for i in message.guild.members 
+				if text[1].lower() in i.name.lower() or i.nick and text[1].lower() in i.nick.lower()]
+			await message.channel.send('\n'.join(names)+'\n'+str(len(names))+' '+text[1].capitalize()+'s')
 			continue
-		if hero in heroAliases+[i+'s' for i in heroAliases]:
+		if command in heroAliases+[i+'s' for i in heroAliases]:
 			await heroes(message,text,message.channel,client)
 			continue
-		if hero=='ping':
+		if command=='ping':
 			await ping(message.channel)
 			continue
-		if hero=='membercount':
+		if command=='membercount':
 			await memberCount(message.channel)
 			continue
-		if hero in confidenceAliases:
+		if command in confidenceAliases:
 			await confidence(message.channel,text)
 			continue
-		if hero=='exit' and message.author.id==183240974347141120:
+		if command=='exit' and message.author.id==DiscordUserIDs['Asddsa']:
 			global exitBool
 			exitBool=1
 			await client.close()
-		if hero in restartAliases:
+		if command in restartAliases:
 			await client.logout()
-		if hero in mapImageAliases:
+		if command in mapImageAliases:
 			await mapImage(message.channel,text[1])
 			continue
-		if hero=='core':
+		if command=='core':
 			await coreAbilities(message.channel,await mapAliases(text[1]))
 			continue
-		if hero in listAliases:
+		if command in listAliases:
 			await waitList(message,text,client)
 			continue
-		if hero in lfgAlises:
+		if command in lfgAlises:
 			await lfg(message.channel,text[1],client)
 			continue
-		if hero in deleteAliases:
+		if command in deleteAliases:
 			await deleteMessages(message.author,text[1],client)
 			continue
-		if hero in patchNotesAliases:
+		if command in patchNotesAliases:
 			await patchNotes(message.channel,text)
 			continue
-		if hero in talentAliases:
+		if command in talentAliases:
 			await message.channel.send("Call a hero's talent tier with [hero/level]")
 			continue
-		if hero in updatePokedexAliases:
+		if command in updatePokedexAliases:
 			if client.isEditingPokedex:
 				await message.channel.send('Please wait, the pokedex is already being edited!')
 				continue
@@ -138,135 +142,141 @@ async def mainProbius(client,message,texts):
 			await updatePokedex(client,text,message)
 			client.isEditingPokedex=0
 			continue
-		if hero in rollAliases:
+		if command in rollAliases:
 			await roll(text,message)
 			continue
-		if hero=='sort':
+		if command=='sort':
 			await sortFromMessage(text[1],message,client)
 			continue
-		if hero in pokedexAliases:
+		if command in pokedexAliases:
 			await pokedex(client,message.channel,aliases(text[1]))
 			continue
-		if hero==':disapproval':
+		if command==':disapproval':
 			await message.channel.send('ಠ_ಠ')
 			continue
-		if hero==':summon':
+		if command==':summon':
 			if len(text)==1:
-				await message.channel.send('༼ つ ◕\\_◕ ༽つ')
+				await message.channel.send('༼ つ ◕\_◕ ༽つ')
 			elif '@' in text[1]:
-				await message.channel.send('༼ つ ◕\_◕ ༽つ ༼ つ ◕\_◕ ༽つ'+' Summon '+message.author.mention+'! ༼ つ ◕\_◕ ༽つ ༼ つ ◕\_◕ ༽つ')
+				await message.channel.send('{0} {0} Summon {1}! {0} {0}'.format('༼ つ ◕\_◕ ༽つ', message.author.mention))
 			else:
-				await message.channel.send('༼ つ ◕\_◕ ༽つ ༼ つ ◕\_◕ ༽つ'+' Summon '+message.content.split('[')[1].split('/')[1].split(']')[0] +'! ༼ つ ◕\_◕ ༽つ ༼ つ ◕\_◕ ༽つ')#text[1] is all lowercase etc.
+				await message.channel.send('{0} {0} Summon {1}! {0} {0}'.format('༼ つ ◕\_◕ ༽つ', message.content.split('[')[1].split('/')[1].split(']')[0]))#text[1] is all lowercase etc.
 			continue
-		if hero in colourAliases:
+		if command in colourAliases:
 			await message.channel.send(file=discord.File('WS colours.png'))
 			continue
-		if message.author.id==183240974347141120:
-			if hero=='serverchannels':
+		if message.author.id==DiscordUserIDs['Asddsa']:
+			if command=='serverchannels':
 				await message.channel.send([channel.name for channel in message.channel.guild.channels])
 				continue
-			if hero=='repeat' and len(text)==2:
+			if command=='repeat' and len(text)==2:
 				await message.channel.send(text[1])
 				await message.delete()
 				continue
-		if hero== 'unsorted' and message.channel.guild.name=='Wind Striders':
-			if 557521663894224912 in [role.id for role in message.author.roles]:#Olympian
-				channel = client.get_channel(557366982471581718)#WSgeneral
-				role=channel.guild.get_role(560435022427848705)#UNSORTED
-				rulesChannel=channel.guild.get_channel(634012658625937408)#server-rules
+		if command== 'unsorted' and message.channel.guild.name=='Wind Striders':
+			if DiscordRoleIDs['Olympian'] in [role.id for role in message.author.roles]:#Olympian
+				channel = client.get_channel(DiscordChannelIDs['General'])#WSgeneral
+				role=channel.guild.get_role(DiscordRoleIDs['Unsorted'])#UNSORTED
+				rulesChannel=channel.guild.get_channel(DiscordChannelIDs['ServerRules'])#server-rules
 				await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and type here the info at top **`Region`, `Rank`, and `Preferred Colour`**, separated by commas, to get sorted before Blackstorm purges you <:OrphAYAYA:657172520092565514>')
 				await channel.send(content='https://cdn.discordapp.com/attachments/576018992624435220/743917827718905896/sorting.gif',file=discord.File('WS colours.png'))
 				continue
-		if hero == 'vote':
+		if command == 'vote':
 			await vote(message,text)
 			continue
-		if hero in coinsAliases:
+		if command in coinsAliases:
 			await message.channel.send(random.choice(['Heads','Tails']))
 			continue
-		if hero in redditAliases:
+		if command in redditAliases:
 			await reddit(client,message,text)
 			continue
-		if hero in ['avatar','a']:
+		if command in ['avatar','a']:
 			await getAvatar(client,message.channel,text[1])
 			continue
-		if hero=='':#Empty string. Aliases returns Abathur when given this.
+		if command=='':#Empty string. Aliases returns Abathur when given this.
 			continue
-		if hero in draftAliases:
+		if command in draftAliases:
 			await draft(drafts,message.channel,message.author,text,lastDraftMessageDict,draftNames)
 			continue
-		if hero in randomAliases:
+		if command in randomAliases:
 			if len(text)==1:
 				await message.channel.send(getQuote(random.choice(getHeroes())))
 				continue
-			hero=random.choice(getHeroes())
-		if hero in helpAliases:
+			command=random.choice(getHeroes())
+		if command in helpAliases:
 			if len(text)==2 and hero in heroStatsAliases:#[info/hero]
 				await heroStats(aliases(text[1]),message.channel)
 			else:
 				await message.channel.send(helpMessage())
 			continue
-		if hero in buildsAliases:
+		if command in buildsAliases:
 			if len(text)==2:
-				if message.channel.guild.id==535256944106012694 and message.channel.id!=571531013558239238:#In WS, not in #probius
-					if message.guild.get_role(571321937821696001) not in message.author.roles:#Not core member
-						await message.guild.get_channel(571531013558239238).send(message.author.mention+' <:bonk:761981366744121354>')
-						await guide(aliases(text[1]),message.guild.get_channel(571531013558239238))
+				if message.channel.guild.id==DiscordGuildIDs['WindStriders'] and message.channel.id!=DiscordChannelIDs['Probius']:#In WS, not in #probius
+					if message.guild.get_role(DiscordRoleIDs['CoreMember']) not in message.author.roles:#Not core member
+						await message.guild.get_channel(DiscordChannelIDs['Probius']).send(message.author.mention+' <:bonk:761981366744121354>')
+						await guide(aliases(text[1]),message.guild.get_channel(DiscordChannelIDs['Probius']))
 						continue
 				await guide(aliases(text[1]),message.channel)
 			else:
 				await message.channel.send("Elitesparkle's builds: <https://elitesparkle.wixsite.com/hots-builds>")
 			continue
-		if hero in rotationAlises:
+		if command in rotationAlises:
 			await rotation(message.channel)
 			continue
-		if hero=='goodbot':
+		if command=='goodbot':
 			await emoji(client,['Probius','love'],message.channel)
 			continue
-		if hero=='badbot':
-			if message.author.id==183240974347141120:
+		if command=='badbot':
+			if message.author.id in ProbiusPrivilegesIDs:
 				await emoji(client,['Probius','sad'],message.channel)
 			else:
 				await emoji(client,[':pylonbat'],message.channel)
 			continue
-		if ':' in hero:
+		if ':' in command:
 			await emoji(client,text,message.channel,message)
 			continue
-		if ']' in hero:
+		if ']' in command:
 			continue
-		if hero in ['chogall',"cho'gall",'cg','cho gall','cho-gall']:
+		if command in ['chogall',"cho'gall",'cg','cho gall','cho-gall']:
 			await message.channel.send("Cho and Gall are 2 different heroes. Choose one of them")
 			print('Dual hero')
 			continue
-		if hero in quotesAliases:
+		if command in quotesAliases:
 			if len(text)==2:
 				await message.channel.send(getQuote(aliases(text[1])))
 			elif text[0]!='q':#Calling [q] alone shouldn't show link, but [q/hero] works, as well as [quotes]
 				await message.channel.send('All hero select quotes: <https://github.com/Asddsa76/Probius/blob/master/quotes.txt>')
 			continue
-		if hero in aliasesAliases:
+		if command in aliasesAliases:
 			await message.channel.send('All hero alternate names: <https://github.com/Asddsa76/Probius/blob/master/aliases.py>')
 			continue
-		if hero == 'all':
+		if command == 'all':
 			await printAll(client,message,text[1],True)
 			continue
-		if hero in emojiAliases:
+		if command in emojiAliases:
 			await message.channel.send('Emojis: [:hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.')
 			continue
 		try:
-			if len(text)==1 and hero[0]=='t' and hero[8] ==',':#[t3221323,sam]
-				await printBuild(client,message.channel,hero)
+			if len(text)==1 and command[0]=='t' and command[8] ==',':#[t3221323,sam]
+				await printBuild(client,message.channel,command)
 				continue
-			if len(text)==2 and hero[0]=='t' and len(hero)==8 and hero!='tassadar':#[t3221323/sam]
+			if len(text)==2 and command[0]=='t' and len(command)==8 and command!='tassadar':#[t3221323/sam]
 				await printBuild(client,message.channel,','.join(text))
 				continue
 		except:
 			pass
 		#From here it's actual heroes, or a search
+		hero=command
 		if len(hero)==1 or (len(hero)==2 and ('1' in hero or '2' in hero)):#Patch notes have abilities in []. Don't want spammed triggers again. Numbers for R1, R2, etc.
 			continue
 		hero=aliases(hero)
 		if len(text)==2:#If user switches to hero first, then build/quote
 			if text[1] in buildsAliases:
+				if message.channel.guild.id==DiscordGuildIDs['WindStriders'] and message.channel.id!=DiscordChannelIDs['Probius']:#In WS, not in #probius
+					if message.guild.get_role(DiscordRoleIDs['CoreMember']) not in message.author.roles:#Not core member
+						await message.guild.get_channel(DiscordChannelIDs['Probius']).send(message.author.mention+' <:bonk:761981366744121354>')
+						await guide(hero,message.guild.get_channel(DiscordChannelIDs['Probius']))
+						continue
 				await guide(hero,message.channel)
 				continue
 			if text[1] in quotesAliases and text[1]!='q':
@@ -342,9 +352,9 @@ async def mainProbius(client,message,texts):
 					except:
 						pass
 					if message.channel.name=='rage':
-						await message.channel.send('ERROR: '+hero.upper()+' DOES NOT HAVE "'+tier.upper()+'".')
+						await message.channel.send('ERROR: {} DOES NOT HAVE "{}".'.format(hero,tier).upper())
 					else:
-						await message.channel.send('Error: '+hero+' does not have "'+tier+'".')
+						await message.channel.send('Error: {} does not have "{}".'.format(hero,tier))
 					print('No results')
 				else:
 					if message.channel.name=='rage':
@@ -393,15 +403,15 @@ class MyClient(discord.Client):
 		print('Ready!')
 
 	async def on_message(self, message):
-		pingNames={'lemmie':190529178808877056, 'medicake':160743140901388288}
+		pingNames={'lemmie':DiscordUserIDs['Gooey'], 'medicake':DiscordUserIDs['Medicake']}
 		pingList=[pingNames[i] for i in pingNames.keys() if '@'+i in message.content.replace(' ','')]
 		if pingList:
 			await message.channel.send(' '.join(['<@'+str(i)+'>' for i in pingList]))
 			
-		if message.embeds and message.channel.id==557366982471581718 and 'View tweet' in message.content:#Message with embed in #general
+		if message.embeds and message.channel.id==DiscordChannelIDs['General'] and 'View tweet' in message.content:#Message with embed in #general
 			await message.channel.send(message.embeds[0].thumbnail.url)
 			await message.edit(suppress=True)
-		if message.author.id==272526395337342977 and message.channel.id==557366982471581718:#Blizztrack posts in general
+		if message.author.id==272526395337342977 and message.channel.id==DiscordChannelIDs['General']:#Blizztrack posts in general
 			try:
 				e=message.embeds[0].fields[3]
 				if e.name=='Full patch notes at':
@@ -411,18 +421,18 @@ class MyClient(discord.Client):
 			except:pass
 		if message.author.bot:#Don't respond to bots
 			return
-		if 560435022427848705 in [role.id for role in message.author.roles]:#Unsorted
+		if DiscordRoleIDs['Unsorted'] in [role.id for role in message.author.roles]:#Unsorted
 			try:
-				await sortFromReaction(message,603924594956435491,self)
+				await sortFromReaction(message,DiscordUserIDs['Probius'],self)
 			except:
-				await client.get_channel(576018992624435220).send('***Unsorted message:*** **'+message.author.name+'**: '+message.content+'\n'+message.jump_url)
+				await client.get_channel(DiscordChannelIDs['Pepega']).send('***Unsorted message:*** **'+message.author.name+'**: '+message.content+'\n'+message.jump_url)
 			return
 		if 'baelog' in message.content.lower():
-			if message.channel.guild.id==535256944106012694:await client.get_channel(571531013558239238).send(message.author.mention+'Ba**LE**og\nhttps://i.imgur.com/Nrcg11Z.png')
+			if message.channel.guild.id==DiscordGuildIDs['WindStriders']:await client.get_channel(DiscordChannelIDs['Probius']).send(message.author.mention+'Ba**LE**og\nhttps://i.imgur.com/Nrcg11Z.png')
 			else:await message.channel.send('https://i.imgur.com/Nrcg11Z.png')
 		if self.ready==False:
 			return
-		if message.content.count('@')>50 and message.channel.guild.id==535256944106012694:
+		if message.content.count('@')>50 and message.channel.guild.id==DiscordGuildIDs['WindStriders']:
 			username=message.author.name
 			channel=message.channel
 			await message.channel.guild.ban(message.author,reason='Spam: over 50 pings in one message.')
@@ -439,7 +449,7 @@ class MyClient(discord.Client):
 		
 	async def on_message_edit(self,before, after):
 		#Don't respond to ourselves
-		if after.embeds and after.channel.id==557366982471581718 and 'New dev tweet!' in after.content:#Message with embed in #general
+		if after.embeds and after.channel.id==DiscordChannelIDs['General'] and 'New dev tweet!' in after.content:#Message with embed in #general
 			await after.channel.send(after.embeds[0].thumbnail.url)
 			await after.edit(suppress=True)
 		if before.author.bot:
@@ -457,7 +467,7 @@ class MyClient(discord.Client):
 
 	async def on_raw_reaction_add(self,payload):
 		member=client.get_user(payload.user_id)
-		if member.id==603924594956435491:#Probius did reaction
+		if member.id==DiscordUserIDs['Probius']:#Probius did reaction
 			return
 		try:
 			message=await client.get_channel(payload.channel_id).fetch_message(payload.message_id)
@@ -467,12 +477,12 @@ class MyClient(discord.Client):
 			return
 		if message.id==693380327413907487:
 			if str(payload.emoji) in wsReactionRoles:
-				await client.get_guild(535256944106012694).get_member(payload.user_id).add_roles(client.get_guild(535256944106012694).get_role(wsReactionRoles[str(payload.emoji)]))
+				await client.get_guild(DiscordGuildIDs['WindStriders']).get_member(payload.user_id).add_roles(client.get_guild(DiscordGuildIDs['WindStriders']).get_role(wsReactionRoles[str(payload.emoji)]))
 
-		elif message.author.id==603924594956435491 and str(payload.emoji)=='👎':#Message is from Probius, and is downvoted with thumbs down
-			if message.channel.id in [665317972646166538,597140352411107328]:#Message is in reddit posts or pokedex
+		elif message.author.id==DiscordUserIDs['Probius'] and str(payload.emoji)=='👎':#Message is from Probius, and is downvoted with thumbs down
+			if message.channel.id in [DiscordChannelIDs['RedditPosts'],DiscordChannelIDs['Pokedex']]:#Message is in reddit posts or pokedex
 				output=member.mention+'<:bonk:761981366744121354>'
-				await client.get_channel(557366982471581718).send(output)#general
+				await client.get_channel(DiscordChannelIDs['General']).send(output)#general
 				return
 			elif 'reddit.com' in message.content:
 				await message.channel.send(member.mention+'<:bonk:761981366744121354>')
@@ -481,21 +491,21 @@ class MyClient(discord.Client):
 				return
 			output=member.name+' deleted a message from Probius'
 			print(output)
-			await client.get_channel(643231901452337192).send('`'+output+'`')
+			await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`'+output+'`')
 			await message.delete()
 			return
 
-		elif message.author.id==603924594956435491 and 'React to ping' in message.content and str(payload.emoji)=='👍':#Message from Probius, pings Pokedex:
+		elif message.author.id==DiscordUserIDs['Probius'] and 'React to ping' in message.content and str(payload.emoji)=='👍':#Message from Probius, pings Pokedex:
 			output=member.name+' started a balance discussion'
 			print(output)
-			await client.get_channel(643231901452337192).send('`'+output+'`')
+			await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`'+output+'`')
 			await pingPokedex(self,message,member)
 			return
-		elif str(payload.emoji)=='⚽' and message.channel.id==557366982471581718:
+		elif str(payload.emoji)=='⚽' and message.channel.id==DiscordChannelIDs['General']:
 			await sortFromReaction(message,member.id,self)
 			return
 
-		if member.id==183240974347141120:#Reaction copying
+		if member.id in ProbiusPrivilegesIDs:#Reaction copying
 			await message.add_reaction(payload.emoji)
 
 	async def on_raw_reaction_remove(self,payload):
@@ -503,15 +513,15 @@ class MyClient(discord.Client):
 		message=await client.get_channel(payload.channel_id).fetch_message(payload.message_id)
 		if message.id==693380327413907487:
 			if str(payload.emoji) in wsReactionRoles:
-				await client.get_guild(535256944106012694).get_member(payload.user_id).remove_roles(client.get_guild(535256944106012694).get_role(wsReactionRoles[str(payload.emoji)]))
+				await client.get_guild(DiscordGuildIDs['WindStriders']).get_member(payload.user_id).remove_roles(client.get_guild(DiscordGuildIDs['WindStriders']).get_role(wsReactionRoles[str(payload.emoji)]))
 
 	async def on_member_join(self,member):
 		guild=member.guild
 		if guild.name=='Wind Striders':
-			await member.add_roles(guild.get_role(560435022427848705))#UNSORTED role
+			await member.add_roles(guild.get_role(DiscordRoleIDs['Unsorted']))#UNSORTED role
 			print(member.name+' joined')
-			channel=guild.get_channel(557366982471581718)#general
-			rulesChannel=guild.get_channel(634012658625937408)#server-rules
+			channel=guild.get_channel(DiscordChannelIDs['General'])#general
+			rulesChannel=guild.get_channel(DiscordChannelIDs['ServerRules'])#server-rules
 			await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and type here the info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514>')
 			try:
 				for i in self.lastWelcomeImage:
@@ -524,10 +534,10 @@ class MyClient(discord.Client):
 	async def on_member_remove(self,member):
 		guild=member.guild
 		if guild.name=='Wind Striders':
-			unsorted=guild.get_role(560435022427848705)
+			unsorted=guild.get_role(DiscordRoleIDs['Unsorted'])
 			if unsorted in member.roles:	
 				print(member.name+' left (unsorted)')
-				channel=guild.get_channel(557366982471581718)#general
+				channel=guild.get_channel(DiscordChannelIDs['General'])#general
 				await channel.send(member.name+' (unsorted) left <:samudab:578998204142452747>')
 				return
 			print(member.name+' left')
@@ -537,7 +547,7 @@ class MyClient(discord.Client):
 
 	async def bgTaskSubredditForwarding(self):
 		await self.wait_until_ready()
-		channel = self.get_channel(557366982471581718)#WS general
+		channel = self.get_channel(DiscordChannelIDs['General'])#WS general
 		while not self.is_closed():
 			await asyncio.sleep(60)#Check for new posts every minute
 			try:
@@ -546,13 +556,13 @@ class MyClient(discord.Client):
 				pass
 
 	async def on_member_update(self,before,after):
-		if after.guild.id==535256944106012694:
-			core=after.guild.get_role(571321937821696001)
-			olympian=after.guild.get_role(557521663894224912)
+		if after.guild.id==DiscordGuildIDs['WindStriders']:
+			core=after.guild.get_role(DiscordRoleIDs['CoreMember'])
+			olympian=after.guild.get_role(DiscordRoleIDs['Olympian'])
 			if core in after.roles and core not in before.roles:
-				await self.get_channel(607922629902598154).send('Welcome '+after.mention+'!')
+				await self.get_channel(DiscordChannelIDs['SecretCabal']).send('Welcome '+after.mention+'!')
 			if olympian in after.roles and olympian not in before.roles:
-				await self.get_channel(576018992624435220).send('Welcome '+after.mention+'!')
+				await self.get_channel(DiscordChannelIDs['Pepega']).send('Welcome '+after.mention+'!')
 				
 exitBool=0
 while 1: #Restart

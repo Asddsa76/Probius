@@ -1,7 +1,8 @@
+from discordIDs import *
 from lfg import roleAliases
 
 async def trim(text):
-	toRemove=[' ','#','<@&557521663894224912>','*','\n','league']
+	toRemove=[' ','#','<@&{}}>'.format(DiscordRoleIDs['Olympian']),'*','\n','league']
 	text=text.lower()
 	for i in toRemove:
 		text=text.replace(i,'')
@@ -10,9 +11,9 @@ async def trim(text):
 	return text
 
 async def sort(roles,member,olympian,client):
-	guild=client.get_guild(535256944106012694)#Wind Striders
-	channel=guild.get_channel(557366982471581718)#general
-	if 557521663894224912 not in [role.id for role in olympian.roles]:
+	guild=client.get_guild(DiscordGuildIDs['WindStriders'])#Wind Striders
+	channel=guild.get_channel(DiscordChannelIDs['General'])#general
+	if DiscordRoleIDs['Olympian'] not in [role.id for role in olympian.roles]:
 		#await channel.send('You need to be a mod to sort users!')
 		return
 	if len(roles)!=3:
@@ -20,12 +21,12 @@ async def sort(roles,member,olympian,client):
 		return
 	#Colours between bestBot and IM
 	bestBot=guild.get_role(635187043676323842)
-	IM=guild.get_role(557550150109888513)
+	IM=guild.get_role(DiscordRoleIDs['IllusionMaster'])
 	#Ranks and regions between lopez and core member
 	lopez=guild.get_role(571525173698756608)
-	coreMember=guild.get_role(571321937821696001)
+	coreMember=guild.get_role(DiscordRoleIDs['CoreMember'])
 
-	unsorted=guild.get_role(560435022427848705)
+	unsorted=guild.get_role(DiscordRoleIDs['Unsorted'])
 
 	if unsorted not in member.roles:
 		#await channel.send('**'+member.name+'** is not unsorted')
@@ -54,7 +55,7 @@ async def sort(roles,member,olympian,client):
 	if len(rolesToAdd)!=3:
 		#await channel.send('At least one role was wrong or inaccessible. Valid roles: '+', '.join([i.name for i in rolesToAdd]))
 		return
-	memberRole=guild.get_role(557522023190888468)
+	memberRole=guild.get_role(DiscordRoleIDs['Member'])
 	rolesToAdd.append(memberRole)
 	await member.add_roles(*rolesToAdd)
 	await member.remove_roles(unsorted)
@@ -64,7 +65,7 @@ async def sortFromMessage(text,message,client):
 	unsortedMember,text=text.split('>')
 	unsortedMember+='>'
 	text=await trim(text)
-	guild=client.get_guild(535256944106012694)#Wind Striders
+	guild=client.get_guild(DiscordGuildIDs['WindStriders'])#Wind Striders
 	unsortedMember=guild.get_member(int(unsortedMember.replace(' ','')[2:-1].replace('!','')))
 
 	roles=text.split(',')
@@ -79,6 +80,6 @@ async def sortFromReaction(message,reacterID,client):
 	else:
 		roles=roles.split(',')
 	unsortedMember=message.author
-	guild=client.get_guild(535256944106012694)
+	guild=client.get_guild(DiscordGuildIDs['WindStriders'])
 	olympian=guild.get_member(int(reacterID))
 	await sort(roles,unsortedMember,olympian,client)

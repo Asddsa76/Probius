@@ -2,6 +2,7 @@ import asyncio
 import aiohttp
 from rotation import *
 from printFunctions import printLarge
+from discordIDs import *
 
 redditors=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'Pscythic', 'Elitesparkle', 'slapperoni', 
 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'Pelaberus', 'KillMeWithMemes',
@@ -14,21 +15,21 @@ discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','
 
 #Posts with these in title gets forwarded regardless of author
 keywords={
-'Genji':[183240974347141120,247677408386351105,408114527947980802],
-'Samuro':[329447886465138689],
-'Maiev':[247677408386351105], 
-' Dva:':[84805890837864448], 
-'Hanzo':[160743140901388288],
-'Lucio':[160743140901388288],
-'Zeratul':[191410663292272640],
-'Valeera':[364041091693150208]}
+'Genji':[DiscordUserIDs['Asddsa'],DiscordUserIDs['SomeoneNew'],DiscordUserIDs['Weebatsu']],
+'Samuro':[DiscordUserIDs['Blackstorm']],
+'Maiev':[DiscordUserIDs['SomeoneNew']], 
+' Dva:':[DiscordUserIDs['Spazzo']], 
+'Hanzo':[DiscordUserIDs['Medicake']],
+'Lucio':[DiscordUserIDs['Medicake']],
+'Zeratul':[DiscordUserIDs['Derenash']],
+'Valeera':[DiscordUserIDs['MBee']]}
 
 mindhawk_keywords=['Kerrigan','Cho ','Gall',"Cho'Gall",'Orphea','Li-Ming','Ragnaros', 'Li Ming', 'chogall']
 for i in mindhawk_keywords:
 	if i in keywords:
-		keywords[i].append(129702871837966336)
+		keywords[i].append(DiscordUserIDs['MindHawk'])
 	else:
-		keywords[i]=[129702871837966336]
+		keywords[i]=[DiscordUserIDs['MindHawk']]
 
 async def getPostInfo(post):
 	title=post.split('", "')[0]
@@ -77,7 +78,7 @@ async def redditForwarding(client):#Called every 60 seconds
 					title=await titleTrim(title)
 					client.forwardedPosts.append([title,author,url])
 					url='\n'+url
-					print(title+' by '+author)
+					print('{} by {}'.format(title,author))
 
 					toPing=[]
 					for i in keywords:
@@ -89,18 +90,18 @@ async def redditForwarding(client):#Called every 60 seconds
 					if author in redditors:
 						if author in discordnames:
 							author=discordnames[author]
-						await client.get_channel(643231901452337192).send('`'+title+' by '+author+'`')#log
-						await client.get_channel(665317972646166538).send('**'+title+'** by '+author+': '+url)#reddit-posts
+						await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`{} by {}`'.format(title,author))#log
+						await client.get_channel(DiscordChannelIDs['RedditPosts']).send('**{}** by {}: {}'.format(title,author,url))#reddit-posts
 						if toPing:
-							await client.get_channel(557366982471581718).send('**'+title+'** by '+author+': '+url+'\n'+toPing)#general
+							await client.get_channel(DiscordChannelIDs['General']).send('**{}** by {}: {}\n{}'.format(title,author,url,toPing))#general
 						else:
-							await client.get_channel(557366982471581718).send('**'+title+'** by '+author+': '+url)#general
+							await client.get_channel(DiscordChannelIDs['General']).send('**{}** by {}: {}'.format(title,author,url))#general
 						if author=='Gnueless' and 'rotation' in title.lower():
-							await rotation(client.get_channel(557366982471581718))
+							await rotation(client.get_channel(DiscordChannelIDs['General']))
 					else:
-						await client.get_channel(643231901452337192).send('`'+title+' by '+author+'`')#log
-						channel=[568058278165348362,564528564196605973]['samuro' in title.lower()]#Normie-heroes or Samuro
-						await client.get_channel(channel).send('**'+title+'** '+toPing+url)
+						await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`{} by {}`'.format(title,author))#log
+						channel=[DiscordChannelIDs['NormieHeroes'],DiscordChannelIDs['Samuro']]['samuro' in title.lower()]#Normie-heroes or Samuro
+						await client.get_channel(channel).send('**{}** {}{}'.format(title,toPing,url))
 
 async def reddit(client,message,text):
 	if len(text)==2:
@@ -112,5 +113,5 @@ async def reddit(client,message,text):
 		author=i[1]
 		if author in discordnames:
 				author=discordnames[author]
-		output+='**'+i[0]+'** by '+author+': <'+i[2]+'>\n'
+		output+='**{}** by {}: <{}>\n'.format(i[0], author, i[2])
 	await printLarge(message.channel,output)
