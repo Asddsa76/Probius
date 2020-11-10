@@ -15,7 +15,7 @@ discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','
 
 #Posts with these in title gets forwarded regardless of author
 keywords={
-'Genji':[DiscordUserIDs['Asddsa'],DiscordUserIDs['SomeoneNew'],408114527947980802],
+'Genji':[DiscordUserIDs['Asddsa'],DiscordUserIDs['SomeoneNew'],DiscordUserIDs['Weebatsu']],
 'Samuro':[DiscordUserIDs['Blackstorm']],
 'Maiev':[DiscordUserIDs['SomeoneNew']], 
 ' Dva:':[DiscordUserIDs['Spazzo']], 
@@ -90,18 +90,18 @@ async def redditForwarding(client):#Called every 60 seconds
 					if author in redditors:
 						if author in discordnames:
 							author=discordnames[author]
-						await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`'+title+' by '+author+'`')#log
-						await client.get_channel(DiscordChannelIDs['RedditPosts']).send('**'+title+'** by '+author+': '+url)#reddit-posts
+						await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`{} by {}`'.format(title,author))#log
+						await client.get_channel(DiscordChannelIDs['RedditPosts']).send('**{}** by {}: {}'.format(title,author,url))#reddit-posts
 						if toPing:
-							await client.get_channel(DiscordChannelIDs['General']).send('**'+title+'** by '+author+': '+url+'\n'+toPing)#general
+							await client.get_channel(DiscordChannelIDs['General']).send('**{}** by {}: {}\n{}'.format(title,author,url,toPing))#general
 						else:
-							await client.get_channel(DiscordChannelIDs['General']).send('**'+title+'** by '+author+': '+url)#general
+							await client.get_channel(DiscordChannelIDs['General']).send('**{}** by {}: {}'.format(title,author,url))#general
 						if author=='Gnueless' and 'rotation' in title.lower():
 							await rotation(client.get_channel(DiscordChannelIDs['General']))
 					else:
-						await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`'+title+' by '+author+'`')#log
+						await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`{} by {}`'.format(title,author))#log
 						channel=[DiscordChannelIDs['NormieHeroes'],DiscordChannelIDs['Samuro']]['samuro' in title.lower()]#Normie-heroes or Samuro
-						await client.get_channel(channel).send('**'+title+'** '+toPing+url)
+						await client.get_channel(channel).send('**{}** {}{}'.format(title,toPing,url))
 
 async def reddit(client,message,text):
 	if len(text)==2:
@@ -113,5 +113,5 @@ async def reddit(client,message,text):
 		author=i[1]
 		if author in discordnames:
 				author=discordnames[author]
-		output+='**'+i[0]+'** by '+author+': <'+i[2]+'>\n'
+		output+='**{}** by {}: <{}>\n'.format(i[0], author, i[2])
 	await printLarge(message.channel,output)

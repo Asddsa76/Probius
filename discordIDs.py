@@ -9,6 +9,7 @@ DiscordUserIDs={
     'Spazzo':84805890837864448,
     'Derenash':191410663292272640,
     'MBee':364041091693150208,
+    'Weebatsu':408114527947980802,
 }
 
 ProbiusPrivilegesIDs=[DiscordUserIDs['Asddsa'], DiscordUserIDs['MindHawk']]
