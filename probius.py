@@ -76,7 +76,7 @@ async def mainProbius(client,message,texts):
 		channelName='hots' if channelName=='heroes-got-canceled' else channelName
 		loggingMessage=guildname+' '*(15-len(guildname))+channelName+' '+' '*(17-len(channelName))+str(message.author.name)+' '*(18-len(str(message.author.name)))+' '+message.content
 		print(loggingMessage)
-		await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`'+loggingMessage+'`')
+		await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`{}`'.format(loggingMessage))
 
 	for text in texts:
 		command=text[0].replace(' ','')
@@ -352,9 +352,9 @@ async def mainProbius(client,message,texts):
 					except:
 						pass
 					if message.channel.name=='rage':
-						await message.channel.send('ERROR: '+hero.upper()+' DOES NOT HAVE "'+tier.upper()+'".')
+						await message.channel.send('ERROR: {} DOES NOT HAVE "{}".'.format(hero,tier).upper())
 					else:
-						await message.channel.send('Error: '+hero+' does not have "'+tier+'".')
+						await message.channel.send('Error: {} does not have "{}".'.format(hero,tier))
 					print('No results')
 				else:
 					if message.channel.name=='rage':
