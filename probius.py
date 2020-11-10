@@ -380,6 +380,7 @@ class MyClient(discord.Client):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		self.seenTitles=[]
+		self.seenPosts=[]
 		self.forwardedPosts=[]
 		self.proxyEmojis={}
 		# create the background task and run it in the background

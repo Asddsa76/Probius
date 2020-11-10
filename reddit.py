@@ -7,7 +7,7 @@ from discordIDs import *
 redditors=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'Pscythic', 'Elitesparkle', 'slapperoni', 
 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'Pelaberus', 'KillMeWithMemes',
 'MarvellousBee','Naturage','Derenash','Riokaii','Demon_Ryu','hellobgs','Beg_For_Mercy','Russisch','Valamar1732','ArashiNoShad0w',
-'lemindhawk','Goshin26','TiredZealot','MasterAblar','SHreddedWInd','MrWilbus','NotBelial','Dark_Polaroid','Mochrie1713','HeroesProfile']
+'lemindhawk','Goshin26','TiredZealot','MasterAblar','SHreddedWInd','MrWilbus','NotBelial','Dark_Polaroid','Mochrie1713','HeroesProfile','nexusschoolhouse']
 
 discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','secret3332':'SecretChaos','Archlichofthestorm':'Trolldaeron','ThatDoomedStudent':'Carbon','InfiniteEarth':'Flash',
 'KillMeWithMemes':'Nick','Demon_Ryu':'Messa','Russisch':'Ekata','ArashiNoShad0w':'LeviathaN','TiredZealot':'Jdelrio','lemindhawk':'MindHawk',
@@ -60,6 +60,7 @@ async def fillPreviousPostTitles(client):#Called on startup
 			except:
 				continue
 			output.append(title)
+			client.seenPosts.append([title,author,url])
 			if author in redditors or sum(1 for i in keywords if i.lower() in title.lower()):
 				title=await titleTrim(title)
 				client.forwardedPosts.append([title,author,url])
@@ -72,14 +73,14 @@ async def redditForwarding(client):#Called every 60 seconds
 		posts=page.split('"clicked": false, "title": "')[1:]
 		for post in posts:
 			[title,author,url] = await getPostInfo(post)
-			if author in redditors or sum(1 for i in keywords if i.lower() in title.lower()):
-				if title not in client.seenTitles:#This post hasn't been processed before
-					client.seenTitles.append(title)
-					title=await titleTrim(title)
-					client.forwardedPosts.append([title,author,url])
-					url='\n'+url
+			if title not in client.seenTitles:#This post hasn't been processed before
+				client.seenTitles.append(title)
+				title=await titleTrim(title)
+				url='\n'+url
+				client.seenPosts.append([title,author,url])
+				if author in redditors or sum(1 for i in keywords if i.lower() in title.lower()):
 					print('{} by {}'.format(title,author))
-
+					client.forwardedPosts.append([title,author,url])
 					toPing=[]
 					for i in keywords:
 						if i.lower() in title.lower():
@@ -103,8 +104,21 @@ async def redditForwarding(client):#Called every 60 seconds
 						channel=[DiscordChannelIDs['NormieHeroes'],DiscordChannelIDs['Samuro']]['samuro' in title.lower()]#Normie-heroes or Samuro
 						await client.get_channel(channel).send('**{}** {}{}'.format(title,toPing,url))
 
+async def redditSearch(client,message,text):
+	output=''
+	for i in client.seenPosts:
+		author=i[1]
+		if author in discordnames:
+			author=discordnames[author]
+		if text.lower() in i[0].lower():
+			output+='**{}** by {}: <{}>\n'.format(i[0], author, i[2])
+	await printLarge(message.channel,output)
+
 async def reddit(client,message,text):
 	if len(text)==2:
+		if not text[1].isnumeric():
+			await redditSearch(client,message,text[1])
+			return
 		cutoff=-int(text[1])
 	else:
 		cutoff=0
