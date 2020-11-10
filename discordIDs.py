@@ -21,6 +21,7 @@ DiscordRoleIDs={
     'DraftAddict':664126658084601857,
     'Unsorted':560435022427848705,
     'CoreMember':571321937821696001,
+    'Member':557522023190888468,
 }
 
 DiscordGuildIDs={
