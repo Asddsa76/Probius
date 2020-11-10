@@ -78,7 +78,7 @@ async def redditForwarding(client):#Called every 60 seconds
 					title=await titleTrim(title)
 					client.forwardedPosts.append([title,author,url])
 					url='\n'+url
-					print(title+' by '+author)
+					print('{} by {}'.format(title,author))
 
 					toPing=[]
 					for i in keywords:

@@ -65,8 +65,8 @@ confidenceAliases=['ci','confidence','confidenceinterval']
 heroAliases=['hero', 'heroes', 'bruiser', 'healer', 'support', 'ranged', 'melee', 'assassin', 'mage', 'marksman', 'tank', 'marksmen']
 
 async def mainProbius(client,message,texts):
-	for i in draftAliases: #Don't want to log draft commands because they really spam.
-		if '['+i+'/' in message.content.lower():
+	for draftAlias in draftAliases: #Don't want to log draft commands because they really spam.
+		if '['+draftAlias+'/' in message.content.lower():
 			break
 	else:#The elusive for else control flow
 		guildname=message.channel.guild.name
@@ -79,62 +79,62 @@ async def mainProbius(client,message,texts):
 		await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`'+loggingMessage+'`')
 
 	for text in texts:
-		hero=text[0].replace(' ','')
-		if hero in ['trait','r','w','e','passive','react','...']:#Do nothing
+		command=text[0].replace(' ','')
+		if command in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
-		if hero =='sortlist':
+		if command =='sortlist':
 			if message.guild.get_role(DiscordRoleIDs['Olympian']) not in message.author.roles:#Not mod
 				await message.channel.send(message.author.mention+' <:bonk:761981366744121354>')
 			else:
 				await sortList(message)
 			continue
-		if hero in ['name', 'names']:
+		if command in ['name', 'names']:
 			names=[
 				(i.nick or i.name)+(' ('+i.name+')')*int(bool(i.nick)) 
 				for i in message.guild.members 
 				if text[1].lower() in i.name.lower() or i.nick and text[1].lower() in i.nick.lower()]
 			await message.channel.send('\n'.join(names)+'\n'+str(len(names))+' '+text[1].capitalize()+'s')
 			continue
-		if hero in heroAliases+[i+'s' for i in heroAliases]:
+		if command in heroAliases+[i+'s' for i in heroAliases]:
 			await heroes(message,text,message.channel,client)
 			continue
-		if hero=='ping':
+		if command=='ping':
 			await ping(message.channel)
 			continue
-		if hero=='membercount':
+		if command=='membercount':
 			await memberCount(message.channel)
 			continue
-		if hero in confidenceAliases:
+		if command in confidenceAliases:
 			await confidence(message.channel,text)
 			continue
-		if hero=='exit' and message.author.id==DiscordUserIDs['Asddsa']:
+		if command=='exit' and message.author.id==DiscordUserIDs['Asddsa']:
 			global exitBool
 			exitBool=1
 			await client.close()
-		if hero in restartAliases:
+		if command in restartAliases:
 			await client.logout()
-		if hero in mapImageAliases:
+		if command in mapImageAliases:
 			await mapImage(message.channel,text[1])
 			continue
-		if hero=='core':
+		if command=='core':
 			await coreAbilities(message.channel,await mapAliases(text[1]))
 			continue
-		if hero in listAliases:
+		if command in listAliases:
 			await waitList(message,text,client)
 			continue
-		if hero in lfgAlises:
+		if command in lfgAlises:
 			await lfg(message.channel,text[1],client)
 			continue
-		if hero in deleteAliases:
+		if command in deleteAliases:
 			await deleteMessages(message.author,text[1],client)
 			continue
-		if hero in patchNotesAliases:
+		if command in patchNotesAliases:
 			await patchNotes(message.channel,text)
 			continue
-		if hero in talentAliases:
+		if command in talentAliases:
 			await message.channel.send("Call a hero's talent tier with [hero/level]")
 			continue
-		if hero in updatePokedexAliases:
+		if command in updatePokedexAliases:
 			if client.isEditingPokedex:
 				await message.channel.send('Please wait, the pokedex is already being edited!')
 				continue
@@ -142,19 +142,19 @@ async def mainProbius(client,message,texts):
 			await updatePokedex(client,text,message)
 			client.isEditingPokedex=0
 			continue
-		if hero in rollAliases:
+		if command in rollAliases:
 			await roll(text,message)
 			continue
-		if hero=='sort':
+		if command=='sort':
 			await sortFromMessage(text[1],message,client)
 			continue
-		if hero in pokedexAliases:
+		if command in pokedexAliases:
 			await pokedex(client,message.channel,aliases(text[1]))
 			continue
-		if hero==':disapproval':
+		if command==':disapproval':
 			await message.channel.send('ಠ_ಠ')
 			continue
-		if hero==':summon':
+		if command==':summon':
 			if len(text)==1:
 				await message.channel.send('༼ つ ◕\_◕ ༽つ')
 			elif '@' in text[1]:
@@ -162,18 +162,18 @@ async def mainProbius(client,message,texts):
 			else:
 				await message.channel.send('{0} {0} Summon {1}! {0} {0}'.format('༼ つ ◕\_◕ ༽つ', message.content.split('[')[1].split('/')[1].split(']')[0]))#text[1] is all lowercase etc.
 			continue
-		if hero in colourAliases:
+		if command in colourAliases:
 			await message.channel.send(file=discord.File('WS colours.png'))
 			continue
 		if message.author.id==DiscordUserIDs['Asddsa']:
-			if hero=='serverchannels':
+			if command=='serverchannels':
 				await message.channel.send([channel.name for channel in message.channel.guild.channels])
 				continue
-			if hero=='repeat' and len(text)==2:
+			if command=='repeat' and len(text)==2:
 				await message.channel.send(text[1])
 				await message.delete()
 				continue
-		if hero== 'unsorted' and message.channel.guild.name=='Wind Striders':
+		if command== 'unsorted' and message.channel.guild.name=='Wind Striders':
 			if DiscordRoleIDs['Olympian'] in [role.id for role in message.author.roles]:#Olympian
 				channel = client.get_channel(DiscordChannelIDs['General'])#WSgeneral
 				role=channel.guild.get_role(DiscordRoleIDs['Unsorted'])#UNSORTED
@@ -181,35 +181,35 @@ async def mainProbius(client,message,texts):
 				await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and type here the info at top **`Region`, `Rank`, and `Preferred Colour`**, separated by commas, to get sorted before Blackstorm purges you <:OrphAYAYA:657172520092565514>')
 				await channel.send(content='https://cdn.discordapp.com/attachments/576018992624435220/743917827718905896/sorting.gif',file=discord.File('WS colours.png'))
 				continue
-		if hero == 'vote':
+		if command == 'vote':
 			await vote(message,text)
 			continue
-		if hero in coinsAliases:
+		if command in coinsAliases:
 			await message.channel.send(random.choice(['Heads','Tails']))
 			continue
-		if hero in redditAliases:
+		if command in redditAliases:
 			await reddit(client,message,text)
 			continue
-		if hero in ['avatar','a']:
+		if command in ['avatar','a']:
 			await getAvatar(client,message.channel,text[1])
 			continue
-		if hero=='':#Empty string. Aliases returns Abathur when given this.
+		if command=='':#Empty string. Aliases returns Abathur when given this.
 			continue
-		if hero in draftAliases:
+		if command in draftAliases:
 			await draft(drafts,message.channel,message.author,text,lastDraftMessageDict,draftNames)
 			continue
-		if hero in randomAliases:
+		if command in randomAliases:
 			if len(text)==1:
 				await message.channel.send(getQuote(random.choice(getHeroes())))
 				continue
-			hero=random.choice(getHeroes())
-		if hero in helpAliases:
+			command=random.choice(getHeroes())
+		if command in helpAliases:
 			if len(text)==2 and hero in heroStatsAliases:#[info/hero]
 				await heroStats(aliases(text[1]),message.channel)
 			else:
 				await message.channel.send(helpMessage())
 			continue
-		if hero in buildsAliases:
+		if command in buildsAliases:
 			if len(text)==2:
 				if message.channel.guild.id==DiscordGuildIDs['WindStriders'] and message.channel.id!=DiscordChannelIDs['Probius']:#In WS, not in #probius
 					if message.guild.get_role(DiscordRoleIDs['CoreMember']) not in message.author.roles:#Not core member
@@ -220,52 +220,53 @@ async def mainProbius(client,message,texts):
 			else:
 				await message.channel.send("Elitesparkle's builds: <https://elitesparkle.wixsite.com/hots-builds>")
 			continue
-		if hero in rotationAlises:
+		if command in rotationAlises:
 			await rotation(message.channel)
 			continue
-		if hero=='goodbot':
+		if command=='goodbot':
 			await emoji(client,['Probius','love'],message.channel)
 			continue
-		if hero=='badbot':
+		if command=='badbot':
 			if message.author.id in ProbiusPrivilegesIDs:
 				await emoji(client,['Probius','sad'],message.channel)
 			else:
 				await emoji(client,[':pylonbat'],message.channel)
 			continue
-		if ':' in hero:
+		if ':' in command:
 			await emoji(client,text,message.channel,message)
 			continue
-		if ']' in hero:
+		if ']' in command:
 			continue
-		if hero in ['chogall',"cho'gall",'cg','cho gall','cho-gall']:
+		if command in ['chogall',"cho'gall",'cg','cho gall','cho-gall']:
 			await message.channel.send("Cho and Gall are 2 different heroes. Choose one of them")
 			print('Dual hero')
 			continue
-		if hero in quotesAliases:
+		if command in quotesAliases:
 			if len(text)==2:
 				await message.channel.send(getQuote(aliases(text[1])))
 			elif text[0]!='q':#Calling [q] alone shouldn't show link, but [q/hero] works, as well as [quotes]
 				await message.channel.send('All hero select quotes: <https://github.com/Asddsa76/Probius/blob/master/quotes.txt>')
 			continue
-		if hero in aliasesAliases:
+		if command in aliasesAliases:
 			await message.channel.send('All hero alternate names: <https://github.com/Asddsa76/Probius/blob/master/aliases.py>')
 			continue
-		if hero == 'all':
+		if command == 'all':
 			await printAll(client,message,text[1],True)
 			continue
-		if hero in emojiAliases:
+		if command in emojiAliases:
 			await message.channel.send('Emojis: [:hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.')
 			continue
 		try:
-			if len(text)==1 and hero[0]=='t' and hero[8] ==',':#[t3221323,sam]
-				await printBuild(client,message.channel,hero)
+			if len(text)==1 and command[0]=='t' and command[8] ==',':#[t3221323,sam]
+				await printBuild(client,message.channel,command)
 				continue
-			if len(text)==2 and hero[0]=='t' and len(hero)==8 and hero!='tassadar':#[t3221323/sam]
+			if len(text)==2 and command[0]=='t' and len(command)==8 and command!='tassadar':#[t3221323/sam]
 				await printBuild(client,message.channel,','.join(text))
 				continue
 		except:
 			pass
 		#From here it's actual heroes, or a search
+		hero=command
 		if len(hero)==1 or (len(hero)==2 and ('1' in hero or '2' in hero)):#Patch notes have abilities in []. Don't want spammed triggers again. Numbers for R1, R2, etc.
 			continue
 		hero=aliases(hero)
