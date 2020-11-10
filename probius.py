@@ -422,12 +422,10 @@ class MyClient(discord.Client):
 			except:pass
 		if message.author.bot:#Don't respond to bots
 			return
-		if DiscordRoleIDs['Unsorted'] in [role.id for role in message.author.roles]:#Unsorted
-			try:
+		try:
+			if DiscordRoleIDs['Unsorted'] in [role.id for role in message.author.roles]:#Unsorted
 				await sortFromReaction(message,DiscordUserIDs['Probius'],self)
-			except:
-				await client.get_channel(DiscordChannelIDs['Pepega']).send('***Unsorted message:*** **'+message.author.name+'**: '+message.content+'\n'+message.jump_url)
-			return
+		except:pass
 		if 'baelog' in message.content.lower():
 			if message.channel.guild.id==DiscordGuildIDs['WindStriders']:await client.get_channel(DiscordChannelIDs['Probius']).send(message.author.mention+'Ba**LE**og\nhttps://i.imgur.com/Nrcg11Z.png')
 			else:await message.channel.send('https://i.imgur.com/Nrcg11Z.png')
