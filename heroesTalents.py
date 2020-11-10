@@ -83,12 +83,13 @@ async def fetch(session, url):
 	async with session.get(url) as response:
 		return await response.text()
 
-async def downloadHero(hero,client,repo):
+async def downloadHero(hero,client,patch):
 	async with aiohttp.ClientSession() as session:
-		if repo=='':
-			page = await fetch(session, 'https://raw.githubusercontent.com/heroespatchnotes/heroes-talents/master/hero/'+hero+'.json')
+		if patch=='':
+			#page = await fetch(session, 'https://raw.githubusercontent.com/heroespatchnotes/heroes-talents/master/hero/'+hero+'.json')
+			page = await fetch(session, 'https://raw.githubusercontent.com/stuaroo/heroes-talents/master/hero/'+hero+'.json')
 		else:
-			page = await fetch(session, repo+'/hero/'+hero+'.json')#repo example:https://github.com/stuaroo/heroes-talents
+			page = await fetch(session, 'https://raw.githubusercontent.com/MGatner/heroes-talents/'+patch+'/hero/'+hero+'.json')
 		#client.heroPages={...'genji':[abilities,talents], ...}
 		page=loads(page)
 		abilities=[]
