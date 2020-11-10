@@ -2,7 +2,7 @@
 
 A HotS Discord bot. Call in Discord with [hero/modifier], where modifier is hotkey or talent tier. Data is pulled from HotS wiki. 
 
-Written in Python 3.6 and running on a Raspberry Pi 3 B+
+Written in Python 3.5.3 and running on a Raspberry Pi 3 B+
 
 Project started on 14/9-2019
 
