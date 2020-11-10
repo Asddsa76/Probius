@@ -88,8 +88,11 @@ async def mainProbius(client,message,texts):
 				await sortList(message)
 			continue
 		if hero in ['name', 'names']:
-			twinkles=[(i.name if not i.nick else i.nick)+(' ('+i.name+')')*int(bool(i.nick)) for i in message.guild.members if text[1].lower() in i.name.lower() or i.nick and text[1].lower() in i.nick.lower()]
-			await message.channel.send('\n'.join(twinkles)+'\n'+str(len(twinkles))+' '+text[1].capitalize()+'s')
+			names=[
+				(i.nick or i.name)+(' ('+i.name+')')*int(bool(i.nick)) 
+				for i in message.guild.members 
+				if text[1].lower() in i.name.lower() or i.nick and text[1].lower() in i.nick.lower()]
+			await message.channel.send('\n'.join(names)+'\n'+str(len(names))+' '+text[1].capitalize()+'s')
 			continue
 		if hero in heroAliases+[i+'s' for i in heroAliases]:
 			await heroes(message,text,message.channel,client)
@@ -152,7 +155,7 @@ async def mainProbius(client,message,texts):
 			continue
 		if hero==':summon':
 			if len(text)==1:
-				await message.channel.send('༼ つ ◕\\_◕ ༽つ')
+				await message.channel.send('༼ つ ◕\_◕ ༽つ')
 			elif '@' in text[1]:
 				await message.channel.send('༼ つ ◕\_◕ ༽つ ༼ つ ◕\_◕ ༽つ'+' Summon '+message.author.mention+'! ༼ つ ◕\_◕ ༽つ ༼ つ ◕\_◕ ༽つ')
 			else:
