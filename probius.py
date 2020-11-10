@@ -267,6 +267,11 @@ async def mainProbius(client,message,texts):
 		hero=aliases(hero)
 		if len(text)==2:#If user switches to hero first, then build/quote
 			if text[1] in buildsAliases:
+				if message.channel.guild.id==535256944106012694 and message.channel.id!=571531013558239238:#In WS, not in #probius
+					if message.guild.get_role(571321937821696001) not in message.author.roles:#Not core member
+						await message.guild.get_channel(571531013558239238).send(message.author.mention+' <:bonk:761981366744121354>')
+						await guide(hero,message.guild.get_channel(571531013558239238))
+						continue
 				await guide(hero,message.channel)
 				continue
 			if text[1] in quotesAliases and text[1]!='q':
