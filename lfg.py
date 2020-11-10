@@ -1,4 +1,5 @@
 from printFunctions import printLarge
+from discordIDs import *
 
 def roleAliases(role):
 	role='grandmaster' if role=='gm' else role
@@ -16,7 +17,7 @@ async def lfg(channel,text,client):
 	inputRoles=[roleAliases(j) for j in text.replace(' ','').split(',')]
 	roles=[i for i in channel.guild.roles if i.name.lower().replace(' ','') in inputRoles]
 	people=[i for i in channel.guild.members if len(roles)==sum(1 for j in roles if j in i.roles)]
-	lfgRole=client.get_guild(535256944106012694).get_role(693038480783048774)
+	lfgRole=client.get_guild(DiscordGuildIDs['WindStriders']).get_role(DiscordRoleIDs['LFG'])
 	if len(roles)!=len(inputRoles):
 		await channel.send('Invalid roles!')
 	elif people:

@@ -1,3 +1,5 @@
+from discordIDs import *
+
 def helpMessage():
 	output="""[Hero] to see that hero's abilities.
 [Hero/level] for that hero's talents at that level.
@@ -44,8 +46,8 @@ async def vote(message,text):
 		await message.add_reaction('\U0001f44e')
 
 async def deleteMessages(author,ping,client):
-	guild=client.get_guild(535256944106012694)#Wind Striders
-	if 557521663894224912 not in [role.id for role in author.roles]:
+	guild=client.get_guild(DiscordGuildIDs['WindStriders'])#Wind Striders
+	if DiscordRoleIDs['Olympian'] not in [role.id for role in author.roles]:
 		return
 		
 	userId=int(ping.replace(' ','').replace('!','')[2:-1])
@@ -58,7 +60,7 @@ async def deleteMessages(author,ping,client):
 					deletedCount+=1
 		except:
 			pass
-	await guild.get_channel(576018992624435220).send('Deleted '+str(deletedCount)+' messages from '+ping)
+	await guild.get_channel(DiscordChannelIDs['Pepega']).send('Deleted '+str(deletedCount)+' messages from '+ping)
 
 async def removeEmbeds(message):#Some embeds are instant, others are edited in by discord. Call in both on_message and on_message_edit
 	if message.embeds:

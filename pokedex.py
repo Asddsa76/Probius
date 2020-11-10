@@ -1,8 +1,9 @@
 from printFunctions import *
 from aliases import *
+from discordIDs import *
 
 async def fillPokedex(client):#Fills internal state with pokedex members
-	pokedexChannel=client.get_channel(597140352411107328)
+	pokedexChannel=client.get_channel(DiscordChannelIDs['Pokedex'])
 	output=''
 	async for message in pokedexChannel.history(limit=50):
 		output+=message.content+'\n'
@@ -31,21 +32,21 @@ async def pokedex(client,channel,hero):
 	hero=hero.replace('_',' ')
 	mains=pokedex.split(hero)[1].split('\n')[0]
 	if hero=='Samuro':
-		names=[i.name for i in client.get_guild(535256944106012694).get_role(557550150109888513).members]
+		names=[i.name for i in client.get_guild(DiscordGuildIDs['WindStriders']).get_role(DiscordRoleIDs['IllusionMaster']).members]
 		message=await channel.send(hero+' discussion! Our mains are the **Illusion masters: '+', '.join(names)+'.** React to ping them.')
 	elif mains:
 		names=[client.get_user(int(i)).name for i in mains.replace('>','').replace(' ','').replace('!','').split('<@')[1:]]
 		message=await channel.send(hero+' discussion! Our mains are **'+', '.join(names)+'.** React to ping them.')
 	else:
-		message=await channel.send(hero+" discussion! We don't have any mains for this hero, ping <@329447886465138689> if you know any. React to ping Balance team.")
+		message=await channel.send(hero+" discussion! We don't have any mains for this hero, ping <@{}> if you know any. React to ping Balance team.".format(DiscordUserIDs['Blackstorm']))
 	await message.add_reaction('\U0001f44d')
 
 async def pingPokedex(client,message,member):
 	vowels='AEIOU'
 	if 'Balance team' in message.content:
-		await message.channel.send(member.mention+' wants to start a'+'n'*(message.content[0] in vowels)+' '+message.content.split('We ')[0]+'<@&577935915448795137>')
+		await message.channel.send(member.mention+' wants to start a'+'n'*(message.content[0] in vowels)+' '+message.content.split('We ')[0]+'<@&{}}>'.format(DiscordRoleIDs['BalanceTeam']))
 	elif 'Samuro' in message.content:
-		await message.channel.send(member.mention+' wants to start a Samuro discussion! <@&557550150109888513>')
+		await message.channel.send(member.mention+' wants to start a Samuro discussion! <@&{}>'.format(DiscordRoleIDs['IllusionMaster']))
 	else:
 		pokedex=await fillPokedex(client)
 		hero=message.content.split(' discussion!')[0]
@@ -57,7 +58,7 @@ async def pokedexCreationTrim(text):
 	return text.replace('<@!460270968879841291>','').replace('  ',' ')
 
 async def updatePokedex(client,text,message):
-	if 557521663894224912 not in [role.id for role in message.author.roles]:
+	if DiscordRoleIDs['Olympian'] not in [role.id for role in message.author.roles]:
 		await message.channel.send('You need to be a mod to update the Pokedex!')
 		return
 	if len(text)!=2:
@@ -81,7 +82,7 @@ async def updatePokedex(client,text,message):
 		await message.channel.send('Invalid ping!')
 		return
 
-	pokedex_channel=client.get_channel(597140352411107328)
+	pokedex_channel=client.get_channel(DiscordChannelIDs['Pokedex'])
 
 	pokedex_messages=[]
 	# We're unlikely to ever go above 50 messages in the pokedex.
@@ -140,7 +141,7 @@ async def updatePokedex(client,text,message):
 		await message.channel.send(user+' has been added to '+hero)
 
 async def removePokedex(client,MemberID): #Removes an user from all pokedex heroes
-	pokedexChannel=client.get_channel(597140352411107328)
+	pokedexChannel=client.get_channel(DiscordChannelIDs['Pokedex'])
 	async for message in pokedexChannel.history(limit=50):
 		MemberID=str(MemberID)
 		await message.edit(content=message.content.replace(' <@'+MemberID+'>','').replace(' <@!'+MemberID+'>',''))
