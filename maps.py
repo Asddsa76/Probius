@@ -21,6 +21,12 @@ async def mapAliases(text):
 		return 'blackhearts-bay'
 	elif text in ['dshire']:
 		return 'dragon-shire'
+	elif text in ['ifs']:
+		return 'infernal-shrines'
+	elif text in ['whj']:
+		return 'warhead-junction'
+	elif text in ['spidertomb']:
+		return 'tomb-of-the-spider-queen'
 
 async def mapImage(channel,battleground):
 	#Album: https://imgur.com/a/YxG3xM0

@@ -81,6 +81,9 @@ async def redditForwarding(client):#Called every 60 seconds
 				if author in redditors or sum(1 for i in keywords if i.lower() in title.lower()):
 					print('{} by {}'.format(title,author))
 					client.forwardedPosts.append([title,author,url])
+					if author=='nexusschoolhouse':
+						await client.get_channel(222817241249480704).send('**{}**: '.format(title)+url)
+
 					toPing=[]
 					for i in keywords:
 						if i.lower() in title.lower():
