@@ -80,7 +80,7 @@ def aliases(hero):
 		return 'Lt._Morales'
 	elif hero in ['dj','lucio']:
 		return 'Lúcio'
-	elif hero in ['deer','bambi','33elk']:
+	elif hero in ['deer','bambi','33elk','lulnara']:
 		return 'Lunara'
 	elif hero in ['malganis','mg','turtle']:
 		return "Mal'Ganis"
@@ -134,7 +134,7 @@ def aliases(hero):
 		return 'Yrel'
 	elif hero in ['zerathul']:
 		return 'Zeratul'
-	elif hero in ["zj",'zuljin','troll']:
+	elif hero in ["zj",'zuljin','troll','luljin']:
 		return "Zul'jin"
 		
 	from printFunctions import getHeroes
