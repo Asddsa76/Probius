@@ -12,7 +12,7 @@ DiscordUserIDs={
     'Weebatsu':408114527947980802,
 }
 
-ProbiusPrivilegesIDs=[DiscordUserIDs['Asddsa'], DiscordUserIDs['MindHawk']]
+ProbiusPrivilegesIDs=[DiscordUserIDs['Asddsa']]
 
 DiscordRoleIDs={
     'IllusionMaster':557550150109888513,
