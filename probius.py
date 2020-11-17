@@ -181,6 +181,12 @@ async def mainProbius(client,message,texts):
 				await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and type here the info at top **`Region`, `Rank`, and `Preferred Colour`**, separated by commas, to get sorted before Blackstorm purges you <:OrphAYAYA:657172520092565514>')
 				await channel.send(content='https://cdn.discordapp.com/attachments/576018992624435220/743917827718905896/sorting.gif',file=discord.File('WS colours.png'))
 				continue
+		if command=='byprobiusbepurged' and message.channel.guild.name=='Wind Striders':
+			if DiscordRoleIDs['Olympian'] in [role.id for role in message.author.roles]:
+				people=[i for i in message.channel.guild.members if DiscordRoleIDs['Unsorted'] in [role.id for role in i.roles]]
+				for person in people:
+					await message.channel.guild.kick(person,reason='Did not sort in time!')
+				continue
 		if command == 'vote':
 			await vote(message,text)
 			continue
