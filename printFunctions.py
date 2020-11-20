@@ -84,6 +84,8 @@ async def addUnderscoresAndNewline(namelist,ability):
 
 async def printSearch(abilities, talents, name, hero, deep=False):#Prints abilities and talents with the name of the identifier
 	name=abilityAliases(hero,name)
+	if not name:
+		return
 	if '--' in name:
 		[name,exclude]=name.split('--')
 	else:
