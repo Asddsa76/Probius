@@ -55,7 +55,8 @@ async def additionalInfo(hero,name,description):
 
 async def fixTooltips(hero,name,description):
 	fixDict={#Replaces text using strikethrough
-	'tracer':{'Sleight of Hand':['20%','24%'],
+	'tracer':{
+		'Sleight of Hand':['20%','24%'],
 		'Reload':['0.75','0.8125']},
 	'cassia':{'War Traveler':['8%','4%','1 second','0.5 seconds']},
 	'sylvanas':{'Haunting Wave':['teleport','fly']},
@@ -63,7 +64,8 @@ async def fixTooltips(hero,name,description):
 	'auriel':{"Swift Sweep":['50%','100%']},
 	'deathwing':{'Bellowing Roar':['2 seconds','1.5 seconds']},
 	'varian':{'Victory Rush':['or Monster dies','dies, or when you kill a Monster']},
-	'lili':{'Healing Brew':['ally (prioritizing Heroes)','allied Hero']}
+	'lili':{'Healing Brew':['ally (prioritizing Heroes)','allied Hero']},
+	'ragnaros':{'Blistering Attacks':['Basic Abilities','Living Meteor or Blast Wave, or enemy heroes with Empower Sulfuras,']}
 	}
 	if hero in fixDict:
 		if name in fixDict[hero]:

@@ -82,6 +82,9 @@ async def mainProbius(client,message,texts):
 		command=text[0].replace(' ','')
 		if command in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
+		if command in ['schedule','patchschedule']:
+			await schedule(message)
+			continue
 		if command =='sortlist':
 			if message.guild.get_role(DiscordRoleIDs['Olympian']) not in message.author.roles:#Not mod
 				await message.channel.send(message.author.mention+' <:bonk:761981366744121354>')
@@ -515,7 +518,10 @@ class MyClient(discord.Client):
 
 	async def on_raw_reaction_remove(self,payload):
 		member=client.get_user(payload.user_id)
-		message=await client.get_channel(payload.channel_id).fetch_message(payload.message_id)
+		try:
+			message=await client.get_channel(payload.channel_id).fetch_message(payload.message_id)
+		except:
+			return
 		if message.id==693380327413907487:
 			if str(payload.emoji) in wsReactionRoles:
 				await client.get_guild(DiscordGuildIDs['WindStriders']).get_member(payload.user_id).remove_roles(client.get_guild(DiscordGuildIDs['WindStriders']).get_role(wsReactionRoles[str(payload.emoji)]))

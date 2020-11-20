@@ -19,12 +19,12 @@ async def sort(roles,member,olympian,client):
 	if len(roles)!=3:
 		#await channel.send('Need ping and 3 roles')
 		return
-	#Colours between bestBot and IM
-	bestBot=guild.get_role(635187043676323842)
-	IM=guild.get_role(DiscordRoleIDs['IllusionMaster'])
-	#Ranks and regions between lopez and core member
-	lopez=guild.get_role(571525173698756608)
-	coreMember=guild.get_role(DiscordRoleIDs['CoreMember'])
+	#Colours
+	blue1=guild.get_role(577565172357398530)
+	magenta=guild.get_role(653065647563210792)
+	#Ranks and regions
+	gm=guild.get_role(559024554144694303)
+	sea=guild.get_role(562624527020982293)
 
 	unsorted=guild.get_role(DiscordRoleIDs['Unsorted'])
 
@@ -40,7 +40,7 @@ async def sort(roles,member,olympian,client):
 		try:
 			role=roleAliases(role)
 			for i in sorted(guild.roles):
-				if (i<bestBot and i>IM) or (i<lopez and i>coreMember):
+				if (i<=blue1 and i>=magenta) or (i<=gm and i>=sea):
 					if await trim(i.name)==await trim(role):
 						rolesToAdd.append(i)
 					elif await trim(i.name)==await trim(''.join([i for i in role if not i.isdigit()])):#Rank numbers
