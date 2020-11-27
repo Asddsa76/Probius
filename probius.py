@@ -403,6 +403,14 @@ class MyClient(discord.Client):
 		self.isEditingPokedex=0
 		self.ready=False#Wait until ready before taking commands
 
+		#Region:region lfg
+		self.wsLfgRoles={562624319524438057:780200569465471008,#EU
+		562624364785434635:780200062713724948,#NA
+		562624406766223371:780200585314959390,#Asia
+		562624486499680266:780219236416749578,#CN
+		562624583342227458:780200579375824897,#LatAM
+		562624527020982293:780219683651190785}#SEA
+
 	async def on_ready(self):
 		print('Logged on...')
 		print('Filling up with Reddit posts...')
@@ -489,6 +497,10 @@ class MyClient(discord.Client):
 		if message.id==693380327413907487:
 			if str(payload.emoji) in wsReactionRoles:
 				await client.get_guild(DiscordGuildIDs['WindStriders']).get_member(payload.user_id).add_roles(client.get_guild(DiscordGuildIDs['WindStriders']).get_role(wsReactionRoles[str(payload.emoji)]))
+				if str(payload.emoji)=='🇱':
+					member=client.get_guild(DiscordGuildIDs['WindStriders']).get_member(payload.user_id)
+					await giveLfgRoles(member,self)
+
 
 		elif message.author.id==DiscordUserIDs['Probius'] and str(payload.emoji)=='👎':#Message is from Probius, and is downvoted with thumbs down
 			if message.channel.id in [DiscordChannelIDs['RedditPosts'],DiscordChannelIDs['Pokedex']]:#Message is in reddit posts or pokedex
@@ -528,6 +540,9 @@ class MyClient(discord.Client):
 		if message.id==693380327413907487:
 			if str(payload.emoji) in wsReactionRoles:
 				await client.get_guild(DiscordGuildIDs['WindStriders']).get_member(payload.user_id).remove_roles(client.get_guild(DiscordGuildIDs['WindStriders']).get_role(wsReactionRoles[str(payload.emoji)]))
+				if str(payload.emoji)=='🇱':
+					member=client.get_guild(DiscordGuildIDs['WindStriders']).get_member(payload.user_id)
+					await removeLfgRoles(member,self)
 
 	async def on_member_join(self,member):
 		guild=member.guild

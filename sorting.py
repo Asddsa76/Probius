@@ -60,6 +60,7 @@ async def sort(roles,member,olympian,client):
 	await member.add_roles(*rolesToAdd)
 	await member.remove_roles(unsorted)
 	await channel.send('**'+member.name+'** has been sorted!')
+	await giveLfgRoles(member,client)
 
 async def sortFromMessage(text,message,client):
 	unsortedMember,text=text.split('>')
@@ -83,3 +84,14 @@ async def sortFromReaction(message,reacterID,client):
 	guild=client.get_guild(DiscordGuildIDs['WindStriders'])
 	olympian=guild.get_member(int(reacterID))
 	await sort(roles,unsortedMember,olympian,client)
+
+async def giveLfgRoles(member,client):
+	for i in [i.id for i in member.roles]:
+		if i in client.wsLfgRoles:
+			await member.add_roles(client.get_guild(DiscordGuildIDs['WindStriders']).get_role(client.wsLfgRoles[i]))
+
+async def removeLfgRoles(member,client):
+	invertedDict={v: k for k, v in client.wsLfgRoles.items()}
+	for i in [i.id for i in member.roles]:
+		if i in invertedDict:
+			await member.remove_roles(client.get_guild(DiscordGuildIDs['WindStriders']).get_role(i))
