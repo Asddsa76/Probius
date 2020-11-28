@@ -86,6 +86,8 @@ async def sortFromReaction(message,reacterID,client):
 	await sort(roles,unsortedMember,olympian,client)
 
 async def giveLfgRoles(member,client):
+	if 693038480783048774 not in [i.id for i in member.roles]:
+		return
 	for i in [i.id for i in member.roles]:
 		if i in client.wsLfgRoles:
 			await member.add_roles(client.get_guild(DiscordGuildIDs['WindStriders']).get_role(client.wsLfgRoles[i]))

@@ -29,7 +29,6 @@ async def rotation(channel):
 			elif '<td valign="top" ' in line:
 				if 'title="360 Boost' in line:
 					boost360=line.split('</s>')[1].split(' <img src="')[0]+'<:nexusGem:697309829051449424>'
-					print(boost360)
 				elif len(rotationHeroes)<14 and 'All Heroes' not in rotationHeroes:
 					rotationHeroes.append(line[line.index('title="')+7:line.index('" alt')])
 				else:
