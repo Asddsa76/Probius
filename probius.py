@@ -473,6 +473,10 @@ class MyClient(discord.Client):
 			await after.edit(suppress=True)
 		if before.author.bot:
 			return
+		try:
+			if DiscordRoleIDs['Unsorted'] in [role.id for role in message.author.roles]:#Unsorted
+				await sortFromReaction(message,DiscordUserIDs['Probius'],self)
+		except:pass
 		if '[' in after.content and ']' in after.content:
 			try:
 				beforeTexts=findTexts(before)
