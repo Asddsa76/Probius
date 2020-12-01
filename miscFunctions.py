@@ -113,4 +113,6 @@ async def sortList(message):
 	await message.channel.send('\n'.join(a))
 
 async def schedule(message):
-	await message.channel.send('Monday: PTR patch\nTuesday: Content patch\nWednesday: Balance patch')
+	await message.channel.send('''Monday: PTR patch
+	Tuesday: Content patch (for NA. Early wednesday morning for EU)
+	Wednesday: Balance patch''')
