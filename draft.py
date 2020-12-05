@@ -98,18 +98,21 @@ async def printDraft(drafts,channel,draftList,lastDraftMessageDict,draftNames):#
 				output=banEmojis[hero]+'\n'+output
 			else:
 				if channel in lastDraftMessageDict:
-					await lastDraftMessageDict[channel].delete()
+					try:await lastDraftMessageDict[channel].delete()
+					except:pass
 				lastDraftMessageDict[channel]=await channel.send(output+'```',file=discord.File('Emojis/'+hero+' sad'+fileExtension))
 				return
 		else:
 			if channel in lastDraftMessageDict:
-				await lastDraftMessageDict[channel].delete()
+				try:await lastDraftMessageDict[channel].delete()
+				except:pass
 			lastDraftMessageDict[channel]=await channel.send(output+'```',file=discord.File('Emojis/'+hero+' happy'+fileExtension))
 			await addCompleteReactions(completeDraft,lastDraftMessageDict[channel])
 			return
 
 	if channel in lastDraftMessageDict:
-		await lastDraftMessageDict[channel].delete()
+		try:await lastDraftMessageDict[channel].delete()
+		except:pass
 	lastDraftMessageDict[channel]=await channel.send(output+'```')
 	await addCompleteReactions(completeDraft,lastDraftMessageDict[channel])
 
