@@ -89,7 +89,7 @@ async def downloadHero(hero,client,patch):
 	async with aiohttp.ClientSession() as session:
 		if patch=='':
 			#page = await fetch(session, 'https://raw.githubusercontent.com/heroespatchnotes/heroes-talents/master/hero/'+hero+'.json')
-			page = await fetch(session, 'https://raw.githubusercontent.com/stuaroo/heroes-talents/master/hero/'+hero+'.json')
+			page = await fetch(session, 'https://raw.githubusercontent.com/MGatner/heroes-talents/83004/hero/'+hero+'.json')
 		else:
 			page = await fetch(session, 'https://raw.githubusercontent.com/MGatner/heroes-talents/'+patch+'/hero/'+hero+'.json')
 		#client.heroPages={...'genji':[abilities,talents], ...}

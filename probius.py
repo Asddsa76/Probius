@@ -448,7 +448,7 @@ class MyClient(discord.Client):
 		except:pass
 		if 'baelog' in message.content.lower():
 			if message.channel.guild.id==DiscordGuildIDs['WindStriders']:await client.get_channel(DiscordChannelIDs['Probius']).send(message.author.mention+'Ba**LE**og\nhttps://i.imgur.com/Nrcg11Z.png')
-			else:await message.channel.send('https://i.imgur.com/Nrcg11Z.png')
+			else:await message.channel.send('Ba**LE**og\nhttps://i.imgur.com/Nrcg11Z.png')
 		if self.ready==False:
 			return
 		if message.content.count('@')>50 and message.channel.guild.id==DiscordGuildIDs['WindStriders']:

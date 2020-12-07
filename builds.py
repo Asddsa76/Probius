@@ -21,7 +21,7 @@ async def guide(hero,channel):
 	with open('icyVeinsHeroes.txt','r') as f:
 		for i in f:
 			if hero==aliases(i):
-				await channel.send(output+'Icy Veins: <https://www.icy-veins.com/heroes/'+await trimForIcyVeinsAndPsionicStorm(hero)+'-build-guide>')#<> prevents thumbnails.
+				await channel.send(output+'Icy Veins: <https://www.icy-veins.com/heroes/'+(await trimForIcyVeinsAndPsionicStorm(hero)).replace('kelthuzad','kel-thuzad')+'-build-guide>')#<> prevents thumbnails.
 				return
 
 	with open('elitesparkleBuilds.txt','r') as f:

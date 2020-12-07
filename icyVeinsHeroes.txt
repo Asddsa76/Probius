@@ -28,6 +28,7 @@ Genji
 Greymane
 Gul'dan
 Hanzo
+Hogger
 Illidan
 Imperius
 Jaina

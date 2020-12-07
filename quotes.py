@@ -7,6 +7,7 @@ def getQuote(hero):
 		for line in f:
 			if hero.replace('ú','u') in line:
 				return '**'+hero.replace('_',' ')+':** '+line[line.index('; ')+2:]
+		return ''
 
 def downloadQuotes():
 	noQuoteOnPage=['Anduin','Imperius','Mephisto','Murky','Probius','Qhira','The_Butcher','Whitemane']
