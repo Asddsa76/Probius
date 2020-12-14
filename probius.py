@@ -225,7 +225,7 @@ async def mainProbius(client,message,texts):
 			if len(text)==2:
 				if message.channel.guild.id==DiscordGuildIDs['WindStriders'] and message.channel.id!=DiscordChannelIDs['Probius']:#In WS, not in #probius
 					if message.guild.get_role(DiscordRoleIDs['CoreMember']) not in message.author.roles:#Not core member
-						await message.guild.get_channel(DiscordChannelIDs['Probius']).send(message.author.mention+' <:bonk:761981366744121354>')
+						await message.guild.get_channel(DiscordChannelIDs['Probius']).send(message.author.mention+' Please call builds in this channel to avoid cluttering the other channels! <:bonk:761981366744121354>')
 						await guide(aliases(text[1]),message.guild.get_channel(DiscordChannelIDs['Probius']))
 						continue
 				await guide(aliases(text[1]),message.channel)
@@ -286,7 +286,7 @@ async def mainProbius(client,message,texts):
 			if text[1] in buildsAliases:
 				if message.channel.guild.id==DiscordGuildIDs['WindStriders'] and message.channel.id!=DiscordChannelIDs['Probius']:#In WS, not in #probius
 					if message.guild.get_role(DiscordRoleIDs['CoreMember']) not in message.author.roles:#Not core member
-						await message.guild.get_channel(DiscordChannelIDs['Probius']).send(message.author.mention+' <:bonk:761981366744121354>')
+						await message.guild.get_channel(DiscordChannelIDs['Probius']).send(message.author.mention+'Please call builds in this channel to avoid cluttering the other channels! <:bonk:761981366744121354>')
 						await guide(hero,message.guild.get_channel(DiscordChannelIDs['Probius']))
 						continue
 				await guide(hero,message.channel)

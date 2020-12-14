@@ -83,6 +83,8 @@ async def redditForwarding(client):#Called every 60 seconds
 					client.forwardedPosts.append([title,author,url])
 					if author=='nexusschoolhouse':
 						await client.get_channel(222817241249480704).send('**{}**: '.format(title)+url)
+					if author=='Spazzo965' and ('CCL' in title or 'Undocumented' in title):
+						await client.get_channel(222817241249480704).send('**{}**: '.format(title)+url)
 
 					toPing=[]
 					for i in keywords:
