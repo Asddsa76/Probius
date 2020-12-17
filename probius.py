@@ -452,11 +452,15 @@ class MyClient(discord.Client):
 		if self.ready==False:
 			return
 		if message.content.count('@')>50 and message.channel.guild.id==DiscordGuildIDs['WindStriders']:
-			username=message.author.name
-			channel=message.channel
-			await message.channel.guild.ban(message.author,reason='Spam: over 50 pings in one message.')
-			await channel.send('Banned '+username+' for excessive pings!')
-			return
+			if message.guild.get_role(DiscordRoleIDs['Olympian']) not in message.author.roles:#Not mod
+				await message.channel.send(message.author.mention+' <:bonk:761981366744121354>')
+				username=message.author.name
+				channel=message.channel
+				await message.channel.guild.ban(message.author,reason='Spam: over 50 pings in one message.')
+				await channel.send('Banned '+username+' for excessive pings!')
+				return
+			else
+				await channel.send("I'm a bad bot.")
 
 		elif '[' in message.content:
 			texts=findTexts(message)
