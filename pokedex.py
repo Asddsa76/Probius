@@ -17,7 +17,9 @@ async def pokedex(client,channel,hero):
 				print(hero.replace('_',' '))
 		return
 	if '@' in hero:#Find all heroes the user is listed in
-		user=hero.replace(' ','').replace('!','').replace('@','@!')
+		user=hero
+		for i in ' <@!>':
+			user=user.replace(i,'')
 		heroes=pokedex.split('\n')
 		output=sorted([i.split(' <')[0] for i in heroes if user in i])
 		if output:
@@ -96,6 +98,8 @@ async def updatePokedex(client,text,message):
 	
 	# Let's update the message before splitting it
 	hero=hero.replace('_',' ')
+	if hero not in pokedex_as_string:
+		pokedex_as_string+='\n'+hero+': '
 
 	pokedex_as_individual_hero_strings=pokedex_as_string.split('\n')
 	pokedex_as_individual_hero_strings_new=[]
