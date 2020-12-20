@@ -459,8 +459,8 @@ class MyClient(discord.Client):
 				await message.channel.guild.ban(message.author,reason='Spam: over 50 pings in one message.')
 				await channel.send('Banned '+username+' for excessive pings!')
 				return
-			else
-				await channel.send("I'm a bad bot.")
+			else:
+				await channel.send("Tried to ban Mindhawk, but he's immune")
 
 		elif '[' in message.content:
 			texts=findTexts(message)
