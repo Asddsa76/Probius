@@ -427,10 +427,9 @@ class MyClient(discord.Client):
 
 	async def on_message(self, message):
 		for i in char:
-			if message.author.id==i[0]:
-				if time.time()-i[2]>300:#5 minutes since last reaction
-					i[2]=time.time()
-					await message.add_reaction(i[1])
+			if message.author.id==i[0] and time.time()-i[2]>300 and message.channel.guild.id==535256944106012694:#5 minutes since last reaction
+				i[2]=time.time()
+				await message.add_reaction(i[1])
 		pingNames={'lemmie':DiscordUserIDs['Gooey'], 'medicake':DiscordUserIDs['Medicake']}
 		pingList=[pingNames[i] for i in pingNames.keys() if '@'+i in message.content.replace(' ','')]
 		if pingList:
