@@ -27,9 +27,10 @@ async def additionalInfo(hero,name,description):
 		'Life-Binder':'Dragonqueen: The cast range of Life-Binder is increased from 6 to 9.'},
 	'maiev':{'Spirit of Vengeance':'Reactivate to teleport to the spirit.'},
 	'sylvanas':{
-		'Haunting Wave':'Sylvanas is unstoppable while flying to the banshee. ',
+		'Haunting Wave':'Sylvanas is unstoppable while flying to the banshee. Reactivation becomes available 0.5 seconds after first E.',
 		'Mercenary Queen':'Mercenaries will not be stunned if the third application is through Remorseless.',
-		'Black Arrows':'Remorseless shots do not disable enemies.'},
+		'Black Arrows':'Remorseless shots do not disable enemies.',
+		'Overwhelming Affliction':'Remorseless neither applies, nor extends the slow.'},
 	'lunara':{'Leaping Strike':'Lunara is unstoppable while leaping.'},
 	'chen':{'Storm, Earth, Fire':'Using Storm, Earth, Fire removes most negative effects from Chen.'},
 	'guldan':{'Life Tap':'Costs 222 (+4% per level) Health.'},

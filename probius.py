@@ -216,7 +216,7 @@ async def mainProbius(client,message,texts):
 				continue
 			command=random.choice(getHeroes())
 		if command in helpAliases:
-			if len(text)==2 and hero in heroStatsAliases:#[info/hero]
+			if len(text)==2 and command in heroStatsAliases:#[info/hero]
 				await heroStats(aliases(text[1]),message.channel)
 			else:
 				await message.channel.send(helpMessage())
@@ -388,6 +388,8 @@ def findTexts(message):
 		allTexts+=texts
 	return allTexts
 
+char=[[247677408386351105,'<:GoToChar:793111041046609951>',time.time()],[129702871837966336,'<:tww2:793399028611285022>',time.time()]]#[ID, emoji, time]
+
 class MyClient(discord.Client):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
@@ -424,6 +426,11 @@ class MyClient(discord.Client):
 		print('Ready!')
 
 	async def on_message(self, message):
+		for i in char:
+			if message.author.id==i[0]:
+				if time.time()-i[2]>300:#5 minutes since last reaction
+					i[2]=time.time()
+					await message.add_reaction(i[1])
 		pingNames={'lemmie':DiscordUserIDs['Gooey'], 'medicake':DiscordUserIDs['Medicake']}
 		pingList=[pingNames[i] for i in pingNames.keys() if '@'+i in message.content.replace(' ','')]
 		if pingList:
