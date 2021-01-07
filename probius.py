@@ -388,8 +388,8 @@ def findTexts(message):
 		allTexts+=texts
 	return allTexts
 
-char=[[247677408386351105,'<:GoToChar:793111041046609951>',time.time()],[129702871837966336,'<:tww2:793399028611285022>',time.time()]]#[ID, emoji, time]
-
+#char=[[247677408386351105,'<:GoToChar:793111041046609951>',time.time()],[129702871837966336,'<:tww2:793399028611285022>',time.time()]]#[ID, emoji, time]
+char=[]
 class MyClient(discord.Client):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)

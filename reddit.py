@@ -22,7 +22,8 @@ keywords={
 'Hanzo':[DiscordUserIDs['Medicake']],
 'Lucio':[DiscordUserIDs['Medicake']],
 'Zeratul':[DiscordUserIDs['Derenash']],
-'Valeera':[DiscordUserIDs['MBee']]}
+'Valeera':[DiscordUserIDs['MBee']],
+'Orphea':[410481791204327424]}
 
 mindhawk_keywords=['Kerrigan','Cho ','Gall',"Cho'Gall",'Orphea','Li-Ming','Ragnaros', 'Li Ming', 'chogall']
 for i in mindhawk_keywords:
