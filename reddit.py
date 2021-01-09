@@ -15,7 +15,7 @@ discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','
 
 #Posts with these in title gets forwarded regardless of author
 keywords={
-'Genji':[DiscordUserIDs['Asddsa'],DiscordUserIDs['SomeoneNew'],DiscordUserIDs['Weebatsu']],
+'Genji':[DiscordUserIDs['SomeoneNew'],DiscordUserIDs['Weebatsu']],
 'Samuro':[DiscordUserIDs['Blackstorm']],
 'Maiev':[DiscordUserIDs['SomeoneNew']], 
 ' Dva:':[DiscordUserIDs['Spazzo']], 
