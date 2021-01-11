@@ -8,7 +8,7 @@ def aliases(hero):
 		return 'Abathur'
 	elif hero in ['highlord','sith','sithlord','edgelord']:
 		return 'Alarak'
-	elif hero in ['alexstrazsa','dragonmom']:
+	elif hero in ['alexstrazsa','dragonmom','alextraza','alexstraza']:
 		return 'Alexstrasza'
 	elif hero in ['beetle','anubarak','bug']:
 		return "Anub'arak"
@@ -22,7 +22,7 @@ def aliases(hero):
 		return 'Blaze'
 	elif hero in ['bw','faeriedragon']:
 		return 'Brightwing'
-	elif hero in ['cain']:
+	elif hero in ['cain','deckardcain']:
 		return 'Deckard'
 	elif hero in ['amazon']:
 		return 'Cassia'
@@ -42,7 +42,7 @@ def aliases(hero):
 		return 'Falstad'
 	elif hero in ['garry','hellscream']:
 		return 'Garrosh'
-	elif hero in ['gazlord']:
+	elif hero in ['gazlord','gazlove']:
 		return 'Gazlowe'
 	elif hero in ['graymane','gm']:
 		return 'Greymane'
@@ -68,7 +68,7 @@ def aliases(hero):
 		return "Kel'Thuzad"
 	elif hero in ['sarah']:
 		return 'Kerrigan'
-	elif hero in ['karazhim','monk']:
+	elif hero in ['karazhim','monk','karazim']:
 		return 'Kharazim'
 	elif hero in ['janitor']:
 		return 'Leoric'
