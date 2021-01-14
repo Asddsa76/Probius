@@ -9,7 +9,7 @@ def roleAliases(role):
 	role='unranked' if role in ['ur','none','qm'] else role
 
 	role='eu' if role=='europe' else role
-	role='na' if role in ['northamerica','us','america','americas'] else role
+	role='na' if role in ['northamerica','us','america','americas','usa'] else role
 
 	return role
 
