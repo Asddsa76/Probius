@@ -508,7 +508,10 @@ class MyClient(discord.Client):
 			return
 		if message.author.id==670832046389854239:#Advisor wrote message
 			return
-		if message.id==693380327413907487:
+		if message.id==799711541708193803:
+			if str(payload.emoji)=='🇩':
+				await client.get_guild(183275001439322112).get_member(payload.user_id).add_roles(client.get_guild(183275001439322112).get_role(799678402201255956))
+		if message.id==693380327413907487:#WS Server rules
 			if str(payload.emoji) in wsReactionRoles:
 				await client.get_guild(DiscordGuildIDs['WindStriders']).get_member(payload.user_id).add_roles(client.get_guild(DiscordGuildIDs['WindStriders']).get_role(wsReactionRoles[str(payload.emoji)]))
 				if str(payload.emoji)=='🇱':
@@ -551,6 +554,9 @@ class MyClient(discord.Client):
 			message=await client.get_channel(payload.channel_id).fetch_message(payload.message_id)
 		except:
 			return
+		if message.id==799711541708193803:
+			if str(payload.emoji)=='🇩':
+				await client.get_guild(183275001439322112).get_member(payload.user_id).remove_roles(client.get_guild(183275001439322112).get_role(799678402201255956))
 		if message.id==693380327413907487:
 			if str(payload.emoji) in wsReactionRoles:
 				await client.get_guild(DiscordGuildIDs['WindStriders']).get_member(payload.user_id).remove_roles(client.get_guild(DiscordGuildIDs['WindStriders']).get_role(wsReactionRoles[str(payload.emoji)]))
