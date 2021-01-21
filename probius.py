@@ -82,6 +82,9 @@ async def mainProbius(client,message,texts):
 		command=text[0].replace(' ','')
 		if command in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
+
+		if command in ['armor','armour','ehp']:
+			await message.channel.send('https://cdn.discordapp.com/attachments/741762417976934460/801905601809612821/unknown.png')
 		if command=='hoggerangles':
 			await message.channel.send('https://editor.p5js.org/Asddsa76/sketches/CmGYMS2j1')
 			continue
