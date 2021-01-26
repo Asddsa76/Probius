@@ -1,6 +1,8 @@
 from urllib.request import urlopen
 
 async def rotation(channel):
+	await channel.send('https://cdn.discordapp.com/attachments/571531013558239238/803762250438410250/unknown.png')
+	return
 	async with channel.typing():
 		page=[i.strip().decode('utf-8') for i in urlopen('https://nexuscompendium.com/currently.php')]
 		rotationHeroes=[]
