@@ -64,6 +64,7 @@ restartAliases=['restart','shutdown','stop']
 confidenceAliases=['ci','confidence','confidenceinterval']
 heroAliases=['hero', 'heroes', 'bruiser', 'healer', 'support', 'ranged', 'melee', 'assassin', 'mage', 'marksman', 'tank', 'marksmen']
 
+
 async def mainProbius(client,message,texts):
 	for draftAlias in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+draftAlias+'/' in message.content.lower():
@@ -99,10 +100,7 @@ async def mainProbius(client,message,texts):
 				await sortList(message)
 			continue
 		if command in ['name', 'names']:
-			names=[
-				(i.nick or i.name)+(' ('+i.name+')')*int(bool(i.nick)) 
-				for i in message.guild.members 
-				if text[1].lower() in i.name.lower() or i.nick and text[1].lower() in i.nick.lower()]
+			names=[(i.nick or i.name)+(' ('+i.name+')')*int(bool(i.nick)) for i in message.guild.members if text[1].lower() in i.name.lower() or i.nick and text[1].lower() in i.nick.lower()]
 			await message.channel.send('\n'.join(names)+'\n'+str(len(names))+' '+text[1].capitalize()+'s')
 			continue
 		if command in heroAliases+[i+'s' for i in heroAliases]:
@@ -188,7 +186,7 @@ async def mainProbius(client,message,texts):
 				channel = client.get_channel(DiscordChannelIDs['General'])#WSgeneral
 				role=channel.guild.get_role(DiscordRoleIDs['Unsorted'])#UNSORTED
 				rulesChannel=channel.guild.get_channel(DiscordChannelIDs['ServerRules'])#server-rules
-				await channel.send('Note to all '+role.mention+': Please read '+rulesChannel.mention+' and type here the info at top **`Region`, `Rank`, and `Preferred Colour`**, separated by commas, to get sorted before Blackstorm purges you <:OrphAYAYA:657172520092565514>')
+				await channel.send('Note to all '+role.mention+': '+self.welcomeMessage)
 				await channel.send(content='https://cdn.discordapp.com/attachments/576018992624435220/743917827718905896/sorting.gif',file=discord.File('WS colours.png'))
 				continue
 		if command=='byprobiusbepurged' and message.channel.guild.name=='Wind Striders':
@@ -416,6 +414,8 @@ class MyClient(discord.Client):
 		562624486499680266:780219236416749578,#CN
 		562624583342227458:780200579375824897,#LatAM
 		562624527020982293:780219683651190785}#SEA
+		self.rulesChannel=None
+		self.welcomeMessage=''
 
 	async def on_ready(self):
 		print('Logged on...')
@@ -428,6 +428,9 @@ class MyClient(discord.Client):
 		await downloadAll(self,argv)
 		self.ready=True
 		print('Ready!')
+		self.rulesChannel=self.get_channel(DiscordChannelIDs['ServerRules'])#server-rules
+		self.welcomeMessage='Please read '+self.rulesChannel.mention+' and type here your **`Region`, `Rank`, and `Preferred Colour`**, separated by commas, to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514>'
+		await self.get_channel(759575250114576394).send(self.welcomeMessage)
 
 	async def on_message(self, message):
 		for i in char:
@@ -574,8 +577,7 @@ class MyClient(discord.Client):
 			await member.add_roles(guild.get_role(DiscordRoleIDs['Unsorted']))#UNSORTED role
 			print(member.name+' joined')
 			channel=guild.get_channel(DiscordChannelIDs['General'])#general
-			rulesChannel=guild.get_channel(DiscordChannelIDs['ServerRules'])#server-rules
-			await channel.send('Welcome '+member.mention+'! Please read '+rulesChannel.mention+' and type here the info at top **`Region`, `Rank`, and `Preferred Colour`** separated with commas, to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514>')
+			await channel.send('Welcome '+member.mention+'! '+self.welcomeMessage)
 			try:
 				for i in self.lastWelcomeImage:
 					await i.delete()
