@@ -186,7 +186,7 @@ async def mainProbius(client,message,texts):
 				channel = client.get_channel(DiscordChannelIDs['General'])#WSgeneral
 				role=channel.guild.get_role(DiscordRoleIDs['Unsorted'])#UNSORTED
 				rulesChannel=channel.guild.get_channel(DiscordChannelIDs['ServerRules'])#server-rules
-				await channel.send('Note to all '+role.mention+': '+self.welcomeMessage)
+				await channel.send('Note to all '+role.mention+': '+client.welcomeMessage)
 				await channel.send(content='https://cdn.discordapp.com/attachments/576018992624435220/743917827718905896/sorting.gif',file=discord.File('WS colours.png'))
 				continue
 		if command=='byprobiusbepurged' and message.channel.guild.name=='Wind Striders':
@@ -430,7 +430,6 @@ class MyClient(discord.Client):
 		print('Ready!')
 		self.rulesChannel=self.get_channel(DiscordChannelIDs['ServerRules'])#server-rules
 		self.welcomeMessage='Please read '+self.rulesChannel.mention+' and type here your **`Region`, `Rank`, and `Preferred Colour`**, separated by commas, to get sorted and unlock the rest of the channels <:OrphAYAYA:657172520092565514>'
-		await self.get_channel(759575250114576394).send(self.welcomeMessage)
 
 	async def on_message(self, message):
 		for i in char:
