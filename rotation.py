@@ -1,22 +1,32 @@
 from urllib.request import urlopen
+from json import loads
 
 async def rotation(channel):
-	await channel.send('https://cdn.discordapp.com/attachments/571531013558239238/803762250438410250/unknown.png')
-	return
 	async with channel.typing():
-		page=[i.strip().decode('utf-8') for i in urlopen('https://nexuscompendium.com/currently.php')]
-		rotationHeroes=[]
-		salesHeroes=[]
-		gemPrices=[]
+		with urlopen("https://nexuscompendium.com/api/currently/weekly") as url:
+			data=loads(url.read().decode())
+
+		rotationHeroes=[hero['Name'] for hero in data['RotationHero']['Heroes']]
 		limitedHeroSkins=[]
-		limitedHeroSkinsVariations=[]
 		limitedMounts=[]
 		goldMounts=[]
+		saleKeys=data['Sale'].keys()
+		if 'Heroes' in saleKeys:
+			salesHeroes=[hero['Name'] for hero in data['Sale']['Heroes']]
+			gemPrices=[str(hero['GemPrice']) for hero in data['Sale']['Heroes']]
+		if 'Skins' in saleKeys:
+			limitedHeroSkins=[skin['Name'] for skin in data['Sale']['Skins']]
+		if 'SkinsLimited' in saleKeys:
+			limitedHeroSkinsVariations=[skin['Name'] for skin in data['Sale']['SkinsLimited']]
+		if 'MountsLimited' in saleKeys:
+			limitedMounts=[mount['Name'] for mount in data['Sale']['MountsLimited']]
+		if 'MountsGold' in saleKeys:
+			goldMounts=[mount['Name'] for mount in data['Sale']['MountsGold']]
 		saleWeek=''
 		skinsLimited=''
 		mountsLimited=''
 		boost360=''
-		for line in page:
+		'''for line in page:
 			if 'Special Free-to-Play Period ' in line:
 				line=line.split('">')[1].split('<')[0]
 				output='**Free rotation '+line+':** from <https://nexuscompendium.com/>\n'
@@ -66,6 +76,8 @@ async def rotation(channel):
 					limitedMounts.append(line[:line.index('</a></li>')])
 			elif '<li>Gold Mount -' in line:
 				goldMounts.append(line.split('">')[1].split('</a>')[0]+' '+line.split('</a> (')[1].split(' <img')[0]+'<:nexusGold:744794020487626837>\n')
+		'''
+		output='**Free rotation '+str(data['RotationHero']['StartDate'])+' to '+str(data['RotationHero']['EndDate']+':**\n')
 
 		if rotationHeroes:
 			output+=', '.join(rotationHeroes[:7])+'\n'
@@ -73,7 +85,6 @@ async def rotation(channel):
 			output+=saleWeek
 			output+='**Sales:** '+', '.join([salesHeroes[i]+' '+gemPrices[i]+'<:nexusGem:697309829051449424>' for i in range(len(salesHeroes))])+'\n'
 		if limitedHeroSkins:
-			#output+='**'+skinsLimited+'Hero Skins:** \n '+'\n '.join([limitedHeroSkins[i]+'('+', '.join(limitedHeroSkinsVariations[i])+')' for i in range(len(limitedHeroSkins))])+'\n'
 			output+='**'+skinsLimited+'Hero Skins:** \n '+'\n '.join(limitedHeroSkins)+'\n'
 		if limitedMounts:
 			output+='**'+mountsLimited+'Mounts:** '
