@@ -22,7 +22,6 @@ async def rotation(channel):
 			limitedMounts=[mount['Name'] for mount in data['Sale']['MountsLimited']]
 		if 'MountsGold' in saleKeys:
 			goldMounts=[mount['Name'] for mount in data['Sale']['MountsGold']]
-		saleWeek=''
 		skinsLimited=''
 		mountsLimited=''
 		boost360=''
@@ -82,7 +81,7 @@ async def rotation(channel):
 		if rotationHeroes:
 			output+=', '.join(rotationHeroes[:7])+'\n'
 			output+=', '.join(rotationHeroes[7:])+'\n'
-			output+=saleWeek
+			output+='**Sales '+str(data['Sale']['StartDate'])+' to '+str(data['Sale']['EndDate']+':**\n')
 			output+='**Sales:** '+', '.join([salesHeroes[i]+' '+gemPrices[i]+'<:nexusGem:697309829051449424>' for i in range(len(salesHeroes))])+'\n'
 		if limitedHeroSkins:
 			output+='**'+skinsLimited+'Hero Skins:** \n '+'\n '.join(limitedHeroSkins)+'\n'
