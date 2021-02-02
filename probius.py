@@ -493,13 +493,13 @@ class MyClient(discord.Client):
 			if DiscordRoleIDs['Unsorted'] in [role.id for role in message.author.roles]:#Unsorted
 				await sortFromReaction(message,DiscordUserIDs['Probius'],self)
 		except:pass
-		if '[' in after.content and ']' in after.content:
+		if '[' in after.content:
 			try:
 				beforeTexts=findTexts(before)
 			except:
 				beforeTexts=[]
 			newTexts=[i for i in findTexts(after) if i not in beforeTexts]
-			if newTexts:#Nonempty lists have boolean value true
+			if newTexts:
 				await mainProbius(self,after,newTexts)
 
 		await removeEmbeds(after)
