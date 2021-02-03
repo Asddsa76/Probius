@@ -619,11 +619,11 @@ class MyClient(discord.Client):
 				await self.get_channel(DiscordChannelIDs['Pepega']).send('Welcome '+after.mention+'!')
 				
 exitBool=0
-while 1: #Restart
-	intents = discord.Intents.default()  # All but the two privileged ones
-	intents.members = True  # Subscribe to the Members intent
+#while 1: #Restart
+intents = discord.Intents.default()  # All but the two privileged ones
+intents.members = True  # Subscribe to the Members intent
 
-	asyncio.set_event_loop(asyncio.new_event_loop())
-	client = MyClient(command_prefix='!', intents=intents)
-	client.run(getProbiusToken())
-	if exitBool:break
+asyncio.set_event_loop(asyncio.new_event_loop())
+client = MyClient(command_prefix='!', intents=intents)
+client.run(getProbiusToken())
+#if exitBool:break
