@@ -47,7 +47,8 @@ async def additionalInfo(hero,name,description):
 	'tychus':{'Focusing Diodes':'The damage bonus is multiplicative.'},
 	'mephisto':{'Spite':'Also extends mana regeneration from the healing globe.'},
 	'muradin':{'Grand Slam':'If an ally participates in the takedown, a second charge is gained'},
-	'anubarak':{'Cocoon':'Each instance of damage reduces the remaining duration by 0.5 seconds.'}
+	'anubarak':{'Cocoon':'Each instance of damage reduces the remaining duration by 0.5 seconds.'},
+	'garrosh':{'Armor Up':'Stacks with other sources of armour, up to 75.'}
 	}
 	if hero in addDict:
 		if name in addDict[hero]:

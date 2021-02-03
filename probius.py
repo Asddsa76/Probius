@@ -225,7 +225,7 @@ async def mainProbius(client,message,texts):
 			continue
 		if command in buildsAliases:
 			if len(text)==2:
-				if message.channel.guild.id==DiscordGuildIDs['WindStriders'] and message.channel.id!=DiscordChannelIDs['Probius']:#In WS, not in #probius
+				if message.channel.guild.id==DiscordGuildIDs['WindStriders'] and message.channel.id!=DiscordChannelIDs['Probius'] and message.content[0]=='[':#In WS, not in #probius, first character is [
 					if message.guild.get_role(DiscordRoleIDs['CoreMember']) not in message.author.roles:#Not core member
 						await message.guild.get_channel(DiscordChannelIDs['Probius']).send(message.author.mention+' Please call builds in this channel to avoid cluttering the other channels! <:bonk:761981366744121354>')
 						await guide(aliases(text[1]),message.guild.get_channel(DiscordChannelIDs['Probius']))
