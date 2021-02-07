@@ -60,7 +60,7 @@ async def pokedexCreationTrim(text):
 	return text.replace('<@!460270968879841291>','').replace('  ',' ')
 
 async def updatePokedex(client,text,message):
-	async with channel.typing():
+	async with message.channel.typing():
 		if DiscordRoleIDs['Olympian'] not in [role.id for role in message.author.roles]:
 			await message.channel.send('You need to be a mod to update the Pokedex!')
 			return
