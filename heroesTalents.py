@@ -64,7 +64,6 @@ async def fixTooltips(hero,name,description):
 	'sylvanas':{'Haunting Wave':['teleport','fly']},
 	'malfurion':{"Nature's Balance":['area','radius']},
 	'auriel':{"Swift Sweep":['50%','100%']},
-	'deathwing':{'Bellowing Roar':['2 seconds','1.5 seconds']},
 	'varian':{'Victory Rush':['or Monster dies','dies, or when you kill a Monster']},
 	'lili':{'Healing Brew':['ally (prioritizing Heroes)','allied Hero']},
 	'ragnaros':{'Blistering Attacks':['Basic Abilities','Living Meteor or Blast Wave, or enemy heroes with Empower Sulfuras,']}
