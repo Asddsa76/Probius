@@ -1,5 +1,6 @@
 from urllib.request import urlopen
 from json import loads
+from printFunctions import *
 
 async def rotation(channel):
 	async with channel.typing():
@@ -92,4 +93,4 @@ async def rotation(channel):
 			output+='**Gold mounts:** '+', '.join(goldMounts)
 		if boost360:
 			output+='**Boosts:** 360 days'+boost360
-	await channel.send(output)
+	await printLarge(channel,output,'\n')#Get long string. Print lines out in 2000 character chunks
