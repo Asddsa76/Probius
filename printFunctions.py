@@ -143,7 +143,7 @@ async def printAll(client,message,keyword, deep=False, heroList=getHeroes()):#Wh
 		toPrint+='`'+hero.replace('_',' ')+':` '+output
 	if toPrint=='':
 		return
-	botChannels={'Wind Striders':DiscordChannelIDs['Probius'],'De Schuifpui Schavuiten':687351660502057021}
+	botChannels={'Wind Striders':DiscordChannelIDs['Probius'],'De Schuifpui Schavuiten':687351660502057021, 'Nexus Schoolhouse':813507461427363870}
 	if len(toPrint)>2000 and message.channel.guild.name in botChannels:#If the results is over one message, it gets dumped in specified bot channel
 		channel=message.channel.guild.get_channel(botChannels[message.channel.guild.name])
 		introText=message.author.mention+", Here's all heroes' "+'"'+keyword+'":\n'
