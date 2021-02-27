@@ -10,6 +10,7 @@ def roleAliases(role):
 
 	role='eu' if role=='europe' else role
 	role='na' if role in ['northamerica','us','america','americas','usa'] else role
+	role='latam' if role in ['br','brazil'] else role
 
 	return role
 
