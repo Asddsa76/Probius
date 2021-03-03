@@ -120,6 +120,7 @@ async def mainProbius(client,message,texts):
 			exitBool=1
 			await client.close()
 		if command in restartAliases:
+			pass
 			await client.logout()
 		if command in mapImageAliases:
 			await mapImage(message.channel,text[1])
