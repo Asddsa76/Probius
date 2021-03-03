@@ -27,3 +27,6 @@ getDiscordToken: The token is in an untracked file because this is a public Gith
 elitesparkleGuide: Hero guides
 
 downloadHero: Downloads a hero page. Not called by main loop, must be run after each patch.
+
+Example usage:
+![bilde](https://user-images.githubusercontent.com/49531523/109698466-b7da2a00-7b8f-11eb-8b5a-d20a3daf22a3.png)
