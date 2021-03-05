@@ -37,7 +37,7 @@ async def additionalInfo(hero,name,description):
 	'johanna':{"Heaven's Fury":'3 bolts per second per enemy, up to 2 enemies.'},
 	'tyrande':{"Huntress' Fury":"Splashes give cooldown reduction on Light of Elune, but do not trigger any of Tyrande's other Basic Attack related effects."},
 	'tracer':{'Ricochet':'Ricochet shots interact with Telefrag, but not Focus Fire.'},
-	'imperius':{'Impaling Light':'The damage bonus is per brand and stacks to 375%'},
+	'imperius':{'Impaling Light':'The damage bonus is per brand and stacks to 225%'},
 	'malfurion':{'Moonfire':'The area itself stays revealed for 2 seconds.',
 		'Celestial Alignment':'Also extends the reveal of located area to 5 seconds.'},
 	'tassadar':{'Psychic Shock':'Psionic Storm deals 2 additional ticks of damage.',
