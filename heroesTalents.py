@@ -66,7 +66,8 @@ async def fixTooltips(hero,name,description):
 	'auriel':{"Swift Sweep":['50%','100%']},
 	'varian':{'Victory Rush':['or Monster dies','dies, or when you kill a Monster']},
 	'lili':{'Healing Brew':['ally (prioritizing Heroes)','allied Hero']},
-	'ragnaros':{'Blistering Attacks':['Basic Abilities','Living Meteor or Blast Wave, or enemy heroes with Empower Sulfuras,']}
+	'ragnaros':{'Blistering Attacks':['Basic Abilities','Living Meteor or Blast Wave, or enemy heroes with Empower Sulfuras,']},
+	'rehgar':{'Electric Charge':['Heal','Rehgar is healed']}
 	}
 	if hero in fixDict:
 		if name in fixDict[hero]:

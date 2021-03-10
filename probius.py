@@ -437,7 +437,7 @@ class MyClient(discord.Client):
 			if message.author.id==i[0] and time.time()-i[2]>300 and message.channel.guild.id==535256944106012694:#5 minutes since last reaction
 				i[2]=time.time()
 				await message.add_reaction(i[1])
-		pingNames={'lemmie':DiscordUserIDs['Gooey'], 'medicake':DiscordUserIDs['Medicake']}
+		pingNames={'lemmie':DiscordUserIDs['Gooey'], 'medicake':DiscordUserIDs['Medicake'],'libraries':224975834346291210}
 		pingList=[pingNames[i] for i in pingNames.keys() if '@'+i in message.content.replace(' ','')]
 		if pingList:
 			await message.channel.send(' '.join(['<@'+str(i)+'>' for i in pingList]))
