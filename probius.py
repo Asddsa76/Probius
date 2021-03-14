@@ -38,7 +38,6 @@ drafts={}#Outside of client so it doesn't reset on periodic restarts or [restart
 lastDraftMessageDict={}
 draftNames={}
 
-exitBool=0
 buildsAliases=['guide','build','b','g','builds','guides']
 quotesAliases=['quote','q','quotes']
 rotationAlises=['rotation','rot','sale','sales']
@@ -67,6 +66,7 @@ heroAliases=['hero', 'heroes', 'bruiser', 'healer', 'support', 'ranged', 'melee'
 
 
 async def mainProbius(client,message,texts):
+	global exitBool
 	for draftAlias in draftAliases: #Don't want to log draft commands because they really spam.
 		if '['+draftAlias+'/' in message.content.lower():
 			break
@@ -117,11 +117,9 @@ async def mainProbius(client,message,texts):
 			await confidence(message.channel,text)
 			continue
 		if command=='exit' and message.author.id==DiscordUserIDs['Asddsa']:
-			global exitBool
 			exitBool=1
 			await client.close()
 		if command in restartAliases:
-			global exitBool
 			exitBool=0
 			await client.logout()
 		if command in mapImageAliases:
@@ -620,7 +618,9 @@ class MyClient(discord.Client):
 				await self.get_channel(DiscordChannelIDs['SecretCabal']).send('Welcome '+after.mention+'!')
 			if olympian in after.roles and olympian not in before.roles:
 				await self.get_channel(DiscordChannelIDs['Pepega']).send('Welcome '+after.mention+'!')
-				
+
+global exitBool
+exitBool=0			
 while not exitBool: #Restart
 	exitBool=1
 	intents = discord.Intents.default()  # All but the two privileged ones
