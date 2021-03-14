@@ -38,6 +38,7 @@ drafts={}#Outside of client so it doesn't reset on periodic restarts or [restart
 lastDraftMessageDict={}
 draftNames={}
 
+exitBool=0
 buildsAliases=['guide','build','b','g','builds','guides']
 quotesAliases=['quote','q','quotes']
 rotationAlises=['rotation','rot','sale','sales']
@@ -120,7 +121,8 @@ async def mainProbius(client,message,texts):
 			exitBool=1
 			await client.close()
 		if command in restartAliases:
-			pass
+			global exitBool
+			exitBool=0
 			await client.logout()
 		if command in mapImageAliases:
 			await mapImage(message.channel,text[1])
@@ -619,12 +621,11 @@ class MyClient(discord.Client):
 			if olympian in after.roles and olympian not in before.roles:
 				await self.get_channel(DiscordChannelIDs['Pepega']).send('Welcome '+after.mention+'!')
 				
-exitBool=0
-#while 1: #Restart
-intents = discord.Intents.default()  # All but the two privileged ones
-intents.members = True  # Subscribe to the Members intent
+while not exitBool: #Restart
+	exitBool=1
+	intents = discord.Intents.default()  # All but the two privileged ones
+	intents.members = True  # Subscribe to the Members intent
 
-asyncio.set_event_loop(asyncio.new_event_loop())
-client = MyClient(command_prefix='!', intents=intents)
-client.run(getProbiusToken())
-#if exitBool:break
+	asyncio.set_event_loop(asyncio.new_event_loop())
+	client = MyClient(command_prefix='!', intents=intents)
+	client.run(getProbiusToken())
