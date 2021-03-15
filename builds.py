@@ -32,7 +32,7 @@ async def guide(hero,channel):
 		if output:
 			await channel.send(output)
 		else:
-			await channel.send('No hero "'+hero+'"')
+			await channel.send("That's not a hero!")
 
 def updateBuilds():
 	page=[i.strip().decode('utf-8') for i in urlopen('https://elitesparkle.wixsite.com/hots-builds') if "var warmupData = {" in i.strip().decode('utf-8')][0]
