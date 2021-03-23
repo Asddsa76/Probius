@@ -491,7 +491,7 @@ class MyClient(discord.Client):
 		if before.author.bot:
 			return
 		try:
-			if DiscordRoleIDs['Unsorted'] in [role.id for role in message.author.roles]:#Unsorted
+			if DiscordRoleIDs['Unsorted'] in [role.id for role in after.author.roles]:#Unsorted
 				await sortFromReaction(message,DiscordUserIDs['Probius'],self)
 		except:pass
 		if '[' in after.content:
@@ -504,6 +504,8 @@ class MyClient(discord.Client):
 				await mainProbius(self,after,newTexts)
 
 		await removeEmbeds(after)
+		if after.mentions and not before.mentions:#Pings were edited in
+			await after.channel.send(', '.join([i.mention for i in after.mentions])+', '+after.author.display_name+' wants to ping you!')
 
 	async def on_raw_reaction_add(self,payload):
 		member=client.get_user(payload.user_id)
@@ -534,7 +536,7 @@ class MyClient(discord.Client):
 			elif 'reddit.com' in message.content:
 				await message.channel.send(member.mention+'<:bonk:761981366744121354>')
 				return
-			elif '<:bonk:761981366744121354>' in message.content:
+			elif '<:bonk:761981366744121354>' in message.content or '@' in message.content:
 				return
 			output=member.name+' deleted a message from Probius'
 			print(output)
