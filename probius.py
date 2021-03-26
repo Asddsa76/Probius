@@ -504,8 +504,10 @@ class MyClient(discord.Client):
 				await mainProbius(self,after,newTexts)
 
 		await removeEmbeds(after)
-		if after.mentions and not before.mentions:#Pings were edited in
-			await after.channel.send(', '.join([i.mention for i in after.mentions])+', '+after.author.display_name+' wants to ping you!')
+		if '<@' in after.content:
+			newMentions=[i for i in findMentions(after) if i not in findMentions(before)]
+			if newMentions:
+				await after.channel.send(', '.join(newMentions)+', '+after.author.display_name+' wants to ping you!')
 
 	async def on_raw_reaction_add(self,payload):
 		member=client.get_user(payload.user_id)

@@ -116,3 +116,6 @@ async def schedule(message):
 	await message.channel.send('''Monday: PTR patch
 Tuesday: Content patch (for NA. Early wednesday morning for EU)
 Wednesday: Balance patch''')
+
+def findMentions(message):
+	return ['<@'+i[:i.index('>')+1] for i in message.content.split('<@')[1:]]
