@@ -23,7 +23,8 @@ keywords={
 'Zeratul':[DiscordUserIDs['Derenash']],
 'Valeera':[DiscordUserIDs['MBee']],
 'Orphea':[410481791204327424],
-'Deathwing':[204893952908853248]}
+'Deathwing':[204893952908853248],
+'Tracer':[160087810370568193]}
 
 mindhawk_keywords=['Kerrigan','Cho ','Gall',"Cho'Gall",'Orphea','Li-Ming','Ragnaros', 'Li Ming', 'chogall']
 for i in mindhawk_keywords:

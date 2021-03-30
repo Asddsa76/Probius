@@ -319,6 +319,7 @@ async def mainProbius(client,message,texts):
 			quote=getQuote(hero)
 			output='\n'.join(abilities)
 			await printLarge(message.channel,quote+output)
+			await heroStats(hero,message.channel)
 			continue
 		if output=='':
 			if tier.isdigit():#Talent tier
