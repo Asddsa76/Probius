@@ -68,6 +68,7 @@ heroAliases=['hero', 'heroes', 'bruiser', 'healer', 'support', 'ranged', 'melee'
 async def mainProbius(client,message,texts):
 	global exitBool
 	for draftAlias in draftAliases: #Don't want to log draft commands because they really spam.
+		if 'new' in message.content.lower():continue
 		if '['+draftAlias+'/' in message.content.lower():
 			break
 	else:#The elusive for else control flow
