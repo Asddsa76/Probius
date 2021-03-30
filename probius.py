@@ -85,6 +85,9 @@ async def mainProbius(client,message,texts):
 		if command in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
 
+		if command in ['event','season']:
+			await event(message.channel)
+			continue
 		if command in ['armor','armour','ehp']:
 			await message.channel.send('https://cdn.discordapp.com/attachments/741762417976934460/801905601809612821/unknown.png')
 			continue
