@@ -26,7 +26,7 @@ async def getRoleHeroes(role):
 
 async def heroes(message,text,channel,client):
 	#['hero', 'heroes', 'bruiser', 'healer', 'support', 'ranged', 'melee', 'assassin', 'mage', 'marksman', 'tank']
-	role=text[0].replace('marksmen','marksman')
+	role=text[0].replace('marksmen','marksman').replace('offlaner','bruiser')
 	if role[-1]=='s':role=role[:-1]
 	if len(text)==1:
 		if role in ['hero', 'heroe']:
