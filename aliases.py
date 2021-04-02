@@ -147,6 +147,9 @@ def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest
 	if hero=='Ana':
 		if name=='nanoboost':
 			return 'nano boost'
+	elif hero=='Anduin':
+		if name=='lifegrip':
+			return 'leap of faith'
 	elif hero=='Azmodan':
 		if name in ['sieging wrath']:
 			return 'demonic invasion'

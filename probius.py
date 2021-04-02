@@ -32,6 +32,7 @@ from patchNotes import *
 from lfg import *
 from maps import *
 from discordIDs import *
+from imageColour import *
 
 wsReactionRoles={'🇧':DiscordRoleIDs['BalanceTeam'],'🇩':DiscordRoleIDs['DraftAddict'],'🇱':DiscordRoleIDs['LFG']}
 drafts={}#Outside of client so it doesn't reset on periodic restarts or [restart]
@@ -86,6 +87,9 @@ async def mainProbius(client,message,texts):
 		if command in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
 
+		if command in ['avatarcolour','avatarcolor']:
+			await avatarColour(client,message.channel,text[1])
+			continue
 		if command in ['event','season']:
 			await event(message.channel)
 			continue
@@ -210,7 +214,7 @@ async def mainProbius(client,message,texts):
 			await reddit(client,message,text)
 			continue
 		if command in ['avatar','a']:
-			await getAvatar(client,message.channel,text[1])
+			await message.channel.send(await getAvatar(client,message.channel,text[1]))
 			continue
 		if command=='':#Empty string. Aliases returns Abathur when given this.
 			continue
@@ -627,6 +631,16 @@ class MyClient(discord.Client):
 				await self.get_channel(DiscordChannelIDs['SecretCabal']).send('Welcome '+after.mention+'!')
 			if olympian in after.roles and olympian not in before.roles:
 				await self.get_channel(DiscordChannelIDs['Pepega']).send('Welcome '+after.mention+'!')
+
+	async def on_user_update(self.before, after):#If a core member changes their pfp
+		if before.avatar!=after.avatar:
+			guild=self.get_guild(DiscordGuildIDs['WindStriders'])
+			try:member=guild.get_member(after.id)
+			except:return
+			if guild.get_role(DiscordRoleIDs['CoreMember']) in guild.get_member(after.id).roles:
+				channel=guild.get_channel(607922629902598154)
+				await channel.send('<@329447886465138689>, '+member.display_name+' changed their avatar! \n'+(await getAvatar(self,channel,member.mention)))
+
 
 global exitBool
 exitBool=0			
