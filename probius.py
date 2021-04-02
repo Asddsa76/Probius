@@ -632,7 +632,7 @@ class MyClient(discord.Client):
 			if olympian in after.roles and olympian not in before.roles:
 				await self.get_channel(DiscordChannelIDs['Pepega']).send('Welcome '+after.mention+'!')
 
-	async def on_user_update(self.before, after):#If a core member changes their pfp
+	async def on_user_update(self, before, after):#If a core member changes their pfp
 		if before.avatar!=after.avatar:
 			guild=self.get_guild(DiscordGuildIDs['WindStriders'])
 			try:member=guild.get_member(after.id)
