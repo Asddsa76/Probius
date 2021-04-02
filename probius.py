@@ -88,7 +88,8 @@ async def mainProbius(client,message,texts):
 			continue
 
 		if command in ['avatarcolour','avatarcolor']:
-			await avatarColour(client,message.channel,text[1])
+			#Hogs CPU resources
+			#await avatarColour(client,message.channel,text[1])
 			continue
 		if command in ['event','season']:
 			await event(message.channel)
