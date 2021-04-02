@@ -635,11 +635,13 @@ class MyClient(discord.Client):
 	async def on_user_update(self, before, after):#If a core member changes their pfp
 		if before.avatar!=after.avatar:
 			guild=self.get_guild(DiscordGuildIDs['WindStriders'])
-			try:member=guild.get_member(after.id)
+			try:
+				member=guild.get_member(after.id)
+				if guild.get_role(DiscordRoleIDs['CoreMember']) in guild.get_member(after.id).roles:pass
+				else:return
 			except:return
-			if guild.get_role(DiscordRoleIDs['CoreMember']) in guild.get_member(after.id).roles:
-				channel=guild.get_channel(607922629902598154)
-				await channel.send('<@329447886465138689>, '+member.display_name+' changed their avatar! \n'+(await getAvatar(self,channel,member.mention)))
+			channel=guild.get_channel(607922629902598154)
+			await channel.send('<@329447886465138689>, '+member.display_name+' changed their avatar! \n'+(await getAvatar(self,channel,member.mention)))
 
 
 global exitBool
