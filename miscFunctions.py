@@ -31,7 +31,7 @@ async def getAvatar(client,channel,userMention):
 			user=[i for i in channel.guild.members if i.name.lower().replace(' ','')==u or i.nick and i.nick.lower().replace(' ','')==u][0]
 		except:
 			return
-	return user.avatar_url
+	return str(user.avatar_url)
 
 async def vote(message,text):
 	if len(text)==2:
