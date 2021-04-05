@@ -515,6 +515,9 @@ class MyClient(discord.Client):
 
 		await removeEmbeds(after)
 		if '<@' in after.content:
+			if '@here' in after.content or '@everyone' in after.content:
+				await after.channel.send(after.author.mention+'<:bonk:761981366744121354>')
+				return
 			newMentions=[i for i in findMentions(after) if i not in findMentions(before)]
 			if newMentions:
 				await after.channel.send(', '.join(newMentions)+', '+after.author.display_name+' wants to ping you!')
