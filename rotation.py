@@ -49,4 +49,4 @@ async def event(channel):
 		with urlopen("https://nexuscompendium.com/api/currently/event") as url:
 			data=loads(url.read().decode())['Event']
 	endDate=data['EndDate'] or 'Unknown'
-	await channel.send('**'+data['Name']+'**\nFrom '+data['StartDate']+' to '+endDate+'\n'+data['URL'])
+	await channel.send('**'+data['Name']+'**\nFrom '+data['StartDate']+' to '+endDate+'\n'+data['Description']'\n'+data['URL'])
