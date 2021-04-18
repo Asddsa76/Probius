@@ -3,7 +3,7 @@ from aliases import *
 from printFunctions import getHeroes
 
 def getQuote(hero):
-	with open('quotes.txt','r') as f:
+	with open('Text files/quotes.txt','r') as f:
 		for line in f:
 			if hero.replace('ú','u') in line:
 				return '**'+hero.replace('_',' ')+':** '+line[line.index('; ')+2:]
@@ -12,7 +12,7 @@ def getQuote(hero):
 def downloadQuotes():
 	noQuoteOnPage=['Anduin','Imperius','Mephisto','Murky','Probius','Qhira','The_Butcher','Whitemane']
 	theirQuote=['For the Alliance above all!','I yearn for battle.','*(Hisses)*','Mrrgll','*(Probe sounds)*',"I'm in.",'Fresh meat!','Let the inquisition commence!']
-	with open('quotes.txt','w+') as f:
+	with open('Text files/quotes.txt','w+') as f:
 		for hero in getHeroes():
 			hero=aliases(hero)
 			print(hero)
