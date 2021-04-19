@@ -18,39 +18,41 @@ def trimForHeroesTalents(hero):
 
 async def additionalInfo(hero,name,description):
 	addDict={#Adds text to the end of descriptions
-	'valla':{
-		'Strafe':'The duration of Hatred is paused when channeling, and reset to full when Strafe ends.',
-		'Vault':'The damage bonus is multiplicative.'},
 	'alexstrasza':{
 		'Cleansing Flame':'Dragonqueen: Cleansing Flame is cast instantly. The duration of Dragonqueen is paused, while basic abilities continue to cool down while in flight.',
 		'Dragon Scales':'Getting Stunned, Rooted, or Silenced while Dragon Scales is active refreshes its duration to 2 seconds.',
 		'Life-Binder':'Dragonqueen: The cast range of Life-Binder is increased from 6 to 9.'},
+	'anubarak':{'Cocoon':'Each instance of damage reduces the remaining duration by 0.5 seconds.'},
+	'chen':{'Storm, Earth, Fire':'Using Storm, Earth, Fire removes most negative effects from Chen.'},
+	'garrosh':{'Armor Up':'Stacks with other sources of armour, up to 75.'},
+	'guldan':{
+		'Life Tap':'Costs 222 (+4% per level) Health.',
+		'Ruinous Affliction':'This third strike is also considered to be the first strike of the next three hits.'},
+	'imperius':{'Impaling Light':'The damage bonus is per brand and stacks to 225%'},
+	'johanna':{"Heaven's Fury":'3 bolts per second per enemy, up to 2 enemies.'},
+	'kelthuzad':{'The Damned Return':'Does not interact with Arcane Echoes, Phylactery, or Hungering Cold.'},
+	'lunara':{'Leaping Strike':'Lunara is unstoppable while leaping.'},
 	'maiev':{'Spirit of Vengeance':'Reactivate to teleport to the spirit.'},
+	'malfurion':{
+		'Moonfire':'The area itself stays revealed for 2 seconds.',
+		'Celestial Alignment':'Also extends the reveal of located area to 5 seconds.'},
+	'mephisto':{'Spite':'Also extends mana regeneration from the healing globe.'},
+	'muradin':{'Grand Slam':'If an ally participates in the takedown, a second charge is gained'},
+	'orphea':{'Overflowing Chaos':'The damage bonus is multiplicative.'},
 	'sylvanas':{
 		'Haunting Wave':'Sylvanas is unstoppable while flying to the banshee. Reactivation becomes available 0.5 seconds after first E.',
 		'Mercenary Queen':'Mercenaries will not be stunned if the third application is through Remorseless.',
 		'Black Arrows':'Remorseless shots do not disable enemies.',
 		'Overwhelming Affliction':'Remorseless neither applies, nor extends the slow.'},
-	'lunara':{'Leaping Strike':'Lunara is unstoppable while leaping.'},
-	'chen':{'Storm, Earth, Fire':'Using Storm, Earth, Fire removes most negative effects from Chen.'},
-	'guldan':{
-		'Life Tap':'Costs 222 (+4% per level) Health.',
-		'Ruinous Affliction':'This third strike is also considered to be the first strike of the next three hits.'},
-	'johanna':{"Heaven's Fury":'3 bolts per second per enemy, up to 2 enemies.'},
-	'tyrande':{"Huntress' Fury":"Splashes give cooldown reduction on Light of Elune, but do not trigger any of Tyrande's other Basic Attack related effects."},
-	'tracer':{'Ricochet':'Ricochet shots interact with Telefrag, but not Focus Fire.'},
-	'imperius':{'Impaling Light':'The damage bonus is per brand and stacks to 225%'},
-	'malfurion':{'Moonfire':'The area itself stays revealed for 2 seconds.',
-		'Celestial Alignment':'Also extends the reveal of located area to 5 seconds.'},
 	'tassadar':{'Psychic Shock':'Psionic Storm deals 2 additional ticks of damage.',
 		'Shock Ray':'0.375 second wind up before beam starts, additional 0.75 second channel while beam is moving. If the channel is interrupted, beam instantly disappears.'},
-	'zarya':{'Energy':'The damage bonus is multiplicative.'},
-	'orphea':{'Overflowing Chaos':'The damage bonus is multiplicative.'},
+	'tracer':{'Ricochet':'Ricochet shots interact with Telefrag, but not Focus Fire.'},
 	'tychus':{'Focusing Diodes':'The damage bonus is multiplicative.'},
-	'mephisto':{'Spite':'Also extends mana regeneration from the healing globe.'},
-	'muradin':{'Grand Slam':'If an ally participates in the takedown, a second charge is gained'},
-	'anubarak':{'Cocoon':'Each instance of damage reduces the remaining duration by 0.5 seconds.'},
-	'garrosh':{'Armor Up':'Stacks with other sources of armour, up to 75.'}
+	'tyrande':{"Huntress' Fury":"Splashes give cooldown reduction on Light of Elune, but do not trigger any of Tyrande's other Basic Attack related effects."},
+	'valla':{
+		'Strafe':'The duration of Hatred is paused when channeling, and reset to full when Strafe ends.',
+		'Vault':'The damage bonus is multiplicative.'},
+	'zarya':{'Energy':'The damage bonus is multiplicative.'}
 	}
 	if hero in addDict:
 		if name in addDict[hero]:
@@ -59,18 +61,18 @@ async def additionalInfo(hero,name,description):
 
 async def fixTooltips(hero,name,description):
 	fixDict={#Replaces text using strikethrough
+	'auriel':{"Swift Sweep":['50%','100%']},
+	'cassia':{'War Traveler':['8%','4%','1 second','0.5 seconds']},
+	'guldan':{'Ruinous Affliction':['strike deals',"strike's damage is increased to"]},
+	'malfurion':{"Nature's Balance":['area','radius']},
+	'lili':{'Healing Brew':['ally (prioritizing Heroes)','allied Hero']},
+	'ragnaros':{'Blistering Attacks':['Basic Abilities','Living Meteor or Blast Wave, or enemy heroes with Empower Sulfuras,']},
+	'rehgar':{'Electric Charge':['Heal','Rehgar is healed']},
+	'sylvanas':{'Haunting Wave':['teleport','fly']},
 	'tracer':{
 		'Sleight of Hand':['20%','24%'],
 		'Reload':['0.75','0.8125']},
-	'cassia':{'War Traveler':['8%','4%','1 second','0.5 seconds']},
-	'guldan':{'Ruinous Affliction':['strike deals',"strike's damage is increased to"]},
-	'sylvanas':{'Haunting Wave':['teleport','fly']},
-	'malfurion':{"Nature's Balance":['area','radius']},
-	'auriel':{"Swift Sweep":['50%','100%']},
 	'varian':{'Victory Rush':['or Monster dies','dies, or when you kill a Monster']},
-	'lili':{'Healing Brew':['ally (prioritizing Heroes)','allied Hero']},
-	'ragnaros':{'Blistering Attacks':['Basic Abilities','Living Meteor or Blast Wave, or enemy heroes with Empower Sulfuras,']},
-	'rehgar':{'Electric Charge':['Heal','Rehgar is healed']}
 	}
 	if hero in fixDict:
 		if name in fixDict[hero]:
