@@ -33,7 +33,9 @@ async def additionalInfo(hero,name,description):
 		'Overwhelming Affliction':'Remorseless neither applies, nor extends the slow.'},
 	'lunara':{'Leaping Strike':'Lunara is unstoppable while leaping.'},
 	'chen':{'Storm, Earth, Fire':'Using Storm, Earth, Fire removes most negative effects from Chen.'},
-	'guldan':{'Life Tap':'Costs 222 (+4% per level) Health.'},
+	'guldan':{
+		'Life Tap':'Costs 222 (+4% per level) Health.',
+		'Ruinous Affliction':'This third strike is also considered to be the first strike of the next three hits.'},
 	'johanna':{"Heaven's Fury":'3 bolts per second per enemy, up to 2 enemies.'},
 	'tyrande':{"Huntress' Fury":"Splashes give cooldown reduction on Light of Elune, but do not trigger any of Tyrande's other Basic Attack related effects."},
 	'tracer':{'Ricochet':'Ricochet shots interact with Telefrag, but not Focus Fire.'},
@@ -61,6 +63,7 @@ async def fixTooltips(hero,name,description):
 		'Sleight of Hand':['20%','24%'],
 		'Reload':['0.75','0.8125']},
 	'cassia':{'War Traveler':['8%','4%','1 second','0.5 seconds']},
+	'guldan':{'Ruinous Affliction':['strike deals',"strike's damage is increased to"]},
 	'sylvanas':{'Haunting Wave':['teleport','fly']},
 	'malfurion':{"Nature's Balance":['area','radius']},
 	'auriel':{"Swift Sweep":['50%','100%']},
