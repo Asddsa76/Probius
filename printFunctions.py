@@ -87,6 +87,30 @@ async def addUnderscoresAndNewline(namelist,ability):
 		ability=ability[:i]+'__'+ability[i:]
 	return ability+'\n'
 
+async def printAbilityTalents(message,abilities,talents,hotkey,hero):
+	#Get ability name from hotkey
+	abilityName=printAbility(abilities,hotkey).split('] ')[1].split(':')[0]
+	output='\n'.join(ability for ability in abilities if abilityName in ability)
+
+	#Search in talents for that ability
+	output2=''
+	levelTiers=[0,1,2,3,4,5,6]
+	if hero=='Varian':
+		del levelTiers[1]
+	elif hero in ['Tracer','Deathwing']:
+		pass
+	else:
+		del levelTiers[3]
+	for i in levelTiers:
+		talentTier=talents[i]
+		for talent in talentTier:
+			if abilityName in talent:
+				output2+='\n'+talent
+
+	if output2:
+		output+=output2
+	await printLarge(message.channel,output)
+
 async def printSearch(abilities, talents, name, hero, deep=False):#Prints abilities and talents with the name of the identifier
 	name=abilityAliases(hero,name)
 	if not name:

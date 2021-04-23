@@ -54,7 +54,7 @@ emojiAliases=['emoji','emojis','emote','emotes']
 coinsAliases=['coin','flip','coinflip','cf']
 redditAliases=['reddit','re']
 helpAliases=['help','info']
-talentAliases=['talent','talents']
+talentAliases=['talent','talents','t']
 rollAliases=['roll','dice']
 patchNotesAliases=['patchnotes','patch','pn','pa']
 deleteAliases=['delete','deletemessages','deletemessage']
@@ -323,7 +323,7 @@ async def mainProbius(client,message,texts):
 			tier=text[1]#If there is no identifier, then it throws exception
 			if tier in randomAliases:
 				await message.channel.send(printTier(talents,random.randint(0,6)))
-				return
+				continue
 		except:
 			quote=getQuote(hero)
 			output='\n'.join(abilities)
@@ -331,15 +331,18 @@ async def mainProbius(client,message,texts):
 			await heroStats(hero,message.channel)
 			continue
 		if output=='':
+			if ',' in tier and any(i in tier for i in talentAliases):
+				await printAbilityTalents(message,abilities,talents,tier.split(',')[0],hero)
+				continue
 			if tier.isdigit():#Talent tier
 				tier=int(tier)
 				output=printTier(talents,int(tier/3)+int(hero=='Chromie' and tier not in [1,18]))#Talents for Chromie come 2 lvls sooner, except lvl 1
 			elif tier in ['mount','z']:
 				await message.channel.send(printAbility(abilities,'z'))
-				return
+				continue
 			elif tier=='extra':
 				await message.channel.send(printAbility(abilities,'1'))
-				return
+				continue
 			elif tier=='r':#Ultimate
 				if hero=='Tracer':#She starts with her heroic already unlocked, and only has 1 heroic
 					output=abilities[3]

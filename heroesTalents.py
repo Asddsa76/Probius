@@ -61,6 +61,7 @@ async def additionalInfo(hero,name,description):
 
 async def fixTooltips(hero,name,description):
 	fixDict={#Replaces text using strikethrough
+	'anubarak':{'Nerubian Armor':['ed',' ']},
 	'auriel':{"Swift Sweep":['50%','100%']},
 	'cassia':{'War Traveler':['8%','4%','1 second','0.5 seconds']},
 	'guldan':{'Ruinous Affliction':['strike deals',"strike's damage is increased to"]},
