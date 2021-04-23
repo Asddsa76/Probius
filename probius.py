@@ -523,7 +523,7 @@ class MyClient(discord.Client):
 				return
 			newMentions=[i for i in findMentions(after) if i not in findMentions(before)]
 			if newMentions:
-				await after.channel.send(', '.join(newMentions)+', '+after.author.display_name+' wants to ping you!')
+				await after.channel.send(', '.join(newMentions)+', '+after.author.name+' wants to ping you!')
 
 	async def on_raw_reaction_add(self,payload):
 		member=client.get_user(payload.user_id)
