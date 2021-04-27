@@ -7,16 +7,16 @@ async def trimForIcyVeinsAndPsionicStorm(hero):
 
 async def guide(hero,channel):
 	output=''
-	with open('Text files/mindHawkBuilds.txt','r') as f:
-		for i in f:
-			if await trimForIcyVeinsAndPsionicStorm(hero) in i:
-				output+='MindHawk: <'+i.replace('\n','')+'>\n'
 	with open('Text files/otherBuilds.txt','r') as f:
 		for i in f:
 			if hero in i:
 				authorAndLink=i.split('; ')[1]
 				[author,link]=authorAndLink.split(': ')
 				output+=author+': <'+link.replace('\n','')+'>\n'
+	with open('Text files/mindHawkBuilds.txt','r') as f:
+		for i in f:
+			if await trimForIcyVeinsAndPsionicStorm(hero) in i:
+				output+='MindHawk: <'+i.replace('\n','')+'>\n'
 	
 	with open('Text files/icyVeinsHeroes.txt','r') as f:
 		for i in f:

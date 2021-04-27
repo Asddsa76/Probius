@@ -1,32 +1,34 @@
-Map; Riokaii's Fundamentals of Macro: https://www.youtube.com/watch?v=HpGITmRrj-E
-Map; Nexus Compendium's list of timings: https://nexuscompendium.com/battlegrounds
-Samuro; Blackstorm (outdated): https://docs.google.com/document/d/1jbA0Z9Yg_koLqyd27VZ3uu-qbTOKSuuiSlmxgJBJ6SI/edit
-The_Lost_Vikings; Loquen: https://www.youtube.com/watch?v=q4acsbUrkec
-Valeera; MBee: https://docs.google.com/document/d/1_gG6NCLItBLe8ZMni7hPxJH56xZ0rXUFPvXygO6UR4o/
-Junkrat; Mochrie: https://hots.heroeshearth.com/builds/Mochrie/mochries-postrework-junkrat-build-patch-248/
-Samuro; Ricardo's trick list: https://docs.google.com/document/d/1-RT-UkyKBiuTS4U4eXLLvlJzC2HgzzJSlNF6xecw5WA/
-Fenix; Riokaii: https://docs.google.com/document/d/1y2ZTj9P-WKpU5cKAAnw57poZ7RVzfwuDpqNUei7MwG4/edit
-Li-Ming; Carbon: https://psionic-storm.com/en/builds/li-ming-24265/
-Samuro; Munky 1: https://www.youtube.com/watch?v=DLg0LdrOKHY
-Samuro; Munky 2: https://www.youtube.com/watch?v=29LqAHnCCDc
-Tracer; Mochrie: https://hots.heroeshearth.com/builds/Mochrie/independent-tracer-grandmaster-tracer-main/
-Tracer; SamiSha: https://us.forums.blizzard.com/en/heroes/t/guide-tracer-rework-the-cavalrys-here/38397
-Sylvanas; Riokaii: https://i.imgur.com/NHLWAwf.png
+Freezing; Liam: https://docs.google.com/document/d/12JFKr0dxsqFBFexqUYC7yVKeCgu89MMEqncAmMpE1Do/edit
+Maps; Riokaii's Fundamentals of Macro: https://www.youtube.com/watch?v=HpGITmRrj-E
+Maps; Nexus Compendium's list of timings: https://nexuscompendium.com/battlegrounds
+Maps; ZaneHyde: https://drive.google.com/drive/folders/1fwyE69jmMCF5sSoQP3FpD_b9zRrkTlnf
 Replay; SamiSha's replay hotkeys: https://us.forums.blizzard.com/en/heroes/t/extensive-replay-hotkey-guide/2937
-Samuro; Derenash (some things outdated): https://www.heroesfire.com/hots/guide/samurebs-en-16848
+Scaling; Elitesparkle: https://old.reddit.com/r/heroesofthestorm/comments/ewc1ct/scaling_anomalies/
 Tier list; Riokaii: https://heroeshearth.com/tiers/riokaii/9753/
 Tier list; Mochrie: https://heroeshearth.com/tiers/Mochrie/9833/
 Tier list; Elitesparkle: https://www.icy-veins.com/heroes/heroes-of-the-storm-master-tier-list
 Tier list; Soren's storm talents: https://docs.google.com/spreadsheets/d/1CiziqhFswTUCv0CNEjM3Y4yej_bVAKVwQrYSf-NJ9jc/edit#gid=0
-Sylvanas; Riokaii's Merc queen patterns: https://i.imgur.com/5UUdA9Y.png
-Scaling; Elitesparkle: https://old.reddit.com/r/heroesofthestorm/comments/ewc1ct/scaling_anomalies/
-Yrel; Liam: https://docs.google.com/document/d/1ALYvSP3KQBsBxxO_mvgXOxxQhjIA_mM7jwO3lBHtsQg/edit
-Freezing; Liam: https://docs.google.com/document/d/12JFKr0dxsqFBFexqUYC7yVKeCgu89MMEqncAmMpE1Do/edit
-Maps; ZaneHyde: https://drive.google.com/drive/folders/1fwyE69jmMCF5sSoQP3FpD_b9zRrkTlnf
-Samuro; Jdelrio: https://hots.heroeshearth.com/builds/jdelrio/illusion-master-100/
-Maiev; SomeoneNew: https://docs.google.com/document/d/11qatehLabeu02Q-XjqDV-YBNOMMEwU0R-pYTwcdnFIU/edit
 Tier list; Psionic Storm: https://psionic-storm.com/en/tierlist/
+Samuro; Blackstorm (outdated): https://docs.google.com/document/d/1jbA0Z9Yg_koLqyd27VZ3uu-qbTOKSuuiSlmxgJBJ6SI/edit
+Samuro; Ricardo's trick list: https://docs.google.com/document/d/1-RT-UkyKBiuTS4U4eXLLvlJzC2HgzzJSlNF6xecw5WA/
+Samuro; Munky 1: https://www.youtube.com/watch?v=DLg0LdrOKHY
+Samuro; Munky 2: https://www.youtube.com/watch?v=29LqAHnCCDc
+Samuro; Derenash (some things outdated): https://www.heroesfire.com/hots/guide/samurebs-en-16848
+Samuro; Jdelrio: https://hots.heroeshearth.com/builds/jdelrio/illusion-master-100/
 Samuro; Starcaller: https://docs.google.com/document/d/18UAlQ5vke5698uUtm_pJOxK8KcL9d3Tib2wre0QO9SI/edit
-Medivh; Elitesparkle's Portal Mastery: https://www.buymeacoffee.com/tipsofthestorm/medivh-portal-mastery
 Anub'arak; Elitesparkle's Cocoon: https://www.buymeacoffee.com/tipsofthestorm/anub-arak-cocoon-vs-unstoppable
+The_Lost_Vikings; Loquen: https://www.youtube.com/watch?v=q4acsbUrkec
+Valeera; MBee: https://docs.google.com/document/d/1_gG6NCLItBLe8ZMni7hPxJH56xZ0rXUFPvXygO6UR4o/
+Junkrat; Mochrie: https://hots.heroeshearth.com/builds/Mochrie/mochries-postrework-junkrat-build-patch-248/
+Fenix; Riokaii: https://docs.google.com/document/d/1y2ZTj9P-WKpU5cKAAnw57poZ7RVzfwuDpqNUei7MwG4/edit
+Li-Ming; Carbon: https://psionic-storm.com/en/builds/li-ming-24265/
+Tracer; Mochrie: https://hots.heroeshearth.com/builds/Mochrie/independent-tracer-grandmaster-tracer-main/
+Tracer; Mochrie's teamfight positioning theory: https://www.youtube.com/watch?v=o-Q7F5JiBWo
+Tracer; SamiSha: https://us.forums.blizzard.com/en/heroes/t/guide-tracer-rework-the-cavalrys-here/38397
+Sylvanas; Riokaii: https://i.imgur.com/NHLWAwf.png
+Sylvanas; Riokaii's Merc queen patterns: https://i.imgur.com/5UUdA9Y.png
+Yrel; Liam: https://docs.google.com/document/d/1ALYvSP3KQBsBxxO_mvgXOxxQhjIA_mM7jwO3lBHtsQg/edit
+Maiev; SomeoneNew: https://docs.google.com/document/d/11qatehLabeu02Q-XjqDV-YBNOMMEwU0R-pYTwcdnFIU/edit
+Medivh; Elitesparkle's Portal Mastery: https://www.buymeacoffee.com/tipsofthestorm/medivh-portal-mastery
 Ragnaros; Mindhawk: https://www.youtube.com/watch?v=Oeg9QUV4pvE
+Orphea; Mindhawk: https://www.youtube.com/watch?v=c8VTmXkRKI0
