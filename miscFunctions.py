@@ -1,16 +1,16 @@
 from discordIDs import *
 
 def helpMessage():
-	output="""[Hero] to see that hero's abilities.
-[Hero/level] for that hero's talents at that level.
-[Hero/hotkey] for the ability on that hotkey.
+	output="""[Hero] to see that hero's abilities
+[Hero/level] for that hero's talents at that level
+[Hero/hotkey] for the ability on that hotkey
 [Hero/searchterm] to search for something in that hero's abilities or talents. & or -- in searchterm for AND and exclusions
 [Hero/info] for hero info
-[build/Hero] for hero builds/guides from Elitesparkle and others.
-[rotation] for free weekly rotation from Gnub.
+[build/Hero] for hero builds/guides
+[rotation] for free weekly rotation from Gnub
 [patchnotes/hero] for patch notes from <https://heroespatchnotes.com>
-Emojis: [:Hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.
-Mock drafting: [draft/info].
+Emojis: [:Hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow
+Mock drafting: [draft/info]
 [battleground/X] and [core/X], where X is a battleground, for a map or a description of the core's abilities
 My public repository: <https://github.com/Asddsa76/Probius>"""
 	return output
