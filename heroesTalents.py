@@ -109,6 +109,8 @@ async def downloadHero(hero,client,patch):
 			resource='brew'
 		elif hero=='sonya':
 			resource='fury'
+		elif hero=='gazlowe':
+			resource='scrap'
 		else:
 			resource='mana'
 

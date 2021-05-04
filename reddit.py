@@ -15,7 +15,7 @@ discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','
 #Posts with these in title gets forwarded regardless of author
 keywords={
 'Genji':[DiscordUserIDs['SomeoneNew'],DiscordUserIDs['Weebatsu']],
-'Samuro':[DiscordUserIDs['Blackstorm']],
+'Samuro':[DiscordUserIDs['Blackstorm'],156616620905725952],
 'Maiev':[DiscordUserIDs['SomeoneNew']], 
 ' Dva:':[DiscordUserIDs['Spazzo']], 
 'Hanzo':[DiscordUserIDs['Medicake']],
@@ -26,7 +26,7 @@ keywords={
 'Deathwing':[204893952908853248],
 'Tracer':[160087810370568193]}
 
-mindhawk_keywords=['Kerrigan','Cho ','Gall',"Cho'Gall",'Orphea','Li-Ming','Ragnaros', 'Li Ming', 'chogall']
+mindhawk_keywords=['Kerrigan','Cho ','Gall','Orphea','Li-Ming','Ragnaros', 'Li Ming']
 for i in mindhawk_keywords:
 	if i in keywords:
 		keywords[i].append(DiscordUserIDs['MindHawk'])

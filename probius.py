@@ -34,7 +34,9 @@ from maps import *
 from discordIDs import *
 from imageColour import *
 
-wsReactionRoles={'🇧':DiscordRoleIDs['BalanceTeam'],'🇩':DiscordRoleIDs['DraftAddict'],'🇱':DiscordRoleIDs['LFG']}
+wsReactionRoles={'🇧':DiscordRoleIDs['BalanceTeam'],'🇩':DiscordRoleIDs['DraftAddict'],'🇱':DiscordRoleIDs['LFG'],
+'<:Tank:837022373689426061>':836967732007665684,'<:Offlane:837022541197475941>':836969169437982720,'<:RangedAssassin:837024261826019348>':836974208533004288,
+'<:MeleeAssassin:837024286417223710>':836978015735906344,'<:Healer:837024194486075443>':836978312659599370,'<:Support:837024238912536586>':836978771139100704}
 drafts={}#Outside of client so it doesn't reset on periodic restarts or [restart]
 lastDraftMessageDict={}
 draftNames={}
@@ -538,7 +540,7 @@ class MyClient(discord.Client):
 		if message.id==799711541708193803:
 			if str(payload.emoji)=='🇩':
 				await client.get_guild(183275001439322112).get_member(payload.user_id).add_roles(client.get_guild(183275001439322112).get_role(799678402201255956))
-		if message.id==693380327413907487:#WS Server rules
+		if message.id in [693380327413907487,839258914347810836]:#WS Server rules
 			if str(payload.emoji) in wsReactionRoles:
 				await client.get_guild(DiscordGuildIDs['WindStriders']).get_member(payload.user_id).add_roles(client.get_guild(DiscordGuildIDs['WindStriders']).get_role(wsReactionRoles[str(payload.emoji)]))
 				if str(payload.emoji)=='🇱':
@@ -584,7 +586,7 @@ class MyClient(discord.Client):
 		if message.id==799711541708193803:
 			if str(payload.emoji)=='🇩':
 				await client.get_guild(183275001439322112).get_member(payload.user_id).remove_roles(client.get_guild(183275001439322112).get_role(799678402201255956))
-		if message.id==693380327413907487:
+		if message.id in [693380327413907487,839258914347810836]:
 			if str(payload.emoji) in wsReactionRoles:
 				await client.get_guild(DiscordGuildIDs['WindStriders']).get_member(payload.user_id).remove_roles(client.get_guild(DiscordGuildIDs['WindStriders']).get_role(wsReactionRoles[str(payload.emoji)]))
 				if str(payload.emoji)=='🇱':
