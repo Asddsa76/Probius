@@ -100,7 +100,7 @@ def aliases(hero):
 		return 'Raynor'
 	elif hero in ['firelord']:
 		return 'Ragnaros'
-	elif hero in ['reghar','rhegar']:
+	elif hero in ['reghar','rhegar','wolf','shaman']:
 		return 'Rehgar'
 	elif hero in ['misha']:
 		return 'Rexxar'
