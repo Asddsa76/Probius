@@ -36,11 +36,11 @@ async def additionalInfo(hero,name,description):
 	'malfurion':{
 		'Moonfire':'The area itself stays revealed for 2 seconds.',
 		'Celestial Alignment':'Also extends the reveal of located area to 5 seconds.'},
-	'mei':{'Avalanche':'Damage is not affected by number of consumed heroes.'}
+	'mei':{'Avalanche':'Damage is not affected by number of consumed heroes.'},
 	'mephisto':{'Spite':'Also extends mana regeneration from the healing globe.'},
 	'muradin':{'Grand Slam':'If an ally participates in the takedown, a second charge is gained'},
 	'orphea':{'Overflowing Chaos':'The damage bonus is multiplicative.'},
-	'rehgar':{"Farseer's Blessing":'Both casts heal around the target.'}
+	'rehgar':{"Farseer's Blessing":'Both casts heal around the target.'},
 	'sylvanas':{
 		'Haunting Wave':'Sylvanas is unstoppable while flying to the banshee. Reactivation becomes available 0.5 seconds after first E.',
 		'Mercenary Queen':'Mercenaries will not be stunned if the third application is through Remorseless.',
