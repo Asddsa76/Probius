@@ -96,14 +96,15 @@ async def fetch(session, url):
 		return await response.text()
 
 async def downloadHero(hero,client,patch):
-	async with aiohttp.ClientSession() as session:
-		if patch=='':
+	#async with aiohttp.ClientSession() as session:
+	with open('heroes-talents/'+hero+'.json') as page:
+		'''if patch=='':
 			page = await fetch(session, 'https://raw.githubusercontent.com/heroespatchnotes/heroes-talents/master/hero/'+hero+'.json')
 			#page = await fetch(session, 'https://raw.githubusercontent.com/MGatner/heroes-talents/83004/hero/'+hero+'.json')
 		else:
-			page = await fetch(session, 'https://raw.githubusercontent.com/MGatner/heroes-talents/'+patch+'/hero/'+hero+'.json')
+			page = await fetch(session, 'https://raw.githubusercontent.com/MGatner/heroes-talents/'+patch+'/hero/'+hero+'.json')'''
 		#client.heroPages={...'genji':[abilities,talents], ...}
-		page=loads(page)
+		page=loads(page.read())
 		abilities=[]
 		if hero in ['ltmorales', 'valeera', 'deathwing', 'zarya']:
 			resource='energy'

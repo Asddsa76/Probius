@@ -96,7 +96,7 @@ async def redditForwarding(client):#Called every 60 seconds
 					if toPing:
 						toPing=' '.join(['<@'+str(i)+'>' for i in toPing])
 
-					if author in redditors or 'Blizz_' in author:
+					if author in redditors:
 						if author in discordnames:
 							author=discordnames[author]
 						await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`{} by {}`'.format(title,author))#log

@@ -435,13 +435,13 @@ class MyClient(discord.Client):
 
 	async def on_ready(self):
 		print('Logged on...')
+		print('Downloading heroes...')
+		await downloadAll(self,argv)
+		print('Fetching proxy emojis...')
+		self.proxyEmojis=await getProxyEmojis(client.get_guild(603924426769170433))
 		print('Filling up with Reddit posts...')
 		self.forwardedPosts=[]
 		self.seenTitles=await fillPreviousPostTitles(self)#Fills seenTitles with all current titles
-		print('Fetching proxy emojis...')
-		self.proxyEmojis=await getProxyEmojis(client.get_guild(603924426769170433))
-		print('Downloading heroes...')
-		await downloadAll(self,argv)
 		self.ready=True
 		print('Ready!')
 		self.rulesChannel=self.get_channel(DiscordChannelIDs['ServerRules'])#server-rules
