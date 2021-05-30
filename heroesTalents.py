@@ -88,7 +88,7 @@ async def descriptionFortmatting(description):
 		description=description.replace('Repeatable Quest:','\n    **❢ Repeatable Quest:**')
 	else:
 		description=description.replace('Quest:','\n    **❢ Quest:**')
-	description=description.replace('Reward:','\n    **? Reward:**')
+	description=description.replace('Reward:','\n    **? Reward:**').replace('Loan:','\n    **$ Loan:**').replace('Passive:','\n    **Passive:**')
 	return description
 
 async def fetch(session, url):
