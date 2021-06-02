@@ -453,7 +453,7 @@ class MyClient(discord.Client):
 				i[2]=time.time()
 				await message.add_reaction(i[1])
 		pingNames={'lemmie':DiscordUserIDs['Gooey'], 'medicake':DiscordUserIDs['Medicake'],'libraries':224975834346291210}
-		pingList=[pingNames[i] for i in pingNames.keys() if '@'+i in message.content.replace(' ','')]
+		pingList=[pingNames[i] for i in pingNames.keys() if '@'+i in message.content.replace(' ','').lower()]
 		if pingList:
 			await message.channel.send(' '.join(['<@'+str(i)+'>' for i in pingList]))
 			

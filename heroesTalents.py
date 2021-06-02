@@ -29,17 +29,19 @@ async def additionalInfo(hero,name,description):
 		'Life Tap':'Costs 222 (+4% per level) Health.',
 		'Ruinous Affliction':'This third strike is also considered to be the first strike of the next three hits.'},
 	'imperius':{'Impaling Light':'The damage bonus is per brand and stacks to 225%'},
-	'johanna':{"Heaven's Fury":'3 bolts per second per enemy, up to 2 enemies.'},
+	'johanna':{"Heaven's Fury":'Up to two healing and two damaging bolts per second.'},
 	'kelthuzad':{'The Damned Return':'Does not interact with Arcane Echoes, Phylactery, or Hungering Cold.'},
 	'lunara':{'Leaping Strike':'Lunara is unstoppable while leaping.'},
 	'maiev':{'Spirit of Vengeance':'Reactivate to teleport to the spirit.'},
 	'malfurion':{
 		'Moonfire':'The area itself stays revealed for 2 seconds.',
-		'Celestial Alignment':'Also extends the reveal of located area to 5 seconds.'},
+		'Celestial Alignment':'Also extends the reveal of located area to 5 seconds.',
+		'Serenity':"Increases Tranquility's healing by 25%."},
 	'mei':{'Avalanche':'Damage is not affected by number of consumed heroes.'},
 	'mephisto':{'Spite':'Also extends mana regeneration from the healing globe.'},
 	'muradin':{'Grand Slam':'If an ally participates in the takedown, a second charge is gained'},
 	'orphea':{'Overflowing Chaos':'The damage bonus is multiplicative.'},
+	'ragnaros':{'Meteor Bomb':'The increased damage is lost when Ragnaros dies.'},
 	'rehgar':{"Farseer's Blessing":'Both casts heal around the target.'},
 	'sylvanas':{
 		'Haunting Wave':'Sylvanas is unstoppable while flying to the banshee. Reactivation becomes available 0.5 seconds after first E.',
@@ -63,6 +65,7 @@ async def additionalInfo(hero,name,description):
 
 async def fixTooltips(hero,name,description):
 	fixDict={#Replaces text using strikethrough
+	'anduin':{'Moral Compass':['**Passive:**','$ Loan:']},
 	'anubarak':{'Nerubian Armor':['ed',' ']},
 	'auriel':{"Swift Sweep":['50%','100%']},
 	'cassia':{'War Traveler':['8%','4%','1 second','0.5 seconds']},
