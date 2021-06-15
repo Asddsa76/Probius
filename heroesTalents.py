@@ -35,8 +35,7 @@ async def additionalInfo(hero,name,description):
 	'maiev':{'Spirit of Vengeance':'Reactivate to teleport to the spirit.'},
 	'malfurion':{
 		'Moonfire':'The area itself stays revealed for 2 seconds.',
-		'Celestial Alignment':'Also extends the reveal of located area to 5 seconds.',
-		'Serenity':"Increases Tranquility's healing by 25%."},
+		'Celestial Alignment':'Also extends the reveal of located area to 5 seconds.'},
 	'mei':{'Avalanche':'Damage is not affected by number of consumed heroes.'},
 	'mephisto':{'Spite':'Also extends mana regeneration from the healing globe.'},
 	'muradin':{'Grand Slam':'If an ally participates in the takedown, a second charge is gained'},
@@ -47,7 +46,8 @@ async def additionalInfo(hero,name,description):
 		'Haunting Wave':'Sylvanas is unstoppable while flying to the banshee. Reactivation becomes available 0.5 seconds after first E.',
 		'Mercenary Queen':'Mercenaries will not be stunned if the third application is through Remorseless.',
 		'Black Arrows':'Remorseless shots do not disable enemies.',
-		'Overwhelming Affliction':'Remorseless neither applies, nor extends the slow.'},
+		'Overwhelming Affliction':'Remorseless neither applies, nor extends the slow.',
+		'Remorseless':"This shot originates from Sylvanas' target, and does not disable buildings while Black Arrows is active. If the third stack on the secondary target is reached through this shot, the target will not be affected by Mercenary Queen or Overwhelming Affliction."},
 	'tassadar':{'Psychic Shock':'Psionic Storm deals 2 additional ticks of damage.',
 		'Shock Ray':'0.375 second wind up before beam starts, additional 0.75 second channel while beam is moving. If the channel is interrupted, beam instantly disappears.'},
 	'tracer':{'Ricochet':'Ricochet shots interact with Telefrag, but not Focus Fire.'},
@@ -65,7 +65,6 @@ async def additionalInfo(hero,name,description):
 
 async def fixTooltips(hero,name,description):
 	fixDict={#Replaces text using strikethrough
-	'anduin':{'Moral Compass':['**Passive:**','$ Loan:']},
 	'anubarak':{'Nerubian Armor':['ed',' ']},
 	'auriel':{"Swift Sweep":['50%','100%']},
 	'cassia':{'War Traveler':['8%','4%','1 second','0.5 seconds']},
@@ -91,7 +90,7 @@ async def descriptionFortmatting(description):
 		description=description.replace('Repeatable Quest:','\n    **❢ Repeatable Quest:**')
 	else:
 		description=description.replace('Quest:','\n    **❢ Quest:**')
-	description=description.replace('Reward:','\n    **? Reward:**').replace('Loan:','\n    **$ Loan:**').replace('Passive:','\n    **Passive:**')
+	description=description.replace('Reward:','\n    **? Reward:**').replace('Gambit:','\n   **♙Gambit:**').replace('Passive:','\n    **Passive:**')
 	return description
 
 async def fetch(session, url):
@@ -123,9 +122,9 @@ async def downloadHero(hero,client,patch):
 		for i in page['abilities'].keys():
 			for ability in page['abilities'][i]:
 				if 'hotkey' in ability:
-					output='**['+ability['hotkey']+'] '
+					output='**{'+ability['hotkey']+'} '
 				else:
-					output='**[D] '
+					output='**{D} '
 				output+=ability['name']+':** '
 				if 'cooldown' in ability or 'manaCost' in ability:
 					output+='*'
@@ -140,7 +139,9 @@ async def downloadHero(hero,client,patch):
 				output=await fixTooltips(hero,ability['name'],output)
 				abilities.append(output)
 		if hero=='samuro':
-			abilities.append("**[D] Image Transmission:** *14 seconds;* Activate to switch places with a target Mirror Image, removing most negative effects from Samuro and the Mirror Image.\n**Advancing Strikes:** Basic Attacks against enemy Heroes increase Samuro's Movement Speed by 25% for 2 seconds.")
+			abilities.append("**{D} Image Transmission:** *14 seconds;* Activate to switch places with a target Mirror Image, removing most negative effects from Samuro and the Mirror Image.\n**Advancing Strikes:** Basic Attacks against enemy Heroes increase Samuro's Movement Speed by 25% for 2 seconds.")
+		elif hero=='hogger':
+			abilities.append("**{D} Rage:** Rage is gained by taking damage or dealing Basic Attack damage. Hogger’s Basic Ability cooldowns refresh 1% faster for every 2 points of Rage. After 3 seconds of not gaining Rage, it begins to quickly decay. ***Hogger gains 5 Rage when landing a Basic Attack and 1 Rage each time he takes damage.***")
 
 		talents=[]
 		keys=sorted(list(page['talents'].keys()),key=lambda x:int(x))
@@ -148,7 +149,7 @@ async def downloadHero(hero,client,patch):
 			tier=page['talents'][key]
 			talentTier=[]
 			for talent in tier:
-				output='**['+str(int(key)-2*int(hero=='chromie' and key!='1'))+'] '
+				output='**{'+str(int(key)-2*int(hero=='chromie' and key!='1'))+'} '
 				output+=talent['name']+':** '
 				if 'cooldown' in talent:
 					output+='*'+str(talent['cooldown'])+' seconds;* '
