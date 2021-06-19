@@ -51,7 +51,7 @@ def printTier(talents,tier):#Print a talent tier
 def printAbility(abilities,hotkey):#Prints abilities with matching hotkey
 	output=''
 	for ability in abilities:
-		if '**{'+hotkey.upper()+'}' in ability:
+		if '**['+hotkey.upper()+']' in ability:
 			output+=ability+'\n'
 	return output
 
@@ -111,8 +111,9 @@ async def printAbilityTalents(message,abilities,talents,hotkey,hero):
 		output+=output2
 	await printLarge(message.channel,output)
 
-async def printSearch(abilities, talents, name, hero, deep=False):#Prints abilities and talents with the name of the identifier
+async def printSearch(abilities, talents, name, hero, deep=False):#Prints abilities and talents with substring
 	name=abilityAliases(hero,name)
+	name=name.replace('{','[').replace('}',']')#Search hotkeys/talent tiers
 	if not name:
 		return
 	if '--' in name:
@@ -155,9 +156,6 @@ async def printLarge(channel,inputstring,separator='\n'):#Get long string. Print
 	await channel.send(output)
 
 async def printAll(client,message,keyword, deep=False, heroList=getHeroes()):#When someone calls [all/keyword]
-	'''if len(keyword)<4 and message.author.id!=DiscordUserIDs['Asddsa']:
-		await message.channel.send('Please use a keyword with at least 4 letters minimum')
-		return'''
 	toPrint=''
 	for hero in heroList:
 		(abilities,talents)=client.heroPages[hero]

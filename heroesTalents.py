@@ -122,9 +122,9 @@ async def downloadHero(hero,client,patch):
 		for i in page['abilities'].keys():
 			for ability in page['abilities'][i]:
 				if 'hotkey' in ability:
-					output='**{'+ability['hotkey']+'} '
+					output='**['+ability['hotkey']+'] '
 				else:
-					output='**{D} '
+					output='**[D] '
 				output+=ability['name']+':** '
 				if 'cooldown' in ability or 'manaCost' in ability:
 					output+='*'
@@ -139,9 +139,9 @@ async def downloadHero(hero,client,patch):
 				output=await fixTooltips(hero,ability['name'],output)
 				abilities.append(output)
 		if hero=='samuro':
-			abilities.append("**{D} Image Transmission:** *14 seconds;* Activate to switch places with a target Mirror Image, removing most negative effects from Samuro and the Mirror Image.\n**Advancing Strikes:** Basic Attacks against enemy Heroes increase Samuro's Movement Speed by 25% for 2 seconds.")
+			abilities.append("**[D] Image Transmission:** *14 seconds;* Activate to switch places with a target Mirror Image, removing most negative effects from Samuro and the Mirror Image.\n**Advancing Strikes:** Basic Attacks against enemy Heroes increase Samuro's Movement Speed by 25% for 2 seconds.")
 		elif hero=='hogger':
-			abilities.append("**{D} Rage:** Rage is gained by taking damage or dealing Basic Attack damage. Hogger’s Basic Ability cooldowns refresh 1% faster for every 2 points of Rage. After 3 seconds of not gaining Rage, it begins to quickly decay. ***Hogger gains 5 Rage when landing a Basic Attack and 1 Rage each time he takes damage.***")
+			abilities.append("**[D] Rage:** Rage is gained by taking damage or dealing Basic Attack damage. Hogger’s Basic Ability cooldowns refresh 1% faster for every 2 points of Rage. After 3 seconds of not gaining Rage, it begins to quickly decay. ***Hogger gains 5 Rage when landing a Basic Attack and 1 Rage each time he takes damage.***")
 
 		talents=[]
 		keys=sorted(list(page['talents'].keys()),key=lambda x:int(x))
@@ -149,7 +149,7 @@ async def downloadHero(hero,client,patch):
 			tier=page['talents'][key]
 			talentTier=[]
 			for talent in tier:
-				output='**{'+str(int(key)-2*int(hero=='chromie' and key!='1'))+'} '
+				output='**['+str(int(key)-2*int(hero=='chromie' and key!='1'))+'] '
 				output+=talent['name']+':** '
 				if 'cooldown' in talent:
 					output+='*'+str(talent['cooldown'])+' seconds;* '
