@@ -9,7 +9,7 @@ async def guide(hero,channel):
 	output=''
 	with open('Text files/otherBuilds.txt','r') as f:
 		for i in f:
-			if hero in i:
+			if hero.lower() in i.lower():
 				authorAndLink=i.split('; ')[1]
 				[author,link]=authorAndLink.split(': ')
 				output+=author+': <'+link.replace('\n','')+'>\n'

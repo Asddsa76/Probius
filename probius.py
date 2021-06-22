@@ -34,6 +34,7 @@ from maps import *
 from discordIDs import *
 from imageColour import *
 
+botChannels={'Wind Striders':DiscordChannelIDs['Probius'],'De Schuifpui Schavuiten':687351660502057021, 'Nexus Schoolhouse':813507461427363870}
 wsReactionRoles={'🇧':DiscordRoleIDs['BalanceTeam'],'🇩':DiscordRoleIDs['DraftAddict'],'🇱':DiscordRoleIDs['LFG'],
 '<:Tank:837022373689426061>':836967732007665684,'<:Offlane:837022541197475941>':836969169437982720,'<:RangedAssassin:837024261826019348>':836974208533004288,
 '<:MeleeAssassin:837024286417223710>':836978015735906344,'<:Healer:837024194486075443>':836978312659599370,'<:Support:837024238912536586>':836978771139100704}
@@ -45,7 +46,7 @@ buildsAliases=['guide','build','b','g','builds','guides']
 quotesAliases=['quote','q','quotes']
 rotationAlises=['rotation','rot','sale','sales']
 aliasesAliases=['aliases','acronyms','n']
-wikipageAliases=['all','page','wiki']
+wikipageAliases=['page','wiki']
 randomAliases=['random','ra','rand']
 draftAliases=['draft','d','phantomdraft','pd','mockdraft','md']
 colourAliases=['colour','colours','c','colors','color']
@@ -282,15 +283,12 @@ async def mainProbius(client,message,texts):
 		if command in emojiAliases:
 			await message.channel.send('Emojis: [:hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.')
 			continue
-		try:
-			if len(text)==1 and command[0]=='t' and command[8] ==',':#[t3221323,sam]
-				await printBuild(client,message.channel,command)
-				continue
-			if len(text)==2 and command[0]=='t' and len(command)==8 and command!='tassadar':#[t3221323/sam]
-				await printBuild(client,message.channel,','.join(text))
-				continue
-		except:
-			pass
+		if len(text)==1 and command[0]=='t' and command[8] ==',':#[t3221323,sam]
+			await printCompactBuild(client,message.channel,command)
+			continue
+		if len(text)==2 and command[0]=='t' and len(command)==8 and command!='tassadar':#[t3221323/sam]
+			await printCompactBuild(client,message.channel,','.join(text))
+			continue
 		#From here it's actual heroes, or a search
 		hero=command
 		if len(hero)==1 or (len(hero)==2 and ('1' in hero or '2' in hero)):#Patch notes have abilities in []. Don't want spammed triggers again. Numbers for R1, R2, etc.
@@ -356,6 +354,9 @@ async def mainProbius(client,message,texts):
 				output=printAbility(abilities,tier)
 			elif tier=='trait':
 				output=printAbility(abilities,'d')
+			elif tier =='all':
+				await printEverything(client,message,abilities,talents)
+				return
 			elif tier in wikipageAliases:#Linking user to wiki instead of printing everything
 				await message.channel.send('<https://heroesofthestorm.gamepedia.com/Data:'+hero+'#Skills>')
 				continue
@@ -432,6 +433,7 @@ class MyClient(discord.Client):
 		562624527020982293:780219683651190785}#SEA
 		self.rulesChannel=None
 		self.welcomeMessage=''
+		self.botChannels=botChannels
 
 	async def on_ready(self):
 		print('Logged on...')
@@ -537,39 +539,43 @@ class MyClient(discord.Client):
 			return
 		if message.author.id==670832046389854239:#Advisor wrote message
 			return
-		if message.id==799711541708193803:
+		if message.id==799711541708193803:#NSH draft
 			if str(payload.emoji)=='🇩':
 				await client.get_guild(183275001439322112).get_member(payload.user_id).add_roles(client.get_guild(183275001439322112).get_role(799678402201255956))
-		if message.id in [693380327413907487,839258914347810836]:#WS Server rules
+				return
+		elif message.id in [693380327413907487,839258914347810836]:#WS Server rules
 			if str(payload.emoji) in wsReactionRoles:
 				await client.get_guild(DiscordGuildIDs['WindStriders']).get_member(payload.user_id).add_roles(client.get_guild(DiscordGuildIDs['WindStriders']).get_role(wsReactionRoles[str(payload.emoji)]))
 				if str(payload.emoji)=='🇱':
 					member=client.get_guild(DiscordGuildIDs['WindStriders']).get_member(payload.user_id)
 					await giveLfgRoles(member,self)
 
+		elif message.author.id==DiscordUserIDs['Probius']:#Message is from Probius
+			if str(payload.emoji)=='👎':#downvoted with thumbs down
+				if message.channel.id in [DiscordChannelIDs['RedditPosts'],DiscordChannelIDs['Pokedex']]:#Message is in reddit posts or pokedex
+					output=member.mention+'<:bonk:761981366744121354>'
+					await client.get_channel(DiscordChannelIDs['General']).send(output)#general
+					return
+				elif 'reddit.com' in message.content:
+					await message.channel.send(member.mention+'<:bonk:761981366744121354>')
+					return
+				elif '<:bonk:761981366744121354>' in message.content or '@' in message.content:
+					return
+				output=member.name+' deleted a message from Probius'
+				print(output)
+				await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`'+output+'`')
+				await message.delete()
+				return
 
-		elif message.author.id==DiscordUserIDs['Probius'] and str(payload.emoji)=='👎':#Message is from Probius, and is downvoted with thumbs down
-			if message.channel.id in [DiscordChannelIDs['RedditPosts'],DiscordChannelIDs['Pokedex']]:#Message is in reddit posts or pokedex
-				output=member.mention+'<:bonk:761981366744121354>'
-				await client.get_channel(DiscordChannelIDs['General']).send(output)#general
+			elif 'React to ping' in message.content and str(payload.emoji)=='👍':#Message from Probius, pings Pokedex:
+				output=member.name+' started a balance discussion'
+				print(output)
+				await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`'+output+'`')
+				await pingPokedex(self,message,member)
 				return
-			elif 'reddit.com' in message.content:
-				await message.channel.send(member.mention+'<:bonk:761981366744121354>')
+			elif str(payload.emoji)=='👍' and 'Talent build' in message.content:
+				await printBuildFromReaction(client,message)
 				return
-			elif '<:bonk:761981366744121354>' in message.content or '@' in message.content:
-				return
-			output=member.name+' deleted a message from Probius'
-			print(output)
-			await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`'+output+'`')
-			await message.delete()
-			return
-
-		elif message.author.id==DiscordUserIDs['Probius'] and 'React to ping' in message.content and str(payload.emoji)=='👍':#Message from Probius, pings Pokedex:
-			output=member.name+' started a balance discussion'
-			print(output)
-			await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`'+output+'`')
-			await pingPokedex(self,message,member)
-			return
 		elif str(payload.emoji)=='⚽' and message.channel.id==DiscordChannelIDs['General']:
 			await sortFromReaction(message,member.id,self)
 			return

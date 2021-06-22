@@ -65,16 +65,43 @@ def deepAndShallowSearchFoundBool(ability,string,deep):#Python3.5 doesn't allow 
 		return 1
 	return 0
 
-async def printBuild(client,channel,text):
+async def printCompactBuild(client,channel,text):
+	#bot channel: posts whole thing
+	#outside bot channel: post formatted query and name of talents, and reacts :thumb up:
+	#when reacted to, print whole thing
 	build,hero=text.split(',')#Example: T0230303,DVa
 	hero=aliases(hero)
 	(abilities,talents)=client.heroPages[hero]
 	build=build.replace('q','1').replace('w','2').replace('e','3').replace('r','4').replace('t','5')
+
+	#Check for malicious input, since the build will be repeated back
+	for i in build[1:]:
+		if i not in '0123456789':return
+
+	if channel in client.botChannels.values():
+		await printBuild(channel,build,talents)
+		return
+
+	output='Talent build [T'+build[1:]+','+hero+']: '
+	talentsToPrint=[]
+	for j,i in enumerate(build[1:]):
+		if i=='0':continue
+		talentsToPrint.append(talents[j][int(i)-1].split('**')[1].split('] ')[1].replace(':',''))
+	output+=', '.join(talentsToPrint)
+	message=await channel.send(output)
+	await message.add_reaction('👍')
+
+async def printBuild(channel,build,talents):#Posts all tooltips on reactions, or when posted in bot channel
 	output=[]
 	for j,i in enumerate(build[1:]):
 		if i=='0':continue
 		output.append(talents[j][int(i)-1])
 	await printLarge(channel,'\n'.join(output))
+
+async def printBuildFromReaction(client,message):
+	build,hero=message.content.split('[')[1].split(']')[0].split(',')
+	(abilities,talents)=client.heroPages[hero]
+	await printBuild(message.channel,build,talents)
 
 async def addUnderscoresAndNewline(namelist,ability):
 	indices=[]
@@ -165,9 +192,8 @@ async def printAll(client,message,keyword, deep=False, heroList=getHeroes()):#Wh
 		toPrint+='`'+hero.replace('_',' ')+':` '+output
 	if toPrint=='':
 		return
-	botChannels={'Wind Striders':DiscordChannelIDs['Probius'],'De Schuifpui Schavuiten':687351660502057021, 'Nexus Schoolhouse':813507461427363870}
-	if len(toPrint)>2000 and message.channel.guild.name in botChannels:#If the results is over one message, it gets dumped in specified bot channel
-		channel=message.channel.guild.get_channel(botChannels[message.channel.guild.name])
+	if len(toPrint)>2000 and message.channel.guild.name in client.botChannels:#If the results is over one message, it gets dumped in specified bot channel
+		channel=message.channel.guild.get_channel(client.botChannels[message.channel.guild.name])
 		introText=message.author.mention+", Here's all heroes' "+'"'+keyword+'":\n'
 		toPrint=introText+toPrint
 	else:
@@ -186,3 +212,12 @@ if __name__ == '__main__':
 				output.append(ability.split(':** ')[0])
 	for i in output:
 		print(i)
+
+async def printEverything(client,message,abilities,talents):
+	output=message.author.mention+'\n'+'\n'.join(abilities)+'\n'
+	output+='\n'.join(talent for tier in talents for talent in tier)
+	try:
+		outputChannel=client.botChannels[message.channel.guild.name] 
+	except:
+		outputChannel=message.channel
+	await printLarge(outputChannel,output)
