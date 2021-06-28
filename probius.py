@@ -557,7 +557,6 @@ class MyClient(discord.Client):
 					await client.get_channel(DiscordChannelIDs['General']).send(output)#general
 					return
 				elif 'reddit.com' in message.content:
-					await message.channel.send(member.mention+'<:bonk:761981366744121354>')
 					return
 				elif '<:bonk:761981366744121354>' in message.content or '@' in message.content:
 					return
