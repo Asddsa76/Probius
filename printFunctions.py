@@ -78,7 +78,7 @@ async def printCompactBuild(client,channel,text):
 	for i in build[1:]:
 		if i not in '0123456789':return
 
-	if channel in client.botChannels.values():
+	if channel.id in client.botChannels.values():
 		await printBuild(channel,build,talents)
 		return
 

@@ -567,15 +567,20 @@ class MyClient(discord.Client):
 				await message.delete()
 				return
 
-			elif 'React to ping' in message.content and str(payload.emoji)=='👍':#Message from Probius, pings Pokedex:
-				output=member.name+' started a balance discussion'
-				print(output)
-				await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`'+output+'`')
-				await pingPokedex(self,message,member)
-				return
-			elif str(payload.emoji)=='👍' and 'Talent build' in message.content:
-				await printBuildFromReaction(client,message)
-				return
+			elif str(payload.emoji)=='👍' and message.reactions[[i.emoji for i in message.reactions].index(str(payload.emoji))].me:
+				if 'React to ping' in message.content:#Pokedex:
+					output=member.name+' started a balance discussion'
+					print(output)
+					await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`'+output+'`')
+					await pingPokedex(self,message,member)
+					return
+				elif 'Talent build' in message.content:
+					await message.remove_reaction(payload.emoji,message.author)
+					await printBuildFromReaction(client,message)
+					output=member.name+' viewed talents'
+					print(output)
+					await client.get_channel(DiscordChannelIDs['LoggingChannel']).send('`'+output+'`')
+					return
 		elif str(payload.emoji)=='⚽' and message.channel.id==DiscordChannelIDs['General']:
 			await sortFromReaction(message,member.id,self)
 			return
