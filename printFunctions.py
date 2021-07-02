@@ -194,7 +194,7 @@ async def printAll(client,message,keyword, deep=False, heroList=getHeroes()):#Wh
 		return
 	if len(toPrint)>2000 and message.channel.guild.name in client.botChannels:#If the results is over one message, it gets dumped in specified bot channel
 		channel=message.channel.guild.get_channel(client.botChannels[message.channel.guild.name])
-		introText=message.author.mention+", Here's all heroes' "+'"'+keyword+'":\n'
+		introText=message.author.mention+'\n'
 		toPrint=introText+toPrint
 	else:
 		channel=message.channel
