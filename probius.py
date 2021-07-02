@@ -67,6 +67,7 @@ mapImageAliases=['map','m','battleground','bg']
 restartAliases=['restart','shutdown','stop']
 confidenceAliases=['ci','confidence','confidenceinterval']
 heroAliases=['hero', 'heroes', 'bruiser', 'healer', 'support', 'ranged', 'melee', 'assassin', 'mage', 'marksman', 'tank', 'marksmen']
+coachingAliases=['coach', 'coaching', 'coachingsession']
 
 
 async def mainProbius(client,message,texts):
@@ -89,7 +90,9 @@ async def mainProbius(client,message,texts):
 		command=text[0].replace(' ','')
 		if command in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
-
+		if command in coachingAliases:
+			await coaching(message)
+			return
 		if command in ['avatarcolour','avatarcolor']:
 			#Hogs CPU resources
 			#await avatarColour(client,message.channel,text[1])
