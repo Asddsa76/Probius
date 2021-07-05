@@ -86,7 +86,9 @@ async def sortFromReaction(message,reacterID,client):
 	await sort(roles,unsortedMember,olympian,client)
 
 async def giveLfgRoles(member,client):
-	if 693038480783048774 not in [i.id for i in member.roles]:
+	reaction=[i for i in (await (await client.fetch_channel(634012658625937408)).fetch_message(693380327413907487)).reactions if i.emoji=='🇱'][0]
+	users=await reaction.users().flatten()
+	if member.id not in (i.id for i in users):
 		return
 	for i in [i.id for i in member.roles]:
 		if i in client.wsLfgRoles:
