@@ -168,8 +168,13 @@ async def printSearch(abilities, talents, name, hero, deep=False):#Prints abilit
 
 async def printLarge(channel,inputstring,separator='\n'):#Get long string. Print lines out in 2000 character chunks
 	strings=[i+separator for i in inputstring.split(separator)]
+	
+	#This first message for something to link in original channel
 	output=strings.pop(0)
-	i=0
+	firstMessage=await channel.send(output)
+	
+	output=strings.pop(0)
+	i=1
 	while strings:
 		if i==4:#Don't make a long call in #probius hog all the bandwidth
 			i=0
@@ -181,6 +186,7 @@ async def printLarge(channel,inputstring,separator='\n'):#Get long string. Print
 			await channel.send(output)
 			output=strings.pop(0)
 	await channel.send(output)
+	return firstMessage
 
 async def printAll(client,message,keyword, deep=False, heroList=getHeroes()):#When someone calls [all/keyword]
 	toPrint=''
@@ -195,14 +201,15 @@ async def printAll(client,message,keyword, deep=False, heroList=getHeroes()):#Wh
 	if len(toPrint)>2000 and message.channel.guild.name in client.botChannels:#If the results is over one message, it gets dumped in specified bot channel
 		channel=message.channel.guild.get_channel(client.botChannels[message.channel.guild.name])
 		if channel==message.channel:#Already in #probius
-			pass
-		else:
-			introText=message.author.mention+'\n'
+			await printLarge(channel,toPrint)
+		else:#Guild has a botchannel, the message was posted outside it
+			introText=message.author.mention+'\n'+'Back to discussion: '+message.jump_url+'\n'
 			toPrint=introText+toPrint
-			await message.channel.send('Sending large message in '+channel.mention+'...')
-	else:
-		channel=message.channel
-	await printLarge(channel,toPrint)
+			redirectMessage=await message.channel.send('Sending large message in '+channel.mention+'...')
+			firstMessage=await printLarge(channel,toPrint)
+			await redirectMessage.edit(content=redirectMessage.content+'\n'+firstMessage.jump_url)
+	else:#No bot channel
+		await printLarge(message.channel,toPrint)
 
 if __name__ == '__main__':
 	from heroPage import heroAbilitiesAndTalents
