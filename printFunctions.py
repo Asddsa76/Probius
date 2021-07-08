@@ -194,8 +194,12 @@ async def printAll(client,message,keyword, deep=False, heroList=getHeroes()):#Wh
 		return
 	if len(toPrint)>2000 and message.channel.guild.name in client.botChannels:#If the results is over one message, it gets dumped in specified bot channel
 		channel=message.channel.guild.get_channel(client.botChannels[message.channel.guild.name])
-		introText=message.author.mention+'\n'
-		toPrint=introText+toPrint
+		if channel==message.channel:#Already in #probius
+			pass
+		else:
+			introText=message.author.mention+'\n'
+			toPrint=introText+toPrint
+			await message.channel.send('Sending large message in '+channel.mention+'...')
 	else:
 		channel=message.channel
 	await printLarge(channel,toPrint)
