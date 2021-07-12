@@ -1,0 +1,13 @@
+# String used to start Chat Commands, not Slash Commands
+Prefix: "/"
+
+# How to get Discord Server ID
+# 1. Discord > Options > Advanced > Developer Mode: On
+# 2. Right-click on Discord Server > Copy ID
+Servers: [437557557486288897]
+
+# How to setup your Discord Bot Token
+# 1. Discord Developer Portal > Bot > Copy
+# 2. Press [Win Logo + X] then [A] to open Command Prompt as Administrator)
+# 4. Type "setx "Discord Bot Token" "<token>" /M" and press [Enter]
+Token: "Discord Bot Token"

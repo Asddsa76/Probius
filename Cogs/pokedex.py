@@ -1,10 +1,17 @@
-import discord
+import discord, os
 from discord.ext import commands
 from discord_slash import SlashCommandOptionType, SlashContext, cog_ext
 from discord_slash.utils.manage_commands import create_choice, create_option
+from pathlib import Path
+from ruamel.yaml import YAML # pip install ruamel.yaml
 
+root = os.path.abspath(os.curdir)
+path = Path(root.replace(os.sep, '/') + "/config.yml")
+yaml = YAML(typ="safe")
+data = yaml.load(path)
+
+servers = data["Servers"]
 base = "pokedex"
-servers = [437557557486288897]
 
 class Pokedex(commands.Cog):
 
