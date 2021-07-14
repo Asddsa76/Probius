@@ -1,27 +1,23 @@
-import discord, os
+import discord
+import os
 from discord.ext import commands
+
 from discord_slash import SlashCommandOptionType, SlashContext, cog_ext
 from discord_slash.utils.manage_commands import create_choice, create_option
-from pathlib import Path
-from ruamel.yaml import YAML # pip install ruamel.yaml
 
-root = os.path.abspath(os.curdir)
-path = Path(root.replace(os.sep, '/') + "/config.yml")
-yaml = YAML(typ="safe")
-data = yaml.load(path)
+from config import servers
 
-servers = data["Servers"]
 base = "hero"
 
 class Hero(commands.Cog):
 
     def __init__(self, client):
         self.client = client
-        
+
     @commands.Cog.listener()
     async def on_ready(self):
         print("Module loaded: hero")
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "ability",
@@ -51,7 +47,7 @@ class Hero(commands.Cog):
         message = "Command used: /" + base + " ability"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "emoji",
@@ -123,7 +119,7 @@ class Hero(commands.Cog):
         message = "Command used: /" + base + " emoji"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "info",
@@ -146,7 +142,7 @@ class Hero(commands.Cog):
         message = "Command used: /" + base + " info"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "key",
@@ -202,7 +198,7 @@ class Hero(commands.Cog):
         message = "Command used: /" + base + " key"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "level",
@@ -262,7 +258,7 @@ class Hero(commands.Cog):
         message = "Command used: /" + base + " level"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "overview",
@@ -285,7 +281,7 @@ class Hero(commands.Cog):
         message = "Command used: /" + base + " overview"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "quote",
@@ -308,7 +304,7 @@ class Hero(commands.Cog):
         message = "Command used: /" + base + " quote"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "talent",
@@ -338,7 +334,7 @@ class Hero(commands.Cog):
         message = "Command used: /" + base + " talent"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "tooltip",
@@ -368,6 +364,6 @@ class Hero(commands.Cog):
         message = "Command used: /" + base + " tooltip"
         await context.send(content = message)
         print(message)
-        
+
 def setup(client):
     client.add_cog(Hero(client))

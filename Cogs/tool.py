@@ -1,27 +1,23 @@
-import discord, os
+import discord
+import os
 from discord.ext import commands
+
 from discord_slash import SlashCommandOptionType, SlashContext, cog_ext
 from discord_slash.utils.manage_commands import create_choice, create_option
-from pathlib import Path
-from ruamel.yaml import YAML # pip install ruamel.yaml
 
-root = os.path.abspath(os.curdir)
-path = Path(root.replace(os.sep, '/') + "/config.yml")
-yaml = YAML(typ="safe")
-data = yaml.load(path)
+from config import servers
 
-servers = data["Servers"]
 base = "tool"
 
 class Tool(commands.Cog):
 
     def __init__(self, client):
         self.client = client
-        
+
     @commands.Cog.listener()
     async def on_ready(self):
         print("Module loaded: tool")
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "bonk",
@@ -35,31 +31,7 @@ class Tool(commands.Cog):
         message = "Command used: /" + base + " bonk"
         await context.send(content = message)
         print(message)
-        
-    @cog_ext.cog_subcommand(
-        base = base,
-        name = "help",
-        guild_ids = servers,
-        description = "Learn how to use our bot."
-    )
-    async def help(
-        self,
-        context: SlashContext
-    ):
-        message = "Command used: /" + base + " help"
-        await context.send(content = message)
-        print(message)
-        
-        message = f"**Draft:** ban; coin; help; map; pick; start; undo"
-        message += f"\n**Hero:** ability; emoji; info; key; level; overview; quote; talent; tooltip"
-        message += f"\n**Link:** build; guide; reddit; tier-list"
-        message += f"\n**Patch:** index; text"
-        message += f"\n**Pokedex:** add; remove; who"
-        message += f"**Tool:** bonk; help; pet; poll; summon; vote"
-        message += f"\n**User:** avatar; color; sort; unsorted"
-        message += f"\n**View:** core-ability; role; rotation"
-        await context.send(content = message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "pet",
@@ -73,7 +45,7 @@ class Tool(commands.Cog):
         message = "Command used: /" + base + " pet"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "poll",
@@ -135,7 +107,7 @@ class Tool(commands.Cog):
         message = "Command used: /" + base + " poll"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "summon",
@@ -171,6 +143,6 @@ class Tool(commands.Cog):
         message = "Command used: /" + base + " vote"
         await context.send(content = message)
         print(message)
-        
+
 def setup(client):
     client.add_cog(Tool(client))

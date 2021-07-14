@@ -1,23 +1,19 @@
-import discord, os
+import discord
+import os
 from discord.ext import commands
+
 from discord_slash import SlashCommandOptionType, SlashContext, cog_ext
 from discord_slash.utils.manage_commands import create_choice, create_option
-from pathlib import Path
-from ruamel.yaml import YAML # pip install ruamel.yaml
 
-root = os.path.abspath(os.curdir)
-path = Path(root.replace(os.sep, '/') + "/config.yml")
-yaml = YAML(typ="safe")
-data = yaml.load(path)
+from config import servers
 
-servers = data["Servers"]
 base = "user"
 
 class User(commands.Cog):
 
     def __init__(self, client):
         self.client = client
-        
+
     @commands.Cog.listener()
     async def on_ready(self):
         print("Module loaded: user")
@@ -49,7 +45,7 @@ class User(commands.Cog):
         message = "Command used: /" + base + " color"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "sort",
@@ -158,7 +154,7 @@ class User(commands.Cog):
         message = "Command used: /" + base + " sort"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "unsorted",
@@ -172,6 +168,6 @@ class User(commands.Cog):
         message = "Command used: /" + base + " unsorted"
         await context.send(content = message)
         print(message)
-        
+
 def setup(client):
     client.add_cog(User(client))

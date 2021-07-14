@@ -1,16 +1,12 @@
-import discord, os
+import discord
+import os
 from discord.ext import commands
+
 from discord_slash import SlashCommandOptionType, SlashContext, cog_ext
 from discord_slash.utils.manage_commands import create_choice, create_option
-from pathlib import Path
-from ruamel.yaml import YAML # pip install ruamel.yaml
 
-root = os.path.abspath(os.curdir)
-path = Path(root.replace(os.sep, "/") + "/config.yml")
-yaml = YAML(typ = "safe")
-data = yaml.load(path)
+from config import servers
 
-servers = data["Servers"]
 base = "draft"
 
 class Draft(commands.Cog):
@@ -44,7 +40,7 @@ class Draft(commands.Cog):
         message = "Command used: /" + base + " ban"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "coin",
@@ -77,7 +73,7 @@ class Draft(commands.Cog):
         message = "Command used: /" + base + " coin"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "help",
@@ -91,7 +87,7 @@ class Draft(commands.Cog):
         message = "Command used: /" + base + " draft"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "map",
@@ -172,7 +168,7 @@ class Draft(commands.Cog):
         message = "Command used: /" + base + " map"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "pick",
@@ -195,7 +191,7 @@ class Draft(commands.Cog):
         message = "Command used: /" + base + " pick"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "start",
@@ -209,7 +205,7 @@ class Draft(commands.Cog):
         message = "Command used: /" + base + " start"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "undo",
@@ -223,7 +219,6 @@ class Draft(commands.Cog):
         message = "Command used: /" + base + " undo"
         await context.send(content = message)
         print(message)
-        
+
 def setup(client):
     client.add_cog(Draft(client))
-    

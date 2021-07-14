@@ -1,27 +1,23 @@
-import discord, os
+import discord
+import os
 from discord.ext import commands
+
 from discord_slash import SlashCommandOptionType, SlashContext, cog_ext
 from discord_slash.utils.manage_commands import create_choice, create_option
-from pathlib import Path
-from ruamel.yaml import YAML # pip install ruamel.yaml
 
-root = os.path.abspath(os.curdir)
-path = Path(root.replace(os.sep, '/') + "/config.yml")
-yaml = YAML(typ="safe")
-data = yaml.load(path)
+from config import servers
 
-servers = data["Servers"]
 base = "view"
 
 class View(commands.Cog):
 
     def __init__(self, client):
         self.client = client
-        
+
     @commands.Cog.listener()
     async def on_ready(self):
         print("Module loaded: view")
-    
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "core-ability",
@@ -102,7 +98,7 @@ class View(commands.Cog):
         message = "Command used: /" + base + " core"
         await context.send(content = message)
         print(message)
-    
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "role",
@@ -155,34 +151,34 @@ class View(commands.Cog):
         message = "Command used: /" + base + " role"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
-        name="rotation",
+        name = "rotation",
         guild_ids = servers,
-        description="View a Rotation.",
-        options=[
+        description = "View a Rotation.",
+        options = [
             create_option(
-                name="type",
-                description="Select a rotation.",
-                required=True,
-                option_type=SlashCommandOptionType.STRING,
-                choices=[
+                name = "type",
+                description = "Select a rotation.",
+                required = True,
+                option_type = SlashCommandOptionType.STRING,
+                choices = [
                     create_choice(
-                        name="Free Hero Rotation",
-                        value="Free Hero Rotation"
+                        name = "Free Hero Rotation",
+                        value = "Free Hero Rotation"
                     ),
                     create_choice(
-                        name="Ranked Map Rotation",
-                        value="Ranked Map Rotation"
+                        name = "Ranked Map Rotation",
+                        value = "Ranked Map Rotation"
                     ),
                     create_choice(
-                        name="Unranked Map Rotation",
-                        value="Unranked Map Rotation"
+                        name = "Unranked Map Rotation",
+                        value = "Unranked Map Rotation"
                     ),
                     create_choice(
-                        name="Sales Rotation",
-                        value="Sales Rotation"
+                        name = "Sales Rotation",
+                        value = "Sales Rotation"
                     )
                 ]
             )
@@ -196,6 +192,6 @@ class View(commands.Cog):
         message = "Command used: /" + base + " rotation"
         await context.send(content = message)
         print(message)
-        
+
 def setup(client):
     client.add_cog(View(client))

@@ -1,27 +1,23 @@
-import discord, os
+import discord
+import os
 from discord.ext import commands
+
 from discord_slash import SlashCommandOptionType, SlashContext, cog_ext
 from discord_slash.utils.manage_commands import create_choice, create_option
-from pathlib import Path
-from ruamel.yaml import YAML # pip install ruamel.yaml
 
-root = os.path.abspath(os.curdir)
-path = Path(root.replace(os.sep, '/') + "/config.yml")
-yaml = YAML(typ="safe")
-data = yaml.load(path)
+from config import servers
 
-servers = data["Servers"]
 base = "patch"
 
 class Patch(commands.Cog):
 
     def __init__(self, client):
         self.client = client
-        
+
     @commands.Cog.listener()
     async def on_ready(self):
         print("Module loaded: patch")
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "text",
@@ -52,7 +48,7 @@ class Patch(commands.Cog):
         message = "Command used: /" + base + " text"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "index",
@@ -83,6 +79,6 @@ class Patch(commands.Cog):
         message = "Command used: /" + base + " index"
         await context.send(content = message)
         print(message)
-        
+
 def setup(client):
     client.add_cog(Patch(client))

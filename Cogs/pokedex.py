@@ -1,23 +1,19 @@
-import discord, os
+import discord
+import os
 from discord.ext import commands
+
 from discord_slash import SlashCommandOptionType, SlashContext, cog_ext
 from discord_slash.utils.manage_commands import create_choice, create_option
-from pathlib import Path
-from ruamel.yaml import YAML # pip install ruamel.yaml
 
-root = os.path.abspath(os.curdir)
-path = Path(root.replace(os.sep, '/') + "/config.yml")
-yaml = YAML(typ="safe")
-data = yaml.load(path)
+from config import servers
 
-servers = data["Servers"]
 base = "pokedex"
 
 class Pokedex(commands.Cog):
 
     def __init__(self, client):
         self.client = client
-        
+
     @commands.Cog.listener()
     async def on_ready(self):
         print("Module loaded: pokedex")
@@ -51,7 +47,7 @@ class Pokedex(commands.Cog):
         message = "Command used: /" + base + " add"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "remove",
@@ -81,7 +77,7 @@ class Pokedex(commands.Cog):
         message = "Command used: /" + base + " remove"
         await context.send(content = message)
         print(message)
-        
+
     @cog_ext.cog_subcommand(
         base = base,
         name = "who",
@@ -95,7 +91,7 @@ class Pokedex(commands.Cog):
                 option_type = SlashCommandOptionType.STRING
             )
         ]
-    )    
+    )
     async def pokedex(
         self,
         context: SlashContext,
@@ -104,6 +100,6 @@ class Pokedex(commands.Cog):
         message = "Command used: /" + base + " who"
         await context.send(content = message)
         print(message)
-        
+
 def setup(client):
     client.add_cog(Pokedex(client))
