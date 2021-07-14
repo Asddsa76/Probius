@@ -4,7 +4,7 @@ from discord.ext import commands
 
 from discord_slash import SlashCommand  # pip install -U discord-py-slash-command
 
-from config import owner, prefix, token
+from config import prefix, token
 
 print("Now loading...")
 
