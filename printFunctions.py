@@ -169,12 +169,9 @@ async def printSearch(abilities, talents, name, hero, deep=False):#Prints abilit
 async def printLarge(channel,inputstring,separator='\n'):#Get long string. Print lines out in 2000 character chunks
 	strings=[i+separator for i in inputstring.split(separator)]
 	
-	#This first message for something to link in original channel
 	output=strings.pop(0)
-	firstMessage=await channel.send(output)
-	
-	output=strings.pop(0)
-	i=1
+	i=0
+	j=0
 	while strings:
 		if i==4:#Don't make a long call in #probius hog all the bandwidth
 			i=0
@@ -183,9 +180,16 @@ async def printLarge(channel,inputstring,separator='\n'):#Get long string. Print
 			output+=strings.pop(0)
 		else:
 			i+=1
-			await channel.send(output)
+			if j==0:
+				firstMessage=await channel.send(output)
+				j=1
+			else:
+				await channel.send(output)
 			output=strings.pop(0)
-	await channel.send(output)
+	if j==0:
+		firstMessage=await channel.send(output)
+	else:
+		await channel.send(output)
 	return firstMessage
 
 async def printAll(client,message,keyword, deep=False, heroList=getHeroes()):#When someone calls [all/keyword]
