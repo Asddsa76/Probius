@@ -18,7 +18,7 @@ keywords={
 'Genji':[DiscordUserIDs['SomeoneNew'],DiscordUserIDs['Weebatsu']],
 'Samuro':[DiscordUserIDs['Blackstorm'],156616620905725952],
 'Maiev':[DiscordUserIDs['SomeoneNew']], 
-' Dva:':[DiscordUserIDs['Spazzo']], 
+' Dva':[DiscordUserIDs['Spazzo']], 
 'Hanzo':[DiscordUserIDs['Medicake']],
 'Lucio':[DiscordUserIDs['Medicake']],
 'Zeratul':[DiscordUserIDs['Derenash'],224975834346291210],
