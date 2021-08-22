@@ -286,12 +286,14 @@ async def mainProbius(client,message,texts):
 		if command in emojiAliases:
 			await message.channel.send('Emojis: [:hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow.')
 			continue
-		if len(text)==1 and command[0]=='t' and command[8] ==',':#[t3221323,sam]
-			await printCompactBuild(client,message.channel,command)
-			continue
-		if len(text)==2 and command[0]=='t' and len(command)==8 and command!='tassadar':#[t3221323/sam]
-			await printCompactBuild(client,message.channel,','.join(text))
-			continue
+		try:
+			if len(text)==1 and command[0]=='t' and command[8] ==',':#[t3221323,sam]
+				await printCompactBuild(client,message.channel,command)
+				continue
+			if len(text)==2 and command[0]=='t' and len(command)==8 and command!='tassadar':#[t3221323/sam]
+				await printCompactBuild(client,message.channel,','.join(text))
+				continue
+		except:pass
 		#From here it's actual heroes, or a search
 		hero=command
 		if len(hero)==1 or (len(hero)==2 and ('1' in hero or '2' in hero)):#Patch notes have abilities in []. Don't want spammed triggers again. Numbers for R1, R2, etc.
