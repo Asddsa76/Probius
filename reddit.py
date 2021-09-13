@@ -27,13 +27,6 @@ keywords={
 'Deathwing':[204893952908853248],
 'Tracer':[160087810370568193]}
 
-mindhawk_keywords=['Kerrigan','Cho ','Gall','Orphea','Li-Ming','Ragnaros', 'Li Ming']
-for i in mindhawk_keywords:
-	if i in keywords:
-		keywords[i].append(DiscordUserIDs['MindHawk'])
-	else:
-		keywords[i]=[DiscordUserIDs['MindHawk']]
-
 async def getPostInfo(post):
 	title=post.split('", "')[0]
 	title=title.replace('\u2019',"'")
