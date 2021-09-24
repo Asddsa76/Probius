@@ -21,7 +21,7 @@ keywords={
 ' Dva':[DiscordUserIDs['Spazzo']], 
 'Hanzo':[DiscordUserIDs['Medicake']],
 'Lucio':[DiscordUserIDs['Medicake']],
-'Zeratul':[DiscordUserIDs['Derenash'],224975834346291210],
+'Zera':[DiscordUserIDs['Derenash'],224975834346291210,224975834346291210],
 'Valeera':[DiscordUserIDs['MBee']],
 'Orphea':[410481791204327424],
 'Deathwing':[204893952908853248],
@@ -128,5 +128,5 @@ async def reddit(client,message,text):
 		author=i[1]
 		if author in discordnames:
 				author=discordnames[author]
-		output+='**{}** by {}: <{}>\n'.format(i[0], author, i[2])
+		output+='**{}** by {}: <{}> \n'.format(i[0], author, i[2])
 	await printLarge(message.channel,output)
