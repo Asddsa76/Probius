@@ -232,6 +232,9 @@ def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest
 			return 'wind strider'
 		elif name in ['bmp']:
 			return 'pursuit'
+	elif hero=='Thrall':
+		if name in ['trash lightning']:
+			return 'crash lightning'
 	elif hero=='Tyrael':
 		if name in ['swordhole']:
 			return 'sword of justice'
