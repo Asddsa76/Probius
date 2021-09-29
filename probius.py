@@ -243,7 +243,7 @@ async def mainProbius(client,message,texts):
 			if len(text)==2:
 				if message.channel.guild.id==DiscordGuildIDs['WindStriders'] and message.channel.id!=DiscordChannelIDs['Probius'] and message.content[0]=='[':#In WS, not in #probius, first character is [
 					if message.guild.get_role(DiscordRoleIDs['CoreMember']) not in message.author.roles:#Not core member
-						await message.guild.get_channel(DiscordChannelIDs['Probius']).send(message.author.mention+' Please call builds in this channel to avoid cluttering the other channels! <:bonk:761981366744121354>')
+						await wrongChannelBuild(message)
 						await guide(aliases(text[1]),message.guild.get_channel(DiscordChannelIDs['Probius']))
 						continue
 				await guide(aliases(text[1]),message.channel)
@@ -303,7 +303,7 @@ async def mainProbius(client,message,texts):
 			if text[1] in buildsAliases:
 				if message.channel.guild.id==DiscordGuildIDs['WindStriders'] and message.channel.id!=DiscordChannelIDs['Probius']:#In WS, not in #probius
 					if message.guild.get_role(DiscordRoleIDs['CoreMember']) not in message.author.roles:#Not core member
-						await message.guild.get_channel(DiscordChannelIDs['Probius']).send(message.author.mention+'Please call builds in this channel to avoid cluttering the other channels! <:bonk:761981366744121354>')
+						await wrongChannelBuild(message)
 						await guide(hero,message.guild.get_channel(DiscordChannelIDs['Probius']))
 						continue
 				await guide(hero,message.channel)
@@ -402,7 +402,7 @@ def findTexts(message):
 	allTexts=[]
 	wholeText=message.content.lower()
 	for text in wholeText.split('\n'):
-		if '>' in text and '<' not in text:#This line is a quote
+		if '>' == text[0]:#This line is a quote
 			continue
 		leftBrackets=[1+m.start() for m in re.finditer('\[',text)]#Must escape brackets when using regex
 		rightBrackets=[m.start() for m in re.finditer('\]',text)]

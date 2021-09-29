@@ -125,3 +125,7 @@ async def coaching(message):
 		await message.channel.send('<@&860563593090564107> Coach '+message.author.mention+' is running a live session! Head down to the coaching voice channel to check it out!')
 	else:
 		await message.channel.send(message.author.mention+' you must be a coach to host coaching sessions.')
+
+async def wrongChannelBuild(message):
+	await message.guild.get_channel(DiscordChannelIDs['Probius']).send(message.author.mention+' Please call builds in this channel to avoid cluttering the other channels!')
+	await message.guild.get_channel(DiscordChannelIDs['Probius']).send('https://cdn.discordapp.com/attachments/604394753722941451/892843516722569266/help_probius_clean_up1.png')
