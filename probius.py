@@ -503,7 +503,7 @@ class MyClient(discord.Client):
 			return
 		try:
 			if DiscordRoleIDs['Unsorted'] in [role.id for role in after.author.roles]:#Unsorted
-				await sortFromReaction(message,DiscordUserIDs['Probius'],self)
+				await sortFromReaction(after,DiscordUserIDs['Probius'],self)
 		except:pass
 		if '[' in after.content:
 			try:

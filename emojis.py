@@ -41,6 +41,8 @@ async def carbotSpray(hero,channel):
 		hero='Sleeping_Dragon'
 	elif hero=='Shield':
 		hero="Can't_Touch_This"
+	elif hero=='Maiev':
+		imageFormat='.PNG'
 	else:
 		hero='Carbot_'+hero
 		imageFormat='.png'
