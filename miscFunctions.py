@@ -1,4 +1,7 @@
 from discordIDs import *
+from printFunctions import *
+from random import randint
+from random import choice
 
 def helpMessage():
 	output="""[Hero] to see that hero's abilities
@@ -129,3 +132,23 @@ async def coaching(message):
 async def wrongChannelBuild(message):
 	await message.guild.get_channel(DiscordChannelIDs['Probius']).send(message.author.mention+' Please call builds in this channel to avoid cluttering the other channels!')
 	await message.guild.get_channel(DiscordChannelIDs['Probius']).send('https://cdn.discordapp.com/attachments/604394753722941451/892843516722569266/help_probius_clean_up1.png')
+
+async def randomBuild(client, channel, hero):
+	print(hero)
+	if hero=='Random':
+		hero=choice(getHeroes())
+
+	(abilities,talents)=client.heroPages[hero]
+	text='T'
+	for tier in talents[:-1]:
+		text+=str(randint(1,len(tier)))
+
+	#Storm tier: 1 less option. If ult conflict, choose last talent.
+	a=randint(1,len(talents[-1])-1)
+	if (a<=2) and (a!=int(text[4])):
+		text+=str(len(talents[-1]))
+	else:
+		text+=str(a)
+
+	text+=','+hero
+	await printCompactBuild(client,channel,text)

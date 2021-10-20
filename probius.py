@@ -68,7 +68,7 @@ restartAliases=['restart','shutdown','stop']
 confidenceAliases=['ci','confidence','confidenceinterval']
 heroAliases=['hero', 'heroes', 'bruiser', 'healer', 'support', 'ranged', 'melee', 'assassin', 'mage', 'marksman', 'tank', 'marksmen']
 coachingAliases=['coach', 'coaching', 'coachingsession']
-
+randomBuildAliases=['randombuild','rb','randb','randbuild','randomb']
 
 async def mainProbius(client,message,texts):
 	global exitBool
@@ -89,6 +89,9 @@ async def mainProbius(client,message,texts):
 	for text in texts:
 		command=text[0].replace(' ','')
 		if command in ['trait','r','w','e','passive','react','...']:#Do nothing
+			continue
+		if command in randomBuildAliases and len(text)==2:
+			await randomBuild(client, message.channel, aliases(text[1]))
 			continue
 		if command in coachingAliases:
 			await coaching(message)
@@ -328,6 +331,9 @@ async def mainProbius(client,message,texts):
 			tier=text[1]#If there is no identifier, then it throws exception
 			if tier in randomAliases:
 				await message.channel.send(printTier(talents,random.randint(0,6)))
+				continue
+			if tier in randomBuildAliases:
+				await randomBuild(client, message.channel, hero)
 				continue
 		except:
 			quote=getQuote(hero)
