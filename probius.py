@@ -34,13 +34,13 @@ from maps import *
 from discordIDs import *
 from imageColour import *
 
-botChannels={'Wind Striders':DiscordChannelIDs['Probius'],'De Schuifpui Schavuiten':687351660502057021, 'Nexus Schoolhouse':813507461427363870}
+botChannels={'Wind Striders':DiscordChannelIDs['Probius'],'De Schuifpui Schavuiten':687351660502057021, 'Nexus Schoolhouse':813507461427363870, 'Inting for Ruby':834135120154853416}
 
 wsReactionRoles={'🇧':DiscordRoleIDs['BalanceTeam'],'🇩':DiscordRoleIDs['DraftAddict'],'🇸':860563593090564107,
 '<:Tank:837022373689426061>':836967732007665684,'<:Offlane:837022541197475941>':836969169437982720,'<:RangedAssassin:837024261826019348>':836974208533004288,
 '<:Healer:837024194486075443>':836978312659599370,'<:Flex:885591708778250350>':885616267942309908}
-drafts={}#Outside of client so it doesn't reset on periodic restarts or [restart]
 
+drafts={}#Outside of client so it doesn't reset on periodic restarts or [restart]
 lastDraftMessageDict={}
 draftNames={}
 
