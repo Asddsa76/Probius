@@ -2,7 +2,10 @@ from discordIDs import *
 from printFunctions import *
 from random import randint
 from random import choice
-from time import time
+import time
+import datetime
+import asyncio
+import aiohttp
 
 def helpMessage():
 	output="""[Hero] to see that hero's abilities
@@ -157,15 +160,29 @@ async def randomBuild(client, channel, hero):
 
 async def countdown(message,text):
 	if len(text)==1:
-		await message.channel.send('<t:'+str(int(time()))+'>')
-		return
-	words=text[1].lower().replace(',',' ').replace('  ',' ').split(' ')
-	a={'s':1, 'm':60, 'h':3600, 'd':86400}
-	t=int(time())
-	for i in words:
-		for j in a.keys():
-			if j in i:
-				t+=a[j]*int(i.replace(j,''))
-				break
-	t=str(t)
-	await message.channel.send('<t:'+t+'> (<t:'+t+':R>)')
+		await message.channel.send('<t:'+str(int(time.time()))+'>')
+	elif text[1] in ['pa','patch']:
+		async with aiohttp.ClientSession() as session:
+			async with session.get('https://heroespatchnotes.com/patch/') as response:
+				page = await response.text()
+		page=page.split('<h1>Heroes of the Storm Patch List</h1>')[1].split('<h3>')[1].split('</small></h3>')[0]
+		a,version=page.split('<small class="hidden-xs">v ')
+		patchType=a[11:]
+
+		date=a[:10]
+		d=time.mktime(datetime.datetime.strptime(date, "%Y-%m-%d").timetuple())
+		daysSincePatch=int((time.time()-d)/86400)
+		weeks=str(daysSincePatch//7)
+		days=str(daysSincePatch%7)
+		await message.channel.send('Previous patch: **v'+version+' '+patchType+'**'+date+' ('+weeks+' weeks and '+days+' days ago) \nPatch list: <https://heroespatchnotes.com/patch/>')
+	else:
+		words=text[1].lower().replace(',',' ').replace('  ',' ').split(' ')
+		a={'s':1, 'm':60, 'h':3600, 'd':86400}
+		t=int(time.time())
+		for i in words:
+			for j in a.keys():
+				if j in i:
+					t+=a[j]*int(i.replace(j,''))
+					break
+		t=str(t)
+		await message.channel.send('<t:'+t+'> (<t:'+t+':R>)')
