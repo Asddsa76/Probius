@@ -2,6 +2,7 @@ from discordIDs import *
 from printFunctions import *
 from random import randint
 from random import choice
+from time import time
 
 def helpMessage():
 	output="""[Hero] to see that hero's abilities
@@ -10,7 +11,7 @@ def helpMessage():
 [Hero/searchterm] to search for something in that hero's abilities or talents. & or -- in searchterm for AND and exclusions
 [Hero/info] for hero info
 [build/Hero] for hero builds/guides
-[rotation] for free weekly rotation from Gnub
+[rotation] for free weekly rotation from <https://nexuscompendium.com/>
 [patchnotes/hero] for patch notes from <https://heroespatchnotes.com>
 Emojis: [:Hero/emotion], where emotion is of the following: happy, lol, sad, silly, meh, angry, cool, oops, love, or wow
 Mock drafting: [draft/info]
@@ -144,6 +145,7 @@ async def randomBuild(client, channel, hero):
 		text+=str(randint(1,len(tier)))
 
 	#Storm tier: 1 less option. If ult conflict, choose last talent.
+	#Todo: Varian, Maiev, Alarak, Tracer, Deathwing, Garrosh, Fenix, Imperius?, Junkrat, LM?, Morales?
 	a=randint(1,len(talents[-1])-1)
 	if (a<=2) and (a!=int(text[4])):
 		text+=str(len(talents[-1]))
@@ -152,3 +154,18 @@ async def randomBuild(client, channel, hero):
 
 	text+=','+hero
 	await printCompactBuild(client,channel,text)
+
+async def countdown(message,text):
+	if len(text)==1:
+		await message.channel.send('<t:'+str(int(time()))+'>')
+		return
+	words=text[1].lower().replace(',',' ').replace('  ',' ').split(' ')
+	a={'s':1, 'm':60, 'h':3600, 'd':86400}
+	t=int(time())
+	for i in words:
+		for j in a.keys():
+			if j in i:
+				t+=a[j]*int(i.replace(j,''))
+				break
+	t=str(t)
+	await message.channel.send('<t:'+t+'> (<t:'+t+':R>)')

@@ -92,6 +92,9 @@ async def mainProbius(client,message,texts):
 		command=text[0].replace(' ','')
 		if command in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
+		if command in ['time']:
+			await countdown(message,text)
+			continue
 		if command in randomBuildAliases and len(text)==2:
 			await randomBuild(client, message.channel, aliases(text[1]))
 			continue
@@ -183,7 +186,7 @@ async def mainProbius(client,message,texts):
 		if command==':disapproval':
 			await message.channel.send('ಠ_ಠ')
 			continue
-		if command==':summon':
+		if command in [':summon','summon']:
 			if len(text)==1:
 				await message.channel.send('༼ つ ◕\_◕ ༽つ')
 			elif '@' in text[1]:
