@@ -33,7 +33,7 @@ async def getPostInfo(post):
 	post=post.split('"author": "')[1]
 	author=post.split('"')[0]
 	post=post.split('"permalink": "')[1]
-	shortUrl=post.split('"')[0]
+	urlID='/'.join(post.split('/')[:5])
 	url='https://www.reddit.com'+shortUrl
 	return [title,author,url]
 
@@ -42,13 +42,16 @@ async def fetch(session, url):
 		return await response.text()
 
 async def titleTrim(title):#Don't remove spaces because of Cho
-	return title.replace('&amp;','&').replace('\u2013','-').replace('\u0336','').replace('\u2019',"'")
+	a={'\u0f3c':'༼','\u3064':'つ','\u25d5':'◕','\u0f3d':'༽','_':'\_','\u2019':"'",'\u0336':'','\u2013':'-','&amp;':'&'}
+	for i in a.keys():
+		title=title.replace(i,a[i])
+	return title
 
 async def fillPreviousPostTitles(client):#Called on startup
 	await client.wait_until_ready()
 	async with aiohttp.ClientSession() as session:
 		page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api?limit=100&sort=new')
-		posts=page.split('"clicked": false, "title": "')[1:]
+		posts=page.replace('"is_gallery": true, ','').split('"clicked": false, "title": "')[1:]
 		output=[]
 		for post in posts:
 			try:#Reddit's .api did some weird stuff recently

@@ -174,6 +174,7 @@ async def countdown(message,text):
 		daysSincePatch=int((time.time()-d)/86400)
 		weeks=str(daysSincePatch//7)
 		days=str(daysSincePatch%7)
+		
 		await message.channel.send('Previous patch: **v'+version+' '+patchType+'**'+date+' ('+weeks+' weeks and '+days+' days ago) \nPatch list: <https://heroespatchnotes.com/patch/>')
 	else:
 		words=text[1].lower().replace(',',' ').replace('  ',' ').split(' ')
