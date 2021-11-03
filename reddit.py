@@ -34,7 +34,8 @@ async def getPostInfo(post):
 	author=post.split('"')[0]
 	post=post.split('"permalink": "')[1]
 	urlID='/'.join(post.split('/')[:5])
-	url='https://www.reddit.com'+shortUrl
+	url='https://www.reddit.com'+urlID
+	title=title.encode().decode('unicode_escape')
 	return [title,author,url]
 
 async def fetch(session, url):
@@ -54,10 +55,7 @@ async def fillPreviousPostTitles(client):#Called on startup
 		posts=page.replace('"is_gallery": true, ','').split('"clicked": false, "title": "')[1:]
 		output=[]
 		for post in posts:
-			try:#Reddit's .api did some weird stuff recently
-				[title,author,url] = await getPostInfo(post)#Newest post that has been checked
-			except:
-				continue
+			[title,author,url] = await getPostInfo(post)#Newest post that has been checked
 			output.append(title)
 			client.seenPosts.append([title,author,url])
 			if author in redditors or sum(1 for i in keywords if i.lower() in title.lower()) or 'Blizz_' in author:
@@ -69,7 +67,7 @@ async def fillPreviousPostTitles(client):#Called on startup
 async def redditForwarding(client):#Called every 60 seconds
 	async with aiohttp.ClientSession() as session:
 		page = await fetch(session, 'https://old.reddit.com/r/heroesofthestorm/new.api')
-		posts=page.split('"clicked": false, "title": "')[1:]
+		posts=page.replace('"is_gallery": true, ','').split('"clicked": false, "title": "')[1:]
 		for post in posts:
 			[title,author,url] = await getPostInfo(post)
 			if title not in client.seenTitles:#This post hasn't been processed before
@@ -78,7 +76,6 @@ async def redditForwarding(client):#Called every 60 seconds
 				url='\n'+url
 				client.seenPosts.append([title,author,url])
 				if author in redditors or sum(1 for i in keywords if i.lower() in title.lower()) or 'Blizz_' in author:
-					print('{} by {}'.format(title,author))
 					client.forwardedPosts.append([title,author,url])
 					if author=='nexusschoolhouse':
 						await client.get_channel(222817241249480704).send('**{}**: '.format(title)+url)
