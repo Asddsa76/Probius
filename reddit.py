@@ -57,9 +57,9 @@ async def fillPreviousPostTitles(client):#Called on startup
 		for post in posts:
 			[title,author,url] = await getPostInfo(post)#Newest post that has been checked
 			output.append(title)
+			title=await titleTrim(title)
 			client.seenPosts.append([title,author,url])
 			if author in redditors or sum(1 for i in keywords if i.lower() in title.lower()) or 'Blizz_' in author:
-				title=await titleTrim(title)
 				client.forwardedPosts.append([title,author,url])
 		client.forwardedPosts=client.forwardedPosts[::-1]
 		return output
