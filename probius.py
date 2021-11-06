@@ -92,6 +92,9 @@ async def mainProbius(client,message,texts):
 		command=text[0].replace(' ','')
 		if command in ['trait','r','w','e','passive','react','...']:#Do nothing
 			continue
+		if command in ['scaling']:
+			await message.channel.send('https://cdn.discordapp.com/attachments/741762417976934460/906568639304585247/unknown.png')
+			continue
 		if command in ['time']:
 			await countdown(message,text)
 			continue
