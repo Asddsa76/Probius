@@ -47,7 +47,7 @@ draftNames={}
 buildsAliases=['guide','build','b','g','builds','guides']
 quotesAliases=['quote','q','quotes']
 rotationAlises=['rotation','rot','sale','sales']
-aliasesAliases=['aliases','acronyms','n']
+aliasesAliases=['aliases','acronyms']
 wikipageAliases=['page','wiki']
 randomAliases=['random','ra','rand']
 draftAliases=['draft','d','phantomdraft','pd','mockdraft','md']
@@ -59,7 +59,7 @@ emojiAliases=['emoji','emojis','emote','emotes']
 coinsAliases=['coin','flip','coinflip','cf']
 redditAliases=['reddit','re']
 helpAliases=['help','info']
-talentAliases=['talent','talents','t']
+talentAliases=['talent','talents']
 rollAliases=['roll','dice']
 patchNotesAliases=['patchnotes','patch','pn','pa']
 deleteAliases=['delete','deletemessages','deletemessage']
@@ -95,7 +95,7 @@ async def mainProbius(client,message,texts):
 		if command in ['scaling']:
 			await message.channel.send('https://cdn.discordapp.com/attachments/741762417976934460/906568639304585247/unknown.png')
 			continue
-		if command in ['time']:
+		if command in ['time','t']:
 			await countdown(message,text)
 			continue
 		if command in randomBuildAliases and len(text)==2:
@@ -126,7 +126,7 @@ async def mainProbius(client,message,texts):
 			else:
 				await sortList(message)
 			continue
-		if command in ['name', 'names']:
+		if command in ['name', 'names','n']:
 			names=[(i.nick or i.name)+(' ('+i.name+')')*int(bool(i.nick)) for i in message.guild.members if text[1].lower() in i.name.lower() or i.nick and text[1].lower() in i.nick.lower()]
 			await message.channel.send('\n'.join(names)+'\n'+str(len(names))+' '+text[1].capitalize()+'s')
 			continue

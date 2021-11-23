@@ -125,7 +125,7 @@ Tuesday: Content patch (for NA. Early wednesday morning for EU)
 Wednesday: Balance patch''')
 
 def findMentions(message):
-	return ['<@'+i[:i.index('>')+1] for i in message.content.split('<@')[1:]]
+	return ['<@'+i[:i.index('>')+1] for i in message.content.replace('!','').split('<@')[1:]]
 
 async def coaching(message):
 	if 859488289559805972 in [i.id for i in message.author.roles]:
@@ -174,7 +174,7 @@ async def countdown(message,text):
 		daysSincePatch=int((time.time()-d)/86400)
 		weeks=str(daysSincePatch//7)
 		days=str(daysSincePatch%7)
-		
+
 		await message.channel.send('Previous patch: **v'+version+' '+patchType+'**'+date+' ('+weeks+' weeks and '+days+' days ago) \nPatch list: <https://heroespatchnotes.com/patch/>')
 	else:
 		words=text[1].lower().replace(',',' ').replace('  ',' ').split(' ')
