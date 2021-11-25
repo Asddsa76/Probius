@@ -534,8 +534,11 @@ class MyClient(discord.Client):
 				await after.channel.send(after.author.mention+'<:bonk:761981366744121354>')
 				return
 			newMentions=[i for i in findMentions(after) if i not in findMentions(before)]
-			# if newMentions:
+			if newMentions:
 			# 	await after.channel.send(', '.join(newMentions)+', '+after.author.name+' wants to ping you!')
+				message=await after.channel.send(after.author.mention+" editing pings into messages won't ping the person.\nIf you want their attention, you'll have to ping them in a new message!")
+				await asyncio.sleep(10)
+				await message.delete()
 
 	async def on_raw_reaction_add(self,payload):
 		member=client.get_user(payload.user_id)
