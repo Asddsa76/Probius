@@ -200,7 +200,7 @@ async def mainProbius(client,message,texts):
 		if command in colourAliases:
 			await message.channel.send(file=discord.File('WS colours.png'))
 			continue
-		if message.author.id==DiscordUserIDs['Asddsa']:
+		if message.author.id==DiscordUserIDs['Asddsa'] or message.author.id==DiscordUserIDs['MindHawk']:
 			if command=='serverchannels':
 				await message.channel.send([channel.name for channel in message.channel.guild.channels])
 				continue
@@ -534,8 +534,8 @@ class MyClient(discord.Client):
 				await after.channel.send(after.author.mention+'<:bonk:761981366744121354>')
 				return
 			newMentions=[i for i in findMentions(after) if i not in findMentions(before)]
-			if newMentions:
-				await after.channel.send(', '.join(newMentions)+', '+after.author.name+' wants to ping you!')
+			# if newMentions:
+			# 	await after.channel.send(', '.join(newMentions)+', '+after.author.name+' wants to ping you!')
 
 	async def on_raw_reaction_add(self,payload):
 		member=client.get_user(payload.user_id)
