@@ -205,7 +205,7 @@ async def mainProbius(client,message,texts):
 				await message.channel.send([channel.name for channel in message.channel.guild.channels])
 				continue
 			if command=='repeat' and len(text)==2:
-				await message.channel.send(text[1])
+				await message.channel.send(message.content.split('[')[1].split('/')[1].split(']')[0])#text[1] is all lowercase
 				await message.delete()
 				continue
 		if command== 'unsorted' and message.channel.guild.name=='Wind Striders':
