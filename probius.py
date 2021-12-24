@@ -473,6 +473,8 @@ class MyClient(discord.Client):
 			if message.author.id==i[0] and time.time()-i[2]>300 and message.channel.guild.id==535256944106012694:#5 minutes since last reaction
 				i[2]=time.time()
 				await message.add_reaction(i[1])
+		if '@everyone' in message.content or '@here' in message.content:
+			await message.add_reaction('<:LEVEL2AAAA:923294790278324315>')
 		pingNames={'lemmie':DiscordUserIDs['Gooey'], 'medicake':DiscordUserIDs['Medicake'],'libraries':224975834346291210}
 		pingList=[pingNames[i] for i in pingNames.keys() if '@'+i in message.content.replace(' ','').lower()]
 		if pingList:

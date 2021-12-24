@@ -8,10 +8,10 @@ redditors=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen
 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'Pelaberus', 'KillMeWithMemes',
 'MarvellousBee','Naturage','Derenash','Riokaii','Demon_Ryu','hellobgs','Beg_For_Mercy','Russisch','Valamar1732','ArashiNoShad0w','lemindhawk','Goshin26',
 'TiredZealot','MasterAblar','SHreddedWInd','MrWilbus','NotBelial','Dark_Polaroid','Mochrie1713','HeroesProfile','nexusschoolhouse','Nightterror0','starcaller_hots',
-'WorstMedivhKR']
+'WorstMedivhKR','Babaguscooties']
 
 discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','secret3332':'SecretChaos','Archlichofthestorm':'Trolldaeron','ThatDoomedStudent':'Carbon','InfiniteEarth':'Flash',
-'KillMeWithMemes':'Nick','Demon_Ryu':'Messa','Russisch':'Ekata','ArashiNoShad0w':'LeviathaN','TiredZealot':'Jdelrio','lemindhawk':'MindHawk','Nightterror0':'Deafwing', 'Dark_Polaroid':'Medicake'}
+'KillMeWithMemes':'Nick','Demon_Ryu':'Messa','Russisch':'Ekata','ArashiNoShad0w':'LeviathaN','lemindhawk':'MindHawk','Nightterror0':'Deafwing', 'Dark_Polaroid':'Medicake','Babaguscooties':'Labreris'}
 
 #Posts with these in title gets forwarded regardless of author
 keywords={
