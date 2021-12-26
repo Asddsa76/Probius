@@ -1,15 +1,12 @@
-Advanced player guide; Elitesparkle: https://old.reddit.com/r/heroesofthestorm/wiki/advancedplayerguide
+Sylvanas; Deafening Blast is bad, by Asd: https://old.reddit.com/r/heroesofthestorm/comments/jfo7vj/sylvanas_deafening_blast_radius_is_much_worse/
 Freezing; Liam: https://docs.google.com/document/d/12JFKr0dxsqFBFexqUYC7yVKeCgu89MMEqncAmMpE1Do/edit
 Maps; Riokaii's Fundamentals of Macro: https://www.youtube.com/watch?v=HpGITmRrj-E
 Maps; Nexus Compendium's list of timings: https://nexuscompendium.com/battlegrounds
 Maps; ZaneHyde: https://drive.google.com/drive/folders/1fwyE69jmMCF5sSoQP3FpD_b9zRrkTlnf
-New player guide; Elitesparkle: https://old.reddit.com/r/heroesofthestorm/wiki/newplayerguide
 Offlane; Ouille's offlane chart: https://docs.google.com/spreadsheets/d/1s6HecdxKOwLulH0p7efa7AdkM10I9EIne33ZXf9W6MU/edit#gid=0
 Replay; SamiSha's replay hotkeys: https://us.forums.blizzard.com/en/heroes/t/extensive-replay-hotkey-guide/2937
-Scaling; Elitesparkle: https://old.reddit.com/r/heroesofthestorm/comments/ewc1ct/scaling_anomalies/
 Tier list; Riokaii: https://heroeshearth.com/tiers/riokaii/9753/
 Tier list; Mochrie: https://heroeshearth.com/tiers/Mochrie/9833/
-Tier list; Elitesparkle: https://www.icy-veins.com/heroes/heroes-of-the-storm-master-tier-list
 Storm tier list; Soren's storm talents: https://docs.google.com/spreadsheets/d/1CiziqhFswTUCv0CNEjM3Y4yej_bVAKVwQrYSf-NJ9jc/edit#gid=0
 Tier list; Psionic Storm: https://psionic-storm.com/en/tierlist/
 Samuro; Blackstorm (outdated): https://docs.google.com/document/d/1jbA0Z9Yg_koLqyd27VZ3uu-qbTOKSuuiSlmxgJBJ6SI/edit
@@ -35,10 +32,29 @@ Orphea; Mindhawk: https://www.youtube.com/watch?v=c8VTmXkRKI0
 Kerrigan; Mindhawk: https://www.youtube.com/watch?v=RnM9AH1zT9M
 Hogger; Mindhawk: https://www.youtube.com/watch?v=vZlzU-n_tB4
 Architecture; Mindhawk: https://www.youtube.com/watch?v=7yRmnQ0gqGU
-Anub'arak; Cocoon vs Unstoppable, by Elitesparkle: https://www.buymeacoffee.com/tipsofthestorm/anub-arak-cocoon-vs-unstoppable
-Medivh; Portal Mastery, by Elitesparkle: https://www.buymeacoffee.com/tipsofthestorm/medivh-portal-mastery
+New Player Guide; Elitesparkle: https://old.reddit.com/r/heroesofthestorm/wiki/newplayerguide
+Advanced Player Guide; Elitesparkle: https://old.reddit.com/r/heroesofthestorm/wiki/advancedplayerguide
+Returning Player Guide; Elitesparkle: https://old.reddit.com/r/heroesofthestorm/wiki/returningplayerguide
+Scaling Anomalies; Elitesparkle: https://old.reddit.com/r/heroesofthestorm/comments/ewc1ct/scaling_anomalies/
+ARAM Tier List; Elitesparkle: https://www.icy-veins.com/heroes/heroes-of-the-storm-aram-tier-list
+General Tier List; Elitesparkle: https://www.icy-veins.com/heroes/heroes-of-the-storm-general-tier-list
+Map-based Tier Lists; Elitesparkle: https://www.icy-veins.com/heroes/heroes-of-the-storm-map-based-tier-lists
+Master Tier List; Elitesparkle: https://www.icy-veins.com/heroes/heroes-of-the-storm-master-tier-list
+Medivh; Portal Mastery, by Elitesparkle: https://www.icy-veins.com/heroes/portal-mastery
+Spell Power and Damage Modifier; Elitesparkle: https://www.icy-veins.com/heroes/spell-power-and-damage-modifier
+Opening Moves; Elitesparkle: https://www.icy-veins.com/heroes/opening-moves
+Debug Mode; Elitesparkle: https://www.icy-veins.com/heroes/debug-mode-guide
+Holdable Abilities; Elitesparkle: https://www.icy-veins.com/heroes/holdable-abilities
 Hotkeys; Hotkeys Advanced Guide, by Elitesparkle: https://www.buymeacoffee.com/tipsofthestorm/hotkeys-advanced-guide
-Ragnaros; Lava Wave Timings, by Elitesparkle: https://www.buymeacoffee.com/tipsofthestorm/ragnaros-lava-wave-timings
-Artanis; Phase Prism, by Elitesparkle: https://www.buymeacoffee.com/tipsofthestorm/artanis-phase-prism
-Johanna; Steed Charge, by Elitesparkle: https://www.buymeacoffee.com/tipsofthestorm/johanna-steed-charge
-Sylvanas; Deafening Blast is bad, by Asd: https://old.reddit.com/r/heroesofthestorm/comments/jfo7vj/sylvanas_deafening_blast_radius_is_much_worse/
+Ragnaros; Lava Wave Timings, by Elitesparkle: https://www.icy-veins.com/heroes/lava-wave-timings
+Tips of the Storm; Elitesparkle: https://ko-fi.com/tipsofthestorm
+Stukov; Advanced Guide (Video), by Elitesparkle: https://ko-fi.com/post/Stukov-Advanced-Guide-W7W179RC4
+Anub'arak; Cocoon against Unstoppable, by Elitesparkle: https://ko-fi.com/post/Anubarak-Cocoon-against-Unstoppable-J3J179QJN
+Artanis; 6 Ways to Phase Prism, by Elitesparkle: https://ko-fi.com/post/Artanis-6-Ways-to-Phase-Prism-Q5Q679QP1
+Johanna; 4 Ways to Steed Charge, by Elitesparkle: https://ko-fi.com/post/Johanna-4-Ways-to-Steed-Charge-C0C079QTX
+Lucio; Unstoppable during High Five, by Elitesparkle: https://ko-fi.com/post/Lucio-Unstoppable-during-High-Five-G2G379R1T
+Arthas; Anti-Magic Shell against Percent Damage, by Elitesparkle: https://ko-fi.com/post/Arthas-Anti-Magic-Shell-against-Percent-Damage-W7W879R3N
+Kharazim; Cleansing Touch against Mosh Pit, by Elitesparkle: https://ko-fi.com/post/Kharazim-Cleansing-Touch-against-Mosh-Pit-K3K379R7M
+Brightwing; Phase Shift against Mosh Pit, by Elitesparkle: https://ko-fi.com/post/Brightwing-Phase-Shift-against-Mosh-Pit-V7V479R84
+Tyrande; Shadowstalk, by Elitesparkle: https://ko-fi.com/post/Tyrande-Shadowstalk-against-Purification-Salvo-C0C67J5KD
+Fenix; Purification Salvo, by Elitesparkle: https://ko-fi.com/post/Fenix-Purification-Salvo-K3K57J5S0
