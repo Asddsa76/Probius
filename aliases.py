@@ -185,7 +185,7 @@ def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest
 		if name in ['broccoli']:
 			return 'vengeful roots'
 		elif name in ['sleepy lawn']:
-			return 'Emerald Dreams'
+			return 'emerald dreams'
 	elif hero=="Mal'Ganis":
 		if name=='lifeswap':
 			return 'dark conversion'
