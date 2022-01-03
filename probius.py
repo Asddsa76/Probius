@@ -475,7 +475,7 @@ class MyClient(discord.Client):
 				await message.add_reaction(i[1])
 		if '@everyone' in message.content or '@here' in message.content:
 			await message.add_reaction('<:LEVEL2AAAA:923294790278324315>')
-		pingNames={'lemmie':DiscordUserIDs['Gooey'], 'medicake':DiscordUserIDs['Medicake'],'libraries':224975834346291210}
+		pingNames={'lemmie':DiscordUserIDs['Gooey'], 'medicake':DiscordUserIDs['Medicake'],'libraries':224975834346291210, 'twinkles':410481791204327424}
 		pingList=[pingNames[i] for i in pingNames.keys() if '@'+i in message.content.replace(' ','').lower()]
 		if pingList:
 			await message.channel.send(' '.join(['<@'+str(i)+'>' for i in pingList]))
