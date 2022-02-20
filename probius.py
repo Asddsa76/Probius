@@ -32,7 +32,7 @@ from patchNotes import *
 from lfg import *
 from maps import *
 from discordIDs import *
-from imageColour import *
+#from imageColour import *
 
 botChannels={'Wind Striders':DiscordChannelIDs['Probius'],'De Schuifpui Schavuiten':687351660502057021, 'Nexus Schoolhouse':813507461427363870, 'Inting for Ruby':834135120154853416}
 
