@@ -491,6 +491,8 @@ class MyClient(discord.Client):
 					await message.channel.send('@everyone '+output)
 					await self.get_channel(222817241249480704).send(output)
 			except:pass
+		if message.author.id==DiscordUserIDs['Gooey'] and 'explodes' in message.content.lower():
+			await message.add_reaction('<:explodes:947952270459404409>')
 		if message.author.bot:#Don't respond to bots
 			return
 		try:
