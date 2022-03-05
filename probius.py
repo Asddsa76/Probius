@@ -495,6 +495,8 @@ class MyClient(discord.Client):
 			await message.add_reaction('<:explodes:947952270459404409>')
 		if message.author.bot:#Don't respond to bots
 			return
+		if 'hawky' in message.content.lower():
+			await message.channel.send('Hawkie, not Hawky')
 		try:
 			if DiscordRoleIDs['Unsorted'] in [role.id for role in message.author.roles]:#Unsorted
 				await sortFromReaction(message,DiscordUserIDs['Probius'],self)
