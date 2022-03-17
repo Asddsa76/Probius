@@ -2,7 +2,7 @@ from discordIDs import *
 from lfg import roleAliases
 
 async def trim(text):
-	toRemove=[' ','#','<@&{}>'.format(DiscordRoleIDs['Olympian']),'*','\n','league',' and']
+	toRemove=[' ','#','<@&{}>'.format(DiscordRoleIDs['Olympian']),'*','\n','league','and']
 	text=text.lower()
 	for i in toRemove:
 		text=text.replace(i,'')
