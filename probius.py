@@ -492,8 +492,8 @@ class MyClient(discord.Client):
 					await self.get_channel(222817241249480704).send(output)
 			except:pass
 		if message.author.id==DiscordUserIDs['Gooey'] and 'explodes' in message.content.lower():
-			#await message.add_reaction('<:explodes:947952270459404409>')
-			await message.channel.send('https://cdn.discordapp.com/attachments/741762417976934460/954076412590063646/unknown.png')
+			await message.add_reaction('<:explodes:947952270459404409>')
+			#await message.channel.send('https://cdn.discordapp.com/attachments/741762417976934460/954076412590063646/unknown.png')
 		if message.author.bot:#Don't respond to bots
 			return
 		try:
