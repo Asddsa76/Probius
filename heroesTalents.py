@@ -73,7 +73,6 @@ async def fixTooltips(hero,name,description):
 	'malfurion':{"Nature's Balance":['area','radius']},
 	'lili':{'Healing Brew':['ally (prioritizing Heroes)','allied Hero']},
 	'ragnaros':{'Blistering Attacks':['Basic Abilities','Living Meteor or Blast Wave, or enemy heroes with Empower Sulfuras,']},
-	'rehgar':{'Electric Charge':['Heal','Rehgar is healed']},
 	'sylvanas':{'Haunting Wave':['teleport','fly']},
 	'tracer':{
 		'Sleight of Hand':['20%','24%'],
