@@ -24,6 +24,7 @@ async def additionalInfo(hero,name,description):
 		'Life-Binder':'Dragonqueen: The cast range of Life-Binder is increased from 6 to 9.'},
 	'anubarak':{'Cocoon':'Each instance of damage reduces the remaining duration by 0.5 seconds.'},
 	'chen':{'Storm, Earth, Fire':'Using Storm, Earth, Fire removes most negative effects from Chen.'},
+	'falstad':{'Epic Mount':'The arrival marker becomes invisible to enemies.'},
 	'garrosh':{'Armor Up':'Stacks with other sources of armour, up to 75.'},
 	'guldan':{
 		'Life Tap':'Costs 222 (+4% per level) Health.',

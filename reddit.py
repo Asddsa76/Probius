@@ -25,7 +25,8 @@ keywords={
 'Valeera':[DiscordUserIDs['MBee']],
 'Orphea':[410481791204327424],
 'Deathwing':[204893952908853248],
-'Tracer':[160087810370568193]}
+'Tracer':[160087810370568193],
+'Time stop':[268871972778147870]}
 
 async def getPostInfo(post):
 	title=post.split('", "')[0]
