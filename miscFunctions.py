@@ -6,6 +6,7 @@ import time
 import datetime
 import asyncio
 import aiohttp
+import scipy.stats
 
 def helpMessage():
 	output="""[Hero] to see that hero's abilities
@@ -96,12 +97,17 @@ async def confidence(channel,text):
 		wr,n=text[1].replace(' ','').split(',')
 		wr=float(wr)
 		n=int(n)
-		a=1.96*(wr*(100-wr)/n)**0.5
-		lower=str(wr-a)[:4]
-		upper=str(wr+a)[:4]
-		await channel.send('We are 95% confident that the winrate is between '+lower+'% and '+upper+'%.')
+  		if n<=1000000: # Shouldn't let n be too large or the exact computation could be expensive
+			interval=scipy.stats.binomtest(round(wr/100*n),n).proportion_ci()
+			lower=round(interval.low*100,1)
+			upper=round(interval.high*100,1)
+  		else:
+    			a=1.96*(wr*(100-wr)/n)**0.5
+			lower=str(wr-a)[:4]
+			upper=str(wr+a)[:4]
+    		await channel.send('We are 95% confident that the winrate is between '+lower+'% and '+upper+'%.')
 	except:
-		await channel.send('Find a 95% confidence interval with [ci/winrate,games] \n<https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval>')
+  		await channel.send('Input success rate as a percentage from 0 to 100, then sample size (at least 1)')
 
 async def memberCount(channel):
 	await channel.send(channel.guild.name+' has '+str(len(channel.guild.members))+' members!')
