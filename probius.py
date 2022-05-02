@@ -619,6 +619,12 @@ class MyClient(discord.Client):
 	async def on_member_join(self,member):
 		guild=member.guild
 		if guild.name=='Wind Striders':
+			#0123456
+			#2022-05
+			if str(member.created_at)[:7]=='2022-05':#Banning every account created in May 2022
+				print(member.created_at)
+				await member.ban()
+				return
 			await member.add_roles(guild.get_role(DiscordRoleIDs['Unsorted']))#UNSORTED role
 			print(member.name+' joined')
 			channel=guild.get_channel(DiscordChannelIDs['General'])#general
@@ -637,7 +643,8 @@ class MyClient(discord.Client):
 			unsorted=guild.get_role(DiscordRoleIDs['Unsorted'])
 			if unsorted in member.roles:	
 				print(member.name+' left (unsorted)')
-				channel=guild.get_channel(DiscordChannelIDs['General'])#general
+				#channel=guild.get_channel(DiscordChannelIDs['General'])#general
+				channel=guild.get_channel(970629651942752277)#new channel
 				await channel.send(member.name+' (unsorted) left <:samudab:578998204142452747>')
 				return
 			print(member.name+' left')
