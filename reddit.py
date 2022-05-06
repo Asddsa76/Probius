@@ -22,7 +22,7 @@ keywords={
 'Hanzo':[DiscordUserIDs['Medicake']],
 'Lucio':[DiscordUserIDs['Medicake']],
 'Zera':[DiscordUserIDs['Derenash'],224975834346291210],
-'Valeera':[DiscordUserIDs['MBee']],
+'Valeera':[DiscordUserIDs['MBee'],738440231568801914],
 'Orphea':[410481791204327424],
 'Deathwing':[204893952908853248],
 'Tracer':[160087810370568193],
