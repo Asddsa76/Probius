@@ -79,6 +79,7 @@ async def fixTooltips(hero,name,description):
 		'Sleight of Hand':['20%','24%'],
 		'Reload':['0.75','0.8125']},
 	'varian':{'Victory Rush':['or Monster dies','dies, or when you kill a Monster']},
+	'zuljin':{'Boneslicer':["is no longer removed by", 'lasts for 30']}
 	}
 	if hero in fixDict:
 		if name in fixDict[hero]:

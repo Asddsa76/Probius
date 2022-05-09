@@ -135,7 +135,7 @@ def findMentions(message):
 
 async def coaching(message):
 	if 859488289559805972 in [i.id for i in message.author.roles]:
-		await message.channel.send('<@&860563593090564107> Coach '+message.author.mention+' is running a live session! Head down to the coaching voice channel to check it out!')
+		await message.channel.send('<@&860563593090564107> Coach '+message.author.mention+' is running a live session! Head down to <#859854861750763570> to check it out!')
 	else:
 		await message.channel.send(message.author.mention+' you must be a coach to host coaching sessions.')
 
