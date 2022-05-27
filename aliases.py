@@ -99,6 +99,7 @@ def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest
 		'emerald dreams':['sleepy lawn']},
 	"Mal'Ganis":{'dark conversion':['lifeswap']},
 	'Nova':{'precision strike':['walmart lava wave','discount lava wave']},
+	'Raynor':{'paint them red':['public test realm']},
 	'Ragnaros':{'living meteor':['meatball']},
 	'Samuro':{'press':['pta','press the advantage'],
 		'merciless':['mcs'],
