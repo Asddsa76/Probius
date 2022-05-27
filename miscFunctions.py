@@ -144,9 +144,13 @@ async def wrongChannelBuild(message):
 	await message.guild.get_channel(DiscordChannelIDs['Probius']).send('https://cdn.discordapp.com/attachments/604394753722941451/892843516722569266/help_probius_clean_up1.png')
 
 async def randomBuild(client, channel, hero):
-	print(hero)
 	if hero=='Random':
 		hero=choice(getHeroes())
+	else:
+		try:#Roles
+			hero=choice(await getRoleHeroes(hero.lower()))
+		except:
+			pass
 
 	(abilities,talents)=client.heroPages[hero]
 	text='T'
