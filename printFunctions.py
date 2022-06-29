@@ -232,7 +232,7 @@ async def printEverything(client,message,abilities,talents):
 	output=message.author.mention+'\n'+'\n'.join(abilities)+'\n'
 	output+='\n'.join(talent for tier in talents for talent in tier)
 	try:
-		outputChannel=client.botChannels[message.channel.guild.name] 
+		outputChannel=client.get_channel(client.botChannels[message.channel.guild.name])
 	except:
 		outputChannel=message.channel
 	await printLarge(outputChannel,output)
