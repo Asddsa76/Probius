@@ -41,7 +41,6 @@ async def additionalInfo(hero,name,description):
 	'mephisto':{'Spite':'Also extends mana regeneration from the healing globe.'},
 	'muradin':{'Grand Slam':'If an ally participates in the takedown, a second charge is gained'},
 	'orphea':{'Overflowing Chaos':'The damage bonus is multiplicative.'},
-	'ragnaros':{'Meteor Bomb':'The increased damage is lost when Ragnaros dies.'},
 	'rehgar':{"Farseer's Blessing":'Both casts heal around the target.'},
 	'sylvanas':{
 		'Haunting Wave':'Sylvanas is unstoppable while flying to the banshee. Reactivation becomes available 0.5 seconds after first E.',
