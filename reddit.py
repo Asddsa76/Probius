@@ -17,7 +17,6 @@ discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','
 keywords={
 'Genji':[DiscordUserIDs['Weebatsu']],
 'Samuro':[DiscordUserIDs['Blackstorm']],
-' Dva':[DiscordUserIDs['Spazzo']],
 'Zera':[DiscordUserIDs['Derenash'],224975834346291210],
 'Valeera':[DiscordUserIDs['MBee'],738440231568801914],
 'Orphea':[410481791204327424],
