@@ -508,7 +508,7 @@ class MyClient(discord.Client):
 		elif '[' in message.content:
 			texts=findTexts(message)
 			await mainProbius(self,message,texts)
-
+		print('1')
 		await removeEmbeds(message)
 		if message.author.id==0:#Birthday cake
 			await message.add_reaction('🍰')
