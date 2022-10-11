@@ -184,7 +184,7 @@ async def mainProbius(client,message,texts):
 			await sortFromMessage(text[1],message,client)
 			continue
 		if command in pokedexAliases:
-			await pokedex(client,message.channel,aliases(text[1]))
+			#await pokedex(client,message.channel,aliases(text[1]))
 			continue
 		if command==':disapproval':
 			await message.channel.send('ಠ_ಠ')
@@ -508,7 +508,6 @@ class MyClient(discord.Client):
 		elif '[' in message.content:
 			texts=findTexts(message)
 			await mainProbius(self,message,texts)
-		print('1')
 		await removeEmbeds(message)
 		if message.author.id==0:#Birthday cake
 			await message.add_reaction('🍰')

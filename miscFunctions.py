@@ -74,7 +74,6 @@ async def removeEmbeds(message):#Some embeds are instant, others are edited in b
 	if message.embeds:
 		for i in ['forums.blizzard.com','psionic-storm.com','heroespatchnotes.com','#', 'twitch.tv', 'youtube.com/shorts']:#Forum embeds are huge image, psionic-storm builds/talent/# embeds link to wrong build number or blank calculator
 			if i in message.content:
-				print("2")
 				try:
 					await message.edit(suppress=True)
 				except:
