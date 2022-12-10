@@ -31,6 +31,8 @@ async def roll(text,message):
 	await message.channel.send(str(randint(1,n)))
 
 async def getAvatar(client,channel,userMention):
+	#Change from client.get_user to guild.get_member
+	#check for guild-specific avatar url
 	u=userMention.replace(' ','').replace('!','').replace('<','').replace('>','').replace('@','').lower()
 	if u.isnumeric():
 		user=client.get_user(int(u))
