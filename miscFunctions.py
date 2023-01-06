@@ -199,3 +199,26 @@ async def countdown(message,text):
 					break
 		t=str(t)
 		await message.channel.send('<t:'+t+'> (<t:'+t+':R>)')
+
+async def iAmName(message):
+	if message.channel.guild.id!=535256944106012694 or message.author.id!=224975834346291210:
+		return
+
+	index=message.content.lower().find("i'm ")+4
+	if index==3:#no result
+		index=message.content.lower().find("i am ")+5
+		if index==4:#no result
+			return
+
+	#Discord names must be between 2 and 32 characters
+	wordList=message.content[index:].split(' ')
+	newName=wordList.pop(0)
+	for word in wordList:
+		proposedName=f"{newName} {word}"
+		if len(proposedName)<32:
+			newName=proposedName
+		else:
+			break
+
+	if len(newName)<=2:return
+	await message.author.edit(nick=newName)
