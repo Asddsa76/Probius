@@ -20,11 +20,10 @@ async def additionalInfo(hero,name,description):
 	addDict={#Adds text to the end of descriptions
 	'alexstrasza':{
 		'Cleansing Flame':'Dragonqueen: Cleansing Flame is cast instantly. The duration of Dragonqueen is paused, while basic abilities continue to cool down while in flight.',
-		'Dragon Scales':'Getting Stunned, Rooted, or Silenced while Dragon Scales is active refreshes its duration to 2 seconds.',
 		'Life-Binder':'Dragonqueen: The cast range of Life-Binder is increased from 6 to 9.'},
 	'anubarak':{'Cocoon':'Each instance of damage reduces the remaining duration by 0.5 seconds.'},
 	'chen':{'Storm, Earth, Fire':'Using Storm, Earth, Fire removes most negative effects from Chen.'},
-	'falstad':{'Epic Mount':'The arrival marker becomes invisible to enemies.'},
+	'falstad':{'Epic Mount':'The arrival marker becomes invisible.'},
 	'garrosh':{'Armor Up':'Stacks with other sources of armour, up to 75.'},
 	'guldan':{
 		'Life Tap':'Costs 222 (+4% per level) Health.',
@@ -38,15 +37,14 @@ async def additionalInfo(hero,name,description):
 		'Moonfire':'The area itself stays revealed for 2 seconds.',
 		'Celestial Alignment':'Also extends the reveal of located area to 5 seconds.'},
 	'mei':{'Avalanche':'Damage is not affected by number of consumed heroes.'},
-	'mephisto':{'Spite':'Also extends mana regeneration from the healing globe.'},
-	'muradin':{'Grand Slam':'If an ally participates in the takedown, a second charge is gained'},
+	'mephisto':{
+		'Spite':'Also extends mana regeneration from the healing globe.',
+		'Hysteria':'Also causes Spite to reduce Heroic cooldowns.'},
 	'orphea':{'Overflowing Chaos':'The damage bonus is multiplicative.'},
-	'rehgar':{"Farseer's Blessing":'Both casts heal around the target.'},
+	'rehgar':{"Farseer's Blessing":'Both casts heal around the target. Does not recast if the target is at full health before heal'},
 	'sylvanas':{
 		'Haunting Wave':'Sylvanas is unstoppable while flying to the banshee. Reactivation becomes available 0.5 seconds after first E.',
-		'Mercenary Queen':'Mercenaries will not be stunned if the third application is through Remorseless.',
-		'Black Arrows':'Remorseless shots do not disable enemies.',
-		'Remorseless':"This shot originates from Sylvanas' target, and does not disable buildings while Black Arrows is active. If the third stack on the secondary target is reached through this shot, the target will not be affected by Mercenary Queen."},
+		'Remorseless':"This shot originates from Sylvanas' target."},
 	'tassadar':{'Psychic Shock':'Psionic Storm deals 2 additional ticks of damage.',
 		'Shock Ray':'0.375 second wind up before beam starts, additional 0.75 second channel while beam is moving. If the channel is interrupted, beam instantly disappears.'},
 	'tracer':{'Ricochet':'Ricochet shots interact with Telefrag, but not Focus Fire.'},
@@ -66,11 +64,9 @@ async def fixTooltips(hero,name,description):
 	fixDict={#Replaces text using strikethrough
 	'anubarak':{'Nerubian Armor':['ed',' ']},
 	'auriel':{"Swift Sweep":['50%','100%']},
-	'blaze':{"Suppressive Fire":['Power','Damage']},
 	'cassia':{'War Traveler':['8%','4%','1 second','0.5 seconds']},
 	'guldan':{'Ruinous Affliction':['strike deals',"strike's damage is increased to"]},
 	'malfurion':{"Nature's Balance":['area','radius']},
-	'lili':{'Healing Brew':['ally (prioritizing Heroes)','allied Hero']},
 	'ragnaros':{'Blistering Attacks':['Basic Abilities','Living Meteor or Blast Wave, or enemy heroes with Empower Sulfuras,']},
 	'sylvanas':{'Haunting Wave':['teleport','fly']},
 	'tracer':{
@@ -141,7 +137,7 @@ async def downloadHero(hero,client,patch):
 		if hero=='samuro':
 			abilities.append("**[D] Image Transmission:** *14 seconds;* Activate to switch places with a target Mirror Image, removing most negative effects from Samuro and the Mirror Image.\n**Advancing Strikes:** Basic Attacks against enemy Heroes increase Samuro's Movement Speed by 25% for 2 seconds.")
 		elif hero=='hogger':
-			abilities.append("**[D] Rage:** Rage is gained by taking damage or dealing Basic Attack damage. Hogger’s Basic Ability cooldowns refresh 1% faster for every 2 points of Rage. After 3 seconds of not gaining Rage, it begins to quickly decay. ***Hogger gains 5 Rage when landing a Basic Attack and 1 Rage each time he takes damage.***")
+			abilities.append("**[D] Rage:** Rage is gained by taking damage or dealing Basic Attack damage. Hogger’s Basic Ability cooldowns refresh 1% faster for every 2 points of Rage. After 3 seconds of not gaining Rage, it decays at a rate of 10 per second. ***Hogger gains 5 Rage when landing a Basic Attack and 1 Rage each time he takes damage.***")
 
 		talents=[]
 		keys=sorted(list(page['talents'].keys()),key=lambda x:int(x))
