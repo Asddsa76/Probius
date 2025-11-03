@@ -46,7 +46,7 @@
       {
         "uid": "45c0f0",
         "name": "Lightning Surge",
-        "description": "Deal 62 (+4% per level) damage to an enemy and an additional 100% damage to enemies between Alarak and the target. Restore 70 (+4% per level) health for each Hero hit.",
+        "description": "Deal 62 (+4% per level) damage to an enemy and an additional 100% damage to enemies between Alarak and the target. Restore 75 (+4% per level) health for each Hero hit.",
         "hotkey": "E",
         "abilityId": "Alarak|E1",
         "cooldown": 6,
@@ -93,7 +93,7 @@
         "tooltipId": "AlarakOverwhelmingPower",
         "talentTreeId": "AlarakOverwhelmingPowerDiscordStrike",
         "name": "Overwhelming Power",
-        "description": "Hitting an enemy Hero with Discord Strike grants 40% Attack Speed and causes Basic Attacks to heal for 50% of the damage dealt for 4 seconds.",
+        "description": "Hitting an enemy Hero with Discord Strike grants 40% Attack Speed and causes Basic Attacks to heal for 15% of the damage dealt, increased by 50% of Sadism's bonus when hitting Heroes. These effects last for 4 seconds.",
         "icon": "storm_ui_icon_alarak_discordstrike.png",
         "type": "Q",
         "sort": 1,
@@ -106,12 +106,13 @@
         "tooltipId": "AlarakRuthlessMomentum",
         "talentTreeId": "AlarakRuthlessMomentum",
         "name": "Ruthless Momentum",
-        "description": "Reduce the Mana cost of Telekinesis from 30 to 20.  Telekinesis's cooldown recharges 100% faster while above 80% Health.",
+        "description": "Reduce the Mana cost of Telekinesis from 30 to 20. Telekinesis's cooldown recharges 100% faster while above 80% Health.",
         "icon": "storm_ui_icon_alarak_telekinesis.png",
         "type": "W",
         "sort": 2,
         "abilityId": "Alarak|W1",
         "abilityLinks": [
+          "Alarak|D1",
           "Alarak|W1"
         ]
       },
@@ -163,7 +164,7 @@
         "tooltipId": "AlarakShowofForce",
         "talentTreeId": "AlarakShowofForce",
         "name": "Show of Force",
-        "description": "Heroes hit with 3 of Alarak's Abilities within 2 seconds take an additional 61 (+4% per level) damage and increase Sadism by 2%, stacking up to 20%.   Sadism gained from Show of Force is lost on death.",
+        "description": "Heroes hit with 3 of Alarak's Abilities within 2 seconds take an additional 61 (+4% per level) damage and increase Sadism by 2%, stacking up to 20%.  Sadism gained from Show of Force is lost on death.",
         "icon": "storm_ui_icon_alarak_sadism.png",
         "type": "Trait",
         "sort": 3,
@@ -204,7 +205,7 @@
         "tooltipId": "AlarakAppliedForce",
         "talentTreeId": "AlarakAppliedForce",
         "name": "Applied Force",
-        "description": "Reduce Sadism by 10%, but Telekinesis pushes 20% further and has 20% increased range.",
+        "description": "Reduce Sadism by 10%, but Telekinesis pushes 15% further and has 20% increased range.",
         "icon": "storm_ui_icon_alarak_telekinesis.png",
         "type": "W",
         "sort": 3,
@@ -313,7 +314,7 @@
         "tooltipId": "AlarakMockingStrikes",
         "talentTreeId": "AlarakMockingStrikes",
         "name": "Mocking Strikes",
-        "description": "Basic Attacks against enemy Heroes reduce the cooldown of Alarak's Basic Abilities by 1.5 seconds.  This bonus is doubled against enemy Heroes who are Stunned, Silenced, Slowed, or Rooted.",
+        "description": "Basic Attacks against enemy Heroes reduce the cooldown of Alarak's Basic Abilities by 1.5 seconds. This bonus is doubled against enemy Heroes who are Stunned, Silenced, Slowed, or Rooted.",
         "icon": "storm_ui_icon_talent_autoattack_cooldown.png",
         "type": "Passive",
         "sort": 3,
@@ -325,32 +326,23 @@
     ],
     "20": [
       {
-        "tooltipId": "AlarakCounterStrike2ndHeroic",
-        "talentTreeId": "AlarakCounterStrikeItem",
-        "name": "Counter-Strike",
-        "description": "Alarak targets an area and channels for 1 second, becoming Protected and Unstoppable. After, if he took damage from an enemy Hero, he sends a shockwave that deals 275 (+4% per level) damage.  This ability will take over Alarak's Trait button.",
-        "icon": "storm_ui_icon_alarak_counterstrike.png",
+        "tooltipId": "AlarakWrathOfTheHighlord",
+        "talentTreeId": "AlarakWrathOfTheHighlord",
+        "name": "Wrath of the Highlord",
+        "description": "If Deadly Charge was the selected Heroic, Heroes hit by Deadly Charge take bonus damage from Alarak's Abilities equal to 75% of Sadism's bonus damage for 4 seconds.  If Counter-Strike was the selected Heroic, its cooldown is reduced by 2.5 seconds for each enemy Hero hit by Alarak's Basic Abilities.",
+        "icon": "storm_ui_icon_alarak_sadism.png",
         "type": "Heroic",
-        "sort": 1,
-        "cooldown": 30,
-        "abilityId": "Alarak|R2",
-        "abilityLinks": [
-          "Alarak|R2"
-        ]
+        "sort": 1
       },
       {
-        "tooltipId": "AlarakDeadlyCharge",
-        "talentTreeId": "AlarakDeadlyChargeSecondHeroic",
-        "name": "Deadly Charge",
-        "description": "After channeling, Alarak charges forward dealing 200 (+4% per level) damage to all enemies in his path. Distance is increased based on the amount of time channeled, up to 1.5 seconds.  Issuing a Move order while this is channeling will cancel it at no cost. Taking damage will interrupt the channeling.",
-        "icon": "storm_ui_icon_alarak_recklesscharge.png",
-        "type": "Heroic",
+        "tooltipId": "AlarakMightOfTheHighlord",
+        "talentTreeId": "AlarakMightOfTheHighlord",
+        "name": "Might of the Highlord",
+        "description": "Alarak gains access to both of his Heroic Abilities. This can be activated to change which Ability occupies the Heroic slot, with the other Ability using the Trait slot.",
+        "icon": "storm_ui_icon_alarak_sadism_a.png",
+        "type": "Active",
         "sort": 2,
-        "cooldown": 45,
-        "abilityId": "Alarak|R1",
-        "abilityLinks": [
-          "Alarak|R1"
-        ]
+        "abilityId": "Alarak|Active"
       },
       {
         "tooltipId": "AlarakLastLaugh",

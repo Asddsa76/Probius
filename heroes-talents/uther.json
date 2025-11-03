@@ -93,7 +93,7 @@
         "name": "Flash of Light",
         "description": "Heal an ally for 230 (+4% per level) Health.",
         "hotkey": "Q",
-        "abilityId": "Uther|Q3",
+        "abilityId": "Uther|Q2",
         "cooldown": 1.5,
         "icon": "storm_ui_icon_uther_flashoflight.png",
         "type": "basic"
@@ -150,14 +150,12 @@
         "tooltipId": "UtherHolyLightHolyShockTalent",
         "talentTreeId": "UtherMasteryHolyShock",
         "name": "Holy Shock",
-        "description": "Holy Light can be used on an enemy to do 40% of its healing amount as damage. When used this way, Uther receives its self-healing benefits, its cooldown is reduced by 6 seconds, and it refunds 45 Mana.",
-        "icon": "storm_ui_icon_uther_holylight.png",
-        "type": "Q",
+        "description": "Activate to deal 145 (+4% per level) damage to the target enemy, and gain the self-healing benefits of Holy Light. Shares a cooldown with Holy Light.",
+        "icon": "storm_ui_icon_uther_holyshock.png",
+        "type": "Active",
         "sort": 1,
-        "abilityId": "Uther|Q1",
-        "abilityLinks": [
-          "Uther|Q1"
-        ]
+        "cooldown": 6,
+        "abilityId": "Uther|Active"
       },
       {
         "tooltipId": "UtherHammerOfJusticePursuitOfJusticeTalent",
@@ -298,7 +296,7 @@
         "tooltipId": "UtherBeaconOfLight",
         "talentTreeId": "UtherBeaconOfLight",
         "name": "Beacon of Light",
-        "description": "Uther receives 125% bonus self-healing when targeting others with Holy Light.  This bonus is increased to 250% while he is below 50% Health.",
+        "description": "Uther receives 125% bonus self-healing when targeting others with Holy Light. This bonus is increased to 250% while he is below 50% Health.",
         "icon": "storm_ui_icon_uther_holylight.png",
         "type": "Q",
         "sort": 1,

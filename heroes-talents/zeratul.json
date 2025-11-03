@@ -228,7 +228,6 @@
         "icon": "storm_ui_icon_zeratul_mightofnerazim.png",
         "type": "Heroic",
         "sort": 1,
-        "cooldown": 20,
         "abilityId": "Zeratul|R1",
         "abilityLinks": [
           "Zeratul|R1"
@@ -289,7 +288,7 @@
         "tooltipId": "ZeratulMasterWarpBlade",
         "talentTreeId": "ZeratulMasterWarpBlade",
         "name": "Master Warp-Blade",
-        "description": "Every third consecutive Basic Attack against the same target deals 125% bonus damage.",
+        "description": "Every third consecutive Basic Attack against the same target deals 125% more damage.",
         "icon": "storm_ui_icon_talent_autoattack_damage.png",
         "type": "Passive",
         "sort": 1,

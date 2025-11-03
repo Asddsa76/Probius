@@ -142,7 +142,7 @@
         "tooltipId": "StitchesPlaytime",
         "talentTreeId": "StitchesPlaytime",
         "name": "Playtime!",
-        "description": "Basic Attacks reduce the cooldown of Slam by 0.75 seconds and restores 5 Mana. Hitting Heroes with the inner area of Slam reduces its cooldown by 1.5 seconds.",
+        "description": "Basic Attacks restore 5 Mana and reduce Slam's cooldown by 0.75 seconds.  For each enemy Hero hit by Slam's inner area, restore 5 Mana and reduce its cooldown by 1.5 seconds.",
         "icon": "storm_ui_icon_stitches_slam.png",
         "type": "W",
         "sort": 1,
@@ -322,9 +322,8 @@
         "name": "Flare Up",
         "description": "Deals 15 (+4% per level) damage per second to nearby enemies. Hitting an enemy Hero with Hook or activating Shambling Horror increases this damage by 150% for 4 seconds.",
         "icon": "storm_ui_icon_talent_burningrage.png",
-        "type": "Passive",
-        "sort": 3,
-        "abilityId": "Stitches|Passive"
+        "type": "Trait",
+        "sort": 3
       }
     ],
     "20": [

@@ -127,7 +127,7 @@
         "tooltipId": "LeoricFealtyUntoDeathTalent",
         "talentTreeId": "LeoricMasteryFealtyUntoDeathUndying",
         "name": "Fealty Unto Death",
-        "description": "When a nearby friendly or enemy Minion dies, Leoric restores 1.25% of his maximum Health and 6 Mana.",
+        "description": "When a nearby friendly or enemy Minion dies, Leoric restores 32 (+4% per level) Health and 6 Mana.",
         "icon": "storm_ui_icon_leoric_trait.png",
         "type": "Trait",
         "sort": 2,
@@ -292,7 +292,7 @@
         "tooltipId": "LeoricSpectralLeechTalent",
         "talentTreeId": "LeoricMasterySpectralLeech",
         "name": "Spectral Leech",
-        "description": "Basic Attacks against enemy Heroes deal bonus damage equal to 2.5% of the Hero's maximum Health and heal Leoric for twice that amount.",
+        "description": "Basic Attacks against enemy Heroes deal bonus damage to the primary target damage equal 2.5% of the Hero's maximum Health and heal Leoric for 200% of the bonus damage dealt.",
         "icon": "storm_ui_icon_talent_autoattack_heal.png",
         "type": "Passive",
         "sort": 3,
@@ -320,7 +320,7 @@
         "tooltipId": "LeoricRoyalFocusTalent",
         "talentTreeId": "LeoricMasteryRoyalFocusWraithWalk",
         "name": "Royal Focus",
-        "description": "Wraith Walk increases the damage of the next Skeletal Swing within 5 seconds by 50%. Each enemy Hero hit by this Skeletal Swing reduces the cooldown of Wraith Walk by 7 seconds.",
+        "description": "Wraith Walk increases the damage of the next Skeletal Swing within 5 seconds by 50%. Each enemy Hero hit by Skeletal Swing reduces the cooldown of Wraith Walk by 7 seconds.",
         "icon": "storm_ui_icon_leoric_wraithwalk.png",
         "type": "E",
         "sort": 2,
@@ -377,9 +377,9 @@
         "name": "Burning Despair",
         "description": "Deal 40 (+4% per level) damage per second to nearby enemies.  While Drain Hope is active, gain 40 Armor and the damage and area is increased by 100%.",
         "icon": "storm_ui_icon_leoric_drainhope.png",
-        "type": "Passive",
+        "type": "W",
         "sort": 3,
-        "abilityId": "Leoric|Passive",
+        "abilityId": "Leoric|W1",
         "abilityLinks": [
           "Leoric|W1"
         ]

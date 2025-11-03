@@ -126,7 +126,7 @@
         "tooltipId": "GreymaneInnerBeastWolfheartTalent",
         "talentTreeId": "GreymaneInnerBeastWolfheart",
         "name": "Wolfheart",
-        "description": "Increase the cooldown reduction from Basic Attacks during Inner Beast from 0.5 to 1.2 seconds.",
+        "description": "Increase the cooldown reduction from Basic Attacks during Inner Beast from 0.5 to 1.2 seconds, and Worgen Form's Armor bonus from 10 to 15.",
         "icon": "storm_ui_icon_greymane_beastfocus.png",
         "type": "W",
         "sort": 1,
@@ -338,10 +338,10 @@
         ]
       },
       {
-        "tooltipId": "GenericExecutionerTalent",
-        "talentTreeId": "HeroGenericExecutionerPassive",
-        "name": "Executioner",
-        "description": "Attacking a Hero that is slowed, rooted, or stunned increases your Basic Attack damage by 30% for 3 seconds.",
+        "tooltipId": "GreymaneLordofHisPackTalent",
+        "talentTreeId": "GreymaneLordofHisPack",
+        "name": "Lord of His Pack",
+        "description": "Attacking a Hero that is Slowed, Rooted, or Stunned increases Greymane's Basic Attack damage by 25% for 3 seconds, increased to 50% while in Worgen Form.",
         "icon": "storm_ui_icon_talent_autoattack_damage.png",
         "type": "Passive",
         "sort": 2,

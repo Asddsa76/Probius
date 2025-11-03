@@ -45,7 +45,7 @@
       {
         "uid": "36124c",
         "name": "Evolve Monstrosity",
-        "description": "Turn an allied Minion or Locust into a Monstrosity. When enemy Minions near the Monstrosity die, it gains 2% Health and 2% Basic Attack damage, stacking up to 40 times.  The Monstrosity can be healed by Carapace and has the ability to Burrow to a visible location every 80 seconds.  Using Symbiote on the Monstrosity allows Abathur to control it, in addition to Symbiote's normal benefits.  This Ability can be reactivated to automatically cast Symbiote on his Monstrosity.",
+        "description": "Turn an allied Minion or Locust into a Monstrosity. When enemy Minions near the Monstrosity die, it gains 2% Health and 2% Basic Attack damage, stacking up to 40 times. The Monstrosity can be healed by Carapace and has the ability to Burrow to a visible location every 80 seconds.  Using Symbiote on the Monstrosity allows Abathur to control it, in addition to Symbiote's normal benefits. This Ability can be reactivated to automatically cast Symbiote on his Monstrosity.",
         "hotkey": "R",
         "abilityId": "Abathur|R1",
         "cooldown": 90,
@@ -65,7 +65,7 @@
       {
         "uid": "c6b01f",
         "name": "Locust Strain",
-        "description": "Spawns a Locust to attack down the nearest lane every 15 seconds. Locusts last for 16 seconds, have 350 (+4% per level) health and deal 46 (+4% per level) damage with each Basic Attack, dealing 25% bonus damage to enemy Structures.",
+        "description": "Spawns a Locust to attack down the nearest lane every 15 seconds. Locusts last for 16 seconds, have 350 (+4% per level) health and deal 58 (+4% per level) damage with each Basic Attack, dealing 25% bonus damage to enemy Structures.",
         "trait": true,
         "abilityId": "Abathur|D1",
         "cooldown": 15,
@@ -75,7 +75,7 @@
       {
         "uid": "8562c7",
         "name": "Deep Tunnel",
-        "description": "Quickly tunnel to a visible location",
+        "description": "Quickly tunnel to a visible location.",
         "hotkey": "Z",
         "abilityId": "Abathur|Z1",
         "cooldown": 30,
@@ -163,9 +163,10 @@
         "icon": "storm_ui_icon_abathur_carapace.png",
         "type": "E",
         "sort": 3,
-        "abilityId": "Abathur|E1",
+        "abilityId": "Abathur|Q1",
         "abilityLinks": [
-          "Abathur|E1"
+          "Abathur|E1",
+          "Abathur|Q1"
         ]
       },
       {
@@ -283,11 +284,12 @@
         "tooltipId": "AbathurEvolveMonstrosityHotbar",
         "talentTreeId": "AbathurHeroicAbilityEvolveMonstrosity",
         "name": "Evolve Monstrosity",
-        "description": "Turn an allied Minion or Locust into a Monstrosity. When enemy Minions near the Monstrosity die, it gains 2% Health and 2% Basic Attack damage, stacking up to 40 times.  The Monstrosity can be healed by Carapace and has the ability to Burrow to a visible location every 80 seconds.  Using Symbiote on the Monstrosity allows Abathur to control it, in addition to Symbiote's normal benefits.  This Ability can be reactivated to automatically cast Symbiote on his Monstrosity.",
+        "description": "Turn an allied Minion or Locust into a Monstrosity. When enemy Minions near the Monstrosity die, it gains 2% Health and 2% Basic Attack damage, stacking up to 40 times. The Monstrosity can be healed by Carapace and has the ability to Burrow to a visible location every 80 seconds.  Using Symbiote on the Monstrosity allows Abathur to control it, in addition to Symbiote's normal benefits. This Ability can be reactivated to automatically cast Symbiote on his Monstrosity.",
         "icon": "storm_ui_icon_abathur_evolvemonstrosity.png",
         "type": "Heroic",
         "sort": 2,
         "cooldown": 90,
+        "isQuest": true,
         "abilityId": "Abathur|R1",
         "abilityLinks": [
           "Abathur|R1"
@@ -328,7 +330,7 @@
         "talentTreeId": "AbathurCombatStyleBombardStrain",
         "name": "Bombard Strain",
         "description": "Locust's Basic Attacks become a long-range siege attack and their duration is increased by 75%.",
-        "icon": "storm_ui_icon_abathur_spawnlocust_var1.png",
+        "icon": "storm_ui_icon_abathur_spawnlocust.png",
         "type": "Trait",
         "sort": 3,
         "abilityId": "Abathur|D1",
@@ -397,7 +399,7 @@
         "tooltipId": "AbathurUltimateEvolutionEvolutionaryLinkTalent",
         "talentTreeId": "AbathurUltimateEvolutionEvolutionaryLink",
         "name": "Evolutionary Link",
-        "description": "Increase the duration of Ultimate Evolution by 50%.  As long as the Ultimate Evolution is alive, the original target of the clone gains a Shield equal to 35% of their maximum Health.  Refreshes every 5 seconds.",
+        "description": "Increase the duration of Ultimate Evolution by 50%. As long as the Ultimate Evolution is alive, the original target of the clone gains a Shield equal to 35% of their maximum Health. Refreshes every 5 seconds.",
         "icon": "storm_ui_icon_abathur_ultimateevolution.png",
         "type": "Heroic",
         "sort": 1,
@@ -423,7 +425,7 @@
         "tooltipId": "AbathurSymbioteHivemindTalent",
         "talentTreeId": "AbathurSymbioteHivemind",
         "name": "Hivemind",
-        "description": "Symbiote creates an additional Symbiote on a nearby allied Hero.  This Symbiote mimics the commands of the first, but does half damage and Shielding.",
+        "description": "Symbiote creates an additional Symbiote on a nearby allied Hero. This Symbiote mimics the commands of the first, but does half damage and Shielding.",
         "icon": "storm_ui_icon_abathur_symbiote.png",
         "type": "Q",
         "sort": 3,

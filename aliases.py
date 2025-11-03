@@ -85,6 +85,7 @@ def abilityAliases(hero,name):#Spell hero with correct capitalization, then rest
 	abilityAliasDict={
 	'Ana':{'nano boost':['nanoboost']},
 	'Anduin':{'leap of faith':['lifegrip']},
+	'Artanis':{'purifier beam':['laser']},
 	'Azmodan':{'demonic invasion':['sieging wrath']},
 	'Cassia':{'ball lightning':['volleyball','tetherball']},
 	'Fenix':{'purification salvo':['aiur noon']},

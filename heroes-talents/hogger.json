@@ -111,11 +111,11 @@
         "tooltipId": "HoggerOnTheProwl",
         "talentTreeId": "HoggerOnTheProwl",
         "name": "On The Prowl",
-        "description": "Activate to gain 30 Rage over 8 seconds.  Passive: You heal for 8 (+4% per level) Health every second, increased by 2% per point of Rage.",
+        "description": "Activate to gain 30 Rage over 8 seconds.  Passive: You heal for 7 (+4% per level) Health every second, increased by 2% per point of Rage.",
         "icon": "storm_ui_icon_hogger_rage.png",
         "type": "Active",
         "sort": 3,
-        "cooldown": 40,
+        "cooldown": 45,
         "abilityId": "Hogger|Active"
       }
     ],
@@ -124,7 +124,7 @@
         "tooltipId": "HoggerBruteForce",
         "talentTreeId": "HoggerBruteForce",
         "name": "Brute Force",
-        "description": "Increase the range of Loot Hoard by 20% and its damage by 50%.  Quest: Hitting Heroes with Staggering Blow permanently increases Basic Attack damage by 2, to a maximum of 150 bonus damage. Enemy Heroes that hit terrain grant an additional 8 damage.",
+        "description": "Increase the range of Loot Hoard by 20% and its damage by 50%.  Quest: Hitting Heroes with Staggering Blow permanently increases Basic Attack damage by 2, to a maximum of 150 bonus damage. Enemy Heroes that hit terrain grant an additional 6 damage.",
         "icon": "storm_ui_icon_hogger_combo_q_d.png",
         "type": "Q",
         "sort": 1,
@@ -160,27 +160,13 @@
     ],
     "7": [
       {
-        "tooltipId": "HoggerSeeingRed",
-        "talentTreeId": "HoggerSeeingRed",
-        "name": "Seeing Red",
-        "description": "While above 50 Rage, gain 35% Attack Speed and the cooldowns of Staggering Blow and Hogg Wild refresh 30% faster.",
-        "icon": "storm_ui_icon_hogger_combo_q_e.png",
-        "type": "Q",
-        "sort": 1,
-        "abilityId": "Hogger|Q1",
-        "abilityLinks": [
-          "Hogger|E1",
-          "Hogger|Q1"
-        ]
-      },
-      {
         "tooltipId": "HoggerDenseBlastingPowder",
         "talentTreeId": "HoggerDenseBlastingPowder",
         "name": "Dense Blasting Powder",
         "description": "Instant detonations of Ez-Thro Dynamite creates an additional dynamite behind the Hero hit.  Hitting the bundle of Ez-Thro Dynamite with Staggering Blow breaks it into three sticks and launches them forward in an arc.",
         "icon": "storm_ui_icon_hogger_w.png",
         "type": "W",
-        "sort": 2,
+        "sort": 1,
         "abilityId": "Hogger|Q1",
         "abilityLinks": [
           "Hogger|Q1",
@@ -191,13 +177,27 @@
         "tooltipId": "HoggerGarbageFire",
         "talentTreeId": "HoggerGarbageFire",
         "name": "Garbage Fire",
-        "description": "Reduce the cooldown of Loot Hoard by 2 seconds.  Every 0.5 seconds, enemies in a large area around Loot Hoard take 23 (+4% per level) damage and are Slowed by 20%.",
+        "description": "Reduce the cooldown of Loot Hoard by 2 seconds. Every 0.5 seconds, enemies in a large area around Loot Hoard take 23 (+4% per level) damage and are Slowed by 20%.",
         "icon": "storm_ui_icon_hogger_trait.png",
         "type": "Trait",
-        "sort": 3,
+        "sort": 2,
         "abilityId": "Hogger|D1",
         "abilityLinks": [
           "Hogger|D1"
+        ]
+      },
+      {
+        "tooltipId": "HoggerSeeingRed",
+        "talentTreeId": "HoggerSeeingRed",
+        "name": "Seeing Red",
+        "description": "While above 50 Rage, gain 35% Attack Speed and the cooldowns of Staggering Blow and Hogg Wild refresh 30% faster.",
+        "icon": "storm_ui_icon_hogger_rage.png",
+        "type": "Passive",
+        "sort": 3,
+        "abilityId": "Hogger|Passive",
+        "abilityLinks": [
+          "Hogger|E1",
+          "Hogger|Q1"
         ]
       }
     ],
@@ -236,7 +236,7 @@
         "tooltipId": "HoggerDustDevil",
         "talentTreeId": "HoggerDustDevil",
         "name": "Dust Devil",
-        "description": "Gain 20 Armor while Hogg Wild is active and for 3 seconds after. When at or above 50 Rage, increase this Armor to 40.",
+        "description": "Gain 25 Armor while Hogg Wild is active and for 4 seconds after. When at or above 50 Rage, increase this Armor to 40.",
         "icon": "storm_ui_icon_hogger_e.png",
         "type": "E",
         "sort": 1,
@@ -249,7 +249,7 @@
         "tooltipId": "HoggerPummel",
         "talentTreeId": "HoggerPummel",
         "name": "Pummel",
-        "description": "Enemies hit by Hogg Wild are Slowed by 10% for 2 seconds, stacking up to 5 times.  Heroes hit have their Spell Power reduced by 50% for 2 seconds.",
+        "description": "Enemies hit by Hogg Wild are Slowed by 10% for 2 seconds, stacking up to 5 times.  Heroes hit have their Spell Power reduced by 30% for 2 seconds.",
         "icon": "storm_ui_icon_hogger_e_variant.png",
         "type": "E",
         "sort": 2,

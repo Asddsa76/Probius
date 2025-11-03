@@ -212,7 +212,6 @@
         "icon": "storm_ui_icon_garrosh_intothefray.png",
         "type": "Active",
         "sort": 3,
-        "cooldown": 45,
         "abilityId": "Garrosh|Active",
         "abilityLinks": [
           "Garrosh|11"
@@ -297,7 +296,7 @@
         "talentTreeId": "GarroshGroundbreakerMortalCombo",
         "name": "Mortal Combo",
         "description": "Hitting a Hero with Groundbreaker's Stun and throwing them with Wrecking Ball within 3 seconds reduces Wrecking Ball's cooldown by 10 seconds, regardless of order.",
-        "icon": "storm_ui_icon_garrosh_wrecking_ball.png",
+        "icon": "storm_ui_icon_garrosh_groundbreaker.png",
         "type": "E",
         "sort": 1,
         "abilityId": "Garrosh|E1",
@@ -310,7 +309,7 @@
         "talentTreeId": "GarroshWreckingBallEarthshaker",
         "name": "Earthshaker",
         "description": "Wrecking Ball Stuns enemies near the impact area for 0.5 seconds.",
-        "icon": "storm_ui_icon_garrosh_intothefray.png",
+        "icon": "storm_ui_icon_garrosh_wrecking_ball.png",
         "type": "E",
         "sort": 2,
         "abilityId": "Garrosh|E1",
@@ -323,10 +322,10 @@
         "talentTreeId": "GarroshArmorUpSeasonedSoldier",
         "name": "Seasoned Soldier",
         "description": "Gain 5% maximum Health, increase Groundbreaker's Slow duration by 1 second, and Bloodthirst gains an additional charge.",
-        "icon": "storm_ui_icon_garrosh_armor_up.png",
-        "type": "Active",
+        "icon": "storm_ui_icon_garrosh_bloodthirst.png",
+        "type": "Passive",
         "sort": 3,
-        "abilityId": "Garrosh|Active",
+        "abilityId": "Garrosh|Passive",
         "abilityLinks": [
           "Garrosh|D1"
         ]
@@ -337,7 +336,7 @@
         "tooltipId": "GarroshWarlordsChallengeDeathWish",
         "talentTreeId": "GarroshWarlordsChallengeDeathWish",
         "name": "Death Wish",
-        "description": "Increase the duration of Warlord's Challenge by 0.5 seconds.  If an enemy Hero is killed while Taunted by Warlord's Challenge, its cooldown is reduced by 45 seconds.",
+        "description": "Increase the duration of Warlord's Challenge by 0.5 seconds. If an enemy Hero is killed while Taunted by Warlord's Challenge, its cooldown is reduced by 45 seconds.",
         "icon": "storm_ui_icon_garrosh_warlords_challenge.png",
         "type": "Heroic",
         "sort": 1,

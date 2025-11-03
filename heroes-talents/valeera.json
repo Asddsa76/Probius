@@ -267,7 +267,7 @@
         "tooltipId": "ValeeraSliceAndDice",
         "talentTreeId": "ValeeraEviscerateSliceAndDice",
         "name": "Slice and Dice",
-        "description": "Eviscerating an enemy with 3 Combo Points grants 150% Attack Speed. Lasts 3 seconds or 3 Basic Attacks.  Passive: Basic Attacks restore 2 Energy.",
+        "description": "Eviscerating an enemy with 3 Combo Points grants 400% Attack Speed. Lasts 3 seconds or 3 Basic Attacks.  Passive: Basic Attacks restore 2 Energy.",
         "icon": "storm_ui_icon_valeera_eviscerate.png",
         "type": "E",
         "sort": 3,

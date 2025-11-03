@@ -45,7 +45,7 @@
       {
         "uid": "8f8fb4",
         "name": "Xplodium Charge",
-        "description": "Place a bomb that deals 142 (+4% per level) damage to enemies within the target area after 1.25 seconds.  Enemies hit are also Stunned for 1 second.",
+        "description": "Place a bomb that deals 142 (+4% per level) damage to enemies within the target area after 1.25 seconds. Enemies hit are also Stunned for 1 second.",
         "hotkey": "E",
         "abilityId": "Gazlowe|E1",
         "cooldown": 12,
@@ -65,7 +65,7 @@
       {
         "uid": "0de520",
         "name": "Grav-O-Bomb 3000",
-        "description": "After a 1.5 second delay, pull enemies toward the center of an area and deal 220 (+4% per level) damage. Basic Abilities deal 30% more damage for 5 seconds after casting Grav-O-Bomb 3000.",
+        "description": "After a 1.5 second delay, pull enemies toward the center of an area, dealing 220 (+4% per level) damage and Stunning them for 0.5 seconds. Basic Abilities deal 30% more damage for 5 seconds after casting Grav-O-Bomb 3000.",
         "hotkey": "R",
         "abilityId": "Gazlowe|R2",
         "cooldown": 60,
@@ -87,7 +87,6 @@
         "description": "Orders any nearby Rock-It! Turrets to focus the target.",
         "hotkey": "1",
         "abilityId": "Gazlowe|11",
-        "cooldown": 1,
         "icon": "storm_ui_icon_gazlowe_rockitturret_var1.png",
         "type": "activable"
       }
@@ -125,7 +124,7 @@
         "tooltipId": "GazloweOneManWreckingCrew",
         "talentTreeId": "GazloweOneManWreckingCrew",
         "name": "One Man Wrecking Crew",
-        "description": "Casting Basic Abilities cause Gazlowe's next Basic Attack within 6 seconds to deal 60% more damage.  Stores up to 2 charges.",
+        "description": "Casting Basic Abilities cause Gazlowe's next Basic Attack within 6 seconds to deal 60% more damage. Stores up to 2 charges.",
         "icon": "storm_ui_icon_talent_autoattack_damage.png",
         "type": "Passive",
         "sort": 3,
@@ -237,7 +236,7 @@
         "tooltipId": "TinkerGravOBomb3000",
         "talentTreeId": "TinkerHeroicAbilityGravOBomb3000",
         "name": "Grav-O-Bomb 3000",
-        "description": "After a 1.5 second delay, pull enemies toward the center of an area and deal 220 (+4% per level) damage. Basic Abilities deal 30% more damage for 5 seconds after casting Grav-O-Bomb 3000.",
+        "description": "After a 1.5 second delay, pull enemies toward the center of an area, dealing 220 (+4% per level) damage and Stunning them for 0.5 seconds. Basic Abilities deal 30% more damage for 5 seconds after casting Grav-O-Bomb 3000.",
         "icon": "storm_ui_icon_gazlowe_gravobomb.png",
         "type": "Heroic",
         "sort": 2,

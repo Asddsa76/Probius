@@ -55,7 +55,7 @@
       {
         "uid": "58759f",
         "name": "Life-Binder",
-        "description": "Bind Alexstrasza's life force with an allied Hero. Both her and her target are healed for 480 (+4% per level) Health over 2 seconds. Afterwards, the Hero with a lower percentage of Health is healed to the same Health percentage as the other Hero.",
+        "description": "Bind Alexstrasza's life force with an allied Hero. Both her and her target are healed for 480 (+4% per level) Health over 2 seconds. Afterwards, the Hero with a lower percentage of Health is healed to the same Health percentage as the other Hero.  Dragonqueen: Cast range increased by 50%.",
         "hotkey": "R",
         "abilityId": "Alexstrasza|R1",
         "cooldown": 50,
@@ -267,7 +267,7 @@
         "tooltipId": "AlexstraszaLifebinder",
         "talentTreeId": "AlexstraszaLifebinder",
         "name": "Life-Binder",
-        "description": "Bind Alexstrasza's life force with an allied Hero. Both her and her target are healed for 480 (+4% per level) Health over 2 seconds. Afterwards, the Hero with a lower percentage of Health is healed to the same Health percentage as the other Hero.",
+        "description": "Bind Alexstrasza's life force with an allied Hero. Both her and her target are healed for 480 (+4% per level) Health over 2 seconds. Afterwards, the Hero with a lower percentage of Health is healed to the same Health percentage as the other Hero.  Dragonqueen: Cast range increased by 50%.",
         "icon": "storm_ui_icon_alexstrasza_life_binder.png",
         "type": "Heroic",
         "sort": 1,

@@ -49,7 +49,9 @@ async def additionalInfo(hero,name,description):
 		'Remorseless':"This shot originates from Sylvanas' target, and does not disable buildings while Black Arrows is active. If the third stack on the secondary target is reached through this shot, the target will not be affected by Mercenary Queen."},
 	'tassadar':{'Psychic Shock':'Psionic Storm deals 2 additional ticks of damage.',
 		'Shock Ray':'0.375 second wind up before beam starts, additional 0.75 second channel while beam is moving. If the channel is interrupted, beam instantly disappears.'},
-	'tracer':{'Ricochet':'Ricochet shots interact with Telefrag, but not Focus Fire.'},
+	'tracer':{
+		'Ricochet':'Ricochet shots interact with Telefrag, but not Focus Fire.',
+		'Bullet Spray':"Extra targets do not increase Pulse Bomb charging."},
 	'tychus':{'Focusing Diodes':'The damage bonus is multiplicative.'},
 	'tyrande':{"Huntress' Fury":"Splashes give cooldown reduction on Light of Elune, but do not trigger any of Tyrande's other Basic Attack related effects."},
 	'valla':{
@@ -99,7 +101,7 @@ async def fetch(session, url):
 
 async def downloadHero(hero,client,patch):
 	#async with aiohttp.ClientSession() as session:
-	with open('heroes-talents/'+hero+'.json') as page:
+	with open('heroes-talents/'+hero+'.json', encoding='utf-8') as page:
 		'''if patch=='':
 			page = await fetch(session, 'https://raw.githubusercontent.com/heroespatchnotes/heroes-talents/master/hero/'+hero+'.json')
 			#page = await fetch(session, 'https://raw.githubusercontent.com/MGatner/heroes-talents/83004/hero/'+hero+'.json')

@@ -296,7 +296,7 @@
         "talentTreeId": "BarbarianRampage",
         "name": "Rampage",
         "description": "Increase Basic Attack damage by 25%. Basic Attacks reduce the cooldown of Ancient Spear by 1.5 seconds.",
-        "icon": "storm_ui_icon_talent_autoattack_damage.png",
+        "icon": "storm_ui_icon_talent_autoattack_cooldown.png",
         "type": "Passive",
         "sort": 2,
         "abilityId": "Sonya|Passive"
@@ -318,7 +318,7 @@
         "tooltipId": "BarbarianLeapArreatCraterTalent",
         "talentTreeId": "BarbarianArreatCrater",
         "name": "Arreat Crater",
-        "description": "Leap leaves behind an impassable crater for 5 seconds.  Reduces Leap's cooldown by 20 seconds.",
+        "description": "Leap leaves behind an impassable crater for 5 seconds. Reduces Leap's cooldown by 20 seconds.",
         "icon": "storm_ui_icon_sonya_leap.png",
         "type": "Heroic",
         "sort": 1,

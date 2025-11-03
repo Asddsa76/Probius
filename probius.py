@@ -200,7 +200,7 @@ async def mainProbius(client,message,texts):
 		if command in colourAliases:
 			await message.channel.send(file=discord.File('WS colours.png'))
 			continue
-		if message.author.id==DiscordUserIDs['Asddsa'] or message.author.id==DiscordUserIDs['MindHawk']:
+		if message.author.id==DiscordUserIDs['Asddsa']:
 			if command=='serverchannels':
 				await message.channel.send([channel.name for channel in message.channel.guild.channels])
 				continue
@@ -231,7 +231,7 @@ async def mainProbius(client,message,texts):
 		if command in redditAliases:
 			await reddit(client,message,text)
 			continue
-		if command in ['avatar','a']:
+		if command in ['pfp','a']:
 			await message.channel.send(await getAvatar(client,message.channel,text[1]))
 			continue
 		if command=='':#Empty string. Aliases returns Abathur when given this.
@@ -492,9 +492,13 @@ class MyClient(discord.Client):
 					await message.channel.send('@everyone '+output)
 					await self.get_channel(222817241249480704).send(output)
 			except:pass
-		if message.author.id==DiscordUserIDs['Gooey'] and 'explodes' in message.content.lower():
-			await message.add_reaction('<:explodes:955458830244913153>')
-			#await message.channel.send('https://cdn.discordapp.com/attachments/741762417976934460/954076412590063646/unknown.png')
+		if message.author.id==DiscordUserIDs['Gooey']:
+			if 'explod' in message.content.lower():
+				await message.add_reaction('<:explodes:955458830244913153>')
+				#await message.channel.send('https://cdn.discordapp.com/attachments/741762417976934460/954076412590063646/unknown.png')
+			if 'a'==message.content.lower():
+				await message.add_reaction("🅰")
+				#await message.channel.send("https://cdn.discordapp.com/attachments/607922629902598154/1150784393762316288/A.mp4")
 		if message.author.bot:#Don't respond to bots
 			return
 		try:

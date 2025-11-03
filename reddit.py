@@ -7,8 +7,8 @@ from discordIDs import *
 redditors=['Asddsa76', 'Blackstar_9', 'Spazzo965', 'SomeoneNew666', 'joshguillen', 'SotheBee', 'AnemoneMeer', 'Pscythic', 'Elitesparkle', 'slapperoni', 
 'secret3332', 'Carrygan_', 'Archlichofthestorm', 'Gnueless', 'ThatDoomedStudent', 'InfiniteEarth', 'SamiSha_', 'twinklesunnysun', 'Pelaberus', 'KillMeWithMemes',
 'MarvellousBee','Naturage','Derenash','Riokaii','Demon_Ryu','hellobgs','Beg_For_Mercy','Russisch','Valamar1732','ArashiNoShad0w','lemindhawk','Goshin26',
-'TiredZealot','MasterAblar','SHreddedWInd','MrWilbus','NotBelial','Dark_Polaroid','Mochrie1713','HeroesProfile','nexusschoolhouse','Nightterror0','starcaller_hots',
-'WorstMedivhKR','Babaguscooties']
+'TiredZealot','MasterAblar','SHreddedWInd','MrWilbus','NotBelial','Dark_Polaroid','HeroesProfile','nexusschoolhouse','Nightterror0','WorstMedivhKR','Babaguscooties',
+'JozefxDark']
 
 discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','secret3332':'SecretChaos','Archlichofthestorm':'Trolldaeron','ThatDoomedStudent':'Carbon','InfiniteEarth':'Flash',
 'KillMeWithMemes':'Nick','Demon_Ryu':'Messa','Russisch':'Ekata','ArashiNoShad0w':'LeviathaN','lemindhawk':'MindHawk','Nightterror0':'Deafwing', 'Dark_Polaroid':'Medicake','Babaguscooties':'Labreris'}
@@ -17,12 +17,12 @@ discordnames={'Pscythic':'Soren Lily', 'SotheBee':'Sothe', 'slapperoni':'slap','
 keywords={
 'Genji':[DiscordUserIDs['Weebatsu']],
 'Samuro':[DiscordUserIDs['Blackstorm']],
-'Zera':[DiscordUserIDs['Derenash'],224975834346291210],
-'Valeera':[DiscordUserIDs['MBee'],738440231568801914],
-'Orphea':[410481791204327424],
+'Zera':[DiscordUserIDs['Derenash']],
+'Valeera':[684944498039455781, 738440231568801914],
+'Orphea':[410481791204327424, 738440231568801914],
 'Deathwing':[204893952908853248],
-'Tracer':[160087810370568193],
-'Time stop':[268871972778147870]}
+'Time stop':[268871972778147870],
+'Li-Ming':[738440231568801914]}
 
 async def getPostInfo(post):
 	title=post.split('", "')[0]

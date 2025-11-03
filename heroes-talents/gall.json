@@ -50,7 +50,7 @@
       {
         "uid": "3569aa",
         "name": "Twisting Nether",
-        "description": "After 1 second, nearby enemies are slowed by 50% while Gall channels, up to 5 seconds. Activate to deal 353 (+5% per level) damage.",
+        "description": "After 1 second, nearby enemies are Slowed by 50% while Gall channels, up to 5 seconds. Activate to deal 353 (+5% per level) damage.",
         "hotkey": "R",
         "abilityId": "Gall|R1",
         "cooldown": 80,
@@ -216,7 +216,7 @@
         "tooltipId": "GallOgreRampage",
         "talentTreeId": "GallOgreRampage",
         "name": "Ogre Rampage",
-        "description": "Increase the damage bonus of Ogre Rage by 5%. Each time Gall damages an enemy Hero this bonus increases by 1% for 4 seconds, up to an additional 10% bonus damage.",
+        "description": "Increase the damage bonus of Ogre Rage by 5%. Each time Gall damages an enemy Hero while Ogre Rage is active, this bonus increases by 1% for 4 seconds, up to an additional 10% bonus damage.",
         "icon": "storm_ui_icon_gall_ogrerage.png",
         "type": "Trait",
         "sort": 3,
@@ -245,7 +245,7 @@
         "tooltipId": "GallTwistingNether",
         "talentTreeId": "GallHeroicAbilityTwistingNether",
         "name": "Twisting Nether",
-        "description": "After 1 second, nearby enemies are slowed by 50% while Gall channels, up to 5 seconds. Activate to deal 353 (+5% per level) damage.",
+        "description": "After 1 second, nearby enemies are Slowed by 50% while Gall channels, up to 5 seconds. Activate to deal 353 (+5% per level) damage.",
         "icon": "storm_ui_icon_gall_twistingnether_a.png",
         "type": "Heroic",
         "sort": 2,
@@ -279,7 +279,9 @@
         "type": "Passive",
         "sort": 2,
         "abilityId": "Gall|Passive",
-        "abilityLinks": []
+        "abilityLinks": [
+          "Gall|D1"
+        ]
       },
       {
         "tooltipId": "GallTwilightNovaTalent",
@@ -330,7 +332,10 @@
         "icon": "storm_ui_icon_gall_twoheaded.png",
         "type": "Passive",
         "sort": 3,
-        "abilityId": "Gall|Passive"
+        "abilityId": "Gall|Passive",
+        "abilityLinks": [
+          "Gall|D1"
+        ]
       }
     ],
     "20": [
@@ -368,6 +373,7 @@
         "icon": "storm_ui_icon_gall_ogrerage.png",
         "type": "Trait",
         "sort": 3,
+        "isQuest": true,
         "abilityId": "Gall|D1",
         "abilityLinks": [
           "Gall|D1"
