@@ -215,7 +215,7 @@
         "tooltipId": "UtherHandOfProtection",
         "talentTreeId": "UtherHandOfProtection",
         "name": "Hand of Protection",
-        "description": "Activate to make target ally Unstoppable for 1 second. Cannot be cast on Uther. Basic Attacks reduce Hand of Protection's cooldown by 5 seconds.",
+        "description": "Activate to make target ally Unstoppable for 1 second. Cannot be cast on Uther. Basic Attacks reduce Hand of Protection's cooldown by -1 seconds.",
         "icon": "storm_ui_icon_talent_cleanse.png",
         "type": "Active",
         "sort": 3,
@@ -326,7 +326,7 @@
         "icon": "storm_ui_icon_uther_benediction.png",
         "type": "Active",
         "sort": 3,
-        "cooldown": 60,
+        "cooldown": 1,
         "abilityId": "Uther|Active"
       }
     ],

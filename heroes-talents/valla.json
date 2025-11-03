@@ -107,7 +107,7 @@
         "tooltipId": "DemonHunterMultishotFireAtWill",
         "talentTreeId": "DemonHunterMultishotFireAtWill",
         "name": "Fire At Will",
-        "description": "Quest: Hitting a Hero with Multishot grants 2 Hatred and permanently increases its damage by 2.  Reward: After hitting 20 Heroes with Multishot, increase its damage by 40.",
+        "description": "Quest: Hitting a Hero with Multishot grants 1 Hatred and permanently increases its damage by 2.  Reward: After hitting 20 Heroes with Multishot, increase its damage by 40.",
         "icon": "storm_ui_icon_valla_multishot.png",
         "type": "W",
         "sort": 2,

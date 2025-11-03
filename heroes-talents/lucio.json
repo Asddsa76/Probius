@@ -103,7 +103,7 @@
         "tooltipId": "LucioCrossfadePartyMix",
         "talentTreeId": "LucioCrossfadePartyMixQuest",
         "name": "Party Mix",
-        "description": "Quest: Play Lúcio's Crossfade tracks to nearby allies. Multiple allies provide additional time.  Reward: For every 1 Minute played, permanently increase Lúcio's maximum Mana by 10.  Reward: Once you have played for 8 minutes or more, permanently increase Crossfade's range by 140%.",
+        "description": "Quest: Play Lúcio's Crossfade tracks to nearby allies. Multiple allies provide additional time.  Reward: For every 1 Minute played, permanently increase Lúcio's maximum Mana by 10.  Reward: Once you have played for 8 minutes or more, permanently increase Crossfade's radius by 20%.",
         "icon": "storm_ui_icon_lucio_crossfade_all.png",
         "type": "W",
         "sort": 1,

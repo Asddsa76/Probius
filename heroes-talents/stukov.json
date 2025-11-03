@@ -122,7 +122,7 @@
         "tooltipId": "StukovReactiveBallistosporesTalent",
         "talentTreeId": "StukovWeightedPustuleReactiveBallistospores",
         "name": "Reactive Ballistospores",
-        "description": "While below 50% Health, the cooldown of Bio-Kill Switch refreshes 100% faster.  Activate to instantly spread a Weighted Pustule to all nearby enemy Heroes and reset the cooldown of Bio-Kill Switch.  This effect has a 75 second cooldown.",
+        "description": "Activate to instantly spread a Weighted Pustule to all nearby enemy Heroes and reset the cooldown of Bio-Kill Switch.  Passive: While below 50% Health, the cooldown of Bio-Kill Switch refreshes 100% faster.",
         "icon": "storm_ui_icon_stukov_bio-killswitch.png",
         "type": "Active",
         "sort": 3,

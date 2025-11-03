@@ -93,7 +93,7 @@
         "tooltipId": "ThrallEchooftheElements",
         "talentTreeId": "ThrallEchooftheElements",
         "name": "Echo of the Elements",
-        "description": "Quest: Kill Minions or Heroes within 1.5 seconds of hitting them with Chain Lightning.  Reward: After killing 10 enemies, reduce the Mana cost of Chain Lightning from 40 to 20.  Reward: After killing 20 enemies, gain a second charge of Chain Lightning.",
+        "description": "Quest: Kill Minions or Heroes within 1.5 seconds of hitting them with Chain Lightning.  Reward: After killing 20 enemies, reduce the Mana cost of Chain Lightning from 40 to 20.  Reward: After killing 40 enemies, gain an extra bounce of chain lightning.  Reward: After killing 100 enemies, gain a second charge of Chain Lightning.",
         "icon": "storm_ui_icon_thrall_chainlightning.png",
         "type": "Q",
         "sort": 1,
@@ -107,7 +107,7 @@
         "tooltipId": "ThrallCrashLightning",
         "talentTreeId": "ThrallCrashLightning",
         "name": "Crash Lightning",
-        "description": "Repeatable Quest: Hitting at least 2 Heroes with a single use of Chain Lightning increases the damage of its bounces by 12, up to 360.  Reward: After hitting multiple Heroes 30 times, Chain Lightning prioritizes bouncing to Heroes.",
+        "description": "Quest: Hit at least 2 Heroes with a single use of Chain Lightning.  Lose 6 hits on death.  Gained rewards cannot be lost.  Reward: After hitting multiple Heroes 15 times, Chain Lightning deals an extra  270 damage per bounce.  Reward: After hitting multiple Heroes 30 times, Chain Lightning deals an extra  270 damage per bounce and prioritizes bouncing to Heroes.",
         "icon": "storm_ui_icon_thrall_chainlightning_var1.png",
         "type": "Q",
         "sort": 2,
@@ -118,16 +118,17 @@
         ]
       },
       {
-        "tooltipId": "ThrallRollingThunderTalent",
-        "talentTreeId": "ThrallMasteryRollingThunder",
-        "name": "Rolling Thunder",
-        "description": "For 8 seconds after hitting an enemy with Chain Lightning, Thrall's next Basic Attack against them grants a stack of Frostwolf Resilience. If the target is an enemy Hero, then he also deals damage to them equal to 3% of their maximum Health and healing for the same amount.  Passive: Increase the number of Chain Lightning bounces by 1.",
-        "icon": "storm_ui_icon_thrall_chainlightning_var2.png",
-        "type": "Q",
+        "tooltipId": "ThrallMaelstromWeapon",
+        "talentTreeId": "ThrallMaelstromWeapon",
+        "name": "Maelstrom Weapon",
+        "description": "Quest: Basic Attack Heroes while Windfury's Movement Speed bonus is active.  Reward: After hitting 20 heroes, increase the Movement Speed bonus of Windfury to 40% and gain 20 attack damage.  Reward: After hitting 40 heroes, Thrall permanently gains 15% increased Movement Speed and  40 attack damage.  Pinnacle Reward: After hitting 100 heroes, Frostwolf Resilience healing is permanently increased by 200%.",
+        "icon": "storm_ui_icon_thrall_windfury.png",
+        "type": "E",
         "sort": 3,
-        "abilityId": "Thrall|Q1",
+        "isQuest": true,
+        "abilityId": "Thrall|E1",
         "abilityLinks": [
-          "Thrall|Q1"
+          "Thrall|E1"
         ]
       }
     ],
@@ -175,17 +176,16 @@
     ],
     "7": [
       {
-        "tooltipId": "ThrallMaelstromWeapon",
-        "talentTreeId": "ThrallMaelstromWeapon",
-        "name": "Maelstrom Weapon",
-        "description": "Repeatable Quest: Basic Attacks against Heroes while Windfury's Movement Speed bonus is active increase Attack Damage by 1.  Reward: After gaining 20 Attack Damage, increase the Movement Speed bonus of Windfury to 40%.  Reward: After gaining 40 Attack Damage, Thrall permanently gains 15% increased Movement Speed.",
-        "icon": "storm_ui_icon_thrall_windfury.png",
-        "type": "E",
+        "tooltipId": "ThrallRollingThunderTalent",
+        "talentTreeId": "ThrallMasteryRollingThunder",
+        "name": "Rolling Thunder",
+        "description": "For 8 seconds after hitting an enemy with Chain Lightning, Thrall's next Basic Attack against them grants a stack of Frostwolf Resilience. If the target is an enemy Hero, then he also deals damage to them equal to 3% of their maximum Health and healing for the same amount.",
+        "icon": "storm_ui_icon_thrall_chainlightning_var2.png",
+        "type": "Q",
         "sort": 1,
-        "isQuest": true,
-        "abilityId": "Thrall|E1",
+        "abilityId": "Thrall|Q1",
         "abilityLinks": [
-          "Thrall|E1"
+          "Thrall|Q1"
         ]
       },
       {
@@ -284,7 +284,7 @@
         "tooltipId": "ThrallTempestFuryTalent",
         "talentTreeId": "ThrallMasteryTempestFury",
         "name": "Tempest Fury",
-        "description": "The final strike of Windfury hits 3 times for 75% normal damage.",
+        "description": "The final strike of Windfury hits 3 times for 75% normal damage.  These hits do not provide quest progress.",
         "icon": "storm_ui_icon_thrall_windfury.png",
         "type": "E",
         "sort": 1,
@@ -297,7 +297,7 @@
         "tooltipId": "ThrallThunderstorm",
         "talentTreeId": "ThrallThunderstorm",
         "name": "Thunderstorm",
-        "description": "Chain Lightning Slows the primary target by 8% for 2 seconds when used on Heroes.  Quest: Targeting a Hero directly with Chain Lightning increases this Slow by 8%, up to an additional 40%.  Reward: While at a 40% bonus, Chain Lightning's damage is increased by 25%.  Bonuses are reset if Chain Lightning is used on the same Hero it was last used on, or if Thrall dies.",
+        "description": "Chain Lightning Slows the primary target by 8% for 2 seconds when used on Heroes.  Quest: Targeting a Hero directly with Chain Lightning increases this Slow by 8%, up to an additional 40%.  Reward: While at a 40% bonus, Chain Lightning's damage is increased by 30%.  Bonuses are reset if Chain Lightning is used on the same Hero it was last used on, or if Thrall dies.",
         "icon": "storm_ui_icon_thrall_chainlightning.png",
         "type": "Q",
         "sort": 2,
@@ -376,7 +376,7 @@
         "icon": "storm_ui_icon_talent_boltofthestorm.png",
         "type": "Active",
         "sort": 5,
-        "cooldown": 80,
+        "cooldown": 90,
         "abilityId": "Thrall|Active"
       }
     ]

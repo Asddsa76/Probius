@@ -96,7 +96,7 @@
         "tooltipId": "ArthasFrostPresenceHowlingBlastTalent",
         "talentTreeId": "ArthasMasteryFrostPresenceHowlingBlast",
         "name": "Frost Presence",
-        "description": "Quest: Root enemy Heroes with Howling Blast.  Reward: After Rooting 5 Heroes, Howling Blast's cooldown is reduced by 2 seconds.  Reward: After Rooting 10 Heroes, Howling Blast's range is increased by 20%.  Reward: After Rooting 20 Heroes, Howling Blast also Roots enemies in its path.",
+        "description": "Quest: Root enemy Heroes with Howling Blast.  Reward: After Rooting 5 Heroes, Howling Blast's cooldown is reduced by 3 seconds.  Reward: After Rooting 10 Heroes, Howling Blast's range is increased by 30%.  Reward: After Rooting 20 Heroes, Howling Blast also Roots enemies in its path.",
         "icon": "storm_ui_icon_arthas_howlingblast.png",
         "type": "W",
         "sort": 1,
