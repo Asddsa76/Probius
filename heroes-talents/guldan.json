@@ -119,7 +119,7 @@
         "tooltipId": "GuldanCorruptionEchoedCorruption",
         "talentTreeId": "GuldanCorruptionEchoedCorruption",
         "name": "Echoed Corruption",
-        "description": "Quest: Hit enemy Heroes with Corruption.  Reward: After hitting 60 heroes, Corruption gains new functionality.  After the third strike, Corruption strikes 3 times in the opposite direction.  Pinnacle Reward: After 100 hits, Corruption heals for 50% of the damage dealt.",
+        "description": "Quest: Hit enemy Heroes with Corruption.  Reward: After hitting 40 heroes, Corruption gains new functionality.  After the third strike, Corruption strikes 3 times in the opposite direction at 20% reduced damage.  Pinnacle Reward: After 100 hits, Corruption heals for 50% of the damage dealt.",
         "icon": "storm_ui_icon_guldan_handofguldan.png",
         "type": "E",
         "sort": 3,

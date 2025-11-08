@@ -21,17 +21,6 @@
   "abilities": {
     "Tychus": [
       {
-        "uid": "96407f",
-        "name": "Overkill",
-        "description": "Deal 552 (+4% per level) damage to the target and 276 (+4% per level) damage to nearby targets over 4 seconds. Reactivate to select a new target. Can move and use Abilities while Channeling.",
-        "hotkey": "Q",
-        "abilityId": "Tychus|Q1",
-        "cooldown": 12,
-        "manaCost": 60,
-        "icon": "storm_ui_icon_tychus_overkill.png",
-        "type": "basic"
-      },
-      {
         "uid": "4c628c",
         "name": "Frag Grenade",
         "description": "Lob a grenade that deals 256 (+4% per level) damage, knocking enemies away.",
@@ -85,19 +74,20 @@
         "cooldown": 12,
         "icon": "storm_ui_icon_tychus_minigun.png",
         "type": "trait"
+      },
+      {
+        "uid": "96407f",
+        "name": "Overkill",
+        "description": "Deal 552 (+4% per level) damage to the target and 276 (+4% per level) damage to nearby targets over 4 seconds. Reactivate to select a new target. Can move and use Abilities while Channeling.",
+        "hotkey": "Q",
+        "abilityId": "Tychus|Q2",
+        "cooldown": 12,
+        "manaCost": 60,
+        "icon": "storm_ui_icon_tychus_overkill.png",
+        "type": "basic"
       }
     ],
     "TychusOdinNoHealth": [
-      {
-        "uid": "0e7619",
-        "name": "Annihilate",
-        "description": "Fire the Odin's cannons in a straight line, dealing 196 (+4% per level) damage to everything in the path.",
-        "hotkey": "Q",
-        "abilityId": "Tychus|Q2",
-        "cooldown": 7,
-        "icon": "storm_ui_icon_tychus_annihilate.png",
-        "type": "basic"
-      },
       {
         "uid": "bdd102",
         "name": "Ragnarok Missiles",
@@ -117,6 +107,16 @@
         "cooldown": 8,
         "icon": "storm_ui_icon_tychus_thrusters.png",
         "type": "basic"
+      },
+      {
+        "uid": "0e7619",
+        "name": "Annihilate",
+        "description": "Fire the Odin's cannons in a straight line, dealing 196 (+4% per level) damage to everything in the path.",
+        "hotkey": "Q",
+        "abilityId": "Tychus|Q3",
+        "cooldown": 7,
+        "icon": "storm_ui_icon_tychus_annihilate.png",
+        "type": "basic"
       }
     ]
   },
@@ -126,7 +126,7 @@
         "tooltipId": "TychusFragGrenadeQuarterbackTalent",
         "talentTreeId": "TychusMasteryQuarterback",
         "name": "Quarterback",
-        "description": "Increases Frag Grenade's damage by 10% and its range by 50%.",
+        "description": "Increases Frag Grenade's damage by 10% and its range by 45%.",
         "icon": "storm_ui_icon_tychus_fraggrenade.png",
         "type": "W",
         "sort": 1,
@@ -282,9 +282,9 @@
         "icon": "storm_ui_icon_tychus_overkill.png",
         "type": "Q",
         "sort": 1,
-        "abilityId": "Tychus|Q1",
+        "abilityId": "Tychus|Q2",
         "abilityLinks": [
-          "Tychus|Q1"
+          "Tychus|Q2"
         ]
       },
       {
@@ -321,9 +321,9 @@
         "icon": "storm_ui_icon_tychus_overkill.png",
         "type": "Q",
         "sort": 1,
-        "abilityId": "Tychus|Q1",
+        "abilityId": "Tychus|Q2",
         "abilityLinks": [
-          "Tychus|Q1"
+          "Tychus|Q2"
         ]
       },
       {
@@ -389,9 +389,9 @@
         "icon": "storm_ui_icon_tychus_overkill.png",
         "type": "Q",
         "sort": 3,
-        "abilityId": "Tychus|Q1",
+        "abilityId": "Tychus|Q2",
         "abilityLinks": [
-          "Tychus|Q1"
+          "Tychus|Q2"
         ]
       },
       {

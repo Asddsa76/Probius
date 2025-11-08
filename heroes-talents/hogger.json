@@ -124,7 +124,7 @@
         "tooltipId": "HoggerBruteForce",
         "talentTreeId": "HoggerBruteForce",
         "name": "Brute Force",
-        "description": "Increase the range of Loot Hoard by 20% and its damage by 50%.  Quest: Hitting Heroes with Staggering Blow permanently increases Basic Attack damage by 2, to a maximum of 150 bonus damage. Enemy Heroes that hit terrain grant an additional 6 damage.",
+        "description": "Increase the range of Loot Hoard by 25% and its damage by 50%.  Quest: Hitting Heroes with Staggering Blow permanently increases Basic Attack damage by 2, to a maximum of 150 bonus damage. Enemy Heroes that hit terrain grant an additional 6 damage.",
         "icon": "storm_ui_icon_hogger_combo_q_d.png",
         "type": "Q",
         "sort": 1,

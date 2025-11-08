@@ -23,7 +23,7 @@
       {
         "uid": "9c5dff",
         "name": "Ravage",
-        "description": "Leap to a target, dealing 115 (+4% per level) damage. If the enemy dies within 1.5 seconds, restore 1 charge and refund 20 Mana.  Quest: Kill enemies within 1.5 seconds of being hit by Ravage. Minions grant 1 stack and Heroes grant 1 stacks.  Reward: After reaching a 75 stacks, Ravage gains 125 damage.  Pinnacle Reward: After reaching a 1 stacks, Ravage gains 200 additional damage.",
+        "description": "Leap to a target, dealing 115 (+4% per level) damage. If the enemy dies within 1.5 seconds, restore 1 charge and refund 20 Mana.  Quest: Kill enemies within 1.5 seconds of being hit by Ravage. Minions grant 1 stack and Heroes grant 1 stacks.  Reward: After reaching 75 stacks, Ravage deals 125 additional damage.  Pinnacle Reward: After reaching a 125 stacks, Ravage deals a further 200 additional damage.",
         "hotkey": "Q",
         "abilityId": "Kerrigan|Q1",
         "cooldown": 8,
@@ -34,7 +34,7 @@
       {
         "uid": "438b28",
         "name": "Impaling Blades",
-        "description": "After 1.25 seconds, deal 150 (+4% per level) damage to enemies within the target area, Stunning them for 0.75 second.",
+        "description": "After 1.25 seconds, deal 150 (+4% per level) damage to enemies within the target area, Stunning them for 0.75 seconds.",
         "hotkey": "W",
         "abilityId": "Kerrigan|W1",
         "cooldown": 9,
@@ -130,7 +130,7 @@
         "tooltipId": "KerriganRavageRavagingFerocity",
         "talentTreeId": "KerriganRavageSharpenedBlades",
         "name": "Ravaging Ferocity",
-        "description": "Kerrigan gains 25% attack speed for 3 seconds after using Ravage.",
+        "description": "Ravage grants Kerrigan 25% Attack Speed for 3 seconds.",
         "icon": "storm_ui_icon_kerrigan_ravage.png",
         "type": "Q",
         "sort": 1,

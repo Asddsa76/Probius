@@ -106,7 +106,7 @@
         "tooltipId": "AmazonFendImpale",
         "talentTreeId": "AmazonImpale",
         "name": "Impale",
-        "description": "Increase Fend's cast range and area of effect by 25%. It deals an additional 70% damage to enemies below 50% Health.",
+        "description": "Increase Fend's cast range and radius by 25%. It deals an additional 70% damage to enemies below 50% Health.",
         "icon": "storm_ui_icon_cassia_fend.png",
         "type": "E",
         "sort": 2,

@@ -70,7 +70,7 @@
       {
         "uid": "8aee91",
         "name": "Mind Control",
-        "description": "After 0.25 seconds, fire a missile that Mind Controls the first enemy Hero hit. Heroes hit are Silenced, Slowed by 30%, have 3 stacks of Banshee's Curse applied to them, and are forced to walk towards Sylvanas for 1.75 seconds.",
+        "description": "After 0.25 seconds, fire a missile that Mind Controls the first enemy Hero hit. Heroes hit are Silenced, Slowed by 30%, have 3 stacks of Black Arrows applied to them, and are forced to walk towards Sylvanas for 1.75 seconds.",
         "hotkey": "R",
         "abilityId": "Sylvanas|R2",
         "cooldown": 40,
@@ -81,11 +81,11 @@
       {
         "uid": "019b21",
         "name": "Black Arrows",
-        "description": "Activate to cause all Basic Attacks and Abilities to Stun Minions, non-Elite Mercenaries, and Structures for 3 seconds. Lasts for 10 seconds. Cooldown is reduced by 3 seconds upon attacking an enemy structure.  Passive: Basic Attacks infect enemies with Black Arrows for 3 seconds, stacking up to 3 times. Deal 15% more damage to enemies with 3 stacks.  Quest: Damage enemy non-minions with 3 stacks of Black Arrows.  Reward: Upon damaging enemies 200 times, increase the damage bonus provided by black arrows to 50%.  Pinnacle Reward: Upon damaging enemies 400 times, Black Arrows now heals Sylvannas for 50% of damage dealt at 3 stacks.",
+        "description": "Basic Attacks infect enemies with Black Arrows for 3 seconds, stacking up to 3 times. Sylvanas deals 15% more damage to enemies with 3 stacks.  Quest: Damage Heroes and non-Wall Structures with 3 stacks of Black Arrows.  Reward: Upon damaging enemies 250 times, increase the damage bonus provided by Black Arrows to 50%.  Pinnacle Reward: Upon damaging enemies 400 times, Black Arrows now heals Sylvanas for 50% of damage dealt at 3 stacks.",
         "hotkey": "D",
         "trait": true,
         "abilityId": "Sylvanas|D1",
-        "cooldown": 1,
+        "cooldown": 90,
         "icon": "storm_ui_icon_sylvanas_blackarrows.png",
         "type": "trait"
       },
@@ -102,7 +102,7 @@
       {
         "uid": "80876b",
         "name": "Black Arrows",
-        "description": "Basic Attacks infect enemies with Black Arrows for 3 seconds, stacking up to 3 times. Deal 15% more damage to enemies with 3 stacks.  Quest: Damage enemy non-minions with 3 stacks of Black Arrows.  Reward: Upon damaging enemies 200 times, increase the damage bonus provided by black arrows to 50%.  Pinnacle Reward: Upon damaging enemies 400 times, Black Arrows now heals Sylvannas for 50% of damage dealt at 3 stacks.",
+        "description": "Basic Attacks infect enemies with Black Arrows for 3 seconds, stacking up to 3 times. Sylvanas deals 15% more damage to enemies with 3 stacks.  Quest: Damage enemy non-Minions with 3 stacks of Black Arrows.  Reward: Upon damaging enemies 250 times, increase the damage bonus provided by Black Arrows to 50%.  Pinnacle Reward: Upon damaging enemies 400 times, Black Arrows now heals Sylvanas for 50% of damage dealt at 3 stacks.",
         "trait": true,
         "abilityId": "Sylvanas|D2",
         "icon": "storm_ui_icon_sylvanas_blackarrows.png",
@@ -171,7 +171,7 @@
         "tooltipId": "SylvanasMercenaryQueenTalent",
         "talentTreeId": "SylvanasTalentMercenaryQueen",
         "name": "Mercenary Queen",
-        "description": "Friendly non-Elite Mercenaries near Sylvanas deal 60% more damage. Sylvanas Stuns and deals 30% additional damage to Mercenaries with 3 stacks of Banshee's Curse.",
+        "description": "Friendly non-Elite Mercenaries near Sylvanas deal 60% more damage. Sylvanas Stuns and deals 30% additional damage to Mercenaries with 3 stacks of Black Arrows.",
         "icon": "storm_ui_icon_sylvanas_blackarrows.png",
         "type": "Trait",
         "sort": 2,
@@ -182,14 +182,19 @@
         ]
       },
       {
-        "tooltipId": "SylvanasBlackArrows2",
+        "tooltipId": "SylvanasBlackArrowsHauntingArrowsTalent",
         "talentTreeId": "SylvanasHauntingArrows",
         "name": "Haunting Arrows",
-        "description": "Black Arrows can now be activated to cause all Basic Attacks and Abilities to Stun Minions, non-Elite Mercenaries, and Structures for 3 seconds. Lasts for 10 seconds. Cooldown is reduced by 3 seconds upon attacking an enemy structure.",
-        "icon": "storm_ui_icon_sylvanas_blackarrows.png",
+        "description": "Black Arrows can now be activated to cause all Basic Attacks and Abilities to Stun Minions, non-Elite Mercenaries, and Structures for 3 seconds. Lasts for 10 seconds. Basic Attacks against non-Wall Structures reduce this cooldown by 3 seconds.",
+        "icon": "storm_ui_icon_sylvanas_blackarrows_b.png",
         "type": "Trait",
         "sort": 3,
-        "cooldown": 1
+        "cooldown": 90,
+        "abilityId": "Sylvanas|D1",
+        "abilityLinks": [
+          "Sylvanas|D1",
+          "Sylvanas|D2"
+        ]
       }
     ],
     "7": [
@@ -210,7 +215,7 @@
         "tooltipId": "SylvanasShadowDaggerLostSoulTalent",
         "talentTreeId": "SylvanasTalentLostSoul",
         "name": "Lost Soul",
-        "description": "Increase Shadow Dagger's damage by 10%. Basic Attacks against non-minions with 3 stacks of Black Arrows reduce the cooldown of Shadow Dagger by 0.75 seconds, doubled against heroes.",
+        "description": "Basic Attacks against Heroes and non-Wall Structures with 3 stacks of Black Arrows reduce the cooldown of Shadow Dagger by 0.75 seconds, doubled against Heroes.  Passive: Shadow Dagger deals 10% more damage.",
         "icon": "storm_ui_icon_sylvanas_shadowdagger.png",
         "type": "W",
         "sort": 2,
@@ -252,7 +257,7 @@
         "tooltipId": "SylvanasMindControlMissile",
         "talentTreeId": "SylvanasMindControl",
         "name": "Mind Control",
-        "description": "After 0.25 seconds, fire a missile that Mind Controls the first enemy Hero hit. Heroes hit are Silenced, Slowed by 30%, have 3 stacks of Banshee's Curse applied to them, and are forced to walk towards Sylvanas for 1.75 seconds.",
+        "description": "After 0.25 seconds, fire a missile that Mind Controls the first enemy Hero hit. Heroes hit are Silenced, Slowed by 30%, have 3 stacks of Black Arrows applied to them, and are forced to walk towards Sylvanas for 1.75 seconds.",
         "icon": "storm_ui_icon_sylvanas_mindcontrol.png",
         "type": "Heroic",
         "sort": 2,
@@ -294,10 +299,15 @@
         "tooltipId": "SylvanasRemorselessTalent",
         "talentTreeId": "SylvanasTalentRemorseless",
         "name": "Remorseless",
-        "description": "Increase Sylvanas's Basic Attack range by 1. Sylvanas's Basic Attacks against enemy Heroes with 3 stacks of Banshee's Curse shoot an untalented shot of Withering Fire. This shot of Withering Fire applies Banshee's Curse.",
+        "description": "Sylvanas's Basic Attacks against enemy Heroes with 3 stacks of Black Arrows shoot an untalented shot of Withering Fire. This shot of Withering Fire applies Black Arrows.  Increase Sylvanas's Basic Attack range by 1.",
         "icon": "storm_ui_icon_sylvanas_blackarrows.png",
         "type": "Trait",
-        "sort": 3
+        "sort": 3,
+        "abilityId": "Sylvanas|D1",
+        "abilityLinks": [
+          "Sylvanas|D1",
+          "Sylvanas|D2"
+        ]
       }
     ],
     "16": [
@@ -318,7 +328,7 @@
         "tooltipId": "SylvanasBlackArrowsLifeDrainTalent",
         "talentTreeId": "SylvanasTalentLifeDrain",
         "name": "Life Drain",
-        "description": "Heal for 1% of damage dealt by Sylvanas to enemies with 3 stacks of Banshee's Curse. Healing is doubled against Heroes.",
+        "description": "Heal for 15% of damage dealt by Sylvanas to enemies with 3 stacks of Black Arrows. Healing is doubled against Heroes.",
         "icon": "storm_ui_icon_sylvanas_blackarrows.png",
         "type": "Trait",
         "sort": 2,

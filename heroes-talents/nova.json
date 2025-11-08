@@ -102,7 +102,7 @@
         "tooltipId": "NovaPinningShotLongshotTalent",
         "talentTreeId": "NovaMasteryLongshot",
         "name": "Longshot",
-        "description": "Increases the cast range of Pinning Shot by 30%. Pinning Shot also increases the range of Nova's next Basic Attack by 2.",
+        "description": "Increases the cast range of Pinning Shot by 30%. Pinning Shot also increases the range of Nova's next Basic Attack by 2.3.",
         "icon": "storm_ui_icon_nova_pinningshot.png",
         "type": "W",
         "sort": 1,

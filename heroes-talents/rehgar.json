@@ -188,7 +188,7 @@
         "tooltipId": "RehgarEarthbindTotemGroundedTotem",
         "talentTreeId": "RehgarEarthbindTotemGroundedTotem",
         "name": "Grounded Totem",
-        "description": "Enemy Heroes in Earthbind Totem's area also have their Attack Speed Slowed by 15% and their Spell Power reduced by 15%.  Passive: Increase Earthbind Totem's range by 50%.",
+        "description": "Enemy Heroes in Earthbind Totem's area also have their Attack Speed Slowed by 15% and their Spell Power reduced by 15%.  Passive: Increase Earthbind Totem's cast range by 45%.",
         "icon": "storm_ui_icon_rehgar_earthbindtotem.png",
         "type": "E",
         "sort": 1,

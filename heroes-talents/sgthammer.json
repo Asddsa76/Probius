@@ -347,7 +347,7 @@
         "tooltipId": "SgtHammerNapalmStrikeAdvancedLavaStrikeTalent",
         "talentTreeId": "SgtHammerMasteryAdvancedLavaStrikeNapalmStrike",
         "name": "Advanced Lava Strike",
-        "description": "Napalm Strike's range is increased by 75% and its impact does 50% more damage.",
+        "description": "Increase the cast range of Napalm Strike by 75%, and its impact deals 50% more damage.",
         "icon": "storm_ui_icon_sgthammer_napalmstrike.png",
         "type": "Heroic",
         "sort": 2,

@@ -205,7 +205,7 @@
         "tooltipId": "AlarakAppliedForce",
         "talentTreeId": "AlarakAppliedForce",
         "name": "Applied Force",
-        "description": "Reduce Sadism by 10%, but Telekinesis pushes 15% further and has 20% increased range.",
+        "description": "Reduce Sadism by 10%, but Telekinesis pushes 15% further and has 15% increased range.",
         "icon": "storm_ui_icon_alarak_telekinesis.png",
         "type": "W",
         "sort": 3,

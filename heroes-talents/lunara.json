@@ -142,7 +142,7 @@
         "tooltipId": "DryadBlossomSwellTalent",
         "talentTreeId": "DryadBlossomSwell",
         "name": "Blossom Swell",
-        "description": "Increases Noxious Blossom's range by 25% and its radius by 20%. Blossom Swell applies 2 stacks of Nature's Toxin to enemies hit.",
+        "description": "Increases Noxious Blossom's cast range by 25%. and its radius by 20%. Blossom Swell applies 1 additional stack of Nature's Toxin to enemies hit.",
         "icon": "storm_ui_icon_lunara_pollencloud.png",
         "type": "Q",
         "sort": 1,
@@ -383,7 +383,7 @@
         "tooltipId": "DryadForestsWrathTalent",
         "talentTreeId": "DryadForestsWrath",
         "name": "Forest's Wrath",
-        "description": "Lunara's Heroic Ability now applies 2 stacks of Nature's Toxin, and its range is increased by 30%.  Passive: Increase Lunara's vision radius by 35%.",
+        "description": "Lunara's Heroic Ability applies 1 additional stack of Nature's Toxin to enemies, and its range is increased by 30%.  Passive: Increase Lunara's vision radius by 35%.",
         "icon": "storm_ui_icon_lunara_forests_wrath.png",
         "type": "Heroic",
         "sort": 3
