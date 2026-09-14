@@ -35,7 +35,7 @@
       {
         "uid": "2d2805",
         "name": "Living Bomb",
-        "description": "Deal 126 (+4% per level) damage over 3 seconds to an enemy, then they explode dealing 215 (+4% per level) damage to all nearby enemies. Other Heroes damaged by this explosion are also affected by Living Bomb, though the secondary explosions cannot spread.  Verdant Spheres makes this Ability cost no Mana and have no cooldown.",
+        "description": "Deal 126 (+4% per level) damage over 3 seconds to an enemy, then they explode dealing 215 (+4% per level) damage to all nearby enemies.  Other Heroes damaged by this explosion are also affected by Living Bomb, though the secondary explosions cannot spread.  Verdant Spheres makes this Ability cost no Mana and have no cooldown.",
         "hotkey": "W",
         "abilityId": "Kaelthas|W1",
         "cooldown": 10,
@@ -95,7 +95,7 @@
         "tooltipId": "KaelthasFlamestrikeConvectionTalent",
         "talentTreeId": "KaelthasFlamestrikeConvection",
         "name": "Convection",
-        "description": "Repeatable Quest: Hitting an enemy Hero with Flamestrike increase its damage by 5. Progress can be lost on death.  Repeatable Reward: Every 20th Hero hit prevents already gained bonuses from being lost, and permanently increases Flamestrike damage by an additional 30, and Kael'thas's maximum Health by 50.",
+        "description": "Repeatable Quest: Hit 20 enemy Heroes with Flamestrike without dying.  Repeatable Reward: Permanently increases Flamestrike damage by 200, and Kael'thas's maximum Health by 100.",
         "icon": "storm_ui_icon_kaelthas_flamestrike.png",
         "type": "Q",
         "sort": 1,

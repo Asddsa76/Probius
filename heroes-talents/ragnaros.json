@@ -46,7 +46,7 @@
       {
         "uid": "64c349",
         "name": "Blast Wave",
-        "description": "Ignite Ragnaros or an ally, granting 25% Movement Speed for 1.5 seconds before exploding dealing 104 (+4% per level) damage to nearby enemies.  Molten Core: Explosive Rune Cause a delayed explosion in a large area.",
+        "description": "Ignite Ragnaros or an ally, granting 25% Movement Speed for 1.5 seconds before exploding dealing 120 (+4% per level) damage to nearby enemies.  Molten Core: Explosive Rune Cause a delayed explosion in a large area.",
         "hotkey": "E",
         "abilityId": "Ragnaros|E1",
         "cooldown": 9,
@@ -57,7 +57,7 @@
       {
         "uid": "a636e9",
         "name": "Sulfuras Smash",
-        "description": "Hurl Sulfuras at the target area, landing after 0.75 seconds, dealing 250 (+4% per level) damage. Enemies in the center take 594 (+4% per level) damage instead and are Stunned for 0.5 seconds.",
+        "description": "Hurl Sulfuras at the target area, landing after 0.75 seconds, dealing 250 (+4% per level) damage. Enemies in the center take 594 (+4% per level) damage instead and are Stunned for 0.5 seconds.  Quest: Hit 8 enemy Heroes in the center.  Mythic Reward: Sulfuras Smash gains an additional charge.",
         "hotkey": "R",
         "abilityId": "Ragnaros|R1",
         "cooldown": 60,
@@ -79,11 +79,11 @@
       {
         "uid": "cbaafa",
         "name": "Molten Core",
-        "description": "Channel on an allied or destroyed Fort or Keep to replace it with Ragnaros's ultimate form, temporarily gaining new Abilities, having 3996 (+4% per level) Health that burns away over 18 seconds.  Ragnaros returns to his normal form upon losing all Health in Molten Core.",
+        "description": "Channel on an allied or destroyed Fort or Keep to replace it with Ragnaros's ultimate form, temporarily gaining new Abilities, having 5000 (+4% per level) Health that burns away over 23 seconds.  Ragnaros's ability ranges increase over the duration of Molten Core.  Ragnaros returns to his normal form but is Stunned for 1 second upon losing all Health in Molten Core.",
         "hotkey": "D",
         "trait": true,
         "abilityId": "Ragnaros|D1",
-        "cooldown": 120,
+        "cooldown": 180,
         "icon": "storm_ui_icon_ragnaros_moltencore.png",
         "type": "trait"
       }
@@ -92,7 +92,7 @@
       {
         "uid": "2a388b",
         "name": "Sulfuras Smash",
-        "description": "Hurl Sulfuras at the target area, landing after 0.75 seconds, dealing 250 (+4% per level) damage. Enemies in the center take 594 (+4% per level) damage instead and are Stunned for 0.5 seconds.",
+        "description": "Hurl Sulfuras at the target area, landing after 0.75 seconds, dealing 250 (+4% per level) damage. Enemies in the center take 594 (+4% per level) damage instead and are Stunned for 0.5 seconds.  Quest: Hit 8 enemy Heroes in the center.  Mythic Reward: Sulfuras Smash gains an additional charge.",
         "hotkey": "R",
         "abilityId": "Ragnaros|R3",
         "cooldown": 60,
@@ -102,30 +102,30 @@
       {
         "uid": "b06941",
         "name": "Explosive Rune",
-        "description": "Create a rune that deals 285 (+4% per level) damage to non-Structure enemies after 1.5 seconds.  Damage increased by 25% versus Minions, Mercenaries, and Monsters.",
+        "description": "Create a rune that erupts after 1.5 and sets enemies on fire, dealing 22 (+4% per level) damage per second for 5 seconds.",
         "hotkey": "E",
         "abilityId": "Ragnaros|E2",
-        "cooldown": 4,
+        "cooldown": 2.5,
         "icon": "storm_ui_icon_ragnaros_explosiverune.png",
         "type": "basic"
       },
       {
         "uid": "2539b7",
         "name": "Molten Swing",
-        "description": "Swing Sulfuras in a wide arc, dealing 161 (+4% per level) damage and Stunning enemies for 1 second.  Damage increased by 25% versus Minions, Mercenaries, and Monsters.",
+        "description": "Swing Sulfuras in a wide arc, dealing 250 (+4% per level) damage and Stunning enemies for 1 second.",
         "hotkey": "Q",
         "abilityId": "Ragnaros|Q3",
-        "cooldown": 6,
+        "cooldown": 9,
         "icon": "storm_ui_icon_ragnaros_moltenswing.png",
         "type": "basic"
       },
       {
         "uid": "145ab3",
         "name": "Meteor Shower",
-        "description": "Vector Targeting Summon 3 meteors at the target point that fall in the target direction. Each meteor deals 151 (+4% per level) damage and Slows enemies by 25% for 2 seconds.  Damage increased by 25% versus Minions, Mercenaries, and Monsters.",
+        "description": "Vector Targeting Summon 3 meteors at the target point that fall in the target direction. Each meteor deals 200 (+4% per level) damage and Slows enemies by 35% for 2 seconds.",
         "hotkey": "W",
         "abilityId": "Ragnaros|W3",
-        "cooldown": 2.5,
+        "cooldown": 6,
         "icon": "storm_ui_icon_ragnaros_meteorshower.png",
         "type": "basic"
       }
@@ -165,7 +165,7 @@
         "tooltipId": "RagnarosBlastWaveEngulfingFlame",
         "talentTreeId": "RagnarosBlastWaveEngulfingFlame",
         "name": "Engulfing Flame",
-        "description": "Increase Blast Wave's damage by 75% and its radius by 15%.",
+        "description": "Increase Blast Wave's damage by 50% and its radius by 15%.",
         "icon": "storm_ui_icon_ragnaros_blastwave.png",
         "type": "E",
         "sort": 3,
@@ -257,11 +257,12 @@
         "tooltipId": "RagnarosSulfurasSmash",
         "talentTreeId": "RagnarosSulfurasSmash",
         "name": "Sulfuras Smash",
-        "description": "Hurl Sulfuras at the target area, landing after 0.75 seconds, dealing 250 (+4% per level) damage. Enemies in the center take 594 (+4% per level) damage instead and are Stunned for 0.5 seconds.",
+        "description": "Hurl Sulfuras at the target area, landing after 0.75 seconds, dealing 250 (+4% per level) damage. Enemies in the center take 594 (+4% per level) damage instead and are Stunned for 0.5 seconds.  Quest: Hit 8 enemy Heroes in the center.  Mythic Reward: Sulfuras Smash gains an additional charge.",
         "icon": "storm_ui_icon_ragnaros_sulfurassmash.png",
         "type": "Heroic",
         "sort": 1,
         "cooldown": 60,
+        "isQuest": true,
         "abilityId": "Ragnaros|R1",
         "abilityLinks": [
           "Ragnaros|R1"
@@ -380,7 +381,7 @@
         "tooltipId": "RagnarosLavaWaveLavaSurge",
         "talentTreeId": "RagnarosLavaWaveLavaSurge",
         "name": "Lava Surge",
-        "description": "Lava Wave gains an additional charge and its cooldown is reduced by 30 seconds.",
+        "description": "Lava Wave gains an additional charge and causes allied Minions and non-Boss Mercenaries to be carried with it.",
         "icon": "storm_ui_icon_ragnaros_lavawave.png",
         "type": "Heroic",
         "sort": 2,
@@ -393,7 +394,7 @@
         "tooltipId": "RagnarosMoltenCoreHeroicDifficulty",
         "talentTreeId": "RagnarosMoltenCoreHeroicDifficulty",
         "name": "Heroic Difficulty",
-        "description": "Molten Core has 25% increased Health and Damage, and its cooldown is reduced by 50 seconds.",
+        "description": "Molten Core's range is increased by 100% at the start of its duration.  In addition, the cooldown of Molten Core is reduced by 90 seconds when used on a destroyed Fort or Keep.",
         "icon": "storm_ui_icon_ragnaros_moltencore.png",
         "type": "Trait",
         "sort": 3,

@@ -353,7 +353,7 @@
         "tooltipId": "WizardWaveOfForceRepulsionTalent",
         "talentTreeId": "WizardWaveOfForceRepulsion",
         "name": "Repulsion",
-        "description": "Increases Wave of Force knockback distance by 175% and increases its cast range by 100%.",
+        "description": "Increases Wave of Force knockback distance by 175% and increases its cast range by 95%.",
         "icon": "storm_ui_icon_wizard_waveofforce.png",
         "type": "Heroic",
         "sort": 2,

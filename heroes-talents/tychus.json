@@ -45,7 +45,7 @@
       {
         "uid": "b9ac21",
         "name": "Drakken Laser Drill",
-        "description": "Call down a Laser Drill to attack nearby enemies, dealing 142 (+4% per level) damage every second. Reactivate to assign a new target. Lasts 22 seconds.",
+        "description": "Call down a Laser Drill to attack nearby enemies, dealing 142 (+4% per level) damage every second. Reactivate to assign a new target. Loses Health over 25 seconds.",
         "hotkey": "R",
         "abilityId": "Tychus|R1",
         "cooldown": 100,
@@ -78,7 +78,7 @@
       {
         "uid": "96407f",
         "name": "Overkill",
-        "description": "Deal 552 (+4% per level) damage to the target and 276 (+4% per level) damage to nearby targets over 4 seconds. Reactivate to select a new target. Can move and use Abilities while Channeling.",
+        "description": "Deal 552 (+4% per level) damage to the target and 276 (+4% per level) damage to nearby targets over 4 seconds. Reactivate to select a new target or direction. Can move and use Abilities while Channeling.",
         "hotkey": "Q",
         "abilityId": "Tychus|Q2",
         "cooldown": 12,
@@ -262,7 +262,7 @@
         "tooltipId": "TychusDrakkenLaserDrill",
         "talentTreeId": "TychusHeroicAbilityDrakkenLaserDrill",
         "name": "Drakken Laser Drill",
-        "description": "Call down a Laser Drill to attack nearby enemies, dealing 142 (+4% per level) damage every second. Reactivate to assign a new target. Lasts 22 seconds.",
+        "description": "Call down a Laser Drill to attack nearby enemies, dealing 142 (+4% per level) damage every second. Reactivate to assign a new target. Loses Health over 25 seconds.",
         "icon": "storm_ui_icon_tychus_drakkinlaserdrill.png",
         "type": "Heroic",
         "sort": 2,

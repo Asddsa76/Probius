@@ -29,7 +29,7 @@
       {
         "uid": "6e4a2c",
         "name": "Molten Flame",
-        "description": "After 1.5 seconds, Deathwing breathes a stream of flame, dealing 21 (+4% per level) damage every 0.125 seconds. Drains 30 Energy per second.",
+        "description": "After 1.5 seconds, Deathwing breathes a stream of flame, dealing 20 (+4% per level) damage every 0.125 seconds. Drains 30 Energy per second.",
         "hotkey": "Q",
         "abilityId": "Deathwing|Q1",
         "cooldown": 3,
@@ -40,21 +40,21 @@
       {
         "uid": "f06557",
         "name": "Incinerate",
-        "description": "After 0.75 seconds, Deathwing flaps his wings, dealing 65 (+4% per level) damage to nearby enemies.  World Breaker: Lava Burst Create a lava pool that damages and Slows",
+        "description": "After 0.75 seconds, Deathwing flaps his wings, dealing 100 (+4% per level) damage to nearby enemies.  World Breaker: Lava Burst Create a lava pool that damages and Slows",
         "hotkey": "W",
         "abilityId": "Deathwing|W1",
-        "cooldown": 4,
-        "manaCost": 20,
+        "cooldown": 7,
+        "manaCost": 30,
         "icon": "storm_ui_icon_deathwing_incinerate.png",
         "type": "basic"
       },
       {
         "uid": "690519",
         "name": "Onslaught",
-        "description": "After 0.5 seconds, Deathwing lunges in a direction dealing 38 (+4% per level) damage to enemies and Slowing them by 35% for 2 seconds. Deathwing bites enemies at the end of the lunge, dealing an additional 72 (+4% per level) damage.  World Breaker: Earth Shatter Damage and Stun enemies in two lines",
+        "description": "After 0.5 seconds, Deathwing lunges in a direction dealing 60 (+4% per level) damage to enemies and Slowing them by 35% for 2 seconds. Deathwing bites enemies at the end of the lunge, dealing an additional 120 (+4% per level) damage.  World Breaker: Earth Shatter Damage and Stun enemies in two lines",
         "hotkey": "E",
         "abilityId": "Deathwing|E1",
-        "cooldown": 5,
+        "cooldown": 6,
         "manaCost": 20,
         "icon": "storm_ui_icon_deathwing_onslaught.png",
         "type": "basic"
@@ -62,7 +62,7 @@
       {
         "uid": "8a4932",
         "name": "Cataclysm",
-        "description": "After 2 seconds, Deathwing flies in the targeted direction, dealing 90 (+4% per level) damage on impact and leaving scorched ground that deals 36 (+4% per level) damage a second. Lasts 6 seconds.",
+        "description": "After 2 seconds, Deathwing flies in the targeted direction, dealing 90 (+4% per level) damage on impact and leaving scorched ground that deals 36 (+4% per level) damage a second. Lasts 6 seconds.  Quest: Hit Heroes with Molten Flame to grant 1 stack. Quest: Score Takedowns to grant 50 stacks.  Mythic Reward: After reaching 2000 stacks, Deathwing brings on the Hour of Twilight. Cataclysm's periodic damage to Structures is increased by 2500%.",
         "hotkey": "R",
         "abilityId": "Deathwing|R1",
         "cooldown": 90,
@@ -81,22 +81,12 @@
       {
         "uid": "af6451",
         "name": "Dragonflight",
-        "description": "After 3 seconds, fly into the sky, becoming Immune to all effects and gaining 2.5% Health per second. Once cast, this ability cannot be interrupted. Cannot be cast for 4 seconds after taking damage, Basic Attacking or casting an Ability.",
+        "description": "After 3 seconds, fly into the sky, becoming Immune to all effects and gaining 2.5% Health per second. Once cast, this ability cannot be interrupted. Cannot be cast for 6 seconds after taking damage, Basic Attacking or casting an Ability.",
         "hotkey": "Z",
         "abilityId": "Deathwing|Z1",
-        "cooldown": 45,
+        "cooldown": 20,
         "icon": "storm_ui_icon_deathwing_mount.png",
         "type": "mount"
-      },
-      {
-        "uid": "7a7861",
-        "name": "Form Switch",
-        "description": "Switches Deathwing between Destroyer and World Breaker forms, each granting access to two unique Basic Abilities.  Incinerate damages enemies around Deathwing and Onslaught allows him to lunge at enemies.  Lava Burst creates a Slowing area and Earth Shatter Stuns enemies in two lines.",
-        "hotkey": "1",
-        "abilityId": "Deathwing|11",
-        "cooldown": 20,
-        "icon": "storm_ui_icon_deathwing_deathdrop.png",
-        "type": "activable"
       }
     ],
     "DeathwingFormSwitch": [
@@ -134,11 +124,11 @@
       {
         "uid": "077d3c",
         "name": "Lava Burst",
-        "description": "After a 1 second delay, deal 30 (+4% per level) damage to all enemies in an area and create a pool of magma that deals 24 (+4% per level) damage per second and Slows enemies by 35%. Lasts 6 seconds.  Destroyer: Incinerate Damage enemies near Deathwing",
+        "description": "After a 1 second delay, deal 35 (+4% per level) damage to all enemies in an area and create a pool of magma that deals 28 (+4% per level) damage per second and Slows enemies by 45%. Lasts 6 seconds.  Destroyer: Incinerate Damage enemies near Deathwing",
         "hotkey": "W",
         "abilityId": "Deathwing|W3",
-        "cooldown": 6,
-        "manaCost": 15,
+        "cooldown": 9,
+        "manaCost": 25,
         "icon": "storm_ui_icon_deathwing_lava_burst.png",
         "type": "basic"
       }
@@ -150,7 +140,7 @@
         "tooltipId": "DeathwingDragonSoul",
         "talentTreeId": "DeathwingDragonSoul",
         "name": "Dragon Soul",
-        "description": "Destroyer: Incinerate heals Deathwing for 75% of the damage dealt to enemy Heroes.  World Breaker: Lava Burst's explosion damage heals Deathwing for 150% of the damage dealt to enemy Heroes.",
+        "description": "Destroyer: Incinerate heals Deathwing for 100% of the damage dealt to enemy Heroes.  World Breaker: Lava Burst's explosion damage heals Deathwing for 200% of the damage dealt to enemy Heroes.",
         "icon": "storm_ui_icon_deathwing_heat_wave.png",
         "type": "W",
         "sort": 1,
@@ -170,7 +160,6 @@
         "sort": 2,
         "abilityId": "Deathwing|D1",
         "abilityLinks": [
-          "Deathwing|11",
           "Deathwing|D1"
         ]
       },
@@ -184,7 +173,6 @@
         "sort": 3,
         "abilityId": "Deathwing|D1",
         "abilityLinks": [
-          "Deathwing|11",
           "Deathwing|D1"
         ]
       }
@@ -207,7 +195,7 @@
         "tooltipId": "DeathwingHeatWave",
         "talentTreeId": "DeathwingHeatWave",
         "name": "Heat Wave",
-        "description": "Destroyer: After hitting an enemy Hero with Incinerate, Deathwing deals 12 (+4% per level) damage per second to all nearby enemies for the next 8 seconds. Stacks up to 4 times.  World Breaker: Increase the explosion damage of Lava Burst by 125%.",
+        "description": "Destroyer: After hitting an enemy Hero with Incinerate, Deathwing deals 18 (+4% per level) damage per second to all nearby enemies for the next 9 seconds. Stacks up to 3 times.  World Breaker: Increase the explosion damage of Lava Burst by 150%.",
         "icon": "storm_ui_icon_deathwing_heat_wave.png",
         "type": "W",
         "sort": 2,
@@ -227,7 +215,6 @@
         "sort": 3,
         "abilityId": "Deathwing|D1",
         "abilityLinks": [
-          "Deathwing|11",
           "Deathwing|D1"
         ]
       }
@@ -237,7 +224,7 @@
         "tooltipId": "DeathwingFirestorm",
         "talentTreeId": "DeathwingFirestorm",
         "name": "Firestorm",
-        "description": "Reduce the cooldown of Deathwing's landing Abilities by 2 seconds. When Deathwing lands, he drops 7 meteors near the landing area, dealing 70 (+4% per level) damage to enemies hit. Heroes hit by the meteors reduce Dragonflight's cooldown by 25 seconds.  Meteors prioritize landing on Heroes, otherwise they fall randomly in the area.",
+        "description": "Reduce the cooldown of Deathwing's landing Abilities by 3 seconds. When Deathwing lands, he drops 7 meteors near the landing area, dealing 77 (+4% per level) damage to enemies hit.  Meteors prioritize landing on Heroes, otherwise they fall randomly in the area.",
         "icon": "storm_ui_icon_deathwing_firestorm.png",
         "type": "Z",
         "sort": 1,
@@ -252,7 +239,7 @@
         "tooltipId": "DeathwingDeathDrop",
         "talentTreeId": "DeathwingDeathDrop",
         "name": "Death Drop",
-        "description": "Hitting an enemy Hero with Destroyer or World Breaker's landing damage reduces their Spell Armor by 15 for 6 seconds and Deathwing's Basic Ability cooldowns by 2 seconds.",
+        "description": "Hitting an enemy Hero with Destroyer or World Breaker's landing damage reduces their Spell Armor by 15 for 4 seconds and Deathwing's Basic Ability cooldowns by 2 seconds.",
         "icon": "storm_ui_icon_deathwing_deathdrop.png",
         "type": "Z",
         "sort": 2,
@@ -336,13 +323,12 @@
         "tooltipId": "DeathwingFireAndFury",
         "talentTreeId": "DeathwingFireAndFury",
         "name": "Fire and Fury",
-        "description": "Basic Attacks against Rooted, Slowed, or Stunned enemy Heroes deal 30% additional damage and reduce the cooldowns of Deathwing's Basic Abilities by 0.5 seconds.",
+        "description": "Basic Attacks against Rooted, Slowed, or Stunned enemy Heroes deal 40% additional damage and reduce the cooldowns of Deathwing's Basic Abilities by 0.5 seconds.",
         "icon": "storm_ui_icon_deathwing_fire_and_fury.png",
         "type": "Passive",
         "sort": 3,
         "abilityId": "Deathwing|Passive",
         "abilityLinks": [
-          "Deathwing|11",
           "Deathwing|D1"
         ]
       }
@@ -365,7 +351,7 @@
         "tooltipId": "DeathwingGazeOntoDestruction",
         "talentTreeId": "DeathwingGazeOntoDestruction",
         "name": "Gaze Onto Destruction",
-        "description": "Hitting Heroes with Destroyer or World Breaker's landing causes their damage to be reduced by 75% and Slows them by 40% for 5 seconds.",
+        "description": "Hitting Heroes with Destroyer or World Breaker's landing causes their damage to be reduced by 75% and Slows them by 40% for 3.5 Seconds.",
         "icon": "storm_ui_icon_deathwing_deathdrop.png",
         "type": "Z",
         "sort": 2,
@@ -421,13 +407,12 @@
         "tooltipId": "DeathwingDestroyersRampage",
         "talentTreeId": "DeathwingDestroyersRampage",
         "name": "Destroyer's Rampage",
-        "description": "For the next 6 seconds after landing in Destroyer form, Deathwing's damage is increased by 40% and his Basic Ability cooldowns recharge 50% faster.  Damaging Heroes refreshes this effect and switching to World Breaker form removes the effect.",
+        "description": "For the next 4 seconds after landing in Destroyer form, Deathwing's damage is increased by 40% and his Basic Ability cooldowns recharge 50% faster.  Damaging Heroes refreshes this effect.",
         "icon": "storm_ui_icon_deathwing_destroyer.png",
         "type": "Trait",
         "sort": 3,
         "abilityId": "Deathwing|Q2",
         "abilityLinks": [
-          "Deathwing|11",
           "Deathwing|D1",
           "Deathwing|Q2",
           "Deathwing|Z1"

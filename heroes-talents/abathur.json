@@ -65,7 +65,7 @@
       {
         "uid": "c6b01f",
         "name": "Locust Strain",
-        "description": "Spawns a Locust to attack down the nearest lane every 15 seconds. Locusts last for 16 seconds, have 350 (+4% per level) health and deal 58 (+4% per level) damage with each Basic Attack, dealing 25% bonus damage to enemy Structures.",
+        "description": "Spawns a Locust to attack down the nearest lane every 15 seconds.  Locusts heal for 20% of the damage they deal, and regain 20% of their Maximum health when a nearby minion dies.  Locusts lose health over 17 seconds, have 225 (+4% per level) health and deal 36 (+4% per level) damage with each Basic Attack, dealing 100% bonus damage to enemy non-Heroes.",
         "trait": true,
         "abilityId": "Abathur|D1",
         "cooldown": 15,
@@ -146,7 +146,7 @@
         "tooltipId": "AbathurToxicNestEnvenomedNestTalent",
         "talentTreeId": "AbathurMasteryEnvenomedNestsToxicNest",
         "name": "Envenomed Nest",
-        "description": "Toxic Nests deal 75% more damage over 3 seconds and reduce the Armor of enemy Heroes hit by 10 for 4 seconds.",
+        "description": "Toxic Nests deal 75% more damage over 3 seconds and reduce the Armor of enemy Heroes hit by 15 for 4 seconds.",
         "icon": "storm_ui_icon_abathur_toxicnest.png",
         "type": "W",
         "sort": 2,
@@ -170,17 +170,15 @@
         ]
       },
       {
-        "tooltipId": "AbathurLocustStrainSurvivalInstinctsTalent",
-        "talentTreeId": "AbathurCombatStyleSurvivalInstincts",
-        "name": "Survival Instincts",
-        "description": "Increases Locust's Health by 100% and damage by 60%.",
+        "tooltipId": "AbathurLocustSwarm",
+        "talentTreeId": "AbathurCombatStyleLocustBrood",
+        "name": "Locust Brood",
+        "description": "Activate to spawn 3 Locusts at a nearby location.",
         "icon": "storm_ui_icon_abathur_spawnlocust.png",
-        "type": "Trait",
+        "type": "Active",
         "sort": 4,
-        "abilityId": "Abathur|D1",
-        "abilityLinks": [
-          "Abathur|D1"
-        ]
+        "cooldown": 75,
+        "abilityId": "Abathur|Active"
       }
     ],
     "4": [
@@ -223,6 +221,15 @@
         "abilityLinks": [
           "Abathur|W1"
         ]
+      },
+      {
+        "tooltipId": "AbathurSlapathur",
+        "talentTreeId": "AbathurSlapathur",
+        "name": "Slapathur",
+        "description": "Abathur's Basic Attacks deal 350% additional damage and Stun non-Elite enemies and disable Structures for 1.5 seconds.  The same Hero or Structure can only be Stunned or disabled once every 6 seconds.",
+        "icon": "storm_ui_icon_abathur_volatilemutation.png",
+        "type": "E",
+        "sort": 4
       }
     ],
     "7": [
@@ -329,7 +336,7 @@
         "tooltipId": "AbathurLocustStrainBombardStrainTalent",
         "talentTreeId": "AbathurCombatStyleBombardStrain",
         "name": "Bombard Strain",
-        "description": "Locust's Basic Attacks become a long-range siege attack and their duration is increased by 75%.",
+        "description": "Locust's Basic Attacks become a long-range siege attack and they now lose health 50% more slowly.",
         "icon": "storm_ui_icon_abathur_spawnlocust.png",
         "type": "Trait",
         "sort": 3,
@@ -383,15 +390,17 @@
         ]
       },
       {
-        "tooltipId": "AbathurLocustSwarm",
-        "talentTreeId": "AbathurCombatStyleLocustBrood",
-        "name": "Locust Brood",
-        "description": "Activate to spawn 3 Locusts at a nearby location.",
+        "tooltipId": "AbathurLocustStrainSurvivalInstinctsTalent",
+        "talentTreeId": "AbathurCombatStyleSurvivalInstincts",
+        "name": "Survival Instincts",
+        "description": "Increases Locust's Health by 100% and damage by 60%.",
         "icon": "storm_ui_icon_abathur_spawnlocust.png",
-        "type": "Active",
+        "type": "Trait",
         "sort": 4,
-        "cooldown": 45,
-        "abilityId": "Abathur|Active"
+        "abilityId": "Abathur|D1",
+        "abilityLinks": [
+          "Abathur|D1"
+        ]
       }
     ],
     "20": [
@@ -425,7 +434,7 @@
         "tooltipId": "AbathurSymbioteHivemindTalent",
         "talentTreeId": "AbathurSymbioteHivemind",
         "name": "Hivemind",
-        "description": "Symbiote creates an additional Symbiote on a nearby allied Hero. This Symbiote mimics the commands of the first, but does half damage and Shielding.",
+        "description": "Symbiote creates an additional Symbiote on a nearby allied Hero.  This Symbiote mimics the commands of the first, but does half damage and Shielding.",
         "icon": "storm_ui_icon_abathur_symbiote.png",
         "type": "Q",
         "sort": 3,

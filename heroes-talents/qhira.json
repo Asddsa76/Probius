@@ -37,7 +37,7 @@
       {
         "uid": "da6cb3",
         "name": "Blood Rage",
-        "description": "Passive: Basic Attack and Ability damage cause enemies to bleed for 44 (+4% per level) damage over 4 seconds. Stacks 5 times.  Qhira deals 32 (+4% per level) damage and heals for 90 (+4% per level) Health per enemy Hero affected. Damage and healing is increased by 50% per each additional stack on that Hero.",
+        "description": "Qhira deals 32 (+4% per level) damage and heals for 90 (+4% per level) Health per enemy Hero affected. Damage and healing is increased by 50% per each additional stack on that Hero.  Passive: Basic Attack and Ability damage cause enemies to bleed for 32 (+4% per level) damage over 4 seconds. Stacks 5 times.  Quest: Damage enemy Heroes with Blood Rage's bleed damage to permanently increase its damage by 0.24%.  Reward: After damaging Heroes with Blood Rage's bleed damage 150 times, Blood Rage's duration is increased by 2 seconds.",
         "hotkey": "W",
         "abilityId": "Qhira|W1",
         "cooldown": 7,
@@ -110,11 +110,10 @@
         "tooltipId": "NexusHunterFatalWounds",
         "talentTreeId": "NexusHunterFatalWounds",
         "name": "Fatal Wounds",
-        "description": "While at maximum stacks, Blood Rage's bleed deals 30% additional damage to enemy Heroes under 50% Health.  Quest: Damage enemy Heroes with Blood Rage's bleed damage.  Reward: After damaging Heroes with Blood Rage's bleed damage 150 times, Blood Rage's duration is increased by 2 seconds.",
+        "description": "While at maximum stacks, Blood Rage's bleed deals 50% additional damage to enemy Heroes under 50% Health.",
         "icon": "storm_ui_icon_nexushunter_w.png",
         "type": "W",
         "sort": 2,
-        "isQuest": true,
         "abilityId": "Qhira|W1",
         "abilityLinks": [
           "Qhira|W1"

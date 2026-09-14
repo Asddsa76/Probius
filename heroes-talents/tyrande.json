@@ -41,18 +41,18 @@
         "hotkey": "W",
         "abilityId": "Tyrande|W1",
         "cooldown": 15,
-        "manaCost": 50,
+        "manaCost": 55,
         "icon": "storm_ui_icon_tyrande_sentinel.png",
         "type": "basic"
       },
       {
         "uid": "b4597d",
         "name": "Lunar Flare",
-        "description": "After 0.75 seconds, deal 150 (+4% per level) damage and Stun enemies in the target area for 0.75 seconds.",
+        "description": "After 0.75 seconds, deal 150 (+4% per level) damage and Stun enemies in the target area for 0.75 seconds. Restores 25 Mana per enemy hit.  Quest: Hitting a Hero with Lunar Flare increases its damage by 3%, up to 120%. Double this bonus if the Hero dies within 3 seconds.  Reward: After hitting 10 Heroes, increase Lunar Flare's range by 30%.  Reward: After hitting 20 Heroes, Sentinel now pierces the first Hero hit.  Mythic Reward: After hitting 40 Heroes, Every 8th Basic Attacks fires a Lunar Flare, prioritizing Heroes. Attack Range increased by 1.",
         "hotkey": "E",
         "abilityId": "Tyrande|E1",
         "cooldown": 13,
-        "manaCost": 60,
+        "manaCost": 65,
         "icon": "storm_ui_icon_tyrande_lunarflare.png",
         "type": "basic"
       },
@@ -63,7 +63,7 @@
         "hotkey": "R",
         "abilityId": "Tyrande|R1",
         "cooldown": 90,
-        "manaCost": 75,
+        "manaCost": 85,
         "icon": "storm_ui_icon_tyrande_shadowstalk.png",
         "type": "heroic"
       },
@@ -74,7 +74,7 @@
         "hotkey": "R",
         "abilityId": "Tyrande|R2",
         "cooldown": 80,
-        "manaCost": 75,
+        "manaCost": 85,
         "icon": "storm_ui_icon_tyrande_starfall.png",
         "type": "heroic"
       },
@@ -97,7 +97,7 @@
         "tooltipId": "TyrandeSentinelRangerTalent",
         "talentTreeId": "TyrandeRanger",
         "name": "Ranger",
-        "description": "Sentinel pierces the first Hero hit. Its width is increased by 25% and deals up to 250% more damage based on distance traveled.",
+        "description": "Sentinel width is increased by 25% and deals up to 250% more damage based on distance traveled.",
         "icon": "storm_ui_icon_tyrande_sentinel.png",
         "type": "W",
         "sort": 1,
@@ -107,24 +107,23 @@
         ]
       },
       {
-        "tooltipId": "TyrandeLunarFlareLunarBlazeTalent",
-        "talentTreeId": "TyrandeMasteryLunarBlaze",
-        "name": "Lunar Blaze",
-        "description": "Increase Lunar Flare's range by 30%.  Quest: Hitting a Hero with Lunar Flare increases its damage by 5%, up to 150%.",
-        "icon": "storm_ui_icon_tyrande_lunarflare.png",
-        "type": "E",
+        "tooltipId": "TyrandeMoonlitArrows",
+        "talentTreeId": "TyrandeMoonlitArrows",
+        "name": "Moonlit Arrows",
+        "description": "Basic Attacks decrease the cooldown of Light of Elune by an additional 0.5 seconds.",
+        "icon": "storm_ui_icon_tyrande_lightofelune.png",
+        "type": "Q",
         "sort": 2,
-        "isQuest": true,
-        "abilityId": "Tyrande|E1",
+        "abilityId": "Tyrande|Q1",
         "abilityLinks": [
-          "Tyrande|E1"
+          "Tyrande|Q1"
         ]
       },
       {
         "tooltipId": "TyrandeHuntersMarkTrueshotAuraTalent",
         "talentTreeId": "TyrandeTrueshotAura",
         "name": "Trueshot Aura",
-        "description": "Activate to grant other nearby allied Heroes 40% increased Attack Damage for 5 seconds, and to reset the cooldown of Hunter's Mark.  Passive: Basic Attack damage increased by 30%.",
+        "description": "Activate to grant Tyrande and nearby allied Heroes 40% increased Attack Damage for 5 seconds, and to reset the cooldown of Hunter's Mark.",
         "icon": "storm_ui_icon_tyrande_trueshotaura.png",
         "type": "Active",
         "sort": 3,
@@ -176,17 +175,13 @@
     ],
     "7": [
       {
-        "tooltipId": "TyrandeMoonlitArrows",
-        "talentTreeId": "TyrandeMoonlitArrows",
-        "name": "Moonlit Arrows",
-        "description": "Basic Attacks decrease the cooldown of Light of Elune by an additional 0.75 seconds.",
-        "icon": "storm_ui_icon_tyrande_lightofelune.png",
-        "type": "Q",
-        "sort": 1,
-        "abilityId": "Tyrande|Q1",
-        "abilityLinks": [
-          "Tyrande|Q1"
-        ]
+        "tooltipId": "ElunesFury",
+        "talentTreeId": "ElunesGift",
+        "name": "Elune's Gift",
+        "description": "Hitting an enemy Hero with Lunar Flare grants 20% Spell Power for 10 seconds.",
+        "icon": "storm_ui_icon_tyrande_lunarflare.png",
+        "type": "E",
+        "sort": 1
       },
       {
         "tooltipId": "TyrandeKaldoreiResistance",
@@ -250,7 +245,7 @@
         "tooltipId": "TyrandeLightOfEluneQuickeningBlessingTalent",
         "talentTreeId": "TyrandeMasteryLightofEluneQuickeningBlessing",
         "name": "Quickening Blessing",
-        "description": "Gain 5% Movement Speed. Light of Elune increases the target's Movement Speed by 20% for 3 seconds.",
+        "description": "Gain 5% Movement Speed. Light of Elune increases the target's Movement Speed by 25% for 3 seconds.",
         "icon": "storm_ui_icon_tyrande_lightofelune.png",
         "type": "Q",
         "sort": 1,
@@ -332,7 +327,7 @@
         "tooltipId": "TyrandeEyesOfTheHuntress",
         "talentTreeId": "TyrandeEyesOfTheHuntress",
         "name": "Eyes of the Huntress",
-        "description": "Shadowstalk reveals all enemy Heroes for 10 seconds and heals for 75% more.",
+        "description": "Shadowstalk reveals all enemy Heroes for 10 seconds and heals for 100% more.",
         "icon": "storm_ui_icon_tyrande_shadowstalk.png",
         "type": "Heroic",
         "sort": 1,
@@ -355,16 +350,16 @@
         ]
       },
       {
-        "tooltipId": "TyrandeShootingStar",
-        "talentTreeId": "TyrandeShootingStar",
-        "name": "Shooting Star",
-        "description": "Increase Basic Attack range by 1. Every 8th Basic Attack casts a free Lunar Flare at a random enemy near Tyrande's position. This prefers Heroic targets.",
-        "icon": "storm_ui_icon_talent_autoattack_range.png",
-        "type": "Passive",
+        "tooltipId": "TyrandeCommanderofSentinels",
+        "talentTreeId": "TyrandeCommanderofSentinels",
+        "name": "Commander of Sentinels",
+        "description": "Sentinel gains a 2nd charge.",
+        "icon": "storm_ui_icon_tyrande_sentinel.png",
+        "type": "W",
         "sort": 3,
-        "abilityId": "Tyrande|Passive",
+        "abilityId": "Tyrande|W1",
         "abilityLinks": [
-          "Tyrande|D1"
+          "Tyrande|W1"
         ]
       },
       {

@@ -80,7 +80,7 @@
       {
         "uid": "9f9721",
         "name": "Scarab Host",
-        "description": "Using an Ability spawns a Beetle which lasts for 8 seconds, attacking nearby enemies for 20 (+4% per level) damage.",
+        "description": "Using an Ability spawns a Beetle which loses Health over 10 seconds, attacking nearby enemies for 20 (+4% per level) damage.",
         "trait": true,
         "abilityId": "Anubarak|D1",
         "icon": "storm_ui_icon_anubarak_scarabhost.png",
@@ -200,7 +200,7 @@
         "tooltipId": "AnubarakLeechingMandiblesTalent",
         "talentTreeId": "AnubarakMasteryLeechingScarabs",
         "name": "Leeching Scarabs",
-        "description": "Beetles gain 30% bonus attack damage and they heal Anub'arak for 50% of their damage with each attack if he is nearby.",
+        "description": "Beetles attacks deal 30% more damage and heal Anub'arak 50% of damage dealt if he is nearby.",
         "icon": "storm_ui_icon_anubarak_scarabhost.png",
         "type": "Trait",
         "sort": 3,

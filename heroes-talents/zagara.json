@@ -35,7 +35,7 @@
       {
         "uid": "daa2e2",
         "name": "Hunter Killer",
-        "description": "Summon a Hydralisk to attack a single target, dealing 71 (+5% per level) damage per second. The Hydralisk lasts 8 seconds, and has 450 (+4.5% per level) Health.",
+        "description": "Summon a Hydralisk to attack a single target, dealing 71 (+5% per level) damage per second. The Hydralisk loses Health over 10 seconds, and has 450 (+4.5% per level) Health.",
         "hotkey": "W",
         "abilityId": "Zagara|W1",
         "cooldown": 16,
@@ -46,7 +46,7 @@
       {
         "uid": "340714",
         "name": "Infested Drop",
-        "description": "Bombard target area with a Zerg Drop Pod for 140 (+4% per level) damage.  The pod spawns 2 Roachlings that deal 30 (+4% per level) damage per second and last for 8 seconds.",
+        "description": "Bombard target area with a Zerg Drop Pod for 140 (+4% per level) damage.  The pod spawns 2 Roachlings that deal 30 (+4% per level) damage per second and lose Health over 10 seconds.",
         "hotkey": "E",
         "abilityId": "Zagara|E1",
         "cooldown": 12,
@@ -79,7 +79,7 @@
       {
         "uid": "d4b96a",
         "name": "Creep Tumor",
-        "description": "Lay a Creep Tumor that generates Creep. While on Creep, Zagara moves 20% faster and her summons move 30% faster. Tumors last 240 seconds and reveal the surrounding area while active.  Stores up to 3 charges.",
+        "description": "Lay a Creep Tumor that generates Creep. While on Creep, Zagara moves 20% faster and her summons move 30% faster. Tumors lose Health over 250 seconds and reveal the surrounding area while active.  Stores up to 3 charges.",
         "hotkey": "D",
         "trait": true,
         "abilityId": "Zagara|D1",
@@ -121,10 +121,11 @@
         "tooltipId": "ZagaraInfest",
         "talentTreeId": "ZagaraMasteryInfest",
         "name": "Infest",
-        "description": "Nearby Ranged Minions deal an additional 100% damage, plus an additional 1% per 1000 Siege damage Zagara has dealt. Can be toggled on or off.",
+        "description": "Nearby Ranged Minions deal an additional 100% damage. Can be toggled on or off.  Repeatable Quest: Every 1000 Siege damage dealt increases this bonus by 1%.",
         "icon": "storm_ui_icon_zagara_infest.png",
         "type": "Active",
         "sort": 3,
+        "isQuest": true,
         "abilityId": "Zagara|Active"
       }
     ],
@@ -290,7 +291,7 @@
         "tooltipId": "ZagaraHunterKillerMutaliskTalent",
         "talentTreeId": "ZagaraMasteryMutalisk",
         "name": "Mutalisk",
-        "description": "Reduce the cooldown of Hunter Killer by 4 seconds. Hunter Killer now spawns a Mutalisk. Mutalisks have a bounce attack, last for 30 seconds, and have 420 (+4.5% per level) Health.",
+        "description": "Reduce the cooldown of Hunter Killer by 4 seconds. Hunter Killer now spawns a Mutalisk. Mutalisks have a bounce attack, lose Health over 42 seconds, and have 420 (+4.5% per level) Health.",
         "icon": "storm_ui_icon_zagara_hunterkillermuta.png",
         "type": "W",
         "sort": 2,

@@ -43,7 +43,7 @@
       {
         "uid": "68420a",
         "name": "Searing Lash",
-        "description": "After 0.5 seconds, smite enemies in a straight line for 82 (+4% per level) damage.  If the first strike hits an enemy Hero, a second strike will occur after a short delay.",
+        "description": "After 0.5 seconds, smite enemies in a straight line for 82 (+4% per level) damage.  If the first strike hits an enemy Hero, a second strike will occur after a short delay.  Repeatable Quest: Hit Heroes with Searing Lash. Repeatable Quest: Hit 3 Heroes with Basic Attacks.  Reward: Permanently increase Whitemane's maximum Health by 3 and Mana by 2. Heroes hit with the second strike of Searing Lash count as 2 hits.",
         "hotkey": "E",
         "abilityId": "Whitemane|E1",
         "cooldown": 6,
@@ -99,7 +99,7 @@
         "tooltipId": "WhitemaneZealPityTheFrail",
         "talentTreeId": "WhitemaneZealPityTheFrail",
         "name": "Pity the Frail",
-        "description": "For every Hero hit with Searing Lash, lower the cooldown of Inquisition by 1.5 seconds. Allies below 30% Health receive 25% more healing from Whitemane.",
+        "description": "For every Hero hit with Searing Lash, lower the cooldown of Inquisition by 1 seconds. Allies below 30% Health receive 25% more healing from Whitemane.",
         "icon": "storm_ui_icon_whitemane_inquisition_lash.png",
         "type": "W",
         "sort": 1,
@@ -125,11 +125,10 @@
         "tooltipId": "WhitemaneInquisitor'sPrayer",
         "talentTreeId": "WhitemaneInquisitorsPrayer",
         "name": "Inquisitor's Prayer",
-        "description": "Repeatable Quest: Hit Heroes with Searing Lash. Repeatable Quest: Hit 3 Heroes with Basic Attacks.  Reward: Permanently increase Whitemane's maximum Health by 3 and Mana by 2. Heroes hit with the second strike of Searing Lash count as 2 hits.",
+        "description": "Searing Lash restores 25 Mana for each Hero it hits, and Zeal lasts 2 additional seconds.",
         "icon": "storm_ui_icon_whitemane_lash_alt_1.png",
         "type": "E",
         "sort": 3,
-        "isQuest": true,
         "abilityId": "Whitemane|E1",
         "abilityLinks": [
           "Whitemane|E1"
@@ -212,7 +211,7 @@
         "icon": "storm_ui_icon_whitemane_intercession.png",
         "type": "Active",
         "sort": 3,
-        "cooldown": 45,
+        "cooldown": 60,
         "abilityId": "Whitemane|Active"
       }
     ],
@@ -277,7 +276,7 @@
         "tooltipId": "WhitemaneZealScarletWrath",
         "talentTreeId": "WhitemaneZealScarletWrath",
         "name": "Scarlet Wrath",
-        "description": "Basic Attacks against Heroes increase the duration of all active Zeals by 0.75 seconds, restore 0.5% Mana to all Zeal targets, and lower the cooldown of Zeals activation by 4 seconds.",
+        "description": "Basic Attacks against Heroes increase the duration of all active Zeals by 0.75 seconds, restore 1% Mana to all Zeal targets, and lower the cooldown of Zeals activation by 4 seconds.",
         "icon": "storm_ui_icon_whitemane_zeal.png",
         "type": "Trait",
         "sort": 3,
@@ -359,7 +358,7 @@
         "tooltipId": "WhitemaneGuidingLight",
         "talentTreeId": "WhitemaneGuidingLight",
         "name": "Guiding Light",
-        "description": "Activate to cast a permanent Zeal on an allied Hero that costs no Mana and doesn't grant Desperation. Only one can be active at a time and has global cast range.",
+        "description": "Activate to cast a permanent Zeal on an allied Hero that costs no Mana and doesn't grant Desperation. Only one can be active at a time and has global cast range.  Increases the Spell Power bonus provided by Whitemane's trait by 15%.",
         "icon": "storm_ui_icon_whitemane_zeal.png",
         "type": "Active",
         "sort": 3,

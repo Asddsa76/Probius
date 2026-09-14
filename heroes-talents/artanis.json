@@ -342,7 +342,7 @@
         "tooltipId": "ArtanisSpearofAdunSuppressionPulseOrbitalBombardmentTalent",
         "talentTreeId": "ArtanisSpearofAdunSuppressionPulseOrbitalBombardment",
         "name": "Orbital Bombardment",
-        "description": "Suppression Pulse gains an additional charge. There is a 10 second cooldown between uses.",
+        "description": "Suppression Pulse gains an additional charge.  There is a 10 second cooldown between uses.",
         "icon": "storm_ui_icon_artanis_disruptionweb.png",
         "type": "Heroic",
         "sort": 1,

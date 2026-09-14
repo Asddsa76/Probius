@@ -117,7 +117,7 @@
         "tooltipId": "GarroshWreckingBallUnrivaledStrength",
         "talentTreeId": "GarroshWreckingBallUnrivaledStrength",
         "name": "Unrivaled Strength",
-        "description": "Increase Wrecking Ball's throw range by 20% and its damage by 125%.",
+        "description": "Increase Wrecking Ball's throw range by 15% and its damage by 125%.",
         "icon": "storm_ui_icon_garrosh_wrecking_ball.png",
         "type": "E",
         "sort": 2,

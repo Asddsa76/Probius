@@ -23,7 +23,7 @@
       {
         "uid": "9c5dff",
         "name": "Ravage",
-        "description": "Leap to a target, dealing 115 (+4% per level) damage. If the enemy dies within 1.5 seconds, restore 1 charge and refund 20 Mana.  Quest: Kill enemies within 1.5 seconds of being hit by Ravage. Minions grant 1 stack and Heroes grant 1 stacks.  Reward: After reaching 75 stacks, Ravage deals 125 additional damage.  Pinnacle Reward: After reaching a 125 stacks, Ravage deals a further 200 additional damage.",
+        "description": "Leap to a target, dealing 115 (+4% per level) damage. If the enemy dies within 0.75 seconds, restore 1 charge and refund 20 Mana.  Quest: Kill enemies within a short distance of Kerrigan. Minions grant 1 stack and Heroes grant 1 stacks.  Reward: After reaching 100 stacks, Ravage deals 125 additional damage and Hero kills now provide 1 stacks.  Mythic Reward: After reaching a 250 stacks, Ravage deals a further 200 additional damage.",
         "hotkey": "Q",
         "abilityId": "Kerrigan|Q1",
         "cooldown": 8,
@@ -78,7 +78,7 @@
       {
         "uid": "90d9e9",
         "name": "Assimilation",
-        "description": "Gain 10% of damage dealt from Abilities and 20% from Basic Attacks as Shields for 6 seconds. Shield amount gained doubled against Heroes.  Current maximum: 1004",
+        "description": "Gain 10% of damage dealt from Abilities and 20% from Basic Attacks as Shields for 6 seconds. Shield amount gained doubled against Heroes.  Current maximum: 1004 (+4% per level)",
         "trait": true,
         "abilityId": "Kerrigan|D1",
         "icon": "storm_ui_icon_kerrigan_assimilation.png",
@@ -128,7 +128,7 @@
     "4": [
       {
         "tooltipId": "KerriganRavageRavagingFerocity",
-        "talentTreeId": "KerriganRavageSharpenedBlades",
+        "talentTreeId": "KerriganRavageRavagingFerocity",
         "name": "Ravaging Ferocity",
         "description": "Ravage grants Kerrigan 25% Attack Speed for 3 seconds.",
         "icon": "storm_ui_icon_kerrigan_ravage.png",
@@ -197,7 +197,7 @@
         "tooltipId": "KerriganBladedMomentum",
         "talentTreeId": "KerriganBladedMomentum",
         "name": "Bladed Momentum",
-        "description": "Basic Attacks against enemy Heroes reduce the cooldown of Kerrigan's Basic Abilities by 0.6 seconds.",
+        "description": "Basic Attacks against enemy Heroes reduce the cooldown of Kerrigan's Basic Abilities by 0.75 seconds.",
         "icon": "storm_ui_icon_talent_autoattack_cooldown.png",
         "type": "Passive",
         "sort": 3,
