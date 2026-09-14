@@ -25,7 +25,7 @@
       {
         "uid": "0dce1c",
         "name": "Storm Bolt",
-        "description": "Throw a hammer, dealing 110 (+4% per level) damage to the first enemy hit and Stunning them for 1.25 seconds  Quest: Basic Attack Heroes affected by Stuns, Slows, or Roots. Slowed or Rooted enemies grant 1 stack. Stunned enemies provide 2 stacks.  If the Hero dies within 3 seconds, gain 5 stacks.  Reward: Upon hitting 45 targets, Storm Bolt pierces to hit an additional target, and Muradin's Basic Attacks reduce the cooldown of Storm Bolt by 0.5 seconds.  Mythic Reward: Upon hitting 160 targets, Storm Bolt's range is increased by 50%, width increased by 100%, and now pierces all targets.",
+        "description": "Throw a hammer, dealing 110 (+4% per level) damage to the first enemy hit and Stunning them for 1.25 seconds  Quest: Basic Attack Heroes affected by Stuns, Slows, or Roots. Slowed or Rooted enemies grant 1 stack. Stunned enemies provide 2 stacks.  If the Hero dies within 3 seconds, gain 5 stacks.  Reward: Upon hitting 45 targets, Storm Bolt pierces to hit an additional target, and Muradin's Basic Attacks reduce the cooldown of Storm Bolt by 0.5 seconds and restore 3 Mana.  Mythic Reward: Upon hitting 160 targets, Storm Bolt's range is increased by 50%, width increased by 100%, and now pierces all targets.",
         "hotkey": "Q",
         "abilityId": "Muradin|Q1",
         "cooldown": 10,

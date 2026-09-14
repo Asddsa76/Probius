@@ -102,7 +102,7 @@
       {
         "uid": "80876b",
         "name": "Black Arrows",
-        "description": "Basic Attacks infect enemies with Black Arrows for 3 seconds, stacking up to 3 times. Sylvanas deals 15% more damage to enemies with 3 stacks.  Quest: Damage Heroes and Structures with 3 stacks of Black Arrows.  Reward: Upon damaging enemies 250 times, increase the damage bonus provided by Black Arrows to 50%.  Pinnacle Reward: Upon damaging enemies 400 times, Black Arrows now heals Sylvanas for 25% of damage dealt at 3 stacks, doubled against Heroes.",
+        "description": "Basic Attacks infect enemies with Black Arrows for 3 seconds, stacking up to 3 times. Sylvanas deals 15% more damage to enemies with 3 stacks.  Quest: Damage Heroes and Structures with 3 stacks of Black Arrows.  Reward: Upon damaging enemies 250 times, increase the damage bonus provided by Black Arrows to 50%.  Mythic Reward: Upon damaging enemies 400 times, Black Arrows now heals Sylvanas for 25% of damage dealt at 3 stacks, doubled against Heroes.",
         "trait": true,
         "abilityId": "Sylvanas|D2",
         "icon": "storm_ui_icon_sylvanas_blackarrows.png",

@@ -1,0 +1,264 @@
+{
+  "id": 91,
+  "shortName": "xalatath",
+  "hyperlinkId": "Xalatath",
+  "attributeId": "HXAL",
+  "cHeroId": "Xalatath",
+  "cUnitId": "HeroXalatath",
+  "name": "Xal'atath",
+  "icon": "xalatath.png",
+  "role": "Assassin",
+  "expandedRole": "Ranged Assassin",
+  "type": "Ranged",
+  "releaseDate": "2026-01-01",
+  "releasePatch": "2.57.0.98126",
+  "tags": [
+    "EnergyImportant",
+    "Escaper",
+    "Ganker",
+    "Overconfident",
+    "TowerPusher"
+  ],
+  "abilities": {
+    "Xalatath": [
+      {
+        "uid": "21b222",
+        "name": "Shadow Mark (Q)",
+        "hotkey": "Q",
+        "abilityId": "Xalatath|Q1",
+        "cooldown": 7,
+        "manaCost": 45,
+        "icon": "",
+        "type": "basic"
+      },
+      {
+        "uid": "a48c24",
+        "name": "Void Step (W)",
+        "hotkey": "W",
+        "abilityId": "Xalatath|W1",
+        "cooldown": 15,
+        "manaCost": 50,
+        "icon": "",
+        "type": "basic"
+      },
+      {
+        "uid": "5d2e56",
+        "name": "Dark Heart Ritual (E)",
+        "hotkey": "E",
+        "abilityId": "Xalatath|E1",
+        "cooldown": 15,
+        "manaCost": 50,
+        "icon": "",
+        "type": "basic"
+      },
+      {
+        "uid": "51c0e1",
+        "name": "Void Eruption",
+        "hotkey": "R",
+        "abilityId": "Xalatath|R1",
+        "cooldown": 75,
+        "manaCost": 80,
+        "icon": "",
+        "type": "heroic"
+      },
+      {
+        "uid": "9bb1a7",
+        "name": "Void Convergence",
+        "hotkey": "R",
+        "abilityId": "Xalatath|R2",
+        "cooldown": 90,
+        "manaCost": 75,
+        "icon": "",
+        "type": "heroic"
+      },
+      {
+        "uid": "1815f7",
+        "name": "Void Volley (Trait)",
+        "trait": true,
+        "abilityId": "Xalatath|D1",
+        "manaCost": 75,
+        "icon": "",
+        "type": "trait"
+      }
+    ]
+  },
+  "talents": {
+    "1": [
+      {
+        "tooltipId": "XalatathToxicMark",
+        "talentTreeId": "XalatathToxicMark",
+        "icon": "",
+        "type": "Q",
+        "sort": 1
+      },
+      {
+        "tooltipId": "XalatathCloakOfShadows",
+        "talentTreeId": "XalatathCloakOfShadows",
+        "icon": "",
+        "type": "W",
+        "sort": 2
+      },
+      {
+        "tooltipId": "XalatathAnchoredCore",
+        "talentTreeId": "XalatathAnchoredCore",
+        "icon": "",
+        "type": "E",
+        "sort": 3
+      }
+    ],
+    "4": [
+      {
+        "tooltipId": "XalatathFrozenMark",
+        "talentTreeId": "XalatathFrozenMark",
+        "icon": "",
+        "type": "Q",
+        "sort": 1
+      },
+      {
+        "tooltipId": "XalatathVoidAcolyte",
+        "talentTreeId": "XalatathVoidAcolyte",
+        "icon": "",
+        "type": "W",
+        "sort": 2
+      },
+      {
+        "tooltipId": "XalatathDarkBarrier",
+        "talentTreeId": "XalatathDarkBarrier",
+        "icon": "",
+        "type": "E",
+        "sort": 3
+      }
+    ],
+    "7": [
+      {
+        "tooltipId": "XalatathVoidAdept",
+        "talentTreeId": "XalatathVoidAdept",
+        "icon": "",
+        "type": "Q",
+        "sort": 1,
+        "isQuest": true
+      },
+      {
+        "tooltipId": "XalatathSilenceOfTheLamb",
+        "talentTreeId": "XalatathSilenceOfTheLamb",
+        "icon": "",
+        "type": "W",
+        "sort": 2
+      },
+      {
+        "tooltipId": "XalatathVoidSummoner",
+        "talentTreeId": "XalatathVoidSummoner",
+        "icon": "",
+        "type": "W",
+        "sort": 3
+      }
+    ],
+    "10": [
+      {
+        "tooltipId": "XalatathVoidEruption",
+        "talentTreeId": "XalatathHeroicAbilityVoidEruption",
+        "icon": "",
+        "type": "Heroic",
+        "sort": 1,
+        "abilityId": "Xalatath|R1",
+        "abilityLinks": [
+          "Xalatath|R1"
+        ]
+      },
+      {
+        "tooltipId": "XalatathVoidConvergence",
+        "talentTreeId": "XalatathHeroicAbilityVoidConvergence",
+        "icon": "",
+        "type": "Heroic",
+        "sort": 2,
+        "abilityId": "Xalatath|R2",
+        "abilityLinks": [
+          "Xalatath|R2"
+        ]
+      }
+    ],
+    "13": [
+      {
+        "tooltipId": "XalatathPummelingStep",
+        "talentTreeId": "XalatathPummelingStep",
+        "icon": "",
+        "type": "W",
+        "sort": 1
+      },
+      {
+        "tooltipId": "XalatathDarkHeartsProtection",
+        "talentTreeId": "XalatathDarkHeartsProtection",
+        "icon": "",
+        "type": "E",
+        "sort": 2
+      },
+      {
+        "tooltipId": "XalatathCrushingCascade",
+        "talentTreeId": "XalatathCrushingCascade",
+        "icon": "",
+        "type": "Trait",
+        "sort": 3
+      }
+    ],
+    "16": [
+      {
+        "tooltipId": "XalatathMarkedResilience",
+        "talentTreeId": "XalatathMarkedResilience",
+        "icon": "",
+        "type": "Q",
+        "sort": 1
+      },
+      {
+        "tooltipId": "XalatathPullOfTheDarkHeart",
+        "talentTreeId": "XalatathPullOfTheDarkHeart",
+        "icon": "",
+        "type": "E",
+        "sort": 2
+      },
+      {
+        "tooltipId": "XalatathFracturedReality",
+        "talentTreeId": "XalatathFracturedReality",
+        "icon": "",
+        "type": "Trait",
+        "sort": 3
+      }
+    ],
+    "20": [
+      {
+        "tooltipId": "XalatathOrbitalEruption",
+        "talentTreeId": "XalatathOrbitalEruption",
+        "icon": "",
+        "type": "Heroic",
+        "sort": 1
+      },
+      {
+        "tooltipId": "XalatathRiftInvasion",
+        "talentTreeId": "XalatathRiftInvasion",
+        "icon": "",
+        "type": "Heroic",
+        "sort": 2
+      },
+      {
+        "tooltipId": "XalatathDuelingOrbs",
+        "talentTreeId": "XalatathDuelingOrbs",
+        "icon": "",
+        "type": "Q",
+        "sort": 3
+      },
+      {
+        "tooltipId": "XalatathParadoxLoop",
+        "talentTreeId": "XalatathParadoxLoop",
+        "icon": "",
+        "type": "W",
+        "sort": 4
+      },
+      {
+        "tooltipId": "XalatathUnstableCore",
+        "talentTreeId": "XalatathUnstableCore",
+        "icon": "",
+        "type": "E",
+        "sort": 5
+      }
+    ]
+  }
+}

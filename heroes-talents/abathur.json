@@ -393,7 +393,7 @@
         "tooltipId": "AbathurLocustStrainSurvivalInstinctsTalent",
         "talentTreeId": "AbathurCombatStyleSurvivalInstincts",
         "name": "Survival Instincts",
-        "description": "Increases Locust's Health by 100% and damage by 60%.",
+        "description": "Reduce damage taken by Locusts from non-Heroes by 50% and increase their damage by 60%.",
         "icon": "storm_ui_icon_abathur_spawnlocust.png",
         "type": "Trait",
         "sort": 4,

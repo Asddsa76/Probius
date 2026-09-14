@@ -23,10 +23,10 @@
       {
         "uid": "9fab17",
         "name": "Desperate Plea",
-        "description": "Heal an allied Hero for 140 (+4% per level) and gain Desperation for 4 seconds.  Desperation increases Desperate Plea's Mana cost by 40, and stacks up to 3 times.  Current Mana Cost: 40",
+        "description": "Heal an allied Hero for 140 (+4% per level) and gain Desperation for 4 seconds.  Desperation increases Desperate Plea's Mana cost by 40, and stacks up to 3 times.  Current Mana Cost: 45",
         "hotkey": "Q",
         "abilityId": "Whitemane|Q1",
-        "manaCost": 40,
+        "manaCost": 45,
         "icon": "storm_ui_icon_whitemane_desperation.png",
         "type": "basic"
       },
@@ -211,7 +211,7 @@
         "icon": "storm_ui_icon_whitemane_intercession.png",
         "type": "Active",
         "sort": 3,
-        "cooldown": 60,
+        "cooldown": 75,
         "abilityId": "Whitemane|Active"
       }
     ],
@@ -291,7 +291,7 @@
         "tooltipId": "WhitemaneDesperatePleaRadiance",
         "talentTreeId": "WhitemaneDesperatePleaRadiance",
         "name": "Radiance",
-        "description": "Reaching 3 stacks of Desperation heals for 175 (+4% per level) and reapplies Zeal to allies with Zeal.",
+        "description": "Reaching 3 stacks of Desperation heals for 190 (+4% per level) and reapplies Zeal to allies with Zeal.",
         "icon": "storm_ui_icon_whitemane_desperation.png",
         "type": "Q",
         "sort": 1,

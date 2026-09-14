@@ -240,7 +240,7 @@
         "tooltipId": "YrelVindicationAldorPeacekeeper",
         "talentTreeId": "YrelVindicationAldorPeacekeeper",
         "name": "Aldor Peacekeeper",
-        "description": "Enemy Heroes hit by Vindication at maximum charge deal 40% less damage for 3 seconds.",
+        "description": "Enemy Heroes hit by Vindication at maximum charge deal 50% less damage for 4 seconds.",
         "icon": "storm_ui_icon_yrel_vindication.png",
         "type": "Q",
         "sort": 1,
@@ -266,7 +266,7 @@
         "tooltipId": "YrelVelensChosen",
         "talentTreeId": "YrelVelensChosen",
         "name": "Velen's Chosen",
-        "description": "Hitting an enemy Hero with a Basic Ability at maximum charge grants 10% Spell Power for 10 seconds, up to 30%.",
+        "description": "Hitting an enemy Hero with a Basic Ability at maximum charge grants 8% Spell Power for 10 seconds, up to 24%.",
         "icon": "storm_ui_icon_yrel_velens_chosen.png",
         "type": "Passive",
         "sort": 3,
@@ -357,7 +357,7 @@
         "icon": "storm_ui_icon_yrel_seraphim.png",
         "type": "Active",
         "sort": 4,
-        "cooldown": 20,
+        "cooldown": 30,
         "abilityId": "Yrel|Active"
       }
     ]
