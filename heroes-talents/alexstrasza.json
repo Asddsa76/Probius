@@ -174,7 +174,7 @@
         "tooltipId": "AlexstraszaFlamesOfFuryFlameBuffet",
         "talentTreeId": "AlexstraszaFlamesOfFuryFlameBuffet",
         "name": "Flames of Fury",
-        "description": "Reduce the Mana cost of Flame Buffet from 50 to 40.  Quest: Hit Burning enemy Heroes with Flame Buffet. 20 hits unlocks a Mythic Quest.  Reward: After hitting 20 Heroes, hitting a Burning enemy Hero with Flame Buffet reduces Dragonqueen's cooldown by 6 seconds.  Mythic Quest: After hitting 40 more Heroes without dying, Dragonqueen damage against Heroes refreshes its duration.",
+        "description": "Reduce the Mana cost of Flame Buffet from 50 to 40.  Quest: Hit Burning enemy Heroes with Flame Buffet. 20 hits unlocks a Mythic Quest.  Reward: After hitting 20 Heroes, hitting a Burning enemy Hero with Flame Buffet reduces Dragonqueen's cooldown by 6 seconds.  Mythic Quest: After hitting 30 more Heroes without dying, Dragonqueen damage against Heroes refreshes its duration.",
         "icon": "storm_ui_icon_alexstrasza_flame_buffet.png",
         "type": "E",
         "sort": 3,

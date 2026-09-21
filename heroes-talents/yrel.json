@@ -266,7 +266,7 @@
         "tooltipId": "YrelVelensChosen",
         "talentTreeId": "YrelVelensChosen",
         "name": "Velen's Chosen",
-        "description": "Hitting an enemy Hero with a Basic Ability at maximum charge grants 8% Spell Power for 10 seconds, up to 24%.",
+        "description": "Hitting an enemy Hero with a Basic Ability at maximum charge grants 7.5% Spell Power for 10 seconds, up to 30%.",
         "icon": "storm_ui_icon_yrel_velens_chosen.png",
         "type": "Passive",
         "sort": 3,
