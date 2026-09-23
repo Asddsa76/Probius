@@ -351,7 +351,7 @@
         "tooltipId": "AlexstraszaOverprotectiveAbundance",
         "talentTreeId": "AlexstraszaOverprotectiveAbundance",
         "name": "Overprotective",
-        "description": "Heroes healed by Abundance gain a Shield for 6 seconds equal to 70% of the amount healed.",
+        "description": "Heroes healed by Abundance gain a Shield for 6 seconds equal to 50% of the amount healed.",
         "icon": "storm_ui_icon_alexstrasza_abundance.png",
         "type": "W",
         "sort": 2,

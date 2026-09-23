@@ -336,7 +336,7 @@
         "tooltipId": "AbathurLocustStrainBombardStrainTalent",
         "talentTreeId": "AbathurCombatStyleBombardStrain",
         "name": "Bombard Strain",
-        "description": "Locust's Basic Attacks become a long-range siege attack and they now lose health 50% more slowly.",
+        "description": "Locust's Basic Attacks become a long-range siege attack and they now lose health 40% more slowly.",
         "icon": "storm_ui_icon_abathur_spawnlocust.png",
         "type": "Trait",
         "sort": 3,

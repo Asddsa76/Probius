@@ -10,7 +10,7 @@
   "role": "Assassin",
   "expandedRole": "Ranged Assassin",
   "type": "Ranged",
-  "releaseDate": "2026-01-01",
+  "releaseDate": "2026-09-28",
   "releasePatch": "2.57.0.98126",
   "tags": [
     "EnergyImportant",
@@ -85,11 +85,12 @@
   "talents": {
     "1": [
       {
-        "tooltipId": "XalatathToxicMark",
-        "talentTreeId": "XalatathToxicMark",
+        "tooltipId": "XalatathVoidAdept",
+        "talentTreeId": "XalatathVoidAdept",
         "icon": "",
         "type": "Q",
-        "sort": 1
+        "sort": 1,
+        "isQuest": true
       },
       {
         "tooltipId": "XalatathAnchoredCore",
@@ -131,12 +132,11 @@
     ],
     "7": [
       {
-        "tooltipId": "XalatathVoidAdept",
-        "talentTreeId": "XalatathVoidAdept",
+        "tooltipId": "XalatathToxicMark",
+        "talentTreeId": "XalatathToxicMark",
         "icon": "",
         "type": "Q",
-        "sort": 1,
-        "isQuest": true
+        "sort": 1
       },
       {
         "tooltipId": "XalatathSilenceOfTheLamb",
@@ -160,6 +160,7 @@
         "icon": "",
         "type": "Heroic",
         "sort": 1,
+        "cooldown": 75,
         "abilityId": "Xalatath|R1",
         "abilityLinks": [
           "Xalatath|R1"
@@ -171,6 +172,7 @@
         "icon": "",
         "type": "Heroic",
         "sort": 2,
+        "cooldown": 90,
         "abilityId": "Xalatath|R2",
         "abilityLinks": [
           "Xalatath|R2"
@@ -179,24 +181,24 @@
     ],
     "13": [
       {
-        "tooltipId": "XalatathCrushingCascade",
-        "talentTreeId": "XalatathCrushingCascade",
-        "icon": "",
-        "type": "Trait",
-        "sort": 1
-      },
-      {
         "tooltipId": "XalatathPullOfTheDarkHeart",
         "talentTreeId": "XalatathPullOfTheDarkHeart",
         "icon": "",
         "type": "W",
-        "sort": 2
+        "sort": 1
       },
       {
         "tooltipId": "XalatathDarkHeartsProtection",
         "talentTreeId": "XalatathDarkHeartsProtection",
         "icon": "",
         "type": "W",
+        "sort": 2
+      },
+      {
+        "tooltipId": "XalatathCrushingCascade",
+        "talentTreeId": "XalatathCrushingCascade",
+        "icon": "",
+        "type": "Trait",
         "sort": 3
       }
     ],
@@ -209,17 +211,17 @@
         "sort": 1
       },
       {
-        "tooltipId": "XalatathFracturedReality",
-        "talentTreeId": "XalatathFracturedReality",
-        "icon": "",
-        "type": "Trait",
-        "sort": 2
-      },
-      {
         "tooltipId": "XalatathPummelingStep",
         "talentTreeId": "XalatathPummelingStep",
         "icon": "",
         "type": "E",
+        "sort": 2
+      },
+      {
+        "tooltipId": "XalatathFracturedReality",
+        "talentTreeId": "XalatathFracturedReality",
+        "icon": "",
+        "type": "Trait",
         "sort": 3
       }
     ],
