@@ -66,7 +66,7 @@
         "name": "Void Convergence",
         "hotkey": "R",
         "abilityId": "Xalatath|R2",
-        "cooldown": 90,
+        "cooldown": 75,
         "manaCost": 75,
         "icon": "",
         "type": "heroic"
@@ -172,7 +172,7 @@
         "icon": "",
         "type": "Heroic",
         "sort": 2,
-        "cooldown": 90,
+        "cooldown": 75,
         "abilityId": "Xalatath|R2",
         "abilityLinks": [
           "Xalatath|R2"
